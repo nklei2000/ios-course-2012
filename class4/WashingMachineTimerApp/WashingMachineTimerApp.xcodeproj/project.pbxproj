@@ -1,0 +1,299 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F73F33BE15DA3CE90021E502 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F73F33BD15DA3CE90021E502 /* UIKit.framework */; };
+		F73F33C015DA3CE90021E502 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F73F33BF15DA3CE90021E502 /* Foundation.framework */; };
+		F73F33C215DA3CE90021E502 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F73F33C115DA3CE90021E502 /* CoreGraphics.framework */; };
+		F73F33C815DA3CE90021E502 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F73F33C615DA3CE90021E502 /* InfoPlist.strings */; };
+		F73F33CA15DA3CE90021E502 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F73F33C915DA3CE90021E502 /* main.m */; };
+		F73F33CE15DA3CE90021E502 /* SAMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F73F33CD15DA3CE90021E502 /* SAMAppDelegate.m */; };
+		F73F33D115DA3CE90021E502 /* SAMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F73F33D015DA3CE90021E502 /* SAMViewController.m */; };
+		F73F33D415DA3CE90021E502 /* SAMViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F73F33D215DA3CE90021E502 /* SAMViewController.xib */; };
+		F7B4E31B15DBA6F800ED3089 /* green_light.png in Resources */ = {isa = PBXBuildFile; fileRef = F7B4E31915DBA6F800ED3089 /* green_light.png */; };
+		F7B4E31C15DBA6F800ED3089 /* yellow_light.png in Resources */ = {isa = PBXBuildFile; fileRef = F7B4E31A15DBA6F800ED3089 /* yellow_light.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F73F33B915DA3CE90021E502 /* WashingMachineTimerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WashingMachineTimerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F73F33BD15DA3CE90021E502 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F73F33BF15DA3CE90021E502 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F73F33C115DA3CE90021E502 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		F73F33C515DA3CE90021E502 /* WashingMachineTimerApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WashingMachineTimerApp-Info.plist"; sourceTree = "<group>"; };
+		F73F33C715DA3CE90021E502 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F73F33C915DA3CE90021E502 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F73F33CB15DA3CE90021E502 /* WashingMachineTimerApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WashingMachineTimerApp-Prefix.pch"; sourceTree = "<group>"; };
+		F73F33CC15DA3CE90021E502 /* SAMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SAMAppDelegate.h; sourceTree = "<group>"; };
+		F73F33CD15DA3CE90021E502 /* SAMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SAMAppDelegate.m; sourceTree = "<group>"; };
+		F73F33CF15DA3CE90021E502 /* SAMViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SAMViewController.h; sourceTree = "<group>"; };
+		F73F33D015DA3CE90021E502 /* SAMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SAMViewController.m; sourceTree = "<group>"; };
+		F73F33D315DA3CE90021E502 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SAMViewController.xib; sourceTree = "<group>"; };
+		F7B4E31915DBA6F800ED3089 /* green_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green_light.png; sourceTree = "<group>"; };
+		F7B4E31A15DBA6F800ED3089 /* yellow_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellow_light.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F73F33B615DA3CE90021E502 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F73F33BE15DA3CE90021E502 /* UIKit.framework in Frameworks */,
+				F73F33C015DA3CE90021E502 /* Foundation.framework in Frameworks */,
+				F73F33C215DA3CE90021E502 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F73F33AE15DA3CE90021E502 = {
+			isa = PBXGroup;
+			children = (
+				F73F33C315DA3CE90021E502 /* WashingMachineTimerApp */,
+				F73F33BC15DA3CE90021E502 /* Frameworks */,
+				F73F33BA15DA3CE90021E502 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F73F33BA15DA3CE90021E502 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F73F33B915DA3CE90021E502 /* WashingMachineTimerApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F73F33BC15DA3CE90021E502 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F73F33BD15DA3CE90021E502 /* UIKit.framework */,
+				F73F33BF15DA3CE90021E502 /* Foundation.framework */,
+				F73F33C115DA3CE90021E502 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F73F33C315DA3CE90021E502 /* WashingMachineTimerApp */ = {
+			isa = PBXGroup;
+			children = (
+				F73F33CC15DA3CE90021E502 /* SAMAppDelegate.h */,
+				F73F33CD15DA3CE90021E502 /* SAMAppDelegate.m */,
+				F73F33CF15DA3CE90021E502 /* SAMViewController.h */,
+				F73F33D015DA3CE90021E502 /* SAMViewController.m */,
+				F73F33D215DA3CE90021E502 /* SAMViewController.xib */,
+				F7B4E31815DBA6F800ED3089 /* images */,
+				F73F33C415DA3CE90021E502 /* Supporting Files */,
+			);
+			path = WashingMachineTimerApp;
+			sourceTree = "<group>";
+		};
+		F73F33C415DA3CE90021E502 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F73F33C515DA3CE90021E502 /* WashingMachineTimerApp-Info.plist */,
+				F73F33C615DA3CE90021E502 /* InfoPlist.strings */,
+				F73F33C915DA3CE90021E502 /* main.m */,
+				F73F33CB15DA3CE90021E502 /* WashingMachineTimerApp-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F7B4E31815DBA6F800ED3089 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				F7B4E31915DBA6F800ED3089 /* green_light.png */,
+				F7B4E31A15DBA6F800ED3089 /* yellow_light.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F73F33B815DA3CE90021E502 /* WashingMachineTimerApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F73F33D715DA3CE90021E502 /* Build configuration list for PBXNativeTarget "WashingMachineTimerApp" */;
+			buildPhases = (
+				F73F33B515DA3CE90021E502 /* Sources */,
+				F73F33B615DA3CE90021E502 /* Frameworks */,
+				F73F33B715DA3CE90021E502 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WashingMachineTimerApp;
+			productName = WashingMachineTimerApp;
+			productReference = F73F33B915DA3CE90021E502 /* WashingMachineTimerApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F73F33B015DA3CE90021E502 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = SAM;
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = F73F33B315DA3CE90021E502 /* Build configuration list for PBXProject "WashingMachineTimerApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = F73F33AE15DA3CE90021E502;
+			productRefGroup = F73F33BA15DA3CE90021E502 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F73F33B815DA3CE90021E502 /* WashingMachineTimerApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F73F33B715DA3CE90021E502 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F73F33C815DA3CE90021E502 /* InfoPlist.strings in Resources */,
+				F73F33D415DA3CE90021E502 /* SAMViewController.xib in Resources */,
+				F7B4E31B15DBA6F800ED3089 /* green_light.png in Resources */,
+				F7B4E31C15DBA6F800ED3089 /* yellow_light.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F73F33B515DA3CE90021E502 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F73F33CA15DA3CE90021E502 /* main.m in Sources */,
+				F73F33CE15DA3CE90021E502 /* SAMAppDelegate.m in Sources */,
+				F73F33D115DA3CE90021E502 /* SAMViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F73F33C615DA3CE90021E502 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F73F33C715DA3CE90021E502 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F73F33D215DA3CE90021E502 /* SAMViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F73F33D315DA3CE90021E502 /* en */,
+			);
+			name = SAMViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F73F33D515DA3CE90021E502 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		F73F33D615DA3CE90021E502 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F73F33D815DA3CE90021E502 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "WashingMachineTimerApp/WashingMachineTimerApp-Prefix.pch";
+				INFOPLIST_FILE = "WashingMachineTimerApp/WashingMachineTimerApp-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		F73F33D915DA3CE90021E502 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "WashingMachineTimerApp/WashingMachineTimerApp-Prefix.pch";
+				INFOPLIST_FILE = "WashingMachineTimerApp/WashingMachineTimerApp-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F73F33B315DA3CE90021E502 /* Build configuration list for PBXProject "WashingMachineTimerApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F73F33D515DA3CE90021E502 /* Debug */,
+				F73F33D615DA3CE90021E502 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F73F33D715DA3CE90021E502 /* Build configuration list for PBXNativeTarget "WashingMachineTimerApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F73F33D815DA3CE90021E502 /* Debug */,
+				F73F33D915DA3CE90021E502 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F73F33B015DA3CE90021E502 /* Project object */;
+}
