@@ -1,0 +1,108 @@
+$mysql_host = "mysql1.000webhost.com";
+$mysql_database = "a6576685_feeling";
+$mysql_user = "a6576685_feeling";
+$mysql_password = "feeling123";
+
+
+mysql1.000webhost.com
+
+
+testing….
+$java -cp apns-0.1.5.jar:. APNTest whatsfeeling_developer.p12 "whatsfeeling" "1a2adff7163c960a1f4737ddc2174db9148ab41211bce7eaa8d2715b9b9398fc" "Hi Sam Lei"
+
+
+    [[UIApplication sharedApplication] 
+        registerForRemoteNotificationTypes:
+        (UIRemoteNotificationTypeAlert | 
+         UIRemoteNotificationTypeBadge | 
+         UIRemoteNotificationTypeSound)];
+		 
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+ 
+    for (id key in userInfo) {
+        NSLog(@"key: %@, value: %@", key, [userInfo objectForKey:key]);
+    }    
+ 
+}
+
+
+{
+    "aps": { 
+        "alert" : "You got a new message!" ,
+        "badge" : 5, 
+        "sound" : "beep.wav"},
+     "acme1" : "bar", 
+     "acme2" : 42
+}
+
+
+- (id)init {
+    self = [super init];
+    if(self != nil) {
+        self.deviceToken = @"38c866dd bb323b39 ffa73487 5e157ee5 a85e0b7c e90d56e9 fe145bcc 6c2c594b";
+ 
+        self.payload = @"{\"aps\":{\"alert\":\"You got a new message!\",\"badge\":5,\"sound\":\"beep.wav\"},\"acme1\":\"bar\",\"acme2\":42}";
+ 
+        self.certificate = [[NSBundle mainBundle] 
+            pathForResource:@"aps_developer_identity" ofType:@"cer"];
+    }
+    return self;
+}		
+
+
+
+
+--- php5 ----
+<?php
+   $deviceToken = $_GET['token'] or $deviceToken = $argv[2] ;//or $deviceToken reason
+   // Passphrase for the private key (ck.pem file)
+   // $pass = '';
+   // Get the parameters from http get or from command line
+
+   
+   $message = $_GET['message'] or $message = $argv[3] or $message = 'You have a new mail';
+   $badge = (int)$_GET['badge'] or $badge = (int)$argv[4]  ;
+   $sound = $_GET['sound'] or $sound = $argv[5];
+   // Construct the notification payload
+   $body = array();
+   $body['aps'] = array('alert' => $message);
+
+   if ($badge)
+      $body['aps']['badge'] = $badge;
+   if ($sound)
+      $body['aps']['sound'] = $sound;
+
+   /* End of Configurable Items */
+   $server = $_GET['server'] or $server = $argv[1] or $server = 'developement';
+   echo $server;
+   if($server=='production')
+   {
+           $appleServer='ssl://gateway.push.apple.com:2195';
+          $certpem = dirname(__FILE__).'/cerpro.pem';
+          echo "production set";
+   }
+   else
+   {
+   
+           $appleServer='ssl://gateway.sandbox.push.apple.com:2195';
+          $certpem = dirname(__FILE__).'/cerdev.pem';
+   }
+    $ctx = stream_context_create();
+   stream_context_set_option($ctx, 'ssl', 'local_cert', $certpem);
+   // assume the private key passphase was removed.
+   // stream_context_set_option($ctx, 'ssl', 'passphrase', $pass);
+   $fp = stream_socket_client($appleServer, $err, $errstr, 60, STREAM_CLIENT_CONNECT, $ctx);
+   if (!$fp) {
+      print "Failed to connect $err $errstrn";
+      return;
+   }
+   else {
+       print "Connection OK";
+   }
+    $payload = json_encode($body);
+   $msg = chr(0) . pack("n",32) . pack('H*', str_replace(' ', '', $deviceToken)) . pack("n",strlen($payload)) . $payload;
+  print "sending message :" . $payload . "n";
+//    print "sending message :" . $msg;
+   fwrite($fp, $msg);
+   fclose($fp);
+?> 
