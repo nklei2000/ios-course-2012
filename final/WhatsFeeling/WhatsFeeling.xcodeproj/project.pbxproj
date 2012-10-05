@@ -13,8 +13,6 @@
 		F707C43D161EC02C00F76C4B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F707C43B161EC02C00F76C4B /* InfoPlist.strings */; };
 		F707C43F161EC02C00F76C4B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F707C43E161EC02C00F76C4B /* main.m */; };
 		F707C443161EC02C00F76C4B /* SAMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F707C442161EC02C00F76C4B /* SAMAppDelegate.m */; };
-		F707C446161EC02C00F76C4B /* SAMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F707C445161EC02C00F76C4B /* SAMViewController.m */; };
-		F707C449161EC02C00F76C4B /* SAMViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F707C447161EC02C00F76C4B /* SAMViewController.xib */; };
 		F707C457161EC9A400F76C4B /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = F707C456161EC9A400F76C4B /* AppIcon.png */; };
 		F707C459161EC9AF00F76C4B /* AppIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F707C458161EC9AF00F76C4B /* AppIcon@2x.png */; };
 		F707C523161ECA6F00F76C4B /* 01-refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = F707C45B161ECA6F00F76C4B /* 01-refresh.png */; };
@@ -217,6 +215,12 @@
 		F707C5E8161ECA6F00F76C4B /* 97-puzzle.png in Resources */ = {isa = PBXBuildFile; fileRef = F707C520161ECA6F00F76C4B /* 97-puzzle.png */; };
 		F707C5E9161ECA6F00F76C4B /* 98-palette.png in Resources */ = {isa = PBXBuildFile; fileRef = F707C521161ECA6F00F76C4B /* 98-palette.png */; };
 		F707C5EA161ECA6F00F76C4B /* 99-umbrella.png in Resources */ = {isa = PBXBuildFile; fileRef = F707C522161ECA6F00F76C4B /* 99-umbrella.png */; };
+		F707C602161EE36400F76C4B /* MyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F707C600161EE36400F76C4B /* MyInfoViewController.m */; };
+		F707C603161EE36400F76C4B /* MyInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F707C601161EE36400F76C4B /* MyInfoViewController.xib */; };
+		F707C606161EE66600F76C4B /* chat.png in Resources */ = {isa = PBXBuildFile; fileRef = F707C604161EE63700F76C4B /* chat.png */; };
+		F707C607161EE66600F76C4B /* gear.png in Resources */ = {isa = PBXBuildFile; fileRef = F707C605161EE64500F76C4B /* gear.png */; };
+		F707C60B161EE70F00F76C4B /* FeelingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F707C609161EE70F00F76C4B /* FeelingViewController.m */; };
+		F707C60C161EE70F00F76C4B /* FeelingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F707C60A161EE70F00F76C4B /* FeelingViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -230,9 +234,6 @@
 		F707C440161EC02C00F76C4B /* WhatsFeeling-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WhatsFeeling-Prefix.pch"; sourceTree = "<group>"; };
 		F707C441161EC02C00F76C4B /* SAMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SAMAppDelegate.h; sourceTree = "<group>"; };
 		F707C442161EC02C00F76C4B /* SAMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SAMAppDelegate.m; sourceTree = "<group>"; };
-		F707C444161EC02C00F76C4B /* SAMViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SAMViewController.h; sourceTree = "<group>"; };
-		F707C445161EC02C00F76C4B /* SAMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SAMViewController.m; sourceTree = "<group>"; };
-		F707C448161EC02C00F76C4B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SAMViewController.xib; sourceTree = "<group>"; };
 		F707C456161EC9A400F76C4B /* AppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon.png; sourceTree = "<group>"; };
 		F707C458161EC9AF00F76C4B /* AppIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon@2x.png"; sourceTree = "<group>"; };
 		F707C45B161ECA6F00F76C4B /* 01-refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "01-refresh.png"; sourceTree = "<group>"; };
@@ -435,6 +436,14 @@
 		F707C520161ECA6F00F76C4B /* 97-puzzle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "97-puzzle.png"; sourceTree = "<group>"; };
 		F707C521161ECA6F00F76C4B /* 98-palette.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "98-palette.png"; sourceTree = "<group>"; };
 		F707C522161ECA6F00F76C4B /* 99-umbrella.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "99-umbrella.png"; sourceTree = "<group>"; };
+		F707C5FF161EE36400F76C4B /* MyInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyInfoViewController.h; sourceTree = "<group>"; };
+		F707C600161EE36400F76C4B /* MyInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyInfoViewController.m; sourceTree = "<group>"; };
+		F707C601161EE36400F76C4B /* MyInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyInfoViewController.xib; path = ../WhatsFeeling/MyInfoViewController.xib; sourceTree = "<group>"; };
+		F707C604161EE63700F76C4B /* chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat.png; sourceTree = "<group>"; };
+		F707C605161EE64500F76C4B /* gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gear.png; sourceTree = "<group>"; };
+		F707C608161EE70E00F76C4B /* FeelingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeelingViewController.h; sourceTree = "<group>"; };
+		F707C609161EE70F00F76C4B /* FeelingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeelingViewController.m; sourceTree = "<group>"; };
+		F707C60A161EE70F00F76C4B /* FeelingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FeelingViewController.xib; path = ../WhatsFeeling/FeelingViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -488,9 +497,11 @@
 			children = (
 				F707C441161EC02C00F76C4B /* SAMAppDelegate.h */,
 				F707C442161EC02C00F76C4B /* SAMAppDelegate.m */,
-				F707C444161EC02C00F76C4B /* SAMViewController.h */,
-				F707C445161EC02C00F76C4B /* SAMViewController.m */,
 				F707C439161EC02C00F76C4B /* Supporting Files */,
+				F707C5FF161EE36400F76C4B /* MyInfoViewController.h */,
+				F707C600161EE36400F76C4B /* MyInfoViewController.m */,
+				F707C608161EE70E00F76C4B /* FeelingViewController.h */,
+				F707C609161EE70F00F76C4B /* FeelingViewController.m */,
 			);
 			path = WhatsFeeling;
 			sourceTree = "<group>";
@@ -516,6 +527,8 @@
 		F707C450161EC1A900F76C4B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				F707C604161EE63700F76C4B /* chat.png */,
+				F707C605161EE64500F76C4B /* gear.png */,
 				F707C45A161ECA6F00F76C4B /* PNG icons */,
 			);
 			path = Images;
@@ -524,7 +537,8 @@
 		F707C451161EC1A900F76C4B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				F707C447161EC02C00F76C4B /* SAMViewController.xib */,
+				F707C60A161EE70F00F76C4B /* FeelingViewController.xib */,
+				F707C601161EE36400F76C4B /* MyInfoViewController.xib */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -789,7 +803,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F707C43D161EC02C00F76C4B /* InfoPlist.strings in Resources */,
-				F707C449161EC02C00F76C4B /* SAMViewController.xib in Resources */,
 				F707C457161EC9A400F76C4B /* AppIcon.png in Resources */,
 				F707C459161EC9AF00F76C4B /* AppIcon@2x.png in Resources */,
 				F707C523161ECA6F00F76C4B /* 01-refresh.png in Resources */,
@@ -992,6 +1005,10 @@
 				F707C5E8161ECA6F00F76C4B /* 97-puzzle.png in Resources */,
 				F707C5E9161ECA6F00F76C4B /* 98-palette.png in Resources */,
 				F707C5EA161ECA6F00F76C4B /* 99-umbrella.png in Resources */,
+				F707C603161EE36400F76C4B /* MyInfoViewController.xib in Resources */,
+				F707C606161EE66600F76C4B /* chat.png in Resources */,
+				F707C607161EE66600F76C4B /* gear.png in Resources */,
+				F707C60C161EE70F00F76C4B /* FeelingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1004,7 +1021,8 @@
 			files = (
 				F707C43F161EC02C00F76C4B /* main.m in Sources */,
 				F707C443161EC02C00F76C4B /* SAMAppDelegate.m in Sources */,
-				F707C446161EC02C00F76C4B /* SAMViewController.m in Sources */,
+				F707C602161EE36400F76C4B /* MyInfoViewController.m in Sources */,
+				F707C60B161EE70F00F76C4B /* FeelingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1017,15 +1035,6 @@
 				F707C43C161EC02C00F76C4B /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		F707C447161EC02C00F76C4B /* SAMViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F707C448161EC02C00F76C4B /* en */,
-			);
-			name = SAMViewController.xib;
-			path = ../WhatsFeeling;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

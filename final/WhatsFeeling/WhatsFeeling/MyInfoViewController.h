@@ -1,5 +1,5 @@
 //
-//  SAMViewController.h
+//  MyInfoViewController.h
 //  WhatsFeeling
 //
 //  Created by Nam Kin Lei on 10/5/12.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SAMViewController : UIViewController
+@interface MyInfoViewController : UIViewController
 
 @end

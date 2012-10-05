@@ -10,10 +10,12 @@
 
 @class SAMViewController;
 
-@interface SAMAppDelegate : UIResponder <UIApplicationDelegate>
+@interface SAMAppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) SAMViewController *viewController;
+// @property (strong, nonatomic) SAMViewController *viewController;
+
+@property (strong, nonatomic) UITabBarController *tabBarController;
 
 @end

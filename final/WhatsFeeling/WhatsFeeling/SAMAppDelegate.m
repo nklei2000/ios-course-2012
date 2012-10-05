@@ -8,16 +8,26 @@
 
 #import "SAMAppDelegate.h"
 
-#import "SAMViewController.h"
+#import "FeelingViewController.h"
+#import "MyInfoViewController.h"
+
 
 @implementation SAMAppDelegate
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.viewController = [[SAMViewController alloc] initWithNibName:@"SAMViewController" bundle:nil];
-    self.window.rootViewController = self.viewController;
+    UIViewController *viewControllerFeeling = [[FeelingViewController alloc] initWithNibName:@"FeelingViewController" bundle:nil];
+    UIViewController *viewControllerMyInfo = [[MyInfoViewController alloc] initWithNibName:@"MyInfoViewController" bundle:nil];
+    
+    self.tabBarController = [[UITabBarController alloc] init];
+    
+    self.tabBarController.viewControllers = [NSArray arrayWithObjects:viewControllerFeeling, viewControllerMyInfo, nil];
+    
+    self.window.rootViewController = self.tabBarController;
+        
     [self.window makeKeyAndVisible];
     
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert];
