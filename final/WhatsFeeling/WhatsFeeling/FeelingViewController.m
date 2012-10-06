@@ -20,7 +20,7 @@
     if (self) {
         // Custom initialization
         self.title = NSLocalizedString(@"Feeling", @"Feeling");
-        self.tabBarItem.image = [UIImage imageNamed:@"chat"];
+        self.tabBarItem.image = [UIImage imageNamed:@"heart"];
     }
     return self;
 }

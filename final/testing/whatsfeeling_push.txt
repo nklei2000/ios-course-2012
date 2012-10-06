@@ -10,6 +10,10 @@ mysql1.000webhost.com
 testing….
 $java -cp apns-0.1.5.jar:. APNTest whatsfeeling_developer.p12 "whatsfeeling" "1a2adff7163c960a1f4737ddc2174db9148ab41211bce7eaa8d2715b9b9398fc" "Hi Sam Lei"
 
+becca tam's deviceToken: <8a07c598 80085681 72c6dfef fdc333d7 ada28ec7 03bb0e0e 955b0da1 c1261191>
+8a07c5988008568172c6dfeffdc333d7ada28ec703bb0e0e955b0da1c1261191
+
+
 
     [[UIApplication sharedApplication] 
         registerForRemoteNotificationTypes:
