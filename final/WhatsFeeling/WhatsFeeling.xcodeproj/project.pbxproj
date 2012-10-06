@@ -139,7 +139,6 @@
 		F707C450161EC1A900F76C4B /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				F7668F7F16200F710052764B /* PNG icons */,
 				F7668F7316200F000052764B /* 01-refresh.png */,
 				F7668F7416200F000052764B /* 25-weather.png */,
 				F7668F7516200F000052764B /* 29-heart.png */,
@@ -159,13 +158,6 @@
 				F707C601161EE36400F76C4B /* MyInfoViewController.xib */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		F7668F7F16200F710052764B /* PNG icons */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "PNG icons";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
