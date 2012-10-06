@@ -16,17 +16,17 @@
 		F707C457161EC9A400F76C4B /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = F707C456161EC9A400F76C4B /* AppIcon.png */; };
 		F707C459161EC9AF00F76C4B /* AppIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F707C458161EC9AF00F76C4B /* AppIcon@2x.png */; };
 		F707C602161EE36400F76C4B /* MyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F707C600161EE36400F76C4B /* MyInfoViewController.m */; };
-		F707C603161EE36400F76C4B /* MyInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F707C601161EE36400F76C4B /* MyInfoViewController.xib */; };
 		F707C606161EE66600F76C4B /* chat.png in Resources */ = {isa = PBXBuildFile; fileRef = F707C604161EE63700F76C4B /* chat.png */; };
 		F707C607161EE66600F76C4B /* gear.png in Resources */ = {isa = PBXBuildFile; fileRef = F707C605161EE64500F76C4B /* gear.png */; };
 		F707C60B161EE70F00F76C4B /* FeelingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F707C609161EE70F00F76C4B /* FeelingViewController.m */; };
-		F707C60C161EE70F00F76C4B /* FeelingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F707C60A161EE70F00F76C4B /* FeelingViewController.xib */; };
 		F7668F7916200F000052764B /* 01-refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = F7668F7316200F000052764B /* 01-refresh.png */; };
 		F7668F7A16200F000052764B /* 25-weather.png in Resources */ = {isa = PBXBuildFile; fileRef = F7668F7416200F000052764B /* 25-weather.png */; };
-		F7668F7B16200F000052764B /* 29-heart.png in Resources */ = {isa = PBXBuildFile; fileRef = F7668F7516200F000052764B /* 29-heart.png */; };
+		F7668F7B16200F000052764B /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = F7668F7516200F000052764B /* heart.png */; };
 		F7668F7C16200F000052764B /* 42-photos.png in Resources */ = {isa = PBXBuildFile; fileRef = F7668F7616200F000052764B /* 42-photos.png */; };
 		F7668F7D16200F000052764B /* 74-location.png in Resources */ = {isa = PBXBuildFile; fileRef = F7668F7716200F000052764B /* 74-location.png */; };
 		F7668F7E16200F000052764B /* 193-location-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = F7668F7816200F000052764B /* 193-location-arrow.png */; };
+		F7668F82162013DB0052764B /* FeelingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7668F80162013DB0052764B /* FeelingViewController.xib */; };
+		F7668F83162013DB0052764B /* MyInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7668F81162013DB0052764B /* MyInfoViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,18 +44,18 @@
 		F707C458161EC9AF00F76C4B /* AppIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon@2x.png"; sourceTree = "<group>"; };
 		F707C5FF161EE36400F76C4B /* MyInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyInfoViewController.h; sourceTree = "<group>"; };
 		F707C600161EE36400F76C4B /* MyInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyInfoViewController.m; sourceTree = "<group>"; };
-		F707C601161EE36400F76C4B /* MyInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyInfoViewController.xib; path = ../WhatsFeeling/MyInfoViewController.xib; sourceTree = "<group>"; };
 		F707C604161EE63700F76C4B /* chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat.png; sourceTree = "<group>"; };
 		F707C605161EE64500F76C4B /* gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gear.png; sourceTree = "<group>"; };
 		F707C608161EE70E00F76C4B /* FeelingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeelingViewController.h; sourceTree = "<group>"; };
 		F707C609161EE70F00F76C4B /* FeelingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeelingViewController.m; sourceTree = "<group>"; };
-		F707C60A161EE70F00F76C4B /* FeelingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FeelingViewController.xib; path = ../WhatsFeeling/FeelingViewController.xib; sourceTree = "<group>"; };
 		F7668F7316200F000052764B /* 01-refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "01-refresh.png"; sourceTree = "<group>"; };
 		F7668F7416200F000052764B /* 25-weather.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "25-weather.png"; sourceTree = "<group>"; };
-		F7668F7516200F000052764B /* 29-heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "29-heart.png"; sourceTree = "<group>"; };
+		F7668F7516200F000052764B /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
 		F7668F7616200F000052764B /* 42-photos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "42-photos.png"; sourceTree = "<group>"; };
 		F7668F7716200F000052764B /* 74-location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "74-location.png"; sourceTree = "<group>"; };
 		F7668F7816200F000052764B /* 193-location-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "193-location-arrow.png"; sourceTree = "<group>"; };
+		F7668F80162013DB0052764B /* FeelingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeelingViewController.xib; sourceTree = "<group>"; };
+		F7668F81162013DB0052764B /* MyInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyInfoViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,7 +141,7 @@
 			children = (
 				F7668F7316200F000052764B /* 01-refresh.png */,
 				F7668F7416200F000052764B /* 25-weather.png */,
-				F7668F7516200F000052764B /* 29-heart.png */,
+				F7668F7516200F000052764B /* heart.png */,
 				F7668F7616200F000052764B /* 42-photos.png */,
 				F7668F7716200F000052764B /* 74-location.png */,
 				F7668F7816200F000052764B /* 193-location-arrow.png */,
@@ -154,8 +154,8 @@
 		F707C451161EC1A900F76C4B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				F707C60A161EE70F00F76C4B /* FeelingViewController.xib */,
-				F707C601161EE36400F76C4B /* MyInfoViewController.xib */,
+				F7668F80162013DB0052764B /* FeelingViewController.xib */,
+				F7668F81162013DB0052764B /* MyInfoViewController.xib */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -215,16 +215,16 @@
 				F707C43D161EC02C00F76C4B /* InfoPlist.strings in Resources */,
 				F707C457161EC9A400F76C4B /* AppIcon.png in Resources */,
 				F707C459161EC9AF00F76C4B /* AppIcon@2x.png in Resources */,
-				F707C603161EE36400F76C4B /* MyInfoViewController.xib in Resources */,
 				F707C606161EE66600F76C4B /* chat.png in Resources */,
 				F707C607161EE66600F76C4B /* gear.png in Resources */,
-				F707C60C161EE70F00F76C4B /* FeelingViewController.xib in Resources */,
 				F7668F7916200F000052764B /* 01-refresh.png in Resources */,
 				F7668F7A16200F000052764B /* 25-weather.png in Resources */,
-				F7668F7B16200F000052764B /* 29-heart.png in Resources */,
+				F7668F7B16200F000052764B /* heart.png in Resources */,
 				F7668F7C16200F000052764B /* 42-photos.png in Resources */,
 				F7668F7D16200F000052764B /* 74-location.png in Resources */,
 				F7668F7E16200F000052764B /* 193-location-arrow.png in Resources */,
+				F7668F82162013DB0052764B /* FeelingViewController.xib in Resources */,
+				F7668F83162013DB0052764B /* MyInfoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
