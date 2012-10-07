@@ -39,6 +39,8 @@
 		F7C6E3B01621E26C003DE8B2 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C6E3A61621E26C003DE8B2 /* MBProgressHUD.m */; };
 		F7C6E3C11621E26C003DE8B2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C6E3C01621E26C003DE8B2 /* SystemConfiguration.framework */; };
 		F7C6E3C71621E26C003DE8B2 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C6E3C61621E26C003DE8B2 /* MobileCoreServices.framework */; };
+		F7C6E3D21621E26C003DE8B2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C6E3D11621E26C003DE8B2 /* CoreLocation.framework */; };
+		F7C6E3D81621E26C003DE8B2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C6E3D71621E26C003DE8B2 /* Security.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,6 +104,8 @@
 		F7C6E3BE1621E26C003DE8B2 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		F7C6E3C01621E26C003DE8B2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		F7C6E3C61621E26C003DE8B2 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
+		F7C6E3D11621E26C003DE8B2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
+		F7C6E3D71621E26C003DE8B2 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7C6E3D81621E26C003DE8B2 /* Security.framework in Frameworks */,
+				F7C6E3D21621E26C003DE8B2 /* CoreLocation.framework in Frameworks */,
 				F7C6E3C71621E26C003DE8B2 /* MobileCoreServices.framework in Frameworks */,
 				F7C6E3C11621E26C003DE8B2 /* SystemConfiguration.framework in Frameworks */,
 				F707C433161EC02C00F76C4B /* UIKit.framework in Frameworks */,
@@ -123,6 +129,8 @@
 		F707C423161EC02C00F76C4B = {
 			isa = PBXGroup;
 			children = (
+				F7C6E3D71621E26C003DE8B2 /* Security.framework */,
+				F7C6E3D11621E26C003DE8B2 /* CoreLocation.framework */,
 				F7C6E3C61621E26C003DE8B2 /* MobileCoreServices.framework */,
 				F7C6E3C01621E26C003DE8B2 /* SystemConfiguration.framework */,
 				F7C6E3BE1621E26C003DE8B2 /* CoreFoundation.framework */,
@@ -130,7 +138,7 @@
 				F7C6E3BA1621E26C003DE8B2 /* SystemConfiguration.framework */,
 				F707C458161EC9AF00F76C4B /* AppIcon@2x.png */,
 				F707C456161EC9A400F76C4B /* AppIcon.png */,
-				F707C44F161EC1A900F76C4B /* External */,
+				F707C44F161EC1A900F76C4B /* Vendor */,
 				F707C450161EC1A900F76C4B /* Images */,
 				F707C451161EC1A900F76C4B /* Resources */,
 				F707C438161EC02C00F76C4B /* WhatsFeeling */,
@@ -190,12 +198,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		F707C44F161EC1A900F76C4B /* External */ = {
+		F707C44F161EC1A900F76C4B /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
 				F7C6E3901621E26C003DE8B2 /* AFNetworking */,
 				F7C6E3A41621E26C003DE8B2 /* MBProgressHUD */,
 			);
+			name = Vendor;
 			path = External;
 			sourceTree = "<group>";
 		};
