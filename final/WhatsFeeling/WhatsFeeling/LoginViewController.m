@@ -10,6 +10,7 @@
 #import "MBProgressHUD.h" 
 #import "AFHTTPClient.h"
 #import "AFHTTPRequestOperation.h"
+#import "AFJSONRequestOperation.h"
 
 @interface LoginViewController ()
 
@@ -102,8 +103,6 @@
 	MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 	hud.labelText = NSLocalizedString(@"Connecting", nil);
     
-    NSURL *url = [NSURL URLWithString:@"http://samlei.site88.net"];
-    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
     
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
                             @"join", @"cmd",
@@ -115,6 +114,9 @@
     
     NSLog(@"%@", params);
     
+    NSURL *url = [NSURL URLWithString:@"http://samlei.site88.net"];
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
+
     [httpClient postPath:@"/api.php" parameters:params
         success:^(AFHTTPRequestOperation *operation, id response)
         {
@@ -123,7 +125,7 @@
             if ([self isViewLoaded])
             {
                 [MBProgressHUD hideHUDForView:self.view animated:YES];
-                
+
                 NSLog(@"%@", @"user did join");
                 [self userDidJoin];
             }
@@ -137,6 +139,49 @@
                 ShowErrorAlert([error localizedDescription]);
             }
         }];
+    
+    
+    
+//    NSURL *url = [NSURL URLWithString:@"http://samlei.site88.net/"];
+//    AFHTTPClient *client = [AFHTTPClient clientWithBaseURL:url];
+//    NSURLRequest *request = [client requestWithMethod:@"POST"
+//                                                 path:@"/api.php"
+//                                           parameters:params];
+//    AFJSONRequestOperation *operation =
+//    [AFJSONRequestOperation
+//     JSONRequestOperationWithRequest:request
+//     success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON)
+//    {
+//        // Do something with JSON
+//        if ([self isViewLoaded])
+//        {
+//            [MBProgressHUD hideHUDForView:self.view animated:YES];
+//
+//            NSLog(@"%@", @"user did join");
+//            [self userDidJoin];
+//        }
+//    }
+//     failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON)
+//    {
+//        NSLog(@"%@", [error localizedDescription]);
+//        if ([self isViewLoaded])
+//        {
+//            [MBProgressHUD hideHUDForView:self.view animated:YES];
+//            ShowErrorAlert([error localizedDescription]);
+//        }
+//
+//    }];
+//    
+//    // you can either start your operation like this
+//    [operation start];
+//    
+//    // or enqueue it in the client default operations queue.
+//    [client enqueueHTTPRequestOperation:operation];
+    
+    
+    
+    
+
     
 }
 

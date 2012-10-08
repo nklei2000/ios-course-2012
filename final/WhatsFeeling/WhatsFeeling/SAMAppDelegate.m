@@ -100,8 +100,16 @@
 -(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
     NSLog(@"recieved deviceToken: %@", deviceToken);
-    NSString *token = [NSString stringWithFormat:@"%@", deviceToken];
-    self.dataModel.deviceToken = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSString *oldToken = self.dataModel.deviceToken;
+    NSLog(@"Old Token: %@", oldToken);
+    
+    NSString* newToken = [deviceToken description];
+	newToken = [newToken stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+	newToken = [newToken stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSLog(@"New Token: %@", newToken);
+    
+    self.dataModel.deviceToken = newToken;
+    
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
