@@ -10,27 +10,89 @@
 
 #import "FeelingViewController.h"
 #import "MyInfoViewController.h"
+#import "LoginViewController.h"
 
+#import "DataModel.h"
+#import "Message.h"
 
 @implementation SAMAppDelegate
 
 
+- (void)addMessageFromRemoteNotification:(NSDictionary*)userInfo updateUI:(BOOL)updateUI
+{
+	Message* message = [[Message alloc] init];
+	message.date = [NSDate date];
+    
+	NSString* alertValue = [[userInfo valueForKey:@"aps"] valueForKey:@"alert"];
+    
+	NSMutableArray* parts = [NSMutableArray arrayWithArray:[alertValue componentsSeparatedByString:@": "]];
+	message.senderName = [parts objectAtIndex:0];
+	[parts removeObjectAtIndex:0];
+	message.text = [parts componentsJoinedByString:@": "];
+    
+	// int index = [self.dataModel addMessage:message];
+    
+	if (updateUI) {
+		// [self.feelingViewController didSaveMessage:message atIndex:index];
+    }
+    
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    // Create data model
+    self.dataModel = [[DataModel alloc]init];
+    [self.dataModel loadMessages];
+    
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    UIViewController *viewControllerFeeling = [[FeelingViewController alloc] initWithNibName:@"FeelingViewController" bundle:nil];
-    UIViewController *viewControllerMyInfo = [[MyInfoViewController alloc] initWithNibName:@"MyInfoViewController" bundle:nil];
+    FeelingViewController *feelingViewController = [[FeelingViewController alloc] initWithNibName:@"FeelingViewController" bundle:nil];
+            
+    MyInfoViewController *myInfoViewController = [[MyInfoViewController alloc] initWithNibName:@"MyInfoViewController" bundle:nil];
+    
+    feelingViewController.dataModel = self.dataModel;
+    myInfoViewController.dataModel = self.dataModel;
+    
+    // Create universally unique identifier (object)
+    CFUUIDRef uuidObject = CFUUIDCreate(kCFAllocatorDefault);
+    
+    // Get the string representation of CFUUID object.
+    NSString *udid = (__bridge_transfer NSString *)CFUUIDCreateString(kCFAllocatorDefault, uuidObject);
+    self.dataModel.udid = [udid stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    CFRelease(uuidObject);
+    NSLog(@"%@", self.dataModel.udid);
     
     self.tabBarController = [[UITabBarController alloc] init];
     
-    self.tabBarController.viewControllers = [NSArray arrayWithObjects:viewControllerFeeling, viewControllerMyInfo, nil];
+    self.tabBarController.viewControllers = [NSArray arrayWithObjects:feelingViewController, myInfoViewController, nil];
     
     self.window.rootViewController = self.tabBarController;
-        
+    
     [self.window makeKeyAndVisible];
     
-    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert];
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+     (UIRemoteNotificationTypeAlert |
+      UIRemoteNotificationTypeBadge |
+      UIRemoteNotificationTypeSound)];
+    
+    if (![self.dataModel joined]) {
+        LoginViewController *loginViewController = [[LoginViewController alloc]
+                                                    initWithNibName:@"LoginViewController" bundle:nil];
+        loginViewController.dataModel = self.dataModel;
+        [self.tabBarController presentModalViewController:loginViewController animated:NO];
+    }
+    
+	if (launchOptions != nil)
+	{
+		NSDictionary* dictionary = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+		if (dictionary != nil)
+		{
+			NSLog(@"Launched from push notification: %@", dictionary);
+			[self addMessageFromRemoteNotification:dictionary updateUI:NO];
+		}
+	}
     
     return YES;
 }
@@ -38,12 +100,26 @@
 -(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
     NSLog(@"recieved deviceToken: %@", deviceToken);
-    
+    NSString *token = [NSString stringWithFormat:@"%@", deviceToken];
+    self.dataModel.deviceToken = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {
     NSLog(@"Remote Notifications error: %@", [error localizedDescription]);
+    
+#if TARGET_IPHONE_SIMULATOR
+    // Simulator only
+    NSString *myDeviceToken = @"1a2adff7 163c960a 1f4737dd c2174db9 148ab412 11bce7ea a8d2715b 9b9398fc";
+    self.dataModel.deviceToken = [myDeviceToken stringByReplacingOccurrencesOfString:@" " withString:@""];
+#endif
+    
+}
+
+- (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)userInfo
+{
+	NSLog(@"Received notification: %@", userInfo);
+	[self addMessageFromRemoteNotification:userInfo updateUI:YES];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

@@ -5,7 +5,9 @@
 // We store our settings in the NSUserDefaults dictionary using these keys
 static NSString* const NicknameKey = @"Nickname";
 static NSString* const SecretCodeKey = @"SecretCode";
-static NSString* const JoinedChatKey = @"JoinedChat";
+static NSString* const JoinedKey = @"JoinedFeeling";
+static NSString* const DeviceTokenKey = @"DeviceToken";
+static NSString* const UDIDKey = @"UDID";
 
 @implementation DataModel
 
@@ -20,7 +22,9 @@ static NSString* const JoinedChatKey = @"JoinedChat";
 			[NSDictionary dictionaryWithObjectsAndKeys:
 				@"", NicknameKey,
 				@"", SecretCodeKey,
-				[NSNumber numberWithInt:0], JoinedChatKey,
+				[NSNumber numberWithInt:0], JoinedKey,
+             @"0", DeviceTokenKey,
+             @"", UDIDKey,
 				nil]];
 	}
 }
@@ -49,8 +53,8 @@ static NSString* const JoinedChatKey = @"JoinedChat";
 		NSKeyedUnarchiver* unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
 		self.messages = [unarchiver decodeObjectForKey:@"Messages"];
 		[unarchiver finishDecoding];
-		[unarchiver release];
-		[data release];
+		// [unarchiver release];
+		// [data release];
 	}
 	else
 	{
@@ -65,8 +69,8 @@ static NSString* const JoinedChatKey = @"JoinedChat";
 	[archiver encodeObject:self.messages forKey:@"Messages"];
 	[archiver finishEncoding];
 	[data writeToFile:[self messagesPath] atomically:YES];
-	[archiver release];
-	[data release];
+	// [archiver release];
+	// [data release];
 }
 
 - (int)addMessage:(Message*)message
@@ -96,20 +100,42 @@ static NSString* const JoinedChatKey = @"JoinedChat";
 	[[NSUserDefaults standardUserDefaults] setObject:string forKey:SecretCodeKey];
 }
 
-- (BOOL)joinedChat
+- (BOOL)joined
 {
-	return [[NSUserDefaults standardUserDefaults] boolForKey:JoinedChatKey];
+	return [[NSUserDefaults standardUserDefaults] boolForKey:JoinedKey];
 }
 
-- (void)setJoinedChat:(BOOL)value
+- (void)setJoined:(BOOL)value
 {
-	[[NSUserDefaults standardUserDefaults] setBool:value forKey:JoinedChatKey];
+	[[NSUserDefaults standardUserDefaults] setBool:value forKey:JoinedKey];
 }
 
-- (void)dealloc
+- (NSString*)deviceToken
 {
-	[messages release];
-	[super dealloc];
+    return [[NSUserDefaults standardUserDefaults] stringForKey:DeviceTokenKey];
 }
+
+- (void)setDeviceToken:(NSString*)token
+{
+    [[NSUserDefaults standardUserDefaults] setObject:token forKey:DeviceTokenKey];
+}
+
+- (NSString*)udid
+{
+//    UIDevice *device = [UIDevice currentDevice];
+//    return [device stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    return [[NSUserDefaults standardUserDefaults] stringForKey:UDIDKey];
+}
+
+- (void)setUdid:(NSString*)string
+{
+    [[NSUserDefaults standardUserDefaults] setObject:string forKey:UDIDKey];
+}
+
+//- (void)dealloc
+//{
+//	[messages release];
+//	[super dealloc];
+//}
 
 @end

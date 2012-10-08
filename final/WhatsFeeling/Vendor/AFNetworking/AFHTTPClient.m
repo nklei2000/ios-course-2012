@@ -1109,7 +1109,7 @@ typedef enum {
         case NSStreamStatusError:
             return NO;
     }
-    // return NO;
+    return NO; // added by Sam Lei
 }
 
 - (NSInteger)read:(uint8_t *)buffer maxLength:(NSUInteger)length {

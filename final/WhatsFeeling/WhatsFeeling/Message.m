@@ -32,12 +32,12 @@ static NSString* const TextKey = @"Text";
 	return self.senderName == nil;
 }
 
-- (void)dealloc
-{
-	[senderName release];
-	[date release];
-	[text release];
-	[super dealloc];
-}
+//- (void)dealloc
+//{
+//	[senderName release];
+//	[date release];
+//	[text release];
+//	[super dealloc];
+//}
 
 @end

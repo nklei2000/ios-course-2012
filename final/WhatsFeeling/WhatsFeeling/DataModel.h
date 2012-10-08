@@ -30,7 +30,13 @@
 - (void)setSecretCode:(NSString*)string;
 
 // Determines whether the user has successfully joined a chat.
-- (BOOL)joinedChat;
-- (void)setJoinedChat:(BOOL)value;
+- (BOOL)joined;
+- (void)setJoined:(BOOL)value;
+
+- (NSString*)udid;
+- (void)setUdid:(NSString*)string;
+
+- (NSString*)deviceToken;
+- (void)setDeviceToken:(NSString*)token;
 
 @end

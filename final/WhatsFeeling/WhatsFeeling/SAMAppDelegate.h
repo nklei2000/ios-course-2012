@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#import "DataModel.h"
+
 @class SAMViewController;
+@class DataModel;
 
 @interface SAMAppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate>
 
@@ -17,5 +20,7 @@
 // @property (strong, nonatomic) SAMViewController *viewController;
 
 @property (strong, nonatomic) UITabBarController *tabBarController;
+
+@property (strong, nonatomic) DataModel *dataModel;
 
 @end

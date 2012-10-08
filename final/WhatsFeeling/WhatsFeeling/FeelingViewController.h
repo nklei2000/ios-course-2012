@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FeelingViewController : UIViewController
+@class DataModel;
+@class Message;
+
+@interface FeelingViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+
+@property (assign,nonatomic) DataModel *dataModel;
 
 @end

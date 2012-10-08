@@ -91,10 +91,10 @@ const CGFloat WrapWidth = 200;       // maximum width of text in the bubble
 	[self setNeedsDisplay];
 }
 
-- (void)dealloc
-{
-	[text release];
-	[super dealloc];
-}
+//- (void)dealloc
+//{
+//	[text release];
+//	[super dealloc];
+//}
 
 @end

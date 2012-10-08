@@ -27,6 +27,14 @@
 		F7668F7E16200F000052764B /* 193-location-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = F7668F7816200F000052764B /* 193-location-arrow.png */; };
 		F7668F82162013DB0052764B /* FeelingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7668F80162013DB0052764B /* FeelingViewController.xib */; };
 		F7668F83162013DB0052764B /* MyInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7668F81162013DB0052764B /* MyInfoViewController.xib */; };
+		F7BDF7181622717600436A21 /* BubbleLefthand.png in Resources */ = {isa = PBXBuildFile; fileRef = F7BDF7161622717600436A21 /* BubbleLefthand.png */; };
+		F7BDF7191622717600436A21 /* BubbleRighthand.png in Resources */ = {isa = PBXBuildFile; fileRef = F7BDF7171622717600436A21 /* BubbleRighthand.png */; };
+		F7BDF7211622728900436A21 /* green.png in Resources */ = {isa = PBXBuildFile; fileRef = F7BDF71F1622728800436A21 /* green.png */; };
+		F7BDF7221622728900436A21 /* grey.png in Resources */ = {isa = PBXBuildFile; fileRef = F7BDF7201622728800436A21 /* grey.png */; };
+		F7BDF726162274B800436A21 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7BDF724162274B800436A21 /* LoginViewController.m */; };
+		F7BDF72916227C2400436A21 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7BDF72816227C2400436A21 /* LoginViewController.xib */; };
+		F7BDF72D162292CD00436A21 /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C6E3B31621E26C003DE8B2 /* DataModel.m */; };
+		F7BDF72F162292CD00436A21 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C6E3B51621E26C003DE8B2 /* Message.m */; };
 		F7C6E3C11621E26C003DE8B2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C6E3C01621E26C003DE8B2 /* SystemConfiguration.framework */; };
 		F7C6E3C71621E26C003DE8B2 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C6E3C61621E26C003DE8B2 /* MobileCoreServices.framework */; };
 		F7C6E3D21621E26C003DE8B2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C6E3D11621E26C003DE8B2 /* CoreLocation.framework */; };
@@ -42,6 +50,17 @@
 		F7C6E41A1621E26C003DE8B2 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C6E40E1621E26C003DE8B2 /* UIImageView+AFNetworking.m */; };
 		F7C6E41B1621E26C003DE8B2 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C6E4111621E26C003DE8B2 /* MBProgressHUD.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXBuildRule section */
+		F7BDF7301622933000436A21 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+			);
+		};
+/* End PBXBuildRule section */
 
 /* Begin PBXFileReference section */
 		F707C42E161EC02C00F76C4B /* WhatsFeeling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatsFeeling.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,6 +89,13 @@
 		F7668F7816200F000052764B /* 193-location-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "193-location-arrow.png"; sourceTree = "<group>"; };
 		F7668F80162013DB0052764B /* FeelingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeelingViewController.xib; sourceTree = "<group>"; };
 		F7668F81162013DB0052764B /* MyInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyInfoViewController.xib; sourceTree = "<group>"; };
+		F7BDF7161622717600436A21 /* BubbleLefthand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BubbleLefthand.png; sourceTree = "<group>"; };
+		F7BDF7171622717600436A21 /* BubbleRighthand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BubbleRighthand.png; sourceTree = "<group>"; };
+		F7BDF71F1622728800436A21 /* green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green.png; sourceTree = "<group>"; };
+		F7BDF7201622728800436A21 /* grey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grey.png; sourceTree = "<group>"; };
+		F7BDF723162274B700436A21 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		F7BDF724162274B800436A21 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		F7BDF72816227C2400436A21 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		F7C6E3B21621E26C003DE8B2 /* DataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataModel.h; sourceTree = "<group>"; };
 		F7C6E3B31621E26C003DE8B2 /* DataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataModel.m; sourceTree = "<group>"; };
 		F7C6E3B41621E26C003DE8B2 /* Message.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
@@ -183,6 +209,8 @@
 				F707C600161EE36400F76C4B /* MyInfoViewController.m */,
 				F707C608161EE70E00F76C4B /* FeelingViewController.h */,
 				F707C609161EE70F00F76C4B /* FeelingViewController.m */,
+				F7BDF723162274B700436A21 /* LoginViewController.h */,
+				F7BDF724162274B800436A21 /* LoginViewController.m */,
 			);
 			path = WhatsFeeling;
 			sourceTree = "<group>";
@@ -201,6 +229,10 @@
 		F707C450161EC1A900F76C4B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				F7BDF71F1622728800436A21 /* green.png */,
+				F7BDF7201622728800436A21 /* grey.png */,
+				F7BDF7161622717600436A21 /* BubbleLefthand.png */,
+				F7BDF7171622717600436A21 /* BubbleRighthand.png */,
 				F7668F7316200F000052764B /* 01-refresh.png */,
 				F7668F7416200F000052764B /* 25-weather.png */,
 				F7668F7516200F000052764B /* heart.png */,
@@ -216,6 +248,7 @@
 		F707C451161EC1A900F76C4B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F7BDF72816227C2400436A21 /* LoginViewController.xib */,
 				F7668F80162013DB0052764B /* FeelingViewController.xib */,
 				F7668F81162013DB0052764B /* MyInfoViewController.xib */,
 			);
@@ -278,6 +311,7 @@
 				F707C42C161EC02C00F76C4B /* Resources */,
 			);
 			buildRules = (
+				F7BDF7301622933000436A21 /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -331,6 +365,11 @@
 				F7668F7E16200F000052764B /* 193-location-arrow.png in Resources */,
 				F7668F82162013DB0052764B /* FeelingViewController.xib in Resources */,
 				F7668F83162013DB0052764B /* MyInfoViewController.xib in Resources */,
+				F7BDF7181622717600436A21 /* BubbleLefthand.png in Resources */,
+				F7BDF7191622717600436A21 /* BubbleRighthand.png in Resources */,
+				F7BDF7211622728900436A21 /* green.png in Resources */,
+				F7BDF7221622728900436A21 /* grey.png in Resources */,
+				F7BDF72916227C2400436A21 /* LoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +380,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7BDF72D162292CD00436A21 /* DataModel.m in Sources */,
+				F7BDF72F162292CD00436A21 /* Message.m in Sources */,
 				F707C43F161EC02C00F76C4B /* main.m in Sources */,
 				F707C443161EC02C00F76C4B /* SAMAppDelegate.m in Sources */,
 				F707C602161EE36400F76C4B /* MyInfoViewController.m in Sources */,
@@ -355,6 +396,7 @@
 				F7C6E4191621E26C003DE8B2 /* AFXMLRequestOperation.m in Sources */,
 				F7C6E41A1621E26C003DE8B2 /* UIImageView+AFNetworking.m in Sources */,
 				F7C6E41B1621E26C003DE8B2 /* MBProgressHUD.m in Sources */,
+				F7BDF726162274B800436A21 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
