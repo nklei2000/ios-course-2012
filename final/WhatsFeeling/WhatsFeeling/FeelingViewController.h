@@ -20,4 +20,6 @@
 @property (assign,nonatomic) DataModel *dataModel;
 @property (strong, nonatomic) IBOutlet UIToolbar *toolbar;
 
+- (IBAction)showFeelingToFriend:(id)sender;
+
 @end

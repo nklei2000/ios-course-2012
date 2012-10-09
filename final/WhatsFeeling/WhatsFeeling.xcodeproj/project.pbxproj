@@ -30,6 +30,8 @@
 		F7B928DA1623D03600944127 /* FeelingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B928D91623D03600944127 /* FeelingTableViewCell.m */; };
 		F7B928DE1623D1C100944127 /* Feeling.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B928DD1623D1C100944127 /* Feeling.m */; };
 		F7B928F51624211500944127 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7B928F41624211500944127 /* QuartzCore.framework */; };
+		F7B928FD16242E4500944127 /* ShowFeelingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B928FB16242E4500944127 /* ShowFeelingViewController.m */; };
+		F7B9290016242ED000944127 /* ShowFeelingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7B928FF16242ED000944127 /* ShowFeelingViewController.xib */; };
 		F7BDF7181622717600436A21 /* BubbleLefthand.png in Resources */ = {isa = PBXBuildFile; fileRef = F7BDF7161622717600436A21 /* BubbleLefthand.png */; };
 		F7BDF7191622717600436A21 /* BubbleRighthand.png in Resources */ = {isa = PBXBuildFile; fileRef = F7BDF7171622717600436A21 /* BubbleRighthand.png */; };
 		F7BDF7211622728900436A21 /* green.png in Resources */ = {isa = PBXBuildFile; fileRef = F7BDF71F1622728800436A21 /* green.png */; };
@@ -96,6 +98,9 @@
 		F7B928DC1623D1C100944127 /* Feeling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Feeling.h; sourceTree = "<group>"; };
 		F7B928DD1623D1C100944127 /* Feeling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Feeling.m; sourceTree = "<group>"; };
 		F7B928F41624211500944127 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		F7B928FA16242E4500944127 /* ShowFeelingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowFeelingViewController.h; sourceTree = "<group>"; };
+		F7B928FB16242E4500944127 /* ShowFeelingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowFeelingViewController.m; sourceTree = "<group>"; };
+		F7B928FF16242ED000944127 /* ShowFeelingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowFeelingViewController.xib; sourceTree = "<group>"; };
 		F7BDF7161622717600436A21 /* BubbleLefthand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BubbleLefthand.png; sourceTree = "<group>"; };
 		F7BDF7171622717600436A21 /* BubbleRighthand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BubbleRighthand.png; sourceTree = "<group>"; };
 		F7BDF71F1622728800436A21 /* green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green.png; sourceTree = "<group>"; };
@@ -220,6 +225,8 @@
 				F7B928D91623D03600944127 /* FeelingTableViewCell.m */,
 				F7B928DC1623D1C100944127 /* Feeling.h */,
 				F7B928DD1623D1C100944127 /* Feeling.m */,
+				F7B928FA16242E4500944127 /* ShowFeelingViewController.h */,
+				F7B928FB16242E4500944127 /* ShowFeelingViewController.m */,
 			);
 			path = WhatsFeeling;
 			sourceTree = "<group>";
@@ -257,6 +264,7 @@
 		F707C451161EC1A900F76C4B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F7B928FF16242ED000944127 /* ShowFeelingViewController.xib */,
 				F7BDF72816227C2400436A21 /* LoginViewController.xib */,
 				F7668F80162013DB0052764B /* FeelingViewController.xib */,
 				F7668F81162013DB0052764B /* MyInfoViewController.xib */,
@@ -379,6 +387,7 @@
 				F7BDF7211622728900436A21 /* green.png in Resources */,
 				F7BDF7221622728900436A21 /* grey.png in Resources */,
 				F7BDF72916227C2400436A21 /* LoginViewController.xib in Resources */,
+				F7B9290016242ED000944127 /* ShowFeelingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,6 +416,7 @@
 				F7BDF726162274B800436A21 /* LoginViewController.m in Sources */,
 				F7B928DA1623D03600944127 /* FeelingTableViewCell.m in Sources */,
 				F7B928DE1623D1C100944127 /* Feeling.m in Sources */,
+				F7B928FD16242E4500944127 /* ShowFeelingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

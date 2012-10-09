@@ -8,6 +8,7 @@
 
 #import "FeelingViewController.h"
 #import "FeelingTableViewCell.h"
+#import "ShowFeelingViewController.h"
 
 #import "DataModel.h"
 #import "Feeling.h"
@@ -108,6 +109,16 @@
     // e.g. self.myOutlet = nil;
 }
 
+//- (void)viewWillAppear:(BOOL)animated {
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//     selector:@selector(keyboardWillShow:)
+//	name:UIKeyboardWillShowNotification object:self.view.window];
+//}
+//
+//- (void)viewWillDisappear:(BOOL)animated {
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+//}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
@@ -164,4 +175,15 @@
 }
 
 
+- (IBAction)showFeelingToFriend:(id)sender
+{
+    // Popup show feeling screen
+    ShowFeelingViewController *showFeelingViewController =
+            [[ShowFeelingViewController alloc] initWithNibName:@"ShowFeelingViewController"
+                                                        bundle:nil];
+    // showFeelingViewController.dataModel = self.dataModel;
+    
+    [self.parentViewController presentModalViewController:showFeelingViewController animated:NO];
+    
+}
 @end
