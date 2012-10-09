@@ -183,7 +183,9 @@
                                                         bundle:nil];
     // showFeelingViewController.dataModel = self.dataModel;
     
-    [self.parentViewController presentModalViewController:showFeelingViewController animated:NO];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:showFeelingViewController];
+    
+    [self.parentViewController presentModalViewController:navController animated:NO];
     
 }
 @end

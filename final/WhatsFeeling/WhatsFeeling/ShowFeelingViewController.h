@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ShowFeelingViewController : UIViewController
+@class DataModel;
+
+@interface ShowFeelingViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+{
+}
+
+@property (assign, nonatomic) DataModel *dataModel;
+//@property (strong, nonatomic) NSMutableArray *dataArray;
 
 @end

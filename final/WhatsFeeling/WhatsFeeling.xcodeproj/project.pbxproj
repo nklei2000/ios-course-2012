@@ -27,6 +27,9 @@
 		F7668F7E16200F000052764B /* 193-location-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = F7668F7816200F000052764B /* 193-location-arrow.png */; };
 		F7668F82162013DB0052764B /* FeelingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7668F80162013DB0052764B /* FeelingViewController.xib */; };
 		F7668F83162013DB0052764B /* MyInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7668F81162013DB0052764B /* MyInfoViewController.xib */; };
+		F7AE121B1624764300D7EBB5 /* FeelingStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AE121A1624764200D7EBB5 /* FeelingStatus.m */; };
+		F7AE12341624827D00D7EBB5 /* FeelingStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AE12321624827C00D7EBB5 /* FeelingStatusViewController.m */; };
+		F7AE12351624827D00D7EBB5 /* FeelingStatusViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7AE12331624827C00D7EBB5 /* FeelingStatusViewController.xib */; };
 		F7B928DA1623D03600944127 /* FeelingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B928D91623D03600944127 /* FeelingTableViewCell.m */; };
 		F7B928DE1623D1C100944127 /* Feeling.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B928DD1623D1C100944127 /* Feeling.m */; };
 		F7B928F51624211500944127 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7B928F41624211500944127 /* QuartzCore.framework */; };
@@ -93,6 +96,11 @@
 		F7668F7816200F000052764B /* 193-location-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "193-location-arrow.png"; sourceTree = "<group>"; };
 		F7668F80162013DB0052764B /* FeelingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeelingViewController.xib; sourceTree = "<group>"; };
 		F7668F81162013DB0052764B /* MyInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyInfoViewController.xib; sourceTree = "<group>"; };
+		F7AE12191624764200D7EBB5 /* FeelingStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeelingStatus.h; sourceTree = "<group>"; };
+		F7AE121A1624764200D7EBB5 /* FeelingStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeelingStatus.m; sourceTree = "<group>"; };
+		F7AE12311624827C00D7EBB5 /* FeelingStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeelingStatusViewController.h; sourceTree = "<group>"; };
+		F7AE12321624827C00D7EBB5 /* FeelingStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeelingStatusViewController.m; sourceTree = "<group>"; };
+		F7AE12331624827C00D7EBB5 /* FeelingStatusViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeelingStatusViewController.xib; sourceTree = "<group>"; };
 		F7B928D81623D03500944127 /* FeelingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeelingTableViewCell.h; sourceTree = "<group>"; };
 		F7B928D91623D03600944127 /* FeelingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeelingTableViewCell.m; sourceTree = "<group>"; };
 		F7B928DC1623D1C100944127 /* Feeling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Feeling.h; sourceTree = "<group>"; };
@@ -227,6 +235,11 @@
 				F7B928DD1623D1C100944127 /* Feeling.m */,
 				F7B928FA16242E4500944127 /* ShowFeelingViewController.h */,
 				F7B928FB16242E4500944127 /* ShowFeelingViewController.m */,
+				F7AE12191624764200D7EBB5 /* FeelingStatus.h */,
+				F7AE121A1624764200D7EBB5 /* FeelingStatus.m */,
+				F7AE12311624827C00D7EBB5 /* FeelingStatusViewController.h */,
+				F7AE12321624827C00D7EBB5 /* FeelingStatusViewController.m */,
+				F7AE12331624827C00D7EBB5 /* FeelingStatusViewController.xib */,
 			);
 			path = WhatsFeeling;
 			sourceTree = "<group>";
@@ -388,6 +401,7 @@
 				F7BDF7221622728900436A21 /* grey.png in Resources */,
 				F7BDF72916227C2400436A21 /* LoginViewController.xib in Resources */,
 				F7B9290016242ED000944127 /* ShowFeelingViewController.xib in Resources */,
+				F7AE12351624827D00D7EBB5 /* FeelingStatusViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +431,8 @@
 				F7B928DA1623D03600944127 /* FeelingTableViewCell.m in Sources */,
 				F7B928DE1623D1C100944127 /* Feeling.m in Sources */,
 				F7B928FD16242E4500944127 /* ShowFeelingViewController.m in Sources */,
+				F7AE121B1624764300D7EBB5 /* FeelingStatus.m in Sources */,
+				F7AE12341624827D00D7EBB5 /* FeelingStatusViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
