@@ -11,7 +11,11 @@
 @class DataModel;
 
 @interface MyInfoViewController : UIViewController
+{    
+}
 
 @property (assign,nonatomic) DataModel *dataModel;
+
+- (IBAction)leave:(id)sender;
 
 @end

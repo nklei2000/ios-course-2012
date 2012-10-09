@@ -13,22 +13,22 @@
 #import "LoginViewController.h"
 
 #import "DataModel.h"
-#import "Message.h"
+#import "Feeling.h"
 
 @implementation SAMAppDelegate
 
 
 - (void)addMessageFromRemoteNotification:(NSDictionary*)userInfo updateUI:(BOOL)updateUI
 {
-	Message* message = [[Message alloc] init];
-	message.date = [NSDate date];
+	Feeling* feeling = [[Feeling alloc] init];
+	feeling.date = [NSDate date];
     
 	NSString* alertValue = [[userInfo valueForKey:@"aps"] valueForKey:@"alert"];
     
 	NSMutableArray* parts = [NSMutableArray arrayWithArray:[alertValue componentsSeparatedByString:@": "]];
-	message.senderName = [parts objectAtIndex:0];
+	feeling.senderName = [parts objectAtIndex:0];
 	[parts removeObjectAtIndex:0];
-	message.text = [parts componentsJoinedByString:@": "];
+	feeling.text = [parts componentsJoinedByString:@": "];
     
 	// int index = [self.dataModel addMessage:message];
     
@@ -43,7 +43,7 @@
     
     // Create data model
     self.dataModel = [[DataModel alloc]init];
-    [self.dataModel loadMessages];
+    [self.dataModel loadFeelings];
     
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -79,7 +79,7 @@
     
     if (![self.dataModel joined]) {
         LoginViewController *loginViewController = [[LoginViewController alloc]
-                                                    initWithNibName:@"LoginViewController" bundle:nil];
+                            initWithNibName:@"LoginViewController" bundle:nil];
         loginViewController.dataModel = self.dataModel;
         [self.tabBarController presentModalViewController:loginViewController animated:NO];
     }

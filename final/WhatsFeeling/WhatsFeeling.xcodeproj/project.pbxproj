@@ -27,6 +27,9 @@
 		F7668F7E16200F000052764B /* 193-location-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = F7668F7816200F000052764B /* 193-location-arrow.png */; };
 		F7668F82162013DB0052764B /* FeelingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7668F80162013DB0052764B /* FeelingViewController.xib */; };
 		F7668F83162013DB0052764B /* MyInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7668F81162013DB0052764B /* MyInfoViewController.xib */; };
+		F7B928DA1623D03600944127 /* FeelingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B928D91623D03600944127 /* FeelingTableViewCell.m */; };
+		F7B928DE1623D1C100944127 /* Feeling.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B928DD1623D1C100944127 /* Feeling.m */; };
+		F7B928F51624211500944127 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7B928F41624211500944127 /* QuartzCore.framework */; };
 		F7BDF7181622717600436A21 /* BubbleLefthand.png in Resources */ = {isa = PBXBuildFile; fileRef = F7BDF7161622717600436A21 /* BubbleLefthand.png */; };
 		F7BDF7191622717600436A21 /* BubbleRighthand.png in Resources */ = {isa = PBXBuildFile; fileRef = F7BDF7171622717600436A21 /* BubbleRighthand.png */; };
 		F7BDF7211622728900436A21 /* green.png in Resources */ = {isa = PBXBuildFile; fileRef = F7BDF71F1622728800436A21 /* green.png */; };
@@ -34,7 +37,6 @@
 		F7BDF726162274B800436A21 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7BDF724162274B800436A21 /* LoginViewController.m */; };
 		F7BDF72916227C2400436A21 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7BDF72816227C2400436A21 /* LoginViewController.xib */; };
 		F7BDF72D162292CD00436A21 /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C6E3B31621E26C003DE8B2 /* DataModel.m */; };
-		F7BDF72F162292CD00436A21 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C6E3B51621E26C003DE8B2 /* Message.m */; };
 		F7C6E3C11621E26C003DE8B2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C6E3C01621E26C003DE8B2 /* SystemConfiguration.framework */; };
 		F7C6E3C71621E26C003DE8B2 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C6E3C61621E26C003DE8B2 /* MobileCoreServices.framework */; };
 		F7C6E3D21621E26C003DE8B2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C6E3D11621E26C003DE8B2 /* CoreLocation.framework */; };
@@ -89,6 +91,11 @@
 		F7668F7816200F000052764B /* 193-location-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "193-location-arrow.png"; sourceTree = "<group>"; };
 		F7668F80162013DB0052764B /* FeelingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeelingViewController.xib; sourceTree = "<group>"; };
 		F7668F81162013DB0052764B /* MyInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyInfoViewController.xib; sourceTree = "<group>"; };
+		F7B928D81623D03500944127 /* FeelingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeelingTableViewCell.h; sourceTree = "<group>"; };
+		F7B928D91623D03600944127 /* FeelingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeelingTableViewCell.m; sourceTree = "<group>"; };
+		F7B928DC1623D1C100944127 /* Feeling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Feeling.h; sourceTree = "<group>"; };
+		F7B928DD1623D1C100944127 /* Feeling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Feeling.m; sourceTree = "<group>"; };
+		F7B928F41624211500944127 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		F7BDF7161622717600436A21 /* BubbleLefthand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BubbleLefthand.png; sourceTree = "<group>"; };
 		F7BDF7171622717600436A21 /* BubbleRighthand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BubbleRighthand.png; sourceTree = "<group>"; };
 		F7BDF71F1622728800436A21 /* green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green.png; sourceTree = "<group>"; };
@@ -98,8 +105,6 @@
 		F7BDF72816227C2400436A21 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		F7C6E3B21621E26C003DE8B2 /* DataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataModel.h; sourceTree = "<group>"; };
 		F7C6E3B31621E26C003DE8B2 /* DataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataModel.m; sourceTree = "<group>"; };
-		F7C6E3B41621E26C003DE8B2 /* Message.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
-		F7C6E3B51621E26C003DE8B2 /* Message.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		F7C6E3B61621E26C003DE8B2 /* MessageTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageTableViewCell.h; sourceTree = "<group>"; };
 		F7C6E3B71621E26C003DE8B2 /* MessageTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageTableViewCell.m; sourceTree = "<group>"; };
 		F7C6E3B81621E26C003DE8B2 /* SpeechBubbleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpeechBubbleView.h; sourceTree = "<group>"; };
@@ -139,6 +144,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7B928F51624211500944127 /* QuartzCore.framework in Frameworks */,
 				F7C6E3D81621E26C003DE8B2 /* Security.framework in Frameworks */,
 				F7C6E3D21621E26C003DE8B2 /* CoreLocation.framework in Frameworks */,
 				F7C6E3C71621E26C003DE8B2 /* MobileCoreServices.framework in Frameworks */,
@@ -155,6 +161,7 @@
 		F707C423161EC02C00F76C4B = {
 			isa = PBXGroup;
 			children = (
+				F7B928F41624211500944127 /* QuartzCore.framework */,
 				F7C6E3FA1621E26C003DE8B2 /* Vendor */,
 				F7C6E3D71621E26C003DE8B2 /* Security.framework */,
 				F7C6E3D11621E26C003DE8B2 /* CoreLocation.framework */,
@@ -196,8 +203,6 @@
 			children = (
 				F7C6E3B21621E26C003DE8B2 /* DataModel.h */,
 				F7C6E3B31621E26C003DE8B2 /* DataModel.m */,
-				F7C6E3B41621E26C003DE8B2 /* Message.h */,
-				F7C6E3B51621E26C003DE8B2 /* Message.m */,
 				F7C6E3B61621E26C003DE8B2 /* MessageTableViewCell.h */,
 				F7C6E3B71621E26C003DE8B2 /* MessageTableViewCell.m */,
 				F7C6E3B81621E26C003DE8B2 /* SpeechBubbleView.h */,
@@ -211,6 +216,10 @@
 				F707C609161EE70F00F76C4B /* FeelingViewController.m */,
 				F7BDF723162274B700436A21 /* LoginViewController.h */,
 				F7BDF724162274B800436A21 /* LoginViewController.m */,
+				F7B928D81623D03500944127 /* FeelingTableViewCell.h */,
+				F7B928D91623D03600944127 /* FeelingTableViewCell.m */,
+				F7B928DC1623D1C100944127 /* Feeling.h */,
+				F7B928DD1623D1C100944127 /* Feeling.m */,
 			);
 			path = WhatsFeeling;
 			sourceTree = "<group>";
@@ -381,7 +390,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7BDF72D162292CD00436A21 /* DataModel.m in Sources */,
-				F7BDF72F162292CD00436A21 /* Message.m in Sources */,
 				F707C43F161EC02C00F76C4B /* main.m in Sources */,
 				F707C443161EC02C00F76C4B /* SAMAppDelegate.m in Sources */,
 				F707C602161EE36400F76C4B /* MyInfoViewController.m in Sources */,
@@ -397,6 +405,8 @@
 				F7C6E41A1621E26C003DE8B2 /* UIImageView+AFNetworking.m in Sources */,
 				F7C6E41B1621E26C003DE8B2 /* MBProgressHUD.m in Sources */,
 				F7BDF726162274B800436A21 /* LoginViewController.m in Sources */,
+				F7B928DA1623D03600944127 /* FeelingTableViewCell.m in Sources */,
+				F7B928DE1623D1C100944127 /* Feeling.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

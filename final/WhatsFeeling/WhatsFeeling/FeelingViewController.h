@@ -9,10 +9,15 @@
 #import <UIKit/UIKit.h>
 
 @class DataModel;
-@class Message;
+@class Feeling;
 
 @interface FeelingViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+{
+    
+}
 
+@property (strong, nonatomic) IBOutlet UITableView *feelingTbl;
 @property (assign,nonatomic) DataModel *dataModel;
+@property (strong, nonatomic) IBOutlet UIToolbar *toolbar;
 
 @end

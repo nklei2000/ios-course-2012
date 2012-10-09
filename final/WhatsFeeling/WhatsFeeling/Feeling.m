@@ -1,13 +1,21 @@
+//
+//  Feeling.m
+//  WhatsFeeling
+//
+//  Created by Nam Kin Lei on 10/9/12.
+//  Copyright (c) 2012 Nam Kin Lei. All rights reserved.
+//
 
-#import "Message.h"
+#import "Feeling.h"
 
 static NSString* const SenderNameKey = @"SenderName";
 static NSString* const DateKey = @"Date";
 static NSString* const TextKey = @"Text";
+static NSString* const typeKey = @"Type";
 
-@implementation Message
+@implementation Feeling
 
-@synthesize senderName, date, text, bubbleSize;
+@synthesize type, senderName, date, text, balloonSize;
 
 - (id)initWithCoder:(NSCoder*)decoder
 {
@@ -32,12 +40,9 @@ static NSString* const TextKey = @"Text";
 	return self.senderName == nil;
 }
 
-//- (void)dealloc
-//{
-//	[senderName release];
-//	[date release];
-//	[text release];
-//	[super dealloc];
-//}
+- (BOOL)isBodyTouch
+{
+    return ([@"TOUCH" isEqualToString:type]);
+}
 
 @end

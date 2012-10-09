@@ -1,25 +1,25 @@
 
-@class Message;
+@class Feeling;
 
 // The main data model object
 @interface DataModel : NSObject
 {
 }
 
-// The complete history of messages this user has sent and received, in
+// The complete history of feelings this user has sent and received, in
 // chronological order (oldest first).
-@property (nonatomic, retain) NSMutableArray* messages;
+@property (nonatomic, retain) NSMutableArray* feelings;
 
-// Loads the list of messages from a file.
-- (void)loadMessages;
+// Loads the list of feelings from a file.
+- (void)loadFeelings;
 
-// Saves the list of messages to a file.
-- (void)saveMessages;
+// Saves the list of feelings to a file.
+- (void)saveFeelings;
 
-// Adds a message that the user composed himself or that we received through
-// a push notification. Returns the index of the new message in the list of
-// messages.
-- (int)addMessage:(Message*)message;
+// Adds a feeling that the user show himself or that we received through
+// a push notification. Returns the index of the new feeling in the list
+// of feelings.
+- (int)addFeeling:(Feeling *)feeling;
 
 // Get and set the user's nickname.
 - (NSString*)nickname;

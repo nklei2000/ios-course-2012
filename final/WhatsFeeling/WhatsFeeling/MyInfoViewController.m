@@ -7,6 +7,13 @@
 //
 
 #import "MyInfoViewController.h"
+#import "LoginViewController.h"
+
+#import "AFHTTPClient.h"
+#import "AFHTTPRequestOperation.h"
+#import "MBProgressHUD.h"
+
+#import "DataModel.h"
 
 @interface MyInfoViewController ()
 
@@ -41,6 +48,79 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (IBAction)leave:(id)sender {
+    [self postLeaveRequest];
+}
+
+- (void)userDidLeave
+{
+    NSLog(@"Entered UserDidLeave!");
+    
+    [self.dataModel setJoined:NO];
+    
+    NSLog(@"Popup Login Screen");
+    // Popup login screen
+    LoginViewController *loginViewController = [[LoginViewController alloc]
+        initWithNibName:@"LoginViewController" bundle:nil];
+    loginViewController.dataModel = self.dataModel;
+    
+    [self.parentViewController presentModalViewController:loginViewController animated:NO];
+    
+}
+
+- (void)postLeaveRequest
+{
+    NSLog(@"Posting leave request");
+    
+	MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+	hud.labelText = NSLocalizedString(@"Leave", nil);
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            @"leave", @"cmd",
+                            [self.dataModel udid], @"udid",
+                            nil];
+    NSLog(@"%@", params);
+    
+    NSURL *url = [NSURL URLWithString:@"http://samlei.site88.net"];
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
+    
+    [httpClient postPath:@"/api.php" parameters:params
+    success:^(AFHTTPRequestOperation *operation, id response)
+     {
+         NSString *text = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
+         NSLog(@"Response: %@", text);
+         if ([self isViewLoaded])
+         {
+             [MBProgressHUD hideHUDForView:self.view animated:YES];
+             
+             NSLog(@"%@", @"user did leave");
+             [self userDidLeave];
+         }
+     }
+    failure:^(AFHTTPRequestOperation *operation, NSError *error)
+     {
+         NSLog(@"%@", [error localizedDescription]);
+         if ([self isViewLoaded])
+         {
+             [MBProgressHUD hideHUDForView:self.view animated:YES];
+             [self ShowErrorAlert:[error localizedDescription]];
+         }
+     }];
+    
+}
+
+- (void)ShowErrorAlert:(NSString*)text
+{
+	UIAlertView* alertView = [[UIAlertView alloc]
+                              initWithTitle:text
+                              message:nil
+                              delegate:nil
+                              cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                              otherButtonTitles:nil];
+    
+	[alertView show];
 }
 
 @end

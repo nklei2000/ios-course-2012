@@ -1,6 +1,6 @@
 
 #import "DataModel.h"
-#import "Message.h"
+#import "Feeling.h"
 
 // We store our settings in the NSUserDefaults dictionary using these keys
 static NSString* const NicknameKey = @"Nickname";
@@ -11,7 +11,7 @@ static NSString* const UDIDKey = @"UDID";
 
 @implementation DataModel
 
-@synthesize messages;
+@synthesize feelings;
 
 + (void)initialize
 {
@@ -29,17 +29,17 @@ static NSString* const UDIDKey = @"UDID";
 	}
 }
 
-// Returns the path to the Messages.plist file in the app's Documents directory
-- (NSString*)messagesPath
+// Returns the path to the Feelings.plist file in the app's Documents directory
+- (NSString*)feelingsPath
 {
 	NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	NSString* documentsDirectory = [paths objectAtIndex:0];
-	return [documentsDirectory stringByAppendingPathComponent:@"Messages.plist"];
+	return [documentsDirectory stringByAppendingPathComponent:@"Feelings.plist"];
 }
 
-- (void)loadMessages
+- (void)loadFeelings
 {
-	NSString* path = [self messagesPath];
+	NSString* path = [self feelingsPath];
 	if ([[NSFileManager defaultManager] fileExistsAtPath:path])
 	{
 		// We store the messages in a plist file inside the app's Documents
@@ -51,33 +51,37 @@ static NSString* const UDIDKey = @"UDID";
 
 		NSData* data = [[NSData alloc] initWithContentsOfFile:path];
 		NSKeyedUnarchiver* unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
-		self.messages = [unarchiver decodeObjectForKey:@"Messages"];
+		self.feelings = [unarchiver decodeObjectForKey:@"Feelings"];
 		[unarchiver finishDecoding];
-		// [unarchiver release];
-		// [data release];
+
 	}
 	else
 	{
-		self.messages = [NSMutableArray arrayWithCapacity:20];
+		self.feelings = [NSMutableArray arrayWithCapacity:20];
 	}
 }
 
-- (void)saveMessages
+- (void)saveFeelings
 {
 	NSMutableData* data = [[NSMutableData alloc] init];
 	NSKeyedArchiver* archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
-	[archiver encodeObject:self.messages forKey:@"Messages"];
+	[archiver encodeObject:self.feelings forKey:@"Feelings"];
 	[archiver finishEncoding];
-	[data writeToFile:[self messagesPath] atomically:YES];
-	// [archiver release];
-	// [data release];
+	[data writeToFile:[self feelingsPath] atomically:YES];
 }
 
-- (int)addMessage:(Message*)message
+- (void)clearFeelings
 {
-	[self.messages addObject:message];
-	[self saveMessages];
-	return self.messages.count - 1;
+//	NSMutableData* data = [[NSMutableData alloc] init];
+//	[data writeToFile:[self feelingsPath] atomically:YES];
+}
+
+
+- (int)addFeeling:(Feeling*)feeling
+{
+	[self.feelings addObject:feeling];
+	[self saveFeelings];
+	return self.feelings.count - 1;
 }
 
 - (NSString*)nickname
@@ -122,8 +126,6 @@ static NSString* const UDIDKey = @"UDID";
 
 - (NSString*)udid
 {
-//    UIDevice *device = [UIDevice currentDevice];
-//    return [device stringByReplacingOccurrencesOfString:@"-" withString:@""];
     return [[NSUserDefaults standardUserDefaults] stringForKey:UDIDKey];
 }
 
@@ -131,11 +133,5 @@ static NSString* const UDIDKey = @"UDID";
 {
     [[NSUserDefaults standardUserDefaults] setObject:string forKey:UDIDKey];
 }
-
-//- (void)dealloc
-//{
-//	[messages release];
-//	[super dealloc];
-//}
 
 @end

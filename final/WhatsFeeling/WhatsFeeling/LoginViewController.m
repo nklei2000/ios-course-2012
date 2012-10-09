@@ -4,7 +4,6 @@
 //
 //  Created by Nam Kin Lei on 10/8/12.
 //  Copyright (c) 2012 Nam Kin Lei. All rights reserved.
-//
 
 #import "LoginViewController.h"
 #import "MBProgressHUD.h" 
@@ -12,8 +11,10 @@
 #import "AFHTTPRequestOperation.h"
 #import "AFJSONRequestOperation.h"
 
-@interface LoginViewController ()
+#import <QuartzCore/QuartzCore.h>
 
+@interface LoginViewController ()
+- (void)ShowErrorAlert:(NSString*)text;
 @end
 
 @implementation LoginViewController
@@ -36,6 +37,10 @@
     
     self.nickNameTextField.text = self.dataModel.nickname;
     self.secretCodeTextField.text = self.dataModel.secretCode;
+    
+//    [[self.nickNameTextField layer] setBorderColor:[[UIColor grayColor] CGColor]];
+//    [[self.nickNameTextField layer] setBorderWidth:2.3];
+//    [[self.nickNameTextField layer] setCornerRadius:15];
     
 }
 
@@ -69,21 +74,22 @@
     NSLog(@"Entered userDidJoin");
     
     self.dataModel.joined=YES;
+        
     [self dismissModalViewControllerAnimated:YES];
+    
 }
 
 - (IBAction)joinAction:(id)sender
 {
-
     // validate the text field values
     if (self.nickNameTextField.text.length == 0)
     {
-        ShowErrorAlert( NSLocalizedString(@"Please fill your nick name",nil) );
+        [self ShowErrorAlert:NSLocalizedString(@"Please fill your nick name",nil)];
         return;
     }
     if (self.secretCodeTextField.text.length == 0)
     {
-        ShowErrorAlert( NSLocalizedString(@"Please fill your secret code", nil) );
+        [self ShowErrorAlert:NSLocalizedString(@"Please fill your secret code",nil)];
         return;
     }
     
@@ -102,8 +108,7 @@
 {
 	MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 	hud.labelText = NSLocalizedString(@"Connecting", nil);
-    
-    
+        
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
                             @"join", @"cmd",
                             [self.dataModel udid], @"udid",
@@ -136,7 +141,7 @@
             if ([self isViewLoaded])
             {
                 [MBProgressHUD hideHUDForView:self.view animated:YES];
-                ShowErrorAlert([error localizedDescription]);
+                [self ShowErrorAlert:[error localizedDescription]];
             }
         }];
     
@@ -178,14 +183,9 @@
 //    // or enqueue it in the client default operations queue.
 //    [client enqueueHTTPRequestOperation:operation];
     
-    
-    
-    
-
-    
 }
 
-void ShowErrorAlert(NSString* text)
+- (void)ShowErrorAlert:(NSString*)text
 {
 	UIAlertView* alertView = [[UIAlertView alloc]
                               initWithTitle:text
