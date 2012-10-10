@@ -26,6 +26,11 @@ static NSString* const BodyTouchKey = @"BodyTouch";
 		self.senderName = [decoder decodeObjectForKey:SenderNameKey];
 		self.date = [decoder decodeObjectForKey:DateKey];
 		self.text = [decoder decodeObjectForKey:TextKey];
+        
+		self.type = [decoder decodeObjectForKey:TypeKey];
+		self.reason = [decoder decodeObjectForKey:ReasonKey];
+		self.bodyTouch = [decoder decodeObjectForKey:BodyTouchKey];
+        
 	}
 	return self;
 }
@@ -48,7 +53,7 @@ static NSString* const BodyTouchKey = @"BodyTouch";
 
 - (BOOL)isBodyTouch
 {
-    return ([@"TOUCH" isEqualToString:type]);
+    return ([@"TOUCH" isEqualToString:self.type]);
 }
 
 @end
