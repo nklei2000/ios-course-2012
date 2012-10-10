@@ -10,4 +10,5 @@
 
 @implementation FeelingStatus
 
+
 @end

@@ -13,8 +13,10 @@
 @interface ShowFeelingViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
 }
+@property (strong, nonatomic) IBOutlet UITableView *feelingStatusTbl;
 
 @property (assign, nonatomic) DataModel *dataModel;
 //@property (strong, nonatomic) NSMutableArray *dataArray;
+- (IBAction)dismissMe:(id)sender;
 
 @end

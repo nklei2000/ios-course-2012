@@ -69,7 +69,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<array class="NSMutableArray" key="IBUIItems">
 							<object class="IBUIBarButtonItem" id="922004446">
-								<string key="IBUITitle">Show Your Feeling to Your Friends</string>
+								<string key="IBUITitle">SHOW_FEELING_TO_FRIENDS</string>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<float key="IBUIWidth">309</float>
 								<int key="IBUIStyle">1</int>

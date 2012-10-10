@@ -13,7 +13,8 @@
 }
 
 @property (copy, nonatomic) NSString *code;
-@property (copy, nonatomic) NSString *value;
+@property (copy, nonatomic) NSString *feeling;
 @property (copy, nonatomic) NSString *category;
+@property (copy, nonatomic) NSString *lang;
 
 @end

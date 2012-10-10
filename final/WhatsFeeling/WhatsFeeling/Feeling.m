@@ -11,11 +11,13 @@
 static NSString* const SenderNameKey = @"SenderName";
 static NSString* const DateKey = @"Date";
 static NSString* const TextKey = @"Text";
-static NSString* const typeKey = @"Type";
+static NSString* const TypeKey = @"Type";
+static NSString* const ReasonKey = @"Reason";
+static NSString* const BodyTouchKey = @"BodyTouch";
 
 @implementation Feeling
 
-@synthesize type, senderName, date, text, balloonSize;
+//@synthesize type, senderName, date, text, type, reason, bodyTouch,balloonSize;
 
 - (id)initWithCoder:(NSCoder*)decoder
 {
@@ -24,6 +26,11 @@ static NSString* const typeKey = @"Type";
 		self.senderName = [decoder decodeObjectForKey:SenderNameKey];
 		self.date = [decoder decodeObjectForKey:DateKey];
 		self.text = [decoder decodeObjectForKey:TextKey];
+        
+		self.type = [decoder decodeObjectForKey:TypeKey];
+		self.reason = [decoder decodeObjectForKey:ReasonKey];
+		self.bodyTouch = [decoder decodeObjectForKey:BodyTouchKey];
+        
 	}
 	return self;
 }
@@ -33,6 +40,10 @@ static NSString* const typeKey = @"Type";
 	[encoder encodeObject:self.senderName forKey:SenderNameKey];
 	[encoder encodeObject:self.date forKey:DateKey];
 	[encoder encodeObject:self.text forKey:TextKey];
+    
+	[encoder encodeObject:self.type forKey:TypeKey];
+	[encoder encodeObject:self.reason forKey:ReasonKey];
+	[encoder encodeObject:self.bodyTouch forKey:BodyTouchKey];
 }
 
 - (BOOL)isSentByUser
@@ -42,7 +53,7 @@ static NSString* const typeKey = @"Type";
 
 - (BOOL)isBodyTouch
 {
-    return ([@"TOUCH" isEqualToString:type]);
+    return ([@"TOUCH" isEqualToString:self.type]);
 }
 
 @end

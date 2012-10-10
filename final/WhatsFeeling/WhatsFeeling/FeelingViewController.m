@@ -13,6 +13,8 @@
 #import "DataModel.h"
 #import "Feeling.h"
 
+#import "MyCommon.h"
+
 #define CellFeelingTag  1000
 #define CellImageTag    1001
 #define CellLabelTag    1002
@@ -97,6 +99,9 @@
 	[headerView addSubview:infoButton];
 	
 	feelingTbl.tableHeaderView = headerView;
+    
+    // Localized the lables and buttons
+    [MyCommon replaceTextWithLocalizedTextInSubviewsForView:self.view];
     
 }
 

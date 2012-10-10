@@ -14,6 +14,8 @@
 
 // touch or text only
 @property (nonatomic, copy) NSString* type;
+@property (nonatomic, copy) NSString* reason;
+@property (nonatomic, copy) NSString* bodyTouch;
 
 @property (nonatomic, copy) NSString* senderName;
 
