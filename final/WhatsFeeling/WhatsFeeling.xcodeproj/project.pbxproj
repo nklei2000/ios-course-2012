@@ -107,7 +107,6 @@
 		F7B928D91623D03600944127 /* FeelingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeelingTableViewCell.m; sourceTree = "<group>"; };
 		F7B928DC1623D1C100944127 /* Feeling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Feeling.h; sourceTree = "<group>"; };
 		F7B928DD1623D1C100944127 /* Feeling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Feeling.m; sourceTree = "<group>"; };
-		F7B928F41624211500944127 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		F7B928FA16242E4500944127 /* ShowFeelingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowFeelingViewController.h; sourceTree = "<group>"; };
 		F7B928FB16242E4500944127 /* ShowFeelingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowFeelingViewController.m; sourceTree = "<group>"; };
 		F7B928FF16242ED000944127 /* ShowFeelingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowFeelingViewController.xib; sourceTree = "<group>"; };
@@ -177,7 +176,6 @@
 		F707C423161EC02C00F76C4B = {
 			isa = PBXGroup;
 			children = (
-				F7B928F41624211500944127 /* QuartzCore.framework */,
 				F7C6E3FA1621E26C003DE8B2 /* Vendor */,
 				F7C6E3D71621E26C003DE8B2 /* Security.framework */,
 				F7C6E3D11621E26C003DE8B2 /* CoreLocation.framework */,
