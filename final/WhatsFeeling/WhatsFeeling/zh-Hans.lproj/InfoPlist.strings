@@ -1,0 +1,11 @@
+/* Localized versions of Info.plist keys */
+"APPLICATION_NAME" = "What's Your Feeling";
+"APPLICATION_ID" = "WhatsFeeling";
+"MY_INFO" = "My Info";
+"FEELING" = "Feeling";
+"SIGN_IN" = "Sign In";
+"SIGN_OUT" = "Sign Out";
+"SHOW_FEELING_TO_FRIENDS" = "Show Your Feeling to Your Friends";
+"ERROR_FILL_USERNAME" = "Please fill the WhatsFeeling Name";
+"ERROR_FILL_SECRET_CODE" = "Please fill the Secret Code";
+

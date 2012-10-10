@@ -63,14 +63,19 @@
         
         if ([v isKindOfClass:[UILabel class]])
         {
-            UILabel* lable = (UILabel*)v;
-            lable.text = NSLocalizedString(lable.text, nil);
+            UILabel* label = (UILabel*)v;
+            NSLog(@"UILable text: %@", label.text);
+            label.text = NSLocalizedString(label.text, nil);
+            NSLog(@"UILable text (replaced): %@, localized string: %@", label.text, NSLocalizedString(label.text, nil));
         }
         
         if ([v isKindOfClass:[UIButton class]])
         {
             UIButton* button = (UIButton*)v;
+            NSLog(@"UIButton text: %@", button.titleLabel.text);
             button.titleLabel.text = NSLocalizedString(button.titleLabel.text, nil);
+            NSLog(@"UIButton text (replaced): %@, localized string: %@", button.titleLabel.text, NSLocalizedString(@"SHOW_FEELING_TO_FRIENDS", nil) );
+            
         }
     }
 }

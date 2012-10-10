@@ -136,6 +136,9 @@
 
 - (void) loadFeelStatusFromNetwork
 {
+    MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+	hud.labelText = NSLocalizedString(@"Sending", nil);
+    
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
                             @"feelingstatus", @"cmd",
                             nil];
