@@ -32,7 +32,6 @@
 		F7AE12351624827D00D7EBB5 /* FeelingStatusViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7AE12331624827C00D7EBB5 /* FeelingStatusViewController.xib */; };
 		F7B928DA1623D03600944127 /* FeelingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B928D91623D03600944127 /* FeelingTableViewCell.m */; };
 		F7B928DE1623D1C100944127 /* Feeling.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B928DD1623D1C100944127 /* Feeling.m */; };
-		F7B928F51624211500944127 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7B928F41624211500944127 /* QuartzCore.framework */; };
 		F7B928FD16242E4500944127 /* ShowFeelingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B928FB16242E4500944127 /* ShowFeelingViewController.m */; };
 		F7B9290016242ED000944127 /* ShowFeelingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7B928FF16242ED000944127 /* ShowFeelingViewController.xib */; };
 		F7BDF7181622717600436A21 /* BubbleLefthand.png in Resources */ = {isa = PBXBuildFile; fileRef = F7BDF7161622717600436A21 /* BubbleLefthand.png */; };
@@ -157,7 +156,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F7B928F51624211500944127 /* QuartzCore.framework in Frameworks */,
 				F7C6E3D81621E26C003DE8B2 /* Security.framework in Frameworks */,
 				F7C6E3D21621E26C003DE8B2 /* CoreLocation.framework in Frameworks */,
 				F7C6E3C71621E26C003DE8B2 /* MobileCoreServices.framework in Frameworks */,
