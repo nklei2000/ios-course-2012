@@ -16,13 +16,15 @@
 
 #import "FeelingStatus.h"
 
+#import "MyCommon.h"
+
 @interface ShowFeelingViewController ()
-- (void)postFeelingRequest;
-- (void)ShowErrorAlert:(NSString*)text;
+- (void)showFeelingRequest;
 - (void)userDidShow:(NSString*)text;
 @end
 
 @implementation ShowFeelingViewController
+@synthesize feelingStatusTbl;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,10 +39,16 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    // save the selection
+    [[NSUserDefaults standardUserDefaults] setValue:@"" forKey:@"SelectedFeelingStatusKey"];
+    [[NSUserDefaults standardUserDefaults] setValue:@"" forKey:@"SelectedFeelingStatusValue"];
+    
 }
 
 - (void)viewDidUnload
 {
+    [self setFeelingStatusTbl:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -54,6 +62,7 @@
     
     NSLog(@"view will appear.");
     
+    [feelingStatusTbl reloadData];
     
 }
 
@@ -75,7 +84,7 @@
     
 }
 
-- (void)postFeelingRequest
+- (void)showFeelingRequest
 {
 	// [messageTextView resignFirstResponder];
     
@@ -115,7 +124,7 @@
          if ([self isViewLoaded])
          {
              [MBProgressHUD hideHUDForView:self.view animated:YES];
-             [self ShowErrorAlert:[error localizedDescription]];
+             [MyCommon ShowErrorAlert:[error localizedDescription]];
          }
      }];
 }
@@ -148,12 +157,18 @@
     if (indexPath.row == 0)
     {
         cell.textLabel.text = @"What's your feeling now";
+        
 
     }
     else if (indexPath.row == 1)
     {
         // cell.textLabel.text = @"Cell 2";
-        cell.textLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"SelectedFeelingStatus"];        
+        NSString *selectedFeelingStatusKey = [[NSUserDefaults standardUserDefaults] objectForKey:@"SelectedFeelingStatusKey"];
+        NSString *selectedFeelingStatusValue = [[NSUserDefaults standardUserDefaults] objectForKey:@"SelectedFeelingStatusValue"];
+        
+        NSLog(@"feeling[code:%@, felling:%@]", selectedFeelingStatusKey, selectedFeelingStatusValue);
+              
+        cell.textLabel.text = selectedFeelingStatusValue;
     }
         
     return cell;
@@ -173,30 +188,32 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if (indexPath.section == 0 && indexPath.row == 0)
+    if (indexPath.row == 0)
     {
         // Contsruct another view controller here.
         FeelingStatusViewController *viewController = [[FeelingStatusViewController alloc] init];
         [self.navigationController pushViewController:viewController animated:YES];
     }
-    else if (indexPath.section == 0 && indexPath.row == 2)
-    {
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }
     
 }
 
 
-- (void)ShowErrorAlert:(NSString*)text
-{
-	UIAlertView* alertView = [[UIAlertView alloc]
-                              initWithTitle:text
-                              message:nil
-                              delegate:nil
-                              cancelButtonTitle:NSLocalizedString(@"OK", nil)
-                              otherButtonTitles:nil];
+//- (void)ShowErrorAlert:(NSString*)text
+//{
+//	UIAlertView* alertView = [[UIAlertView alloc]
+//                              initWithTitle:text
+//                              message:nil
+//                              delegate:nil
+//                              cancelButtonTitle:NSLocalizedString(@"OK", nil)
+//                              otherButtonTitles:nil];
+//    
+//	[alertView show];
+//}
+
+- (IBAction)dismissMe:(id)sender {
     
-	[alertView show];
+    [self dismissModalViewControllerAnimated:YES];
+    
 }
 
 @end

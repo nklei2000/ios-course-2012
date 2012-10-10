@@ -6,15 +6,16 @@
 //  Copyright (c) 2012 Nam Kin Lei. All rights reserved.
 
 #import "LoginViewController.h"
-#import "MBProgressHUD.h" 
+
+#import "MBProgressHUD.h"
 #import "AFHTTPClient.h"
 #import "AFHTTPRequestOperation.h"
 #import "AFJSONRequestOperation.h"
 
-#import <QuartzCore/QuartzCore.h>
+#import "MyCommon.h"
 
 @interface LoginViewController ()
-- (void)ShowErrorAlert:(NSString*)text;
+
 @end
 
 @implementation LoginViewController
@@ -41,6 +42,8 @@
 //    [[self.nickNameTextField layer] setBorderColor:[[UIColor grayColor] CGColor]];
 //    [[self.nickNameTextField layer] setBorderWidth:2.3];
 //    [[self.nickNameTextField layer] setCornerRadius:15];
+    
+    [MyCommon replaceTextWithLocalizedTextInSubviewsForView:self.view];
     
 }
 
@@ -69,9 +72,9 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void)userDidJoin
+- (void)userDidSignIn
 {
-    NSLog(@"Entered userDidJoin");
+    NSLog(@"Entered userDidSignIn");
     
     self.dataModel.joined=YES;
         
@@ -79,17 +82,17 @@
     
 }
 
-- (IBAction)joinAction:(id)sender
+- (IBAction)signInAction:(id)sender
 {
     // validate the text field values
     if (self.nickNameTextField.text.length == 0)
     {
-        [self ShowErrorAlert:NSLocalizedString(@"Please fill your nick name",nil)];
+        [MyCommon ShowErrorAlert:NSLocalizedString(@"ERROR_FILL_USERNAME",nil)];
         return;
     }
     if (self.secretCodeTextField.text.length == 0)
     {
-        [self ShowErrorAlert:NSLocalizedString(@"Please fill your secret code",nil)];
+        [MyCommon ShowErrorAlert:NSLocalizedString(@"ERROR_FILL_SECRET_CODE",nil)];
         return;
     }
     
@@ -100,17 +103,17 @@
     [self.nickNameTextField resignFirstResponder];
     [self.secretCodeTextField resignFirstResponder];
     
-    [self postJoinRequest];
+    [self postSignInRequest];
 
 }
 
-- (void)postJoinRequest
+- (void)postSignInRequest
 {
 	MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 	hud.labelText = NSLocalizedString(@"Connecting", nil);
         
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            @"join", @"cmd",
+                            @"signup", @"cmd",
                             [self.dataModel udid], @"udid",
                             [self.dataModel deviceToken], @"token",
                             [self.dataModel nickname], @"name",
@@ -131,8 +134,8 @@
             {
                 [MBProgressHUD hideHUDForView:self.view animated:YES];
 
-                NSLog(@"%@", @"user did join");
-                [self userDidJoin];
+                NSLog(@"%@", @"user did sign in");
+                [self userDidSignIn];
             }
         }
         failure:^(AFHTTPRequestOperation *operation, NSError *error)
@@ -141,7 +144,7 @@
             if ([self isViewLoaded])
             {
                 [MBProgressHUD hideHUDForView:self.view animated:YES];
-                [self ShowErrorAlert:[error localizedDescription]];
+                [MyCommon ShowErrorAlert:[error localizedDescription]];
             }
         }];
     
@@ -185,16 +188,16 @@
     
 }
 
-- (void)ShowErrorAlert:(NSString*)text
-{
-	UIAlertView* alertView = [[UIAlertView alloc]
-                              initWithTitle:text
-                              message:nil
-                              delegate:nil
-                              cancelButtonTitle:NSLocalizedString(@"OK", nil)
-                              otherButtonTitles:nil];
-    
-	[alertView show];
-}
+//- (void)ShowErrorAlert:(NSString*)text
+//{
+//	UIAlertView* alertView = [[UIAlertView alloc]
+//                              initWithTitle:text
+//                              message:nil
+//                              delegate:nil
+//                              cancelButtonTitle:NSLocalizedString(@"OK", nil)
+//                              otherButtonTitles:nil];
+//    
+//	[alertView show];
+//}
 
 @end

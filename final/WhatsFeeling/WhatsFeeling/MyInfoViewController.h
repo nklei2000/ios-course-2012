@@ -16,6 +16,6 @@
 
 @property (assign,nonatomic) DataModel *dataModel;
 
-- (IBAction)leave:(id)sender;
+- (IBAction)signOut:(id)sender;
 
 @end

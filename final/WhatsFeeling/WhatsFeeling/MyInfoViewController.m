@@ -15,6 +15,8 @@
 
 #import "DataModel.h"
 
+#import "MyCommon.h"
+
 @interface MyInfoViewController ()
 
 @end
@@ -50,13 +52,13 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (IBAction)leave:(id)sender {
-    [self postLeaveRequest];
+- (IBAction)signOut:(id)sender {
+    [self postSignOutRequest];
 }
 
-- (void)userDidLeave
+- (void)userDidSignOut
 {
-    NSLog(@"Entered UserDidLeave!");
+    NSLog(@"Entered userDidSignOut!");
     
     [self.dataModel setJoined:NO];
     
@@ -70,15 +72,15 @@
     
 }
 
-- (void)postLeaveRequest
+- (void)postSignOutRequest
 {
-    NSLog(@"Posting leave request");
+    NSLog(@"Posting sign out request");
     
 	MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-	hud.labelText = NSLocalizedString(@"Leave", nil);
+	hud.labelText = NSLocalizedString(@"signout", nil);
     
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            @"leave", @"cmd",
+                            @"unregistered", @"cmd",
                             [self.dataModel udid], @"udid",
                             nil];
     NSLog(@"%@", params);
@@ -95,8 +97,8 @@
          {
              [MBProgressHUD hideHUDForView:self.view animated:YES];
              
-             NSLog(@"%@", @"user did leave");
-             [self userDidLeave];
+             NSLog(@"%@", @"user did sign out");
+             [self userDidSignOut];
          }
      }
     failure:^(AFHTTPRequestOperation *operation, NSError *error)
@@ -105,22 +107,22 @@
          if ([self isViewLoaded])
          {
              [MBProgressHUD hideHUDForView:self.view animated:YES];
-             [self ShowErrorAlert:[error localizedDescription]];
+             [MyCommon ShowErrorAlert:[error localizedDescription]];
          }
      }];
     
 }
 
-- (void)ShowErrorAlert:(NSString*)text
-{
-	UIAlertView* alertView = [[UIAlertView alloc]
-                              initWithTitle:text
-                              message:nil
-                              delegate:nil
-                              cancelButtonTitle:NSLocalizedString(@"OK", nil)
-                              otherButtonTitles:nil];
-    
-	[alertView show];
-}
+//- (void)ShowErrorAlert:(NSString*)text
+//{
+//	UIAlertView* alertView = [[UIAlertView alloc]
+//                              initWithTitle:text
+//                              message:nil
+//                              delegate:nil
+//                              cancelButtonTitle:NSLocalizedString(@"OK", nil)
+//                              otherButtonTitles:nil];
+//    
+//	[alertView show];
+//}
 
 @end
