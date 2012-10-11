@@ -14,8 +14,15 @@
 {    
 }
 
+@property (strong, nonatomic) IBOutlet UILabel *udidLabel;
+@property (strong, nonatomic) IBOutlet UILabel *deviceTokenLabel;
+@property (strong, nonatomic) IBOutlet UILabel *nameLabel;
+
 @property (assign,nonatomic) DataModel *dataModel;
 
 - (IBAction)signOut:(id)sender;
+
+- (IBAction)deleteAccount:(id)sender;
+
 
 @end

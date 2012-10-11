@@ -38,10 +38,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    //[self loadFeelingStatuses];
-
+    NSLog(@"FeelintStatusViewController view did load");
+    
     self.dataArray = [[NSMutableArray alloc] init];    
-    [self loadFeelStatusFromNetwork];
+    isDataLoaded = NO;
     
     self.navigationItem.title = NSLocalizedString(@"Choose your feeling", nil);
 }
@@ -63,8 +63,22 @@
     
     // we need to call this every time when the view shows.
     self.navigationController.navigationBarHidden = NO;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     
-    [self loadFeelStatusFromNetwork];
+    // we need to call this every time when the view shows.
+    self.navigationController.navigationBarHidden = NO;
+    
+    if ( !isDataLoaded ) {
+        [self loadFeelStatusFromNetwork];
+    }
+    else
+    {
+        [feelingStatusTbl reloadData];
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -132,12 +146,15 @@
     }
     NSLog(@"%d objects loaded", [self.dataArray count]);
     [feelingStatusTbl reloadData];
+    
+    isDataLoaded = YES;
+    
 }
 
 - (void) loadFeelStatusFromNetwork
 {
     MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-	hud.labelText = NSLocalizedString(@"Sending", nil);
+	hud.labelText = NSLocalizedString(@"Loading", nil);
     
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
                             @"feelingstatus", @"cmd",
@@ -182,8 +199,6 @@
     [operation start];
     
 }
-
-
 
 
 #pragma mark -

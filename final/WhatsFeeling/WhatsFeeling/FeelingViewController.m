@@ -186,11 +186,12 @@
     ShowFeelingViewController *showFeelingViewController =
             [[ShowFeelingViewController alloc] initWithNibName:@"ShowFeelingViewController"
                                                         bundle:nil];
-    // showFeelingViewController.dataModel = self.dataModel;
+    showFeelingViewController.dataModel = self.dataModel;
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:showFeelingViewController];
     
     [self.parentViewController presentModalViewController:navController animated:NO];
     
 }
+
 @end

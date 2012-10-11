@@ -1,10 +1,10 @@
 /* Localized versions of Info.plist keys */
-"APPLICATION_NAME" = "您的感受";
+"APPLICATION_NAME" = "您的心情如何";
 "APPLICATION_ID" = "WhatsFeeling";
 "MY_INFO" = "個人資訊";
-"FEELING" = "感受";
+"FEELING" = "心情";
 "SIGN_IN" = "登入";
 "SIGN_OUT" = "登出";
-"SHOW_FEELING_TO_FRIENDS" = "向朋友說出您的感受";
+"SHOW_FEELING_TO_FRIENDS" = "向朋友表達您的心情";
 "ERROR_FILL_USERNAME" = "請輸入 WhatsFeeling 使用者名稱";
 "ERROR_FILL_SECRET_CODE" = "請輸入密碼";

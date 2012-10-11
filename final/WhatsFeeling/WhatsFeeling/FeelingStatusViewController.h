@@ -13,6 +13,7 @@
 
 @interface FeelingStatusViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
+    BOOL isDataLoaded;
 }
 
 @property (assign, nonatomic) DataModel *dataModel;

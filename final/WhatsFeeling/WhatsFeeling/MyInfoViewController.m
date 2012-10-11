@@ -22,6 +22,11 @@
 @end
 
 @implementation MyInfoViewController
+@synthesize udidLabel;
+@synthesize deviceTokenLabel;
+@synthesize nameLabel;
+
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,10 +43,17 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    self.nameLabel.text = self.dataModel.nickname;
+    self.deviceTokenLabel.text = self.dataModel.deviceToken;
+    self.udidLabel.text = self.dataModel.udid;
 }
 
 - (void)viewDidUnload
 {
+    [self setNameLabel:nil];
+    [self setDeviceTokenLabel:nil];
+    [self setUdidLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -56,6 +68,10 @@
     [self postSignOutRequest];
 }
 
+- (IBAction)deleteAccount:(id)sender {
+    [self postUnregisterRequest];
+}
+
 - (void)userDidSignOut
 {
     NSLog(@"Entered userDidSignOut!");
@@ -63,9 +79,27 @@
     [self.dataModel setJoined:NO];
     
     NSLog(@"Popup Login Screen");
+    
     // Popup login screen
     LoginViewController *loginViewController = [[LoginViewController alloc]
         initWithNibName:@"LoginViewController" bundle:nil];
+    loginViewController.dataModel = self.dataModel;
+    
+    [self.parentViewController presentModalViewController:loginViewController animated:NO];
+    
+}
+
+- (void)userDidUnregister
+{
+    NSLog(@"Entered userDidUnregister!");
+    
+    [self.dataModel setJoined:NO];
+    
+    NSLog(@"Popup Login Screen");
+    
+    // Popup login screen
+    LoginViewController *loginViewController = [[LoginViewController alloc]
+                                                initWithNibName:@"LoginViewController" bundle:nil];
     loginViewController.dataModel = self.dataModel;
     
     [self.parentViewController presentModalViewController:loginViewController animated:NO];
@@ -80,7 +114,7 @@
 	hud.labelText = NSLocalizedString(@"signout", nil);
     
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            @"unregistered", @"cmd",
+                            @"signout", @"cmd",
                             [self.dataModel udid], @"udid",
                             nil];
     NSLog(@"%@", params);
@@ -113,16 +147,46 @@
     
 }
 
-//- (void)ShowErrorAlert:(NSString*)text
-//{
-//	UIAlertView* alertView = [[UIAlertView alloc]
-//                              initWithTitle:text
-//                              message:nil
-//                              delegate:nil
-//                              cancelButtonTitle:NSLocalizedString(@"OK", nil)
-//                              otherButtonTitles:nil];
-//    
-//	[alertView show];
-//}
+- (void)postUnregisterRequest
+{
+    NSLog(@"Posting unregister request");
+    
+	MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+	hud.labelText = NSLocalizedString(@"signout", nil);
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            @"unregistered", @"cmd",
+                            [self.dataModel udid], @"udid",
+                            nil];
+    NSLog(@"%@", params);
+    
+    NSURL *url = [NSURL URLWithString:@"http://samlei.site88.net"];
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
+    
+    [httpClient postPath:@"/api.php" parameters:params
+                 success:^(AFHTTPRequestOperation *operation, id response)
+     {
+         NSString *text = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
+         NSLog(@"Response: %@", text);
+         if ([self isViewLoaded])
+         {
+             [MBProgressHUD hideHUDForView:self.view animated:YES];
+             
+             NSLog(@"%@", @"user did unregister");
+             [self userDidUnregister];
+         }
+     }
+                 failure:^(AFHTTPRequestOperation *operation, NSError *error)
+     {
+         NSLog(@"%@", [error localizedDescription]);
+         if ([self isViewLoaded])
+         {
+             [MBProgressHUD hideHUDForView:self.view animated:YES];
+             [MyCommon ShowErrorAlert:[error localizedDescription]];
+         }
+     }];
+    
+}
+
 
 @end

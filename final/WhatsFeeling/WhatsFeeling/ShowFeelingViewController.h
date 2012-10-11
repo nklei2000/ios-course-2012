@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @class DataModel;
+@class Feeling;
+@class FeelingStatusViewController;
 
 @interface ShowFeelingViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
@@ -16,7 +18,9 @@
 @property (strong, nonatomic) IBOutlet UITableView *feelingStatusTbl;
 
 @property (assign, nonatomic) DataModel *dataModel;
-//@property (strong, nonatomic) NSMutableArray *dataArray;
-- (IBAction)dismissMe:(id)sender;
+
+@property (strong, nonatomic) IBOutlet UITextField *reasonTextField;
+
+@property (strong, nonatomic) FeelingStatusViewController *feelingStatusViewController;
 
 @end

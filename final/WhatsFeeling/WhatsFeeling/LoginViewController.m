@@ -103,11 +103,11 @@
     [self.nickNameTextField resignFirstResponder];
     [self.secretCodeTextField resignFirstResponder];
     
-    [self postSignInRequest];
+    [self postSignUpRequest];
 
 }
 
-- (void)postSignInRequest
+- (void)postSignUpRequest
 {
 	MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 	hud.labelText = NSLocalizedString(@"Connecting", nil);
@@ -148,56 +148,68 @@
             }
         }];
     
-    
-    
-//    NSURL *url = [NSURL URLWithString:@"http://samlei.site88.net/"];
-//    AFHTTPClient *client = [AFHTTPClient clientWithBaseURL:url];
-//    NSURLRequest *request = [client requestWithMethod:@"POST"
-//                                                 path:@"/api.php"
-//                                           parameters:params];
-//    AFJSONRequestOperation *operation =
-//    [AFJSONRequestOperation
-//     JSONRequestOperationWithRequest:request
-//     success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON)
-//    {
-//        // Do something with JSON
-//        if ([self isViewLoaded])
-//        {
-//            [MBProgressHUD hideHUDForView:self.view animated:YES];
-//
-//            NSLog(@"%@", @"user did join");
-//            [self userDidJoin];
-//        }
-//    }
-//     failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON)
-//    {
-//        NSLog(@"%@", [error localizedDescription]);
-//        if ([self isViewLoaded])
-//        {
-//            [MBProgressHUD hideHUDForView:self.view animated:YES];
-//            ShowErrorAlert([error localizedDescription]);
-//        }
-//
-//    }];
-//    
-//    // you can either start your operation like this
-//    [operation start];
-//    
-//    // or enqueue it in the client default operations queue.
-//    [client enqueueHTTPRequestOperation:operation];
-    
 }
 
-//- (void)ShowErrorAlert:(NSString*)text
-//{
-//	UIAlertView* alertView = [[UIAlertView alloc]
-//                              initWithTitle:text
-//                              message:nil
-//                              delegate:nil
-//                              cancelButtonTitle:NSLocalizedString(@"OK", nil)
-//                              otherButtonTitles:nil];
-//    
-//	[alertView show];
-//}
+- (void) postSignInRequest
+{
+    MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+	hud.labelText = NSLocalizedString(@"Connecting", nil);
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            @"signup", @"cmd",
+                            [self.dataModel udid], @"udid",
+                            [self.dataModel deviceToken], @"token",
+                            [self.dataModel nickname], @"name",
+                            [self.dataModel secretCode], @"code",
+                            nil];
+    
+    NSLog(@"%@", params);
+    
+    NSURL *url = [NSURL URLWithString:@"http://samlei.site88.net/"];
+    AFHTTPClient *client = [AFHTTPClient clientWithBaseURL:url];
+    NSURLRequest *request = [client requestWithMethod:@"POST"
+                                                 path:@"/api.php"
+                                           parameters:params];
+    AFJSONRequestOperation *operation =
+    [AFJSONRequestOperation JSONRequestOperationWithRequest:request
+    success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON)
+     {
+         // Do something with JSON
+         if ([self isViewLoaded])
+         {
+             [MBProgressHUD hideHUDForView:self.view animated:YES];
+             
+             NSLog(@"%@", @"loaded feeling status");
+
+             NSLog(@"Json: %@", JSON);
+             NSString *status = [JSON objectForKey:@"status"];
+             NSString *reason = [JSON objectForKey:@"reason"];
+             
+             NSLog( @"status: %@", status );
+             NSLog( @"reason: %@", reason );
+             
+             if ( [status isEqualToString:@"success"] )
+             {
+                 NSLog( @"User Signed in" );
+             }
+             
+         }
+     }
+    failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON)
+     {
+         NSLog(@"Error: %@", [error localizedDescription]);
+         NSLog(@"Json: %@", JSON);
+         if ([self isViewLoaded])
+         {
+             [MBProgressHUD hideHUDForView:self.view animated:YES];
+             [MyCommon ShowErrorAlert:[error localizedDescription]];
+         }
+         
+     }];
+    
+    // you can either start your operation like this
+    [operation start];
+
+}
 
 @end

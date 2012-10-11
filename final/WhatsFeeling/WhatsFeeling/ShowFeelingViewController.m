@@ -14,16 +14,19 @@
 #import "MBProgressHUD.h"
 #import "DataModel.h"
 
+#import "Feeling.h"
 #import "FeelingStatus.h"
 
 #import "MyCommon.h"
 
 @interface ShowFeelingViewController ()
-- (void)showFeelingRequest;
-- (void)userDidShow:(NSString*)text;
+- (void)showFeelingRequest:(Feeling*)feeling;
+- (void)feelingDidSend;
+- (void)sendFeeling;
 @end
 
 @implementation ShowFeelingViewController
+@synthesize reasonTextField;
 @synthesize feelingStatusTbl;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -43,15 +46,27 @@
     // save the selection
     [[NSUserDefaults standardUserDefaults] setValue:@"" forKey:@"SelectedFeelingStatusKey"];
     [[NSUserDefaults standardUserDefaults] setValue:@"" forKey:@"SelectedFeelingStatusValue"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    self.reasonTextField.text = @"";
     
+    // Contsruct another view controller here.
+    self.feelingStatusViewController = [[FeelingStatusViewController alloc] init];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(sendFeeling)];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelSendFeeling)];
 }
+
 
 - (void)viewDidUnload
 {
     [self setFeelingStatusTbl:nil];
+    [self setReasonTextField:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    
+    self.feelingStatusViewController = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -76,29 +91,69 @@
 }
 
 
-
-
-- (void)userDidShow:(NSString*)text
+- (void)feelingDidSend
 {
     NSLog(@"User did show.");
+ 
+    [reasonTextField resignFirstResponder];
+    
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+- (void)cancelSendFeeling
+{
+    NSLog(@"Cancelled send feeling...");
+        
+    [[NSUserDefaults standardUserDefaults] setValue:@"" forKey:@"SelectedFeelingStatusKey"];
+    [[NSUserDefaults standardUserDefaults] setValue:@"" forKey:@"SelectedFeelingStatusValue"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    self.reasonTextField.text = @"";
+    
+    [reasonTextField resignFirstResponder];
+    
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+
+- (void)sendFeeling
+{
+    NSLog(@"Sending feeling to your friends...");
+    
+    Feeling *feeling = [[Feeling alloc] init];
+    
+    feeling.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"SelectedFeelingStatusValue"];
+    feeling.reason = reasonTextField.text;
+    
+    if ( feeling.text.length == 0 )
+    {
+        [MyCommon ShowErrorAlert:@"Please choose your feeling"];
+        return;
+    }
+    
+    [self showFeelingRequest:feeling];
     
 }
 
-- (void)showFeelingRequest
+- (void)showFeelingRequest:(Feeling *)feeling
 {
-	// [messageTextView resignFirstResponder];
+    if ( feeling == nil || feeling.text.length == 0)
+    {
+        [MyCommon ShowErrorAlert:NSLocalizedString(@"NOTHING_SENT", nil)];
+        return;
+    }
     
 	MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 	hud.labelText = NSLocalizedString(@"Sending", nil);
     
-	//NSString* text = self.messageTextView.text;
+    // NSString *text = @"Hello Sam Lei";
     
-    NSString *text = @"Hello Sam Lei";
+    NSString *feelingAndReason = [NSString stringWithFormat:@"%@ %@", feeling.text, feeling.reason];
     
+    NSLog(@"feeling and reason: %@, udid: %@", feelingAndReason, [self.dataModel udid]);
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            @"message", @"cmd",
+                            @"showfeeling", @"cmd",
                             [self.dataModel udid], @"udid",
-                            text, @"text",
+                            feelingAndReason, @"text",
                             nil];
     NSLog(@"%@", params);
     
@@ -115,7 +170,7 @@
              [MBProgressHUD hideHUDForView:self.view animated:YES];
              
              NSLog(@"%@", @"user did show");
-             [self userDidShow:text];
+             [self feelingDidSend];
          }
      }
     failure:^(AFHTTPRequestOperation *operation, NSError *error)
@@ -157,8 +212,8 @@
     if (indexPath.row == 0)
     {
         cell.textLabel.text = @"What's your feeling now";
-        
-
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        cell.accessoryView = button;
     }
     else if (indexPath.row == 1)
     {
@@ -169,6 +224,7 @@
         NSLog(@"feeling[code:%@, felling:%@]", selectedFeelingStatusKey, selectedFeelingStatusValue);
               
         cell.textLabel.text = selectedFeelingStatusValue;
+        cell.textLabel.textColor = [UIColor blueColor];
     }
         
     return cell;
@@ -190,30 +246,10 @@
     
     if (indexPath.row == 0)
     {
-        // Contsruct another view controller here.
-        FeelingStatusViewController *viewController = [[FeelingStatusViewController alloc] init];
-        [self.navigationController pushViewController:viewController animated:YES];
+        [self.navigationController pushViewController:self.feelingStatusViewController animated:YES];
     }
     
 }
 
-
-//- (void)ShowErrorAlert:(NSString*)text
-//{
-//	UIAlertView* alertView = [[UIAlertView alloc]
-//                              initWithTitle:text
-//                              message:nil
-//                              delegate:nil
-//                              cancelButtonTitle:NSLocalizedString(@"OK", nil)
-//                              otherButtonTitles:nil];
-//    
-//	[alertView show];
-//}
-
-- (IBAction)dismissMe:(id)sender {
-    
-    [self dismissModalViewControllerAnimated:YES];
-    
-}
 
 @end
