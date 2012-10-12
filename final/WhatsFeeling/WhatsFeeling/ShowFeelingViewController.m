@@ -91,10 +91,15 @@
 }
 
 
-- (void)feelingDidSend
+- (void)feelingDidSend:(Feeling*)feeling
 {
     NSLog(@"User did show.");
  
+	// Add the Message to the data model's list of messages
+	int index = [self.dataModel addFeeling:feeling];
+    
+    [self.delegate didShowFeeling:feeling atIndex:index];
+    
     [reasonTextField resignFirstResponder];
     
     [self dismissModalViewControllerAnimated:YES];
@@ -121,6 +126,7 @@
     
     Feeling *feeling = [[Feeling alloc] init];
     
+    feeling.type = @"TEXT";
     feeling.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"SelectedFeelingStatusValue"];
     feeling.reason = reasonTextField.text;
     
@@ -170,7 +176,7 @@
              [MBProgressHUD hideHUDForView:self.view animated:YES];
              
              NSLog(@"%@", @"user did show");
-             [self feelingDidSend];
+             [self feelingDidSend:feeling];
          }
      }
     failure:^(AFHTTPRequestOperation *operation, NSError *error)

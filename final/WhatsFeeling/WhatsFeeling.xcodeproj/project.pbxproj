@@ -26,6 +26,9 @@
 		F7668F7D16200F000052764B /* 74-location.png in Resources */ = {isa = PBXBuildFile; fileRef = F7668F7716200F000052764B /* 74-location.png */; };
 		F7668F7E16200F000052764B /* 193-location-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = F7668F7816200F000052764B /* 193-location-arrow.png */; };
 		F7668F83162013DB0052764B /* MyInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7668F81162013DB0052764B /* MyInfoViewController.xib */; };
+		F77CDA7A1627BBE9006A531C /* FeelingStatusViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F77CDA791627BBE9006A531C /* FeelingStatusViewController.xib */; };
+		F780165C1627AD6C00C27351 /* BPXLUUIDHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F780165B1627AD6C00C27351 /* BPXLUUIDHandler.m */; };
+		F780165F1627B01700C27351 /* profile-pic.png in Resources */ = {isa = PBXBuildFile; fileRef = F780165E1627B01700C27351 /* profile-pic.png */; };
 		F79869C9162530E00032C0EB /* MyCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = F79869C8162530E00032C0EB /* MyCommon.m */; };
 		F7AE121B1624764300D7EBB5 /* FeelingStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AE121A1624764200D7EBB5 /* FeelingStatus.m */; };
 		F7AE12341624827D00D7EBB5 /* FeelingStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AE12321624827C00D7EBB5 /* FeelingStatusViewController.m */; };
@@ -95,6 +98,10 @@
 		F7668F7716200F000052764B /* 74-location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "74-location.png"; sourceTree = "<group>"; };
 		F7668F7816200F000052764B /* 193-location-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "193-location-arrow.png"; sourceTree = "<group>"; };
 		F7668F81162013DB0052764B /* MyInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyInfoViewController.xib; sourceTree = "<group>"; };
+		F77CDA791627BBE9006A531C /* FeelingStatusViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeelingStatusViewController.xib; sourceTree = "<group>"; };
+		F780165A1627AD6C00C27351 /* BPXLUUIDHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPXLUUIDHandler.h; sourceTree = "<group>"; };
+		F780165B1627AD6C00C27351 /* BPXLUUIDHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPXLUUIDHandler.m; sourceTree = "<group>"; };
+		F780165E1627B01700C27351 /* profile-pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-pic.png"; sourceTree = "<group>"; };
 		F79869C5162516E90032C0EB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		F79869C7162530E00032C0EB /* MyCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCommon.h; sourceTree = "<group>"; };
 		F79869C8162530E00032C0EB /* MyCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCommon.m; sourceTree = "<group>"; };
@@ -121,10 +128,6 @@
 		F7BDF72816227C2400436A21 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		F7C6E3B21621E26C003DE8B2 /* DataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataModel.h; sourceTree = "<group>"; };
 		F7C6E3B31621E26C003DE8B2 /* DataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataModel.m; sourceTree = "<group>"; };
-		F7C6E3B61621E26C003DE8B2 /* MessageTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageTableViewCell.h; sourceTree = "<group>"; };
-		F7C6E3B71621E26C003DE8B2 /* MessageTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageTableViewCell.m; sourceTree = "<group>"; };
-		F7C6E3B81621E26C003DE8B2 /* SpeechBubbleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpeechBubbleView.h; sourceTree = "<group>"; };
-		F7C6E3B91621E26C003DE8B2 /* SpeechBubbleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpeechBubbleView.m; sourceTree = "<group>"; };
 		F7C6E3BA1621E26C003DE8B2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F7C6E3BC1621E26C003DE8B2 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		F7C6E3BE1621E26C003DE8B2 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
@@ -217,10 +220,6 @@
 			children = (
 				F7C6E3B21621E26C003DE8B2 /* DataModel.h */,
 				F7C6E3B31621E26C003DE8B2 /* DataModel.m */,
-				F7C6E3B61621E26C003DE8B2 /* MessageTableViewCell.h */,
-				F7C6E3B71621E26C003DE8B2 /* MessageTableViewCell.m */,
-				F7C6E3B81621E26C003DE8B2 /* SpeechBubbleView.h */,
-				F7C6E3B91621E26C003DE8B2 /* SpeechBubbleView.m */,
 				F707C441161EC02C00F76C4B /* SAMAppDelegate.h */,
 				F707C442161EC02C00F76C4B /* SAMAppDelegate.m */,
 				F707C439161EC02C00F76C4B /* Supporting Files */,
@@ -261,6 +260,7 @@
 		F707C450161EC1A900F76C4B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				F780165E1627B01700C27351 /* profile-pic.png */,
 				F7BDF71F1622728800436A21 /* green.png */,
 				F7BDF7201622728800436A21 /* grey.png */,
 				F7BDF7161622717600436A21 /* BubbleLefthand.png */,
@@ -280,6 +280,7 @@
 		F707C451161EC1A900F76C4B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F77CDA791627BBE9006A531C /* FeelingStatusViewController.xib */,
 				F7B9F9381625D0DF0016CB08 /* FeelingViewController.xib */,
 				F7B928FF16242ED000944127 /* ShowFeelingViewController.xib */,
 				F7BDF72816227C2400436A21 /* LoginViewController.xib */,
@@ -288,9 +289,19 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		F78016591627AD6C00C27351 /* blackpixel */ = {
+			isa = PBXGroup;
+			children = (
+				F780165A1627AD6C00C27351 /* BPXLUUIDHandler.h */,
+				F780165B1627AD6C00C27351 /* BPXLUUIDHandler.m */,
+			);
+			path = blackpixel;
+			sourceTree = "<group>";
+		};
 		F7C6E3FA1621E26C003DE8B2 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				F78016591627AD6C00C27351 /* blackpixel */,
 				F7C6E3FB1621E26C003DE8B2 /* AFNetworking */,
 				F7C6E40F1621E26C003DE8B2 /* MBProgressHUD */,
 			);
@@ -407,6 +418,8 @@
 				F7B9290016242ED000944127 /* ShowFeelingViewController.xib in Resources */,
 				F7AE12351624827D00D7EBB5 /* FeelingStatusViewController.xib in Resources */,
 				F7B9F9391625D0DF0016CB08 /* FeelingViewController.xib in Resources */,
+				F780165F1627B01700C27351 /* profile-pic.png in Resources */,
+				F77CDA7A1627BBE9006A531C /* FeelingStatusViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,6 +452,7 @@
 				F7AE121B1624764300D7EBB5 /* FeelingStatus.m in Sources */,
 				F7AE12341624827D00D7EBB5 /* FeelingStatusViewController.m in Sources */,
 				F79869C9162530E00032C0EB /* MyCommon.m in Sources */,
+				F780165C1627AD6C00C27351 /* BPXLUUIDHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,6 +12,11 @@
 @class Feeling;
 @class FeelingStatusViewController;
 
+// The delegate protocol
+@protocol ComposeDelegate <NSObject>
+- (void)didShowFeeling:(Feeling*)feeling atIndex:(int)index;
+@end
+
 @interface ShowFeelingViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
 }
@@ -22,5 +27,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *reasonTextField;
 
 @property (strong, nonatomic) FeelingStatusViewController *feelingStatusViewController;
+
+@property (strong, nonatomic) id<ComposeDelegate> delegate;
 
 @end

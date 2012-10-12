@@ -39,11 +39,16 @@
     self.nickNameTextField.text = self.dataModel.nickname;
     self.secretCodeTextField.text = self.dataModel.secretCode;
     
+    [self.nickNameTextField resignFirstResponder];
+    [self.secretCodeTextField resignFirstResponder];
+    
 //    [[self.nickNameTextField layer] setBorderColor:[[UIColor grayColor] CGColor]];
 //    [[self.nickNameTextField layer] setBorderWidth:2.3];
 //    [[self.nickNameTextField layer] setCornerRadius:15];
     
     [MyCommon replaceTextWithLocalizedTextInSubviewsForView:self.view];
+    
+    
     
 }
 

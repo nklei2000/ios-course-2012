@@ -22,10 +22,10 @@
 @end
 
 @implementation MyInfoViewController
+@synthesize myInfoNavigationBar;
 @synthesize udidLabel;
 @synthesize deviceTokenLabel;
 @synthesize nameLabel;
-
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -47,6 +47,7 @@
     self.nameLabel.text = self.dataModel.nickname;
     self.deviceTokenLabel.text = self.dataModel.deviceToken;
     self.udidLabel.text = self.dataModel.udid;
+    
 }
 
 - (void)viewDidUnload
@@ -54,6 +55,7 @@
     [self setNameLabel:nil];
     [self setDeviceTokenLabel:nil];
     [self setUdidLabel:nil];
+    [self setMyInfoNavigationBar:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

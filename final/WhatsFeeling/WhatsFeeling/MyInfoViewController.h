@@ -24,5 +24,6 @@
 
 - (IBAction)deleteAccount:(id)sender;
 
+@property (strong, nonatomic) IBOutlet UINavigationBar *myInfoNavigationBar;
 
 @end

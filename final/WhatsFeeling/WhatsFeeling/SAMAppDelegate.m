@@ -8,12 +8,15 @@
 
 #import "SAMAppDelegate.h"
 
+#import "BPXLUUIDHandler.h"
+
 #import "FeelingViewController.h"
 #import "MyInfoViewController.h"
 #import "LoginViewController.h"
 
 #import "DataModel.h"
 #import "Feeling.h"
+
 
 @implementation SAMAppDelegate
 
@@ -55,13 +58,17 @@
     feelingViewController.dataModel = self.dataModel;
     myInfoViewController.dataModel = self.dataModel;
     
-    // Create universally unique identifier (object)
-    CFUUIDRef uuidObject = CFUUIDCreate(kCFAllocatorDefault);
+//    // Create universally unique identifier (object)
+//    CFUUIDRef uuidObject = CFUUIDCreate(kCFAllocatorDefault);
+//    
+//    // Get the string representation of CFUUID object.
+//    NSString *udid = (__bridge_transfer NSString *)CFUUIDCreateString(kCFAllocatorDefault, uuidObject);
+//    self.dataModel.udid = [udid stringByReplacingOccurrencesOfString:@"-" withString:@""];
+//    CFRelease(uuidObject);
     
-    // Get the string representation of CFUUID object.
-    NSString *udid = (__bridge_transfer NSString *)CFUUIDCreateString(kCFAllocatorDefault, uuidObject);
-    self.dataModel.udid = [udid stringByReplacingOccurrencesOfString:@"-" withString:@""];
-    CFRelease(uuidObject);
+    [BPXLUUIDHandler setAccessGroup:@"mo.gov.spu.WhatsFeeling"];
+    NSString *udid = [BPXLUUIDHandler UUID];
+    self.dataModel.udid = [udid stringByReplacingOccurrencesOfString:@"-" withString:@""];    
     NSLog(@"%@", self.dataModel.udid);
     
     self.tabBarController = [[UITabBarController alloc] init];
