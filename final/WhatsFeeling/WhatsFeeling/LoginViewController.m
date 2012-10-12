@@ -202,6 +202,9 @@
                  {
                      NSLog(@"username: %@", [userInfo objectForKey:@"username"]);
                  }
+                 
+                 [self userDidSignIn];
+                 
              }
              
          }
