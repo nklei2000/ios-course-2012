@@ -76,6 +76,8 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    
+    self.touchFeeling = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -90,14 +92,14 @@
 {
     // one point tap
     self.title = @"Touch face";
-    // self.touchFeeling.touchAction = @"TOUCHFACE";
+    self.touchFeeling.touchAction = @"TOUCHFACE";
     NSLog(@"One point: Touch Face");
 }
 
 - (void)handleTwoPointTap:(UIGestureRecognizer *)gestureRecognizer {
     // two point tap
     self.title = @"Kiss";
-    // self.touchFeeling.touchAction = @"KISS";
+    self.touchFeeling.touchAction = @"KISS";
     NSLog(@"Kiss");
 }
 
@@ -135,9 +137,9 @@
 
 - (void)touchFeelingDidSend:(Feeling*)feeling
 {
-    NSLog(@"User did show.");
+    NSLog(@"Touch feeling did send.");
     
-	// Add the Message to the data model's list of messages
+	// Add the Feeling to the data model's
 	int index = [self.dataModel addFeeling:feeling];
     
     [self.delegate didTouchFeeling:feeling atIndex:index];
@@ -153,23 +155,23 @@
 //    [[NSUserDefaults standardUserDefaults] setValue:@"" forKey:@"SelectedFeelingStatusKey"];
 //    [[NSUserDefaults standardUserDefaults] setValue:@"" forKey:@"SelectedFeelingStatusValue"];
 //    [[NSUserDefaults standardUserDefaults] synchronize];
-        
+    
     [self dismissModalViewControllerAnimated:YES];
 }
 
 
 - (void)sendTouchFeeling
 {
-    NSLog(@"Sending feeling to your friends...");
+    NSLog(@"Sending touch feeling to your friends...");
     
     Feeling *feeling = [[Feeling alloc] init];
     
     feeling.type = @"TOUCH";
-    feeling.text = @"KISS";
+    feeling.touchAction = self.touchFeeling.touchAction;
     
-    if ( feeling.text.length == 0 )
+    if ( feeling.touchAction.length == 0 )
     {
-        [MyCommon ShowErrorAlert:@"Please choose your feeling"];
+        [MyCommon ShowErrorAlert:@"Please make touch feeling"];
         return;
     }
     
@@ -179,7 +181,7 @@
 
 - (void)touchFeelingRequest:(Feeling *)feeling
 {
-    if ( feeling == nil || feeling.text.length == 0)
+    if ( feeling == nil || feeling.touchAction.length == 0)
     {
         [MyCommon ShowErrorAlert:NSLocalizedString(@"NOTHING_SENT", nil)];
         return;
@@ -188,11 +190,11 @@
 	MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 	hud.labelText = NSLocalizedString(@"Sending", nil);
         
-    NSLog(@"feeling action: %@, udid: %@", feeling.text, [self.dataModel udid]);
+    NSLog(@"feeling action: %@, udid: %@", feeling.touchAction, [self.dataModel udid]);
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
                             @"touchfeeling", @"cmd",
                             [self.dataModel udid], @"udid",
-                            feeling.text, @"text",
+                            feeling.touchAction, @"action",
                             nil];
     NSLog(@"%@", params);
     
@@ -208,7 +210,7 @@
          {
              [MBProgressHUD hideHUDForView:self.view animated:YES];
              
-             NSLog(@"%@", @"user did show");
+             NSLog(@"%@", @"touch feeling did send");
              [self touchFeelingDidSend:feeling];
          }
      }

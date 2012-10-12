@@ -44,15 +44,15 @@
     dateLabel.font = [UIFont systemFontOfSize:11];
     dateLabel.textColor = [UIColor colorWithRed:64/255.0 green:64/255.0 blue:64/255.0 alpha:1.0];
     
-    UIView *feeling = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.frame.size.width, self.frame.size.height)];
+    UIView *feelingView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.frame.size.width, self.frame.size.height)];
     
-    feeling.tag = 1000;
+    feelingView.tag = 1000;
 
-    [feeling addSubview:balloonView];
-    [feeling addSubview:label];
-    [feeling addSubview:dateLabel];
+    [feelingView addSubview:balloonView];
+    [feelingView addSubview:label];
+    [feelingView addSubview:dateLabel];
     
-    [self.contentView addSubview:feeling];
+    [self.contentView addSubview:feelingView];
     
     return self;
 }
@@ -71,7 +71,38 @@
 
 - (void)setFeeling:(Feeling *)feeling
 {
-	CGSize size = [feeling.text sizeWithFont:[UIFont systemFontOfSize:14.0] constrainedToSize:CGSizeMake(240.0f, 480.0f) lineBreakMode:UILineBreakModeWordWrap];
+    CGSize size;
+    
+    NSString *displayText = @"";
+    if ( [feeling.type isEqualToString:@"TOUCH"])
+    {
+        if ( !feeling.isSentByUser ) {
+            displayText = [NSString stringWithFormat:@"%@ sent %@ to you", feeling.senderName, feeling.touchAction];
+        } else {
+            displayText = [NSString stringWithFormat:@"I sent %@ to you", feeling.touchAction];
+        }
+    }
+    else
+    {
+        if ( !feeling.isSentByUser )
+        {
+            if ( feeling.reason.length == 0 ) {
+                displayText = [NSString stringWithFormat:@"%@ is %@", feeling.senderName, feeling.text];
+            } else {
+                displayText = [NSString stringWithFormat:@"%@ is %@, caused by %@", feeling.senderName, feeling.text, feeling.reason];                
+            }
+        }
+        else
+        {
+            if ( feeling.reason.length == 0 ) {
+                displayText = [NSString stringWithFormat:@"I am %@", feeling.text];
+            } else {
+                displayText = [NSString stringWithFormat:@"I am %@, caused by %@", feeling.text, feeling.reason];
+            }
+        }
+    }
+    
+	size = [displayText sizeWithFont:[UIFont systemFontOfSize:14.0] constrainedToSize:CGSizeMake(240.0f, 480.0f) lineBreakMode:UILineBreakModeWordWrap];
 	
 	UIImage *balloon;
 	
@@ -96,7 +127,8 @@
 	}
 	
 	balloonView.image = balloon;
-	label.text = feeling.text;
+    
+    label.text = displayText;
     
 	// Format the message date
 	NSDateFormatter* formatter = [[NSDateFormatter alloc] init];

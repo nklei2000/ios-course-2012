@@ -201,6 +201,15 @@
                  if ( userInfo != nil )
                  {
                      NSLog(@"username: %@", [userInfo objectForKey:@"username"]);
+                     
+                     self.dataModel.email = [userInfo objectForKey:@"email"];
+                     self.dataModel.firstName = [userInfo objectForKey:@"first_name"];
+                     self.dataModel.lastName = [userInfo objectForKey:@"last_name"];
+                     self.dataModel.nickname = [userInfo objectForKey:@"nickname"];
+                     self.dataModel.gender = [userInfo objectForKey:@"gender"];
+                     
+                     [[NSUserDefaults standardUserDefaults] synchronize];
+                     
                  }
                  
                  [self userDidSignIn];

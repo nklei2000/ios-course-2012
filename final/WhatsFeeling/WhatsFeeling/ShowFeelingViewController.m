@@ -56,8 +56,8 @@
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelSendFeeling)];
     
-    self.showFeeling = [[Feeling alloc] init];
-    self.showFeeling.type = @"TEXT";
+//    self.showFeeling = [[Feeling alloc] init];
+//    self.showFeeling.type = @"TEXT";
     
 }
 
@@ -70,8 +70,8 @@
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
     
-    self.feelingStatusViewController = nil;
-    self.showFeeling = nil;
+//    self.feelingStatusViewController = nil;
+//    self.showFeeling = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -129,19 +129,19 @@
 {
     NSLog(@"Sending feeling to your friends...");
     
-    // Feeling *feeling = [[Feeling alloc] init];
-    // feeling.type = @"TEXT";
+    Feeling *feeling = [[Feeling alloc] init];
+    feeling.type = @"TEXT";
     
-    self.showFeeling.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"SelectedFeelingStatusValue"];
-    self.showFeeling.reason = reasonTextField.text;
+    feeling.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"SelectedFeelingStatusValue"];
+    feeling.reason = reasonTextField.text;
     
-    if ( self.showFeeling.text.length == 0 )
+    if ( feeling.text.length == 0 )
     {
         [MyCommon ShowErrorAlert:@"Please choose your feeling"];
         return;
     }
     
-    [self showFeelingRequest:self.showFeeling];
+    [self showFeelingRequest:feeling];
     
 }
 

@@ -64,16 +64,16 @@
     myInfoViewController.dataModel = self.dataModel;
     
 //    // Create universally unique identifier (object)
-//    CFUUIDRef uuidObject = CFUUIDCreate(kCFAllocatorDefault);
-//    
-//    // Get the string representation of CFUUID object.
-//    NSString *udid = (__bridge_transfer NSString *)CFUUIDCreateString(kCFAllocatorDefault, uuidObject);
-//    self.dataModel.udid = [udid stringByReplacingOccurrencesOfString:@"-" withString:@""];
-//    CFRelease(uuidObject);
+    CFUUIDRef uuidObject = CFUUIDCreate(kCFAllocatorDefault);
     
-    [BPXLUUIDHandler setAccessGroup:@"mo.gov.spu.WhatsFeeling"];
-    NSString *udid = [BPXLUUIDHandler UUID];
-    self.dataModel.udid = [udid stringByReplacingOccurrencesOfString:@"-" withString:@""];    
+//    // Get the string representation of CFUUID object.
+    NSString *udid = (__bridge_transfer NSString *)CFUUIDCreateString(kCFAllocatorDefault, uuidObject);
+    self.dataModel.udid = [udid stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    CFRelease(uuidObject);
+    
+//    [BPXLUUIDHandler setAccessGroup:@"mo.gov.spu.WhatsFeeling"];
+//    NSString *udid = [BPXLUUIDHandler UUID];
+    self.dataModel.udid = [udid stringByReplacingOccurrencesOfString:@"-" withString:@""];
     NSLog(@"%@", self.dataModel.udid);
     
     

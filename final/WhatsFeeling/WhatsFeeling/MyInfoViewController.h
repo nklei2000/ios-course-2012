@@ -17,6 +17,10 @@
 @property (strong, nonatomic) IBOutlet UILabel *udidLabel;
 @property (strong, nonatomic) IBOutlet UILabel *deviceTokenLabel;
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *nicknameLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *emailLabel;
 
 @property (assign,nonatomic) DataModel *dataModel;
 

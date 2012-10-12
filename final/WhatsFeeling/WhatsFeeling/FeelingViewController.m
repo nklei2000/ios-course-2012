@@ -167,11 +167,15 @@
 #pragma mark Customs
 - (void)didShowFeeling:(Feeling*)feeling atIndex:(int)index;
 {
+    NSLog(@"delegate: didShowFeeling: %d", index);
+    [self.dataModel loadFeelings];
     [feelingTbl reloadData];
 }
 
 - (void)didTouchFeeling:(Feeling*)feeling atIndex:(int)index;
 {
+    NSLog(@"delegate didTouchFeeling: %d", index);
+    [self.dataModel loadFeelings];
     [feelingTbl reloadData];
 }
 
