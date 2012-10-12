@@ -84,8 +84,25 @@
 }
 
 - (IBAction)deleteAccount:(id)sender {
-    [self postUnregisterRequest];
+
+    UIAlertView *updateAlert = [[UIAlertView alloc] initWithTitle: @"Deletion" message: @"Do you really want to delete account?" delegate: self cancelButtonTitle: @"YES"  otherButtonTitles:@"NO",nil];
+    
+    [updateAlert show];
+    
+    // [self postUnregisterRequest];
 }
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex==0)
+    {
+        //give deletion code here
+        NSLog(@"Delete account here");
+        [self postUnregisterRequest];
+    }
+    
+}
+
 
 - (void)userDidSignOut
 {

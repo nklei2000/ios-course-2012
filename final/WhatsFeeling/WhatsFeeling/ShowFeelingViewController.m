@@ -131,6 +131,7 @@
     
     Feeling *feeling = [[Feeling alloc] init];
     feeling.type = @"TEXT";
+    feeling.date = [NSDate date];
     
     feeling.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"SelectedFeelingStatusValue"];
     feeling.reason = reasonTextField.text;
@@ -158,7 +159,7 @@
     
     // NSString *text = @"Hello Sam Lei";
     
-    NSString *feelingAndReason = [NSString stringWithFormat:@"%@ %@", feeling.text, feeling.reason];
+    NSString *feelingAndReason = [NSString stringWithFormat:@"%@ : %@", feeling.text, feeling.reason];
     
     NSLog(@"feeling and reason: %@, udid: %@", feelingAndReason, [self.dataModel udid]);
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:

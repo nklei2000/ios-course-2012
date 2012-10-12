@@ -135,8 +135,8 @@
 	[formatter setDateStyle:NSDateFormatterShortStyle];
 	[formatter setTimeStyle:NSDateFormatterShortStyle];
 	[formatter setDoesRelativeDateFormatting:YES];
-    //	NSString* dateString = [formatter stringFromDate:feeling.date];
-    NSString* dateString = [formatter stringFromDate:[NSDate date]];
+    NSString* dateString = [formatter stringFromDate:feeling.date];
+    // NSString* dateString = [formatter stringFromDate:[NSDate date]];
     
 	// Set the sender's name and date on the label
 	dateLabel.text = [NSString stringWithFormat:@"%@", dateString];

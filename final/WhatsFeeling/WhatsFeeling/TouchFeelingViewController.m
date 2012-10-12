@@ -92,7 +92,7 @@
 {
     // one point tap
     self.title = @"Touch face";
-    self.touchFeeling.touchAction = @"TOUCHFACE";
+    self.touchFeeling.touchAction = @"TOUCH-FACE";
     NSLog(@"One point: Touch Face");
 }
 
@@ -165,8 +165,9 @@
     NSLog(@"Sending touch feeling to your friends...");
     
     Feeling *feeling = [[Feeling alloc] init];
-    
     feeling.type = @"TOUCH";
+    feeling.date = [NSDate date];
+    
     feeling.touchAction = self.touchFeeling.touchAction;
     
     if ( feeling.touchAction.length == 0 )

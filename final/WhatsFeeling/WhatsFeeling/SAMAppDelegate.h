@@ -10,14 +10,14 @@
 
 #import "DataModel.h"
 
-@class SAMViewController;
+@class FeelingViewController;
 @class DataModel;
 
 @interface SAMAppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
-// @property (strong, nonatomic) SAMViewController *viewController;
+@property (strong, nonatomic) FeelingViewController *feelingViewController;
 
 @property (strong, nonatomic) UITabBarController *tabBarController;
 
