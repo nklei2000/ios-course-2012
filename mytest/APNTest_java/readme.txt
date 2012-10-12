@@ -1,0 +1,1 @@
+java -cp apns-0.1.5.jar:. APNTest "APNTest.p12" "APNTest" "c87c..." "Hello APN"
