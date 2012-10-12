@@ -13,7 +13,7 @@ static NSString* const DateKey = @"Date";
 static NSString* const TextKey = @"Text";
 static NSString* const TypeKey = @"Type";
 static NSString* const ReasonKey = @"Reason";
-static NSString* const BodyTouchKey = @"BodyTouch";
+static NSString* const TouchActionKey = @"TouchAction";
 
 @implementation Feeling
 
@@ -29,7 +29,7 @@ static NSString* const BodyTouchKey = @"BodyTouch";
         
 		self.type = [decoder decodeObjectForKey:TypeKey];
 		self.reason = [decoder decodeObjectForKey:ReasonKey];
-		self.bodyTouch = [decoder decodeObjectForKey:BodyTouchKey];
+		self.touchAction = [decoder decodeObjectForKey:TouchActionKey];
         
 	}
 	return self;
@@ -43,7 +43,7 @@ static NSString* const BodyTouchKey = @"BodyTouch";
     
 	[encoder encodeObject:self.type forKey:TypeKey];
 	[encoder encodeObject:self.reason forKey:ReasonKey];
-	[encoder encodeObject:self.bodyTouch forKey:BodyTouchKey];
+	[encoder encodeObject:self.touchAction forKey:TouchActionKey];
 }
 
 - (BOOL)isSentByUser

@@ -178,7 +178,7 @@
 
             NSLog(@"%@", @"loaded feeling status");
             // [self userDidJoin];
-            NSLog(@"Json: %@", JSON);
+            // NSLog(@"Json: %@", JSON);
             [self parseJson:JSON];
 
         }

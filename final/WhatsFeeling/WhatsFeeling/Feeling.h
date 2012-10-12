@@ -14,9 +14,8 @@
 
 // touch or text only
 @property (nonatomic, copy) NSString* type;
-@property (nonatomic, copy) NSString* reason;
-@property (nonatomic, copy) NSString* bodyTouch;
 
+// The sender name
 @property (nonatomic, copy) NSString* senderName;
 
 // When the feeling was sent
@@ -24,6 +23,12 @@
 
 // The text of the feeling
 @property (nonatomic, copy) NSString* text;
+
+// The another text of the feeling caused by
+@property (nonatomic, copy) NSString* reason;
+
+// The action of touch
+@property (nonatomic, copy) NSString* touchAction;
 
 @property (nonatomic, assign) CGSize balloonSize;
 

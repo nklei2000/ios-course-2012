@@ -55,6 +55,10 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(sendFeeling)];
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelSendFeeling)];
+    
+    self.showFeeling = [[Feeling alloc] init];
+    self.showFeeling.type = @"TEXT";
+    
 }
 
 
@@ -67,6 +71,7 @@
     // e.g. self.myOutlet = nil;
     
     self.feelingStatusViewController = nil;
+    self.showFeeling = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -124,19 +129,19 @@
 {
     NSLog(@"Sending feeling to your friends...");
     
-    Feeling *feeling = [[Feeling alloc] init];
+    // Feeling *feeling = [[Feeling alloc] init];
+    // feeling.type = @"TEXT";
     
-    feeling.type = @"TEXT";
-    feeling.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"SelectedFeelingStatusValue"];
-    feeling.reason = reasonTextField.text;
+    self.showFeeling.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"SelectedFeelingStatusValue"];
+    self.showFeeling.reason = reasonTextField.text;
     
-    if ( feeling.text.length == 0 )
+    if ( self.showFeeling.text.length == 0 )
     {
         [MyCommon ShowErrorAlert:@"Please choose your feeling"];
         return;
     }
     
-    [self showFeelingRequest:feeling];
+    [self showFeelingRequest:self.showFeeling];
     
 }
 
@@ -195,9 +200,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // return [self.dataModel.feelings count];
     return 2;
-    // return [self.dataArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -237,11 +240,6 @@
 }
 
 #pragma mark - UITableViewDelegate
-
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    return [FeelingTableViewCell heightForCellWithFeeling:[self.dataModel.feelings objectAtIndex:indexPath.row]];
-//}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

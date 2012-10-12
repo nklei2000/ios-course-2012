@@ -30,4 +30,6 @@
 
 @property (strong, nonatomic) id<ShowFeelingDelegate> delegate;
 
+@property (strong, nonatomic) Feeling *showFeeling;
+
 @end

@@ -17,5 +17,6 @@
 @property (assign, nonatomic) DataModel *dataModel;
 
 - (IBAction)signInAction:(id)sender;
+- (IBAction)signUpAction:(id)sender;
 
 @end

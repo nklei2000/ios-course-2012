@@ -61,7 +61,7 @@
 	
 	contactGroupTbl.tableHeaderView = headerView;
     
-    // Change backgroud
+    // Change backgroud size: 320x460(480)
 //    contactGroupTbl.backgroundView = nil;
 //    [contactGroupTbl setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg-contact-group.png"]]];
     

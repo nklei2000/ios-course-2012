@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 Nam Kin Lei. All rights reserved.
 
 #import "LoginViewController.h"
+#import "SignUpViewController.h"
 
 #import "MBProgressHUD.h"
 #import "AFHTTPClient.h"
@@ -65,10 +66,10 @@
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    if ( self.nickNameTextField.text.length == 0 )
-        [self.nickNameTextField becomeFirstResponder];
-    else
-        [self.secretCodeTextField becomeFirstResponder];
+//    if ( self.nickNameTextField.text.length == 0 )
+//        [self.nickNameTextField becomeFirstResponder];
+//    else
+//        [self.secretCodeTextField becomeFirstResponder];
     
 }
 
@@ -110,6 +111,14 @@
     
     [self postSignUpRequest];
 
+}
+
+- (IBAction)signUpAction:(id)sender {
+    
+    SignUpViewController *signUpViewController = [[SignUpViewController alloc]
+                                                initWithNibName:@"SignUpViewController" bundle:nil];
+    [self presentModalViewController:signUpViewController animated:NO];
+    
 }
 
 - (void)postSignUpRequest

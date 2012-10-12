@@ -9,6 +9,7 @@
 #import "FeelingViewController.h"
 #import "FeelingTableViewCell.h"
 #import "ShowFeelingViewController.h"
+#import "TouchFeelingViewController.h"
 
 #import "DataModel.h"
 #import "Feeling.h"
@@ -74,13 +75,7 @@
 	 */
 	CGSize screenSize = [[UIScreen mainScreen] applicationFrame].size;
 	UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenSize.width, 55)];
-	
-//	UIButton *newGroupButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-//	[newGroupButton addTarget:self action:@selector(addNewGroup) forControlEvents:UIControlEventTouchUpInside];
-//	newGroupButton.frame = CGRectMake(10, 5, 100, 30);
-//	[newGroupButton setTitle:NSLocalizedString(@"New Group",nil) forState:UIControlStateNormal];
-//    [[newGroupButton titleLabel] setFont:[UIFont systemFontOfSize:13.0]];
-	
+		
 	UIButton *loadEarlierButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 	[loadEarlierButton addTarget:self action:@selector(loadEarlierFeelings) forControlEvents:UIControlEventTouchUpInside];
 	// loadEarlierButton.frame = CGRectMake((screenSize.width / 3)+20, 5, 100, 30);
@@ -95,7 +90,6 @@
 	[infoButton setTitle:NSLocalizedString(@"Info", nil) forState:UIControlStateNormal];
 	[[infoButton titleLabel] setFont:[UIFont systemFontOfSize:13.0]];
     
-//	[headerView addSubview:newGroupButton];
 	[headerView addSubview:loadEarlierButton];
 	[headerView addSubview:infoButton];
 	
@@ -130,10 +124,6 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-//- (void) addNewGroup {
-//    NSLog( @"Added new group!" );
-//}
-
 - (void) loadEarlierFeelings {
     NSLog(@"Load Earlier Feelings");
     [MyCommon ShowInfoAlert:@"Implement later"];
@@ -145,11 +135,45 @@
 }
 
 
+- (IBAction)showFeelingToFriend:(id)sender
+{
+    // Popup show feeling screen
+    ShowFeelingViewController *showFeelingViewController =
+    [[ShowFeelingViewController alloc] initWithNibName:@"ShowFeelingViewController"
+                                                bundle:nil];
+    showFeelingViewController.dataModel = self.dataModel;
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:showFeelingViewController];
+    
+    [self.parentViewController presentModalViewController:navController animated:NO];
+    
+}
+
+- (IBAction)giveTouchToFriend:(id)sender {
+
+    // Popup show feeling screen
+    TouchFeelingViewController *touchFeelingViewController =
+    [[TouchFeelingViewController alloc] initWithNibName:@"TouchFeelingViewController"
+                                                bundle:nil];
+    touchFeelingViewController.dataModel = self.dataModel;
+        
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:touchFeelingViewController];
+    
+    [self.parentViewController presentModalViewController:navController animated:NO];
+    
+}
+
+#pragma mark Customs
 - (void)didShowFeeling:(Feeling*)feeling atIndex:(int)index;
 {
     [feelingTbl reloadData];
 }
 
+- (void)didTouchFeeling:(Feeling*)feeling atIndex:(int)index;
+{
+    [feelingTbl reloadData];
+}
 
 #pragma mark -
 #pragma mark Table view methods
@@ -194,18 +218,7 @@
 }
 
 
-- (IBAction)showFeelingToFriend:(id)sender
-{
-    // Popup show feeling screen
-    ShowFeelingViewController *showFeelingViewController =
-            [[ShowFeelingViewController alloc] initWithNibName:@"ShowFeelingViewController"
-                                                        bundle:nil];
-    showFeelingViewController.dataModel = self.dataModel;
-    
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:showFeelingViewController];
-    
-    [self.parentViewController presentModalViewController:navController animated:NO];
-    
-}
+
+
 
 @end

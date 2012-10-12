@@ -7,15 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+
 #import "ShowFeelingViewController.h"
+#import "TouchFeelingViewController.h"
 
 @class DataModel;
 @class Feeling;
 @class ContactGroup;
 
-@interface FeelingViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, ShowFeelingDelegate>
+@interface FeelingViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, ShowFeelingDelegate, TouchFeelingDelegate>
 {
-    
+
 }
 
 @property (assign, nonatomic) DataModel *dataModel;
@@ -25,5 +27,7 @@
 @property (strong, nonatomic) IBOutlet UIToolbar *toolbar;
 
 - (IBAction)showFeelingToFriend:(id)sender;
+
+- (IBAction)giveTouchToFriend:(id)sender;
 
 @end
