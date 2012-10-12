@@ -20,6 +20,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.title = NSLocalizedString(@"Sign Up", nil);
     }
     return self;
 }
@@ -49,8 +50,8 @@
 }
 
 - (IBAction)tappedDone:(id)sender {
+    [self dismissModalViewControllerAnimated:YES];
 }
 
-- (IBAction)tappedCancel:(id)sender {
-}
+
 @end

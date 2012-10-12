@@ -20,7 +20,7 @@
 @end
 
 @implementation LoginViewController
-@synthesize nickNameTextField;
+@synthesize usernameTextField;
 @synthesize secretCodeTextField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -37,16 +37,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.nickNameTextField.text = self.dataModel.nickname;
+    self.usernameTextField.text = self.dataModel.username;
     self.secretCodeTextField.text = self.dataModel.secretCode;
     
-    [self.nickNameTextField resignFirstResponder];
+    [self.usernameTextField resignFirstResponder];
     [self.secretCodeTextField resignFirstResponder];
-    
-//    [[self.nickNameTextField layer] setBorderColor:[[UIColor grayColor] CGColor]];
-//    [[self.nickNameTextField layer] setBorderWidth:2.3];
-//    [[self.nickNameTextField layer] setCornerRadius:15];
-    
+        
     [MyCommon replaceTextWithLocalizedTextInSubviewsForView:self.view];
     
     
@@ -55,8 +51,8 @@
 
 - (void)viewDidUnload
 {
-    [self setNickNameTextField:nil];
     [self setSecretCodeTextField:nil];
+    [self setUsernameTextField:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -65,12 +61,7 @@
 
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-//    if ( self.nickNameTextField.text.length == 0 )
-//        [self.nickNameTextField becomeFirstResponder];
-//    else
-//        [self.secretCodeTextField becomeFirstResponder];
-    
+        
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -91,7 +82,7 @@
 - (IBAction)signInAction:(id)sender
 {
     // validate the text field values
-    if (self.nickNameTextField.text.length == 0)
+    if (self.usernameTextField.text.length == 0)
     {
         [MyCommon ShowErrorAlert:NSLocalizedString(@"ERROR_FILL_USERNAME",nil)];
         return;
@@ -103,13 +94,13 @@
     }
     
     // starting post the value to remote server
-    self.dataModel.nickname = self.nickNameTextField.text;
+    self.dataModel.username = self.usernameTextField.text;
     self.dataModel.secretCode = self.secretCodeTextField.text;
     
-    [self.nickNameTextField resignFirstResponder];
+    [self.usernameTextField resignFirstResponder];
     [self.secretCodeTextField resignFirstResponder];
     
-    [self postSignUpRequest];
+    [self postSignInRequest];
 
 }
 
@@ -121,48 +112,48 @@
     
 }
 
-- (void)postSignUpRequest
-{
-	MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-	hud.labelText = NSLocalizedString(@"Connecting", nil);
-        
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            @"signup", @"cmd",
-                            [self.dataModel udid], @"udid",
-                            [self.dataModel deviceToken], @"token",
-                            [self.dataModel nickname], @"name",
-                            [self.dataModel secretCode], @"code",
-                            nil];
-    
-    NSLog(@"%@", params);
-    
-    NSURL *url = [NSURL URLWithString:@"http://samlei.site88.net"];
-    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
-
-    [httpClient postPath:@"/api.php" parameters:params
-        success:^(AFHTTPRequestOperation *operation, id response)
-        {
-            NSString *text = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
-            NSLog(@"Response: %@", text);
-            if ([self isViewLoaded])
-            {
-                [MBProgressHUD hideHUDForView:self.view animated:YES];
-
-                NSLog(@"%@", @"user did sign in");
-                [self userDidSignIn];
-            }
-        }
-        failure:^(AFHTTPRequestOperation *operation, NSError *error)
-        {
-            NSLog(@"%@", [error localizedDescription]);
-            if ([self isViewLoaded])
-            {
-                [MBProgressHUD hideHUDForView:self.view animated:YES];
-                [MyCommon ShowErrorAlert:[error localizedDescription]];
-            }
-        }];
-    
-}
+//- (void)postSignUpRequest
+//{
+//	MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//	hud.labelText = NSLocalizedString(@"Connecting", nil);
+//        
+//    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+//                            @"signin", @"cmd",
+//                            [self.dataModel udid], @"udid",
+//                            [self.dataModel deviceToken], @"token",
+//                            [self.dataModel username], @"name",
+//                            [self.dataModel secretCode], @"code",
+//                            nil];
+//    
+//    NSLog(@"%@", params);
+//    
+//    NSURL *url = [NSURL URLWithString:@"http://samlei.site88.net"];
+//    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
+//
+//    [httpClient postPath:@"/api.php" parameters:params
+//        success:^(AFHTTPRequestOperation *operation, id response)
+//        {
+//            NSString *text = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
+//            NSLog(@"Response: %@", text);
+//            if ([self isViewLoaded])
+//            {
+//                [MBProgressHUD hideHUDForView:self.view animated:YES];
+//
+//                NSLog(@"%@", @"user did sign in");
+//                [self userDidSignIn];
+//            }
+//        }
+//        failure:^(AFHTTPRequestOperation *operation, NSError *error)
+//        {
+//            NSLog(@"%@", [error localizedDescription]);
+//            if ([self isViewLoaded])
+//            {
+//                [MBProgressHUD hideHUDForView:self.view animated:YES];
+//                [MyCommon ShowErrorAlert:[error localizedDescription]];
+//            }
+//        }];
+//    
+//}
 
 - (void) postSignInRequest
 {
@@ -170,10 +161,10 @@
 	hud.labelText = NSLocalizedString(@"Connecting", nil);
     
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            @"signup", @"cmd",
+                            @"signin", @"cmd",
                             [self.dataModel udid], @"udid",
                             [self.dataModel deviceToken], @"token",
-                            [self.dataModel nickname], @"name",
+                            [self.dataModel username], @"username",
                             [self.dataModel secretCode], @"code",
                             nil];
     
@@ -205,6 +196,12 @@
              if ( [status isEqualToString:@"success"] )
              {
                  NSLog( @"User Signed in" );
+                 
+                 NSDictionary *userInfo = [JSON objectForKey:@"profile"];
+                 if ( userInfo != nil )
+                 {
+                     NSLog(@"username: %@", [userInfo objectForKey:@"username"]);
+                 }
              }
              
          }

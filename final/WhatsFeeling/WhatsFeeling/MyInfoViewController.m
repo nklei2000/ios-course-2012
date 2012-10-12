@@ -44,7 +44,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.nameLabel.text = self.dataModel.nickname;
+    // self.nameLabel.text = self.dataModel.nickname;
+    self.nameLabel.text = self.dataModel.username;
     self.deviceTokenLabel.text = self.dataModel.deviceToken;
     self.udidLabel.text = self.dataModel.udid;
     

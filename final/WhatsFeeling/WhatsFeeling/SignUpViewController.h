@@ -12,8 +12,6 @@
 
 - (IBAction)tappedDone:(id)sender;
 
-- (IBAction)tappedCancel:(id)sender;
-
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
 
 @end

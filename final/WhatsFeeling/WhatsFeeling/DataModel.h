@@ -23,11 +23,29 @@
 
 // Get and set the user's nickname.
 - (NSString*)nickname;
-- (void)setNickname:(NSString*)name;
+- (void)setNickname:(NSString*)nickname;
+
+- (NSString*)username;
+- (void)setUsername:(NSString*)username;
 
 // Get and set the secret code that the user is registered for.
 - (NSString*)secretCode;
 - (void)setSecretCode:(NSString*)string;
+
+- (NSString*)firstName;
+- (void)setFirstName:(NSString*)firstName;
+
+- (NSString*)lastName;
+- (void)setLastName:(NSString*)lastName;
+
+- (NSString*)email;
+- (void)setEmail:(NSString*)email;
+
+- (NSString*)gender;
+- (void)setGender:(NSString*)gender;
+
+
+
 
 // Determines whether the user has successfully.
 - (BOOL)joined;

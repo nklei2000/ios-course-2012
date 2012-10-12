@@ -10,7 +10,7 @@
 #import "DataModel.h"
 
 @interface LoginViewController : UIViewController
-@property (strong, nonatomic) IBOutlet UITextField *nickNameTextField;
+//@property (strong, nonatomic) IBOutlet UITextField *nickNameTextField;
 
 @property (strong, nonatomic) IBOutlet UITextField *secretCodeTextField;
 
@@ -18,5 +18,6 @@
 
 - (IBAction)signInAction:(id)sender;
 - (IBAction)signUpAction:(id)sender;
+@property (strong, nonatomic) IBOutlet UITextField *usernameTextField;
 
 @end

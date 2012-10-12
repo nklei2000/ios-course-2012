@@ -5,6 +5,13 @@
 // We store our settings in the NSUserDefaults dictionary using these keys
 static NSString* const NicknameKey = @"Nickname";
 static NSString* const SecretCodeKey = @"SecretCode";
+
+static NSString* const UsernameKey = @"Username";
+static NSString* const FirstNameKey = @"FirstName";
+static NSString* const LastNameKey = @"LastName";
+static NSString* const EmailKey = @"Email";
+static NSString* const GenderKey = @"Gender";
+
 static NSString* const JoinedKey = @"JoinedFeeling";
 static NSString* const DeviceTokenKey = @"DeviceToken";
 static NSString* const UDIDKey = @"UDID";
@@ -103,6 +110,60 @@ static NSString* const UDIDKey = @"UDID";
 {
 	[[NSUserDefaults standardUserDefaults] setObject:string forKey:SecretCodeKey];
 }
+
+
+- (NSString*)username
+{
+	return [[NSUserDefaults standardUserDefaults] stringForKey:UsernameKey];
+}
+
+- (void)setUsername:(NSString*)username
+{
+	[[NSUserDefaults standardUserDefaults] setObject:username forKey:UsernameKey];
+}
+
+
+- (NSString*)firstName
+{
+	return [[NSUserDefaults standardUserDefaults] stringForKey:FirstNameKey];
+}
+
+- (void)setFirstName:(NSString*)firstName
+{
+	[[NSUserDefaults standardUserDefaults] setObject:firstName forKey:FirstNameKey];
+}
+
+- (NSString*)lastName
+{
+	return [[NSUserDefaults standardUserDefaults] stringForKey:LastNameKey];
+}
+
+- (void)setLastName:(NSString*)lastName
+{
+	[[NSUserDefaults standardUserDefaults] setObject:lastName forKey:LastNameKey];
+}
+
+- (NSString*)email
+{
+	return [[NSUserDefaults standardUserDefaults] stringForKey:EmailKey];
+}
+
+- (void)setEmail:(NSString*)email
+{
+	[[NSUserDefaults standardUserDefaults] setObject:email forKey:EmailKey];
+}
+
+- (NSString*)gender
+{
+	return [[NSUserDefaults standardUserDefaults] stringForKey:GenderKey];
+}
+
+- (void)setGender:(NSString*)gender
+{
+	[[NSUserDefaults standardUserDefaults] setObject:gender forKey:GenderKey];
+}
+
+
 
 - (BOOL)joined
 {
