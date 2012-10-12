@@ -43,10 +43,10 @@
 		7B5F044E136302F3006782F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F043F136302F3006782F8 /* main.m */; };
 		7B8FB7121373347500AAD942 /* beep.caf in Resources */ = {isa = PBXBuildFile; fileRef = 7B8FB7111373347500AAD942 /* beep.caf */; };
 		7BC3DC8813701EF30021AB2D /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC3DC8713701EF30021AB2D /* Message.m */; };
-		7BC3DC91137022A10021AB2D /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC3DC90137022A10021AB2D /* MessageTableViewCell.m */; };
-		7BC3DC94137023340021AB2D /* SpeechBubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC3DC93137023330021AB2D /* SpeechBubbleView.m */; };
 		7BC3DC97137025C90021AB2D /* BubbleLefthand.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BC3DC95137025C90021AB2D /* BubbleLefthand.png */; };
 		7BC3DC98137025C90021AB2D /* BubbleRighthand.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BC3DC96137025C90021AB2D /* BubbleRighthand.png */; };
+		F77CDA761627B856006A531C /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F77CDA731627B856006A531C /* MessageTableViewCell.m */; };
+		F77CDA771627B856006A531C /* SpeechBubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = F77CDA751627B856006A531C /* SpeechBubbleView.m */; };
 		F78F5882161D98C800200674 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F78F5881161D98C800200674 /* libz.1.2.5.dylib */; };
 /* End PBXBuildFile section */
 
@@ -111,12 +111,12 @@
 		7B91F17A137353DA0080AB09 /* defs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = defs.h; sourceTree = "<group>"; };
 		7BC3DC8613701EF30021AB2D /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
 		7BC3DC8713701EF30021AB2D /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
-		7BC3DC8F137022A10021AB2D /* MessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTableViewCell.h; sourceTree = "<group>"; };
-		7BC3DC90137022A10021AB2D /* MessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTableViewCell.m; sourceTree = "<group>"; };
-		7BC3DC92137023330021AB2D /* SpeechBubbleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeechBubbleView.h; sourceTree = "<group>"; };
-		7BC3DC93137023330021AB2D /* SpeechBubbleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeechBubbleView.m; sourceTree = "<group>"; };
 		7BC3DC95137025C90021AB2D /* BubbleLefthand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BubbleLefthand.png; sourceTree = "<group>"; };
 		7BC3DC96137025C90021AB2D /* BubbleRighthand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BubbleRighthand.png; sourceTree = "<group>"; };
+		F77CDA721627B856006A531C /* MessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTableViewCell.h; sourceTree = "<group>"; };
+		F77CDA731627B856006A531C /* MessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTableViewCell.m; sourceTree = "<group>"; };
+		F77CDA741627B856006A531C /* SpeechBubbleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeechBubbleView.h; sourceTree = "<group>"; };
+		F77CDA751627B856006A531C /* SpeechBubbleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeechBubbleView.m; sourceTree = "<group>"; };
 		F78F5881161D98C800200674 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -252,6 +252,10 @@
 		7B5F043A136302F3006782F8 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				F77CDA721627B856006A531C /* MessageTableViewCell.h */,
+				F77CDA731627B856006A531C /* MessageTableViewCell.m */,
+				F77CDA741627B856006A531C /* SpeechBubbleView.h */,
+				F77CDA751627B856006A531C /* SpeechBubbleView.m */,
 				7B5F043B136302F3006782F8 /* AppDelegate.h */,
 				7B5F043C136302F3006782F8 /* AppDelegate.m */,
 				7B5F043D136302F3006782F8 /* ChatViewController.h */,
@@ -266,11 +270,7 @@
 				7B5F043F136302F3006782F8 /* main.m */,
 				7BC3DC8613701EF30021AB2D /* Message.h */,
 				7BC3DC8713701EF30021AB2D /* Message.m */,
-				7BC3DC8F137022A10021AB2D /* MessageTableViewCell.h */,
-				7BC3DC90137022A10021AB2D /* MessageTableViewCell.m */,
 				7B5F0440136302F3006782F8 /* Prefix.pch */,
-				7BC3DC92137023330021AB2D /* SpeechBubbleView.h */,
-				7BC3DC93137023330021AB2D /* SpeechBubbleView.m */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -354,8 +354,6 @@
 				7B5F044D136302F3006782F8 /* ChatViewController.m in Sources */,
 				7B5F044E136302F3006782F8 /* main.m in Sources */,
 				7BC3DC8813701EF30021AB2D /* Message.m in Sources */,
-				7BC3DC91137022A10021AB2D /* MessageTableViewCell.m in Sources */,
-				7BC3DC94137023340021AB2D /* SpeechBubbleView.m in Sources */,
 				7B0F8E9E137044A6003EADE6 /* DataModel.m in Sources */,
 				7B0F8EA3137046AB003EADE6 /* LoginViewController.m in Sources */,
 				7B0F8EA91370516D003EADE6 /* ComposeViewController.m in Sources */,
@@ -369,6 +367,8 @@
 				7B0F8ED813705AD8003EADE6 /* ASINetworkQueue.m in Sources */,
 				7B0F8EDE13705AD8003EADE6 /* Reachability.m in Sources */,
 				7B0F8EEF13705B7B003EADE6 /* MBProgressHUD.m in Sources */,
+				F77CDA761627B856006A531C /* MessageTableViewCell.m in Sources */,
+				F77CDA771627B856006A531C /* SpeechBubbleView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
