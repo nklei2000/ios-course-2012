@@ -13,6 +13,7 @@
 }
 
 + (void)ShowErrorAlert:(NSString*)text;
++ (void)ShowInfoAlert:(NSString*)text;
 
 + (NSString*)checkAppLanguage;
 

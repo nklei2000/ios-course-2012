@@ -7,17 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ShowFeelingViewController.h"
 
 @class DataModel;
 @class Feeling;
+@class ContactGroup;
 
-@interface FeelingViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface FeelingViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, ShowFeelingDelegate>
 {
     
 }
 
+@property (assign, nonatomic) DataModel *dataModel;
+@property (assign, nonatomic) ContactGroup *selectedContactGroup;
+
 @property (strong, nonatomic) IBOutlet UITableView *feelingTbl;
-@property (assign,nonatomic) DataModel *dataModel;
 @property (strong, nonatomic) IBOutlet UIToolbar *toolbar;
 
 - (IBAction)showFeelingToFriend:(id)sender;

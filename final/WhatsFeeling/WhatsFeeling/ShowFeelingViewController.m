@@ -21,7 +21,7 @@
 
 @interface ShowFeelingViewController ()
 - (void)showFeelingRequest:(Feeling*)feeling;
-- (void)feelingDidSend;
+- (void)feelingDidSend:(Feeling*)feeling;
 - (void)sendFeeling;
 @end
 

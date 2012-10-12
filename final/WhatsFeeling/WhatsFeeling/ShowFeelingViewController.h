@@ -13,7 +13,7 @@
 @class FeelingStatusViewController;
 
 // The delegate protocol
-@protocol ComposeDelegate <NSObject>
+@protocol ShowFeelingDelegate <NSObject>
 - (void)didShowFeeling:(Feeling*)feeling atIndex:(int)index;
 @end
 
@@ -28,6 +28,6 @@
 
 @property (strong, nonatomic) FeelingStatusViewController *feelingStatusViewController;
 
-@property (strong, nonatomic) id<ComposeDelegate> delegate;
+@property (strong, nonatomic) id<ShowFeelingDelegate> delegate;
 
 @end

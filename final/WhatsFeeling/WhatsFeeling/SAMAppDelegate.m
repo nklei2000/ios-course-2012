@@ -11,6 +11,8 @@
 #import "BPXLUUIDHandler.h"
 
 #import "FeelingViewController.h"
+#import "ContactGroupViewController.h"
+
 #import "MyInfoViewController.h"
 #import "LoginViewController.h"
 
@@ -51,11 +53,14 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    FeelingViewController *feelingViewController = [[FeelingViewController alloc] initWithNibName:@"FeelingViewController" bundle:nil];
+//    FeelingViewController *feelingViewController = [[FeelingViewController alloc] initWithNibName:@"FeelingViewController" bundle:nil];
             
+    ContactGroupViewController *contactGroupViewController = [[ContactGroupViewController alloc] initWithNibName:@"ContactGroupViewController" bundle:nil];
+    
     MyInfoViewController *myInfoViewController = [[MyInfoViewController alloc] initWithNibName:@"MyInfoViewController" bundle:nil];
     
-    feelingViewController.dataModel = self.dataModel;
+//    feelingViewController.dataModel = self.dataModel;
+    contactGroupViewController.dataModel = self.dataModel;
     myInfoViewController.dataModel = self.dataModel;
     
 //    // Create universally unique identifier (object)
@@ -71,9 +76,12 @@
     self.dataModel.udid = [udid stringByReplacingOccurrencesOfString:@"-" withString:@""];    
     NSLog(@"%@", self.dataModel.udid);
     
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:contactGroupViewController];
+    
     self.tabBarController = [[UITabBarController alloc] init];
     
-    self.tabBarController.viewControllers = [NSArray arrayWithObjects:feelingViewController, myInfoViewController, nil];
+    self.tabBarController.viewControllers = [NSArray arrayWithObjects:navController, myInfoViewController, nil];
     
     self.window.rootViewController = self.tabBarController;
     

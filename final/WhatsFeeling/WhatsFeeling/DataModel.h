@@ -29,7 +29,7 @@
 - (NSString*)secretCode;
 - (void)setSecretCode:(NSString*)string;
 
-// Determines whether the user has successfully joined a chat.
+// Determines whether the user has successfully.
 - (BOOL)joined;
 - (void)setJoined:(BOOL)value;
 

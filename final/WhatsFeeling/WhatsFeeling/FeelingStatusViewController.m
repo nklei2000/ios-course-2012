@@ -226,6 +226,23 @@
     return cell;
 }
 
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+//{
+//    if (section == 0)
+//    {
+//        return @"Happy";
+//    }
+//    else if (section == 1)
+//    {
+//        return @"Upset";
+//    }
+//    else if (section == 2)
+//    {
+//        return @"Boring";
+//    }
+//    return @"";
+//}
+
 #pragma mark - UITableViewDelegate
 
 //- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

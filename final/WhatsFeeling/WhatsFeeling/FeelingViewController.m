@@ -75,26 +75,27 @@
 	CGSize screenSize = [[UIScreen mainScreen] applicationFrame].size;
 	UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenSize.width, 55)];
 	
-	UIButton *newGroupButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-	[newGroupButton addTarget:self action:@selector(addNewGroup) forControlEvents:UIControlEventTouchUpInside];
-	newGroupButton.frame = CGRectMake(10, 5, 100, 30);
-	[newGroupButton setTitle:NSLocalizedString(@"New Group",nil) forState:UIControlStateNormal];
-    [[newGroupButton titleLabel] setFont:[UIFont systemFontOfSize:13.0]];
+//	UIButton *newGroupButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//	[newGroupButton addTarget:self action:@selector(addNewGroup) forControlEvents:UIControlEventTouchUpInside];
+//	newGroupButton.frame = CGRectMake(10, 5, 100, 30);
+//	[newGroupButton setTitle:NSLocalizedString(@"New Group",nil) forState:UIControlStateNormal];
+//    [[newGroupButton titleLabel] setFont:[UIFont systemFontOfSize:13.0]];
 	
 	UIButton *loadEarlierButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 	[loadEarlierButton addTarget:self action:@selector(loadEarlierFeelings) forControlEvents:UIControlEventTouchUpInside];
-	loadEarlierButton.frame = CGRectMake((screenSize.width / 3)+20, 5, 100, 30);
+	// loadEarlierButton.frame = CGRectMake((screenSize.width / 3)+20, 5, 100, 30);
+    loadEarlierButton.frame = CGRectMake(10, 5, 120, 30);
 	[loadEarlierButton setTitle:NSLocalizedString(@"Load Earlier",nil) forState:UIControlStateNormal];
     [[loadEarlierButton titleLabel] setFont:[UIFont systemFontOfSize:13.0]];
     // loadEarlierButton.backgroundColor = [UIColor redColor];
     
 	UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-	[infoButton addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
-	infoButton.frame = CGRectMake((screenSize.width) - 70, 5, 60, 30);
+	[infoButton addTarget:self action:@selector(infoFeeling) forControlEvents:UIControlEventTouchUpInside];
+	infoButton.frame = CGRectMake((screenSize.width) - 110, 5, 100, 30);
 	[infoButton setTitle:NSLocalizedString(@"Info", nil) forState:UIControlStateNormal];
 	[[infoButton titleLabel] setFont:[UIFont systemFontOfSize:13.0]];
     
-	[headerView addSubview:newGroupButton];
+//	[headerView addSubview:newGroupButton];
 	[headerView addSubview:loadEarlierButton];
 	[headerView addSubview:infoButton];
 	
@@ -129,13 +130,26 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void) addNewGroup {
-    NSLog( @"Added new group!" );
-}
+//- (void) addNewGroup {
+//    NSLog( @"Added new group!" );
+//}
 
 - (void) loadEarlierFeelings {
     NSLog(@"Load Earlier Feelings");
+    [MyCommon ShowInfoAlert:@"Implement later"];
 }
+
+- (void) infoFeeling {
+    NSLog(@"Info feeling");
+    [MyCommon ShowInfoAlert:@"Implement later"];
+}
+
+
+- (void)didShowFeeling:(Feeling*)feeling atIndex:(int)index;
+{
+    [feelingTbl reloadData];
+}
+
 
 #pragma mark -
 #pragma mark Table view methods
