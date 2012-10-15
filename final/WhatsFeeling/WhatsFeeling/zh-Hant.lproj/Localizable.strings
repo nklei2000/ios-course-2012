@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  WhatsFeeling
+
+  Created by Nam Kin Lei on 10/15/12.
+  Copyright (c) 2012 Nam Kin Lei. All rights reserved.
+*/
+"APPLICATION_NAME" = "您的心情如何";
+"APPLICATION_ID" = "WhatsFeeling";
+"MY_INFO" = "個人資訊";
+"FEELING" = "心情";
+"SIGN_IN" = "登入";
+"SIGN_OUT" = "登出";
+"SHOW_FEELING_TO_FRIENDS" = "向朋友表達您的心情";
+"ERROR_FILL_USERNAME" = "請輸入 WhatsFeeling 使用者名稱";
+"ERROR_FILL_SECRET_CODE" = "請輸入密碼";

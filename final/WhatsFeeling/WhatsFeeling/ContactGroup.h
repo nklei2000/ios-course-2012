@@ -18,6 +18,4 @@
 @property (copy, nonatomic) NSString *name;
 @property (copy, nonatomic) NSString *creationUser;
 
-@property (assign, nonatomic) Feeling *newestFeeling;
-
 @end

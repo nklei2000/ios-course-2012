@@ -40,6 +40,7 @@
 		F78C6423162BE7E00072743C /* ContactGroupTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F78C6422162BE7E00072743C /* ContactGroupTableViewCell.xib */; };
 		F78C6426162BEE090072743C /* arrow-right.png in Resources */ = {isa = PBXBuildFile; fileRef = F78C6424162BEE090072743C /* arrow-right.png */; };
 		F78C6427162BEE090072743C /* group.png in Resources */ = {isa = PBXBuildFile; fileRef = F78C6425162BEE090072743C /* group.png */; };
+		F78C642A162C16800072743C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F78C642C162C16800072743C /* Localizable.strings */; };
 		F79869C9162530E00032C0EB /* MyCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = F79869C8162530E00032C0EB /* MyCommon.m */; };
 		F7AE121B1624764300D7EBB5 /* FeelingStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AE121A1624764200D7EBB5 /* FeelingStatus.m */; };
 		F7AE12341624827D00D7EBB5 /* FeelingStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AE12321624827C00D7EBB5 /* FeelingStatusViewController.m */; };
@@ -140,6 +141,8 @@
 		F78C6422162BE7E00072743C /* ContactGroupTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactGroupTableViewCell.xib; sourceTree = "<group>"; };
 		F78C6424162BEE090072743C /* arrow-right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-right.png"; sourceTree = "<group>"; };
 		F78C6425162BEE090072743C /* group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = group.png; sourceTree = "<group>"; };
+		F78C642B162C16800072743C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F78C642F162C17850072743C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		F79869C5162516E90032C0EB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		F79869C7162530E00032C0EB /* MyCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCommon.h; sourceTree = "<group>"; };
 		F79869C8162530E00032C0EB /* MyCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCommon.m; sourceTree = "<group>"; };
@@ -320,6 +323,7 @@
 				F707C43B161EC02C00F76C4B /* InfoPlist.strings */,
 				F707C43E161EC02C00F76C4B /* main.m */,
 				F707C440161EC02C00F76C4B /* WhatsFeeling-Prefix.pch */,
+				F78C642C162C16800072743C /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -526,6 +530,7 @@
 				F78C6423162BE7E00072743C /* ContactGroupTableViewCell.xib in Resources */,
 				F78C6426162BEE090072743C /* arrow-right.png in Resources */,
 				F78C6427162BEE090072743C /* group.png in Resources */,
+				F78C642A162C16800072743C /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -581,6 +586,15 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
+		F78C642C162C16800072743C /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F78C642B162C16800072743C /* en */,
+				F78C642F162C17850072743C /* zh-Hant */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -606,7 +620,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -626,7 +640,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

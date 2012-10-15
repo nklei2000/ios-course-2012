@@ -22,7 +22,8 @@
 #define CellGroupNameLabelTag       2002
 #define CellFeelingSenderLabelTag   2003
 #define CellFeelingContentLabelTag  2004
-#define CellGroupIndicatorImageTag  2005
+#define CellFeelingDateLabelTag     2005
+#define CellGroupIndicatorImageTag  2006
 
 @interface ContactGroupViewController ()
 
@@ -98,6 +99,10 @@ static NSString *ContactGroupCellIdentifier = @"ContactGroupCell";
     
     [_refreshHeaderView refreshLastUpdatedDate];
     
+    
+    NSLog(@"Test localizable string: %@",
+          NSLocalizedString(@"APPLICATION_NAME", nil) );
+    
 }
 
 - (void)viewDidUnload
@@ -171,8 +176,6 @@ static NSString *ContactGroupCellIdentifier = @"ContactGroupCell";
         group.groupId = [item objectForKey:@"id"];
         group.name = [item objectForKey:@"name"];
         group.creationUser = [item objectForKey:@"creation_user"];
-        
-        group.newestFeeling =  [self.dataModel.feelings lastObject];
         
         [self.dataArray addObject:group];
 
@@ -259,26 +262,44 @@ static NSString *ContactGroupCellIdentifier = @"ContactGroupCell";
     UILabel *feelingSenderLabel = (UILabel*)[cell viewWithTag:CellFeelingSenderLabelTag];
     UILabel *feelingContentLabel = (UILabel*)[cell viewWithTag:CellFeelingContentLabelTag];
     feelingContentLabel.textColor = [UIColor grayColor];
+
+    UILabel *feelingDateLabel = (UILabel*)[cell viewWithTag:CellFeelingDateLabelTag];
+    feelingDateLabel.textColor = [UIColor blueColor];
     
     feelingSenderLabel.text = @"";
     feelingContentLabel.text = @"";
-    if ( group.newestFeeling != nil )
+    feelingDateLabel.text = @"";
+    
+    Feeling *newestFeeling =  [self.dataModel.feelings lastObject];
+    if ( newestFeeling != nil )
     {
-        if ( group.newestFeeling.isSentByUser ) {
+        if ( newestFeeling.isSentByUser ) {
             feelingSenderLabel.text = @"Me:";
         } else {
-            feelingSenderLabel.text = group.newestFeeling.senderName;
+            feelingSenderLabel.text = newestFeeling.senderName;
         }
         
-        if ( group.newestFeeling.displayText.length > 25 )
+        if ( newestFeeling.displayText.length > 25 )
         {
-            feelingContentLabel.text = [NSString stringWithFormat:@"%@...", [group.newestFeeling.displayText substringToIndex:25]];
+            feelingContentLabel.text = [NSString stringWithFormat:@"%@...", [newestFeeling.displayText substringToIndex:25]];
         }
         else
         {
-            feelingContentLabel.text = group.newestFeeling.displayText;
+            feelingContentLabel.text = newestFeeling.displayText;
         }
-        
+
+        if ( newestFeeling.date != nil )
+        {
+            // Format the message date
+            NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+            [formatter setDateStyle:NSDateFormatterMediumStyle];
+            [formatter setTimeStyle:NSDateFormatterNoStyle];
+            [formatter setDoesRelativeDateFormatting:YES];
+            NSString* dateString = [formatter stringFromDate:newestFeeling.date];
+            
+            // Set the sender's name and date on the label
+            feelingDateLabel.text = [NSString stringWithFormat:@"%@", dateString];
+        }
     }
     
     return cell;
