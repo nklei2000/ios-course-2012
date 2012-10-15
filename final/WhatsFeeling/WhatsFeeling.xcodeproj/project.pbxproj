@@ -28,15 +28,15 @@
 		F7668F83162013DB0052764B /* MyInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7668F81162013DB0052764B /* MyInfoViewController.xib */; };
 		F77CDA7A1627BBE9006A531C /* FeelingStatusViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F77CDA791627BBE9006A531C /* FeelingStatusViewController.xib */; };
 		F77CDA7E1627BDD4006A531C /* ContactGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F77CDA7C1627BDD4006A531C /* ContactGroupViewController.m */; };
-		F77CDA7F1627BDD4006A531C /* ContactGroupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F77CDA7D1627BDD4006A531C /* ContactGroupViewController.xib */; };
 		F77CDA821627BF87006A531C /* ContactGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = F77CDA811627BF87006A531C /* ContactGroup.m */; };
 		F77CDA961627D5F6006A531C /* TouchFeelingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F77CDA941627D5F5006A531C /* TouchFeelingViewController.m */; };
-		F77CDA971627D5F6006A531C /* TouchFeelingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F77CDA951627D5F6006A531C /* TouchFeelingViewController.xib */; };
 		F77CDA991627F357006A531C /* bg-touch.png in Resources */ = {isa = PBXBuildFile; fileRef = F77CDA981627F357006A531C /* bg-touch.png */; };
 		F77CDAA516280565006A531C /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F77CDAA316280564006A531C /* SignUpViewController.m */; };
-		F77CDAA616280565006A531C /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F77CDAA416280565006A531C /* SignUpViewController.xib */; };
 		F780165C1627AD6C00C27351 /* BPXLUUIDHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F780165B1627AD6C00C27351 /* BPXLUUIDHandler.m */; };
 		F780165F1627B01700C27351 /* profile-pic.png in Resources */ = {isa = PBXBuildFile; fileRef = F780165E1627B01700C27351 /* profile-pic.png */; };
+		F78C641E162BE54C0072743C /* ContactGroupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F78C641B162BE54C0072743C /* ContactGroupViewController.xib */; };
+		F78C641F162BE54C0072743C /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F78C641C162BE54C0072743C /* SignUpViewController.xib */; };
+		F78C6420162BE54C0072743C /* TouchFeelingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F78C641D162BE54C0072743C /* TouchFeelingViewController.xib */; };
 		F79869C9162530E00032C0EB /* MyCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = F79869C8162530E00032C0EB /* MyCommon.m */; };
 		F7AE121B1624764300D7EBB5 /* FeelingStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AE121A1624764200D7EBB5 /* FeelingStatus.m */; };
 		F7AE12341624827D00D7EBB5 /* FeelingStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AE12321624827C00D7EBB5 /* FeelingStatusViewController.m */; };
@@ -121,19 +121,19 @@
 		F77CDA791627BBE9006A531C /* FeelingStatusViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeelingStatusViewController.xib; sourceTree = "<group>"; };
 		F77CDA7B1627BDD4006A531C /* ContactGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactGroupViewController.h; sourceTree = "<group>"; };
 		F77CDA7C1627BDD4006A531C /* ContactGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactGroupViewController.m; sourceTree = "<group>"; };
-		F77CDA7D1627BDD4006A531C /* ContactGroupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactGroupViewController.xib; sourceTree = "<group>"; };
 		F77CDA801627BF87006A531C /* ContactGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactGroup.h; sourceTree = "<group>"; };
 		F77CDA811627BF87006A531C /* ContactGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactGroup.m; sourceTree = "<group>"; };
 		F77CDA931627D5F5006A531C /* TouchFeelingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchFeelingViewController.h; sourceTree = "<group>"; };
 		F77CDA941627D5F5006A531C /* TouchFeelingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchFeelingViewController.m; sourceTree = "<group>"; };
-		F77CDA951627D5F6006A531C /* TouchFeelingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TouchFeelingViewController.xib; sourceTree = "<group>"; };
 		F77CDA981627F357006A531C /* bg-touch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-touch.png"; sourceTree = "<group>"; };
 		F77CDAA216280564006A531C /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		F77CDAA316280564006A531C /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
-		F77CDAA416280565006A531C /* SignUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignUpViewController.xib; sourceTree = "<group>"; };
 		F780165A1627AD6C00C27351 /* BPXLUUIDHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPXLUUIDHandler.h; sourceTree = "<group>"; };
 		F780165B1627AD6C00C27351 /* BPXLUUIDHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPXLUUIDHandler.m; sourceTree = "<group>"; };
 		F780165E1627B01700C27351 /* profile-pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-pic.png"; sourceTree = "<group>"; };
+		F78C641B162BE54C0072743C /* ContactGroupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactGroupViewController.xib; sourceTree = "<group>"; };
+		F78C641C162BE54C0072743C /* SignUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignUpViewController.xib; sourceTree = "<group>"; };
+		F78C641D162BE54C0072743C /* TouchFeelingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TouchFeelingViewController.xib; sourceTree = "<group>"; };
 		F79869C5162516E90032C0EB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		F79869C7162530E00032C0EB /* MyCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCommon.h; sourceTree = "<group>"; };
 		F79869C8162530E00032C0EB /* MyCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCommon.m; sourceTree = "<group>"; };
@@ -295,15 +295,12 @@
 				F79869C8162530E00032C0EB /* MyCommon.m */,
 				F77CDA7B1627BDD4006A531C /* ContactGroupViewController.h */,
 				F77CDA7C1627BDD4006A531C /* ContactGroupViewController.m */,
-				F77CDA7D1627BDD4006A531C /* ContactGroupViewController.xib */,
 				F77CDA801627BF87006A531C /* ContactGroup.h */,
 				F77CDA811627BF87006A531C /* ContactGroup.m */,
 				F77CDA931627D5F5006A531C /* TouchFeelingViewController.h */,
 				F77CDA941627D5F5006A531C /* TouchFeelingViewController.m */,
-				F77CDA951627D5F6006A531C /* TouchFeelingViewController.xib */,
 				F77CDAA216280564006A531C /* SignUpViewController.h */,
 				F77CDAA316280564006A531C /* SignUpViewController.m */,
-				F77CDAA416280565006A531C /* SignUpViewController.xib */,
 				F7B2FA62162BA79D00900CD0 /* SoundEffectHelper.h */,
 				F7B2FA63162BA79D00900CD0 /* SoundEffectHelper.m */,
 			);
@@ -354,6 +351,9 @@
 			isa = PBXGroup;
 			children = (
 				F77CDA791627BBE9006A531C /* FeelingStatusViewController.xib */,
+				F78C641B162BE54C0072743C /* ContactGroupViewController.xib */,
+				F78C641C162BE54C0072743C /* SignUpViewController.xib */,
+				F78C641D162BE54C0072743C /* TouchFeelingViewController.xib */,
 				F7B9F9381625D0DF0016CB08 /* FeelingViewController.xib */,
 				F7B928FF16242ED000944127 /* ShowFeelingViewController.xib */,
 				F7BDF72816227C2400436A21 /* LoginViewController.xib */,
@@ -502,10 +502,7 @@
 				F7B9F9391625D0DF0016CB08 /* FeelingViewController.xib in Resources */,
 				F780165F1627B01700C27351 /* profile-pic.png in Resources */,
 				F77CDA7A1627BBE9006A531C /* FeelingStatusViewController.xib in Resources */,
-				F77CDA7F1627BDD4006A531C /* ContactGroupViewController.xib in Resources */,
-				F77CDA971627D5F6006A531C /* TouchFeelingViewController.xib in Resources */,
 				F77CDA991627F357006A531C /* bg-touch.png in Resources */,
-				F77CDAA616280565006A531C /* SignUpViewController.xib in Resources */,
 				F7B2FA74162BC61300900CD0 /* blackArrow.png in Resources */,
 				F7B2FA75162BC61300900CD0 /* blackArrow@2x.png in Resources */,
 				F7B2FA76162BC61300900CD0 /* blueArrow.png in Resources */,
@@ -514,6 +511,9 @@
 				F7B2FA79162BC61300900CD0 /* grayArrow@2x.png in Resources */,
 				F7B2FA7C162BC64700900CD0 /* whiteArrow.png in Resources */,
 				F7B2FA7D162BC64700900CD0 /* whiteArrow@2x.png in Resources */,
+				F78C641E162BE54C0072743C /* ContactGroupViewController.xib in Resources */,
+				F78C641F162BE54C0072743C /* SignUpViewController.xib in Resources */,
+				F78C6420162BE54C0072743C /* TouchFeelingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
