@@ -74,7 +74,7 @@
             UIButton* button = (UIButton*)v;
             NSLog(@"UIButton text: %@", button.titleLabel.text);
             button.titleLabel.text = NSLocalizedString(button.titleLabel.text, nil);
-            NSLog(@"UIButton text (replaced): %@, localized string: %@", button.titleLabel.text, NSLocalizedString(@"SHOW_FEELING_TO_FRIENDS", nil) );
+            NSLog(@"UIButton text (replaced): %@, localized string: %@", button.titleLabel.text, NSLocalizedString(button.titleLabel.text, nil) );
             
         }
     }

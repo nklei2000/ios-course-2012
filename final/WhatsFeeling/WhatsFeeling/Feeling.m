@@ -51,7 +51,7 @@ static NSString* const TouchActionKey = @"TouchAction";
 	return self.senderName == nil;
 }
 
-- (BOOL)isBodyTouch
+- (BOOL)isTouch
 {
     return ([@"TOUCH" isEqualToString:self.type]);
 }

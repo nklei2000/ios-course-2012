@@ -11,13 +11,17 @@
 #import "ShowFeelingViewController.h"
 #import "TouchFeelingViewController.h"
 
+#import "EGORefreshTableHeaderView.h"
+
 @class DataModel;
 @class Feeling;
 @class ContactGroup;
 
-@interface FeelingViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, ShowFeelingDelegate, TouchFeelingDelegate>
+@interface FeelingViewController : UIViewController <EGORefreshTableHeaderDelegate, UITableViewDelegate, UITableViewDataSource, ShowFeelingDelegate, TouchFeelingDelegate>
 {
 
+    EGORefreshTableHeaderView *_refreshHeaderView;
+    BOOL _reloading;
 }
 
 @property (assign, nonatomic) DataModel *dataModel;
@@ -29,5 +33,9 @@
 - (IBAction)showFeelingToFriend:(id)sender;
 
 - (IBAction)giveTouchToFriend:(id)sender;
+
+
+- (void)reloadTableViewDataSource;
+- (void)doneLoadingTableViewData;
 
 @end

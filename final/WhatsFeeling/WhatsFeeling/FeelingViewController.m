@@ -105,6 +105,19 @@
     // Localized the lables and buttons
     [MyCommon replaceTextWithLocalizedTextInSubviewsForView:self.view];
     
+    
+    if ( _refreshHeaderView == nil )
+    {
+        EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - feelingTbl.bounds.size.height, self.view.frame.size.width, feelingTbl.bounds.size.height)];
+        view.delegate = self;
+        
+        [feelingTbl addSubview:view];
+        _refreshHeaderView = view;
+    }
+    
+    [_refreshHeaderView refreshLastUpdatedDate];
+    
+    
 }
 
 - (void)viewDidUnload
@@ -114,6 +127,9 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    
+    _refreshHeaderView = nil;
+    
 }
 
 //- (void)viewWillAppear:(BOOL)animated {
@@ -179,12 +195,22 @@
     
 }
 
+- (void)scrollToNewestFeeling
+{
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:(self.dataModel.feelings.count-1) inSection:0];
+    
+    [self.feelingTbl scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+}
+
 #pragma mark Customs
 - (void)didShowFeeling:(Feeling*)feeling atIndex:(int)index;
 {
     NSLog(@"delegate: didShowFeeling: %d", index);
     [self.dataModel loadFeelings];
     [feelingTbl reloadData];
+    
+    [self scrollToNewestFeeling];
+    
 }
 
 - (void)didTouchFeeling:(Feeling*)feeling atIndex:(int)index;
@@ -192,6 +218,8 @@
     NSLog(@"delegate didTouchFeeling: %d", index);
     [self.dataModel loadFeelings];
     [feelingTbl reloadData];
+    
+    [self scrollToNewestFeeling];
 }
 
 #pragma mark -
@@ -237,6 +265,63 @@
 }
 
 
+#pragma mark -
+#pragma mark Data Source Loading / Reloading Methods
+
+- (void)reloadTableViewDataSource{
+	
+	//  should be calling your tableviews data source model to reload
+	//  put here just for demo
+	_reloading = YES;
+	
+}
+
+- (void)doneLoadingTableViewData{
+	
+	//  model should call this when its done loading
+	_reloading = NO;
+	[_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.feelingTbl];
+	
+}
+
+
+#pragma mark -
+#pragma mark UIScrollViewDelegate Methods
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+	
+	[_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
+    
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+	
+	[_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
+	
+}
+
+
+#pragma mark -
+#pragma mark EGORefreshTableHeaderDelegate Methods
+
+- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view{
+	
+	[self reloadTableViewDataSource];
+	[self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:3.0];
+	
+}
+
+- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view{
+	
+	return _reloading; // should return if data source model is reloading
+	
+}
+
+- (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view{
+	
+	return [NSDate date]; // should return date data source was last changed
+	
+}
 
 
 

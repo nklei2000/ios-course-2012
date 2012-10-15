@@ -67,7 +67,7 @@
     self.touchFeeling = [[Feeling alloc] init];
     self.touchFeeling.type = @"TOUCH";
     
-    self.title = @"Touch me";
+    self.title = @"Touch/Shake me";
     
 }
 
@@ -78,6 +78,22 @@
     // e.g. self.myOutlet = nil;
     
     self.touchFeeling = nil;
+}
+
+- (BOOL)canBecomeFirstResponder
+{
+    return YES;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self becomeFirstResponder];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self resignFirstResponder];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -135,6 +151,16 @@
 //    NSLog(@"Hug");
 //}
 
+-(void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event
+{
+    if(motion == UIEventSubtypeMotionShake)
+    {
+        self.title = @"Shake";
+        self.touchFeeling.touchAction = @"SHAKE";
+        NSLog(@"Shake");
+    }
+}
+
 - (void)touchFeelingDidSend:(Feeling*)feeling
 {
     NSLog(@"Touch feeling did send.");
@@ -146,7 +172,6 @@
         
     [self dismissModalViewControllerAnimated:YES];
 }
-
 
 - (void)cancelSendTouchFeeling
 {

@@ -19,6 +19,7 @@
 #import "DataModel.h"
 #import "Feeling.h"
 
+#import "SoundEffectHelper.h"
 
 @implementation SAMAppDelegate
 
@@ -44,6 +45,11 @@
     {
         feeling.type = @"TOUCH";
         feeling.touchAction = [[parts objectAtIndex:1] stringByReplacingOccurrencesOfString:@"##" withString:@""];
+        
+        if ( [feeling.touchAction isEqualToString:@"SHAKE"] )
+        {
+            [SoundEffectHelper vibrate];
+        }
     }
     else
     {
@@ -61,11 +67,74 @@
 	int index = [self.dataModel addFeeling:feeling];
     NSLog(@"remote notification added into row %d", index);
     
-	if (updateUI) {
-		// [self.feelingViewController didSaveFeeling:feeling atIndex:index];
+	if (updateUI)
+    {
+        if ( [feeling.type isEqualToString:@"TEXT"] )
+        {
+            [self.feelingViewController didShowFeeling:feeling atIndex:index];
+        }
+        else if ( [feeling.type isEqualToString:@"TOUCH"] )
+        {
+            [self.feelingViewController didTouchFeeling:feeling atIndex:index];
+        }
     }
     
 }
+
+
+- (void)addJsonFeelingFromRemoteNotification:(NSDictionary*)userInfo updateUI:(BOOL)updateUI
+{
+	Feeling* feeling = [[Feeling alloc] init];
+	feeling.date = [NSDate date];
+    
+	NSDictionary *alertValue = [[userInfo valueForKey:@"aps"] valueForKey:@"alert"];
+    
+    if ( alertValue != nil )
+    {
+        NSLog(@"alert value: %@", alertValue);
+
+        NSString *feelingType = [alertValue objectForKey:@"type"];
+        if ( [feelingType isEqualToString:@"TEXT"] )
+        {
+            feeling.type = @"TEXT";
+            feeling.text = [alertValue objectForKey:@"text"];
+            feeling.reason = [alertValue objectForKey:@"reason"];
+        }
+        else if ( [feelingType isEqualToString:@"TOUCH"] )
+        {
+            feeling.type = @"TOUCH";
+            feeling.touchAction = [alertValue objectForKey:@"action"];
+            
+            if ( [feeling.touchAction isEqualToString:@"SHAKE"] )
+            {
+                [SoundEffectHelper vibrate];
+            }
+        }
+            
+    }
+    
+    if ( feeling.type != nil )
+    {
+        NSLog(@"feeling type: %@, text: %@, touch action: %@", feeling.type, feeling.text, feeling.touchAction);
+        
+        int index = [self.dataModel addFeeling:feeling];
+        NSLog(@"remote notification added into row %d", index);
+        
+        if (updateUI)
+        {
+            if ( [feeling.type isEqualToString:@"TEXT"] )
+            {
+                [self.feelingViewController didShowFeeling:feeling atIndex:index];
+            }
+            else if ( [feeling.type isEqualToString:@"TOUCH"] )
+            {
+                [self.feelingViewController didTouchFeeling:feeling atIndex:index];
+            }
+        }
+    }
+    
+}
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -77,26 +146,25 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-//    FeelingViewController *feelingViewController = [[FeelingViewController alloc] initWithNibName:@"FeelingViewController" bundle:nil];
-            
+    self.feelingViewController = [[FeelingViewController alloc] initWithNibName:@"FeelingViewController" bundle:nil];
+    self.feelingViewController.dataModel = self.dataModel;
+    
     ContactGroupViewController *contactGroupViewController = [[ContactGroupViewController alloc] initWithNibName:@"ContactGroupViewController" bundle:nil];
+    contactGroupViewController.feelingViewController = self.feelingViewController;
     
     MyInfoViewController *myInfoViewController = [[MyInfoViewController alloc] initWithNibName:@"MyInfoViewController" bundle:nil];
     
-//    feelingViewController.dataModel = self.dataModel;
     contactGroupViewController.dataModel = self.dataModel;
     myInfoViewController.dataModel = self.dataModel;
     
-//    // Create universally unique identifier (object)
-    CFUUIDRef uuidObject = CFUUIDCreate(kCFAllocatorDefault);
+    // Create universally unique identifier (object)
+//    CFUUIDRef uuidObject = CFUUIDCreate(kCFAllocatorDefault);
+//    NSString *udid = (__bridge_transfer NSString *)CFUUIDCreateString(kCFAllocatorDefault, uuidObject);
+//    self.dataModel.udid = [udid stringByReplacingOccurrencesOfString:@"-" withString:@""];
+//    CFRelease(uuidObject);
     
-//    // Get the string representation of CFUUID object.
-    NSString *udid = (__bridge_transfer NSString *)CFUUIDCreateString(kCFAllocatorDefault, uuidObject);
-    self.dataModel.udid = [udid stringByReplacingOccurrencesOfString:@"-" withString:@""];
-    CFRelease(uuidObject);
-    
-//    [BPXLUUIDHandler setAccessGroup:@"mo.gov.spu.WhatsFeeling"];
-//    NSString *udid = [BPXLUUIDHandler UUID];
+    // [BPXLUUIDHandler setAccessGroup:@"mo.gov.spu"];
+    NSString *udid = [BPXLUUIDHandler UUID];
     self.dataModel.udid = [udid stringByReplacingOccurrencesOfString:@"-" withString:@""];
     NSLog(@"%@", self.dataModel.udid);
     
@@ -167,7 +235,25 @@
 - (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)userInfo
 {
 	NSLog(@"Received notification: %@", userInfo);
-	[self addFeelingFromRemoteNotification:userInfo updateUI:YES];
+	// [self addFeelingFromRemoteNotification:userInfo updateUI:YES];
+    [self addJsonFeelingFromRemoteNotification:userInfo updateUI:YES];
+    
+    [UIApplication sharedApplication].applicationIconBadgeNumber = [[[userInfo objectForKey:@"aps"] objectForKey:@"badge"] intValue];
+    
+#if !TARGET_IPHONE_SIMULATOR
+    
+    NSLog(@"remote notification: %@",[userInfo description]);
+    NSDictionary *apsInfo = [userInfo objectForKey:@"aps"];
+    
+    NSString *alert = [apsInfo objectForKey:@"alert"];
+    NSLog(@"Received Push Alert: %@", alert);
+    
+    NSString *badge = [apsInfo objectForKey:@"badge"];
+    NSLog(@"Received Push Badge: %@", badge);
+    application.applicationIconBadgeNumber = [[apsInfo objectForKey:@"badge"] integerValue];
+    
+#endif
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

@@ -30,10 +30,12 @@
 // The action of touch
 @property (nonatomic, copy) NSString* touchAction;
 
+@property (nonatomic, copy) NSString* felt;
+
 @property (nonatomic, assign) CGSize balloonSize;
 
 - (BOOL)isSentByUser;
 
-- (BOOL)isBodyTouch;
+- (BOOL)isTouch;
 
 @end
