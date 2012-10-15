@@ -56,4 +56,38 @@ static NSString* const TouchActionKey = @"TouchAction";
     return ([@"TOUCH" isEqualToString:self.type]);
 }
 
+- (NSString *)displayText
+{
+    NSString *_displayText = @"";
+    if ( [self.type isEqualToString:@"TOUCH"])
+    {
+        if ( !self.isSentByUser ) {
+            _displayText = [NSString stringWithFormat:@"%@ sent %@ to you", self.senderName, self.touchAction];
+        } else {
+            _displayText = [NSString stringWithFormat:@"I sent %@ to you", self.touchAction];
+        }
+    }
+    else
+    {
+        if ( !self.isSentByUser )
+        {
+            if ( self.reason.length == 0 ) {
+                _displayText = [NSString stringWithFormat:@"%@ is %@", self.senderName, self.text];
+            } else {
+                _displayText = [NSString stringWithFormat:@"%@ is %@, caused by %@", self.senderName, self.text, self.reason];
+            }
+        }
+        else
+        {
+            if ( self.reason.length == 0 ) {
+                _displayText = [NSString stringWithFormat:@"I am %@", self.text];
+            } else {
+                _displayText = [NSString stringWithFormat:@"I am %@, caused by %@", self.text, self.reason];
+            }
+        }
+    }
+    
+    return _displayText;
+}
+
 @end

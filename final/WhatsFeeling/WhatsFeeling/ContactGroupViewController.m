@@ -14,8 +14,15 @@
 #import "MBProgressHUD.h"
 
 #import "DataModel.h"
+#import "Feeling.h"
 #import "ContactGroup.h"
 #import "MyCommon.h"
+
+#define CellGroupImageTag           2001
+#define CellGroupNameLabelTag       2002
+#define CellFeelingSenderLabelTag   2003
+#define CellFeelingContentLabelTag  2004
+#define CellGroupIndicatorImageTag  2005
 
 @interface ContactGroupViewController ()
 
@@ -23,6 +30,8 @@
 
 @implementation ContactGroupViewController
 @synthesize contactGroupTbl;
+
+static NSString *ContactGroupCellIdentifier = @"ContactGroupCell";
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,6 +48,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    [contactGroupTbl registerNib:[UINib nibWithNibName:@"ContactGroupTableViewCell" bundle:nil] forCellReuseIdentifier:ContactGroupCellIdentifier];
     
 	/*
 	 Set the background color
@@ -144,6 +155,7 @@
         [self.dataArray removeAllObjects];
     }
     
+    
     NSString *appLanguage = [MyCommon checkAppLanguage];
     NSLog(@"Language (current): %@", appLanguage);
     
@@ -159,7 +171,9 @@
         group.groupId = [item objectForKey:@"id"];
         group.name = [item objectForKey:@"name"];
         group.creationUser = [item objectForKey:@"creation_user"];
-
+        
+        group.newestFeeling =  [self.dataModel.feelings lastObject];
+        
         [self.dataArray addObject:group];
 
     }
@@ -229,37 +243,54 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"ContactGroupCell";
     
     UITableViewCell *cell =
-    [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if ( cell == nil )
+        [tableView dequeueReusableCellWithIdentifier:ContactGroupCellIdentifier];
+    tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    
+    ContactGroup *group = (ContactGroup*)[self.dataArray objectAtIndex:indexPath.row];
+    
+    UIImageView *groupImageView = (UIImageView*)[cell viewWithTag:CellGroupImageTag];
+    groupImageView.image = [UIImage imageNamed:@"group.png"];
+    
+    UILabel *groupNameLabel = (UILabel*)[cell viewWithTag:CellGroupNameLabelTag];
+    groupNameLabel.text = group.name;
+    
+    UILabel *feelingSenderLabel = (UILabel*)[cell viewWithTag:CellFeelingSenderLabelTag];
+    UILabel *feelingContentLabel = (UILabel*)[cell viewWithTag:CellFeelingContentLabelTag];
+    feelingContentLabel.textColor = [UIColor grayColor];
+    
+    feelingSenderLabel.text = @"";
+    feelingContentLabel.text = @"";
+    if ( group.newestFeeling != nil )
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        if ( group.newestFeeling.isSentByUser ) {
+            feelingSenderLabel.text = @"Me:";
+        } else {
+            feelingSenderLabel.text = group.newestFeeling.senderName;
+        }
         
-//        UISwitch *switchView = [[UISwitch alloc] init];
-//        [switchView addTarget:self action:@selector(switchViewToggled:) forControlEvents:UIControlEventValueChanged];
-//        switchView.tag = indexPath.row;
-//        
-//        cell.accessoryView = switchView;
+        if ( group.newestFeeling.displayText.length > 25 )
+        {
+            feelingContentLabel.text = [NSString stringWithFormat:@"%@...", [group.newestFeeling.displayText substringToIndex:25]];
+        }
+        else
+        {
+            feelingContentLabel.text = group.newestFeeling.displayText;
+        }
         
     }
     
-    ContactGroup *group = (ContactGroup*)[self.dataArray objectAtIndex:indexPath.row];
-    cell.textLabel.text = group.name;
-    
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-    cell.accessoryView = button;
-    
     return cell;
+    
 }
 
 #pragma mark - UITableViewDelegate
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    return [FeelingTableViewCell heightForCellWithFeeling:[self.dataModel.feelings objectAtIndex:indexPath.row]];
-//}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 65.0f;
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -341,8 +372,6 @@
 	return [NSDate date]; // should return date data source was last changed
 	
 }
-
-
 
 
 @end

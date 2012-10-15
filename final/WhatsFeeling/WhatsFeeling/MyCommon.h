@@ -17,7 +17,10 @@
 
 + (NSString*)checkAppLanguage;
 
-+(void) replaceTextWithLocalizedTextInSubviewsForView:(UIView*)view;
++(void)replaceTextWithLocalizedTextInSubviewsForView:(UIView*)view;
+
++ (void)setApplicationIconBadgeNumber:(int)badgeNumber;
++ (void)resetApplicationIconBadgeNumber;
 
 @end
 

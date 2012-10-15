@@ -37,6 +37,9 @@
 		F78C641E162BE54C0072743C /* ContactGroupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F78C641B162BE54C0072743C /* ContactGroupViewController.xib */; };
 		F78C641F162BE54C0072743C /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F78C641C162BE54C0072743C /* SignUpViewController.xib */; };
 		F78C6420162BE54C0072743C /* TouchFeelingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F78C641D162BE54C0072743C /* TouchFeelingViewController.xib */; };
+		F78C6423162BE7E00072743C /* ContactGroupTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F78C6422162BE7E00072743C /* ContactGroupTableViewCell.xib */; };
+		F78C6426162BEE090072743C /* arrow-right.png in Resources */ = {isa = PBXBuildFile; fileRef = F78C6424162BEE090072743C /* arrow-right.png */; };
+		F78C6427162BEE090072743C /* group.png in Resources */ = {isa = PBXBuildFile; fileRef = F78C6425162BEE090072743C /* group.png */; };
 		F79869C9162530E00032C0EB /* MyCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = F79869C8162530E00032C0EB /* MyCommon.m */; };
 		F7AE121B1624764300D7EBB5 /* FeelingStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AE121A1624764200D7EBB5 /* FeelingStatus.m */; };
 		F7AE12341624827D00D7EBB5 /* FeelingStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AE12321624827C00D7EBB5 /* FeelingStatusViewController.m */; };
@@ -134,6 +137,9 @@
 		F78C641B162BE54C0072743C /* ContactGroupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactGroupViewController.xib; sourceTree = "<group>"; };
 		F78C641C162BE54C0072743C /* SignUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignUpViewController.xib; sourceTree = "<group>"; };
 		F78C641D162BE54C0072743C /* TouchFeelingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TouchFeelingViewController.xib; sourceTree = "<group>"; };
+		F78C6422162BE7E00072743C /* ContactGroupTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactGroupTableViewCell.xib; sourceTree = "<group>"; };
+		F78C6424162BEE090072743C /* arrow-right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-right.png"; sourceTree = "<group>"; };
+		F78C6425162BEE090072743C /* group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = group.png; sourceTree = "<group>"; };
 		F79869C5162516E90032C0EB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		F79869C7162530E00032C0EB /* MyCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCommon.h; sourceTree = "<group>"; };
 		F79869C8162530E00032C0EB /* MyCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCommon.m; sourceTree = "<group>"; };
@@ -343,6 +349,8 @@
 				F7668F7816200F000052764B /* 193-location-arrow.png */,
 				F707C604161EE63700F76C4B /* chat.png */,
 				F707C605161EE64500F76C4B /* gear.png */,
+				F78C6424162BEE090072743C /* arrow-right.png */,
+				F78C6425162BEE090072743C /* group.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -358,6 +366,7 @@
 				F7B928FF16242ED000944127 /* ShowFeelingViewController.xib */,
 				F7BDF72816227C2400436A21 /* LoginViewController.xib */,
 				F7668F81162013DB0052764B /* MyInfoViewController.xib */,
+				F78C6422162BE7E00072743C /* ContactGroupTableViewCell.xib */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -514,6 +523,9 @@
 				F78C641E162BE54C0072743C /* ContactGroupViewController.xib in Resources */,
 				F78C641F162BE54C0072743C /* SignUpViewController.xib in Resources */,
 				F78C6420162BE54C0072743C /* TouchFeelingViewController.xib in Resources */,
+				F78C6423162BE7E00072743C /* ContactGroupTableViewCell.xib in Resources */,
+				F78C6426162BEE090072743C /* arrow-right.png in Resources */,
+				F78C6427162BEE090072743C /* group.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

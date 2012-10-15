@@ -80,4 +80,17 @@
     }
 }
 
++ (void)setApplicationIconBadgeNumber:(int)badgeNumber
+{
+    [UIApplication sharedApplication].applicationIconBadgeNumber = badgeNumber;
+}
+
++ (void)resetApplicationIconBadgeNumber
+{
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    
+    NSLog(@"reset ApplicationIconBadgeNumber.."); 
+}
+
 @end

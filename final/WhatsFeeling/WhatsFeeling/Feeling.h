@@ -38,4 +38,6 @@
 
 - (BOOL)isTouch;
 
+- (NSString*) displayText;
+
 @end

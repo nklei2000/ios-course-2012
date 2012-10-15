@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class Feeling;
+
 @interface ContactGroup : NSObject
 {
 }
@@ -15,5 +17,7 @@
 @property (copy, nonatomic) NSString *groupId;
 @property (copy, nonatomic) NSString *name;
 @property (copy, nonatomic) NSString *creationUser;
+
+@property (assign, nonatomic) Feeling *newestFeeling;
 
 @end

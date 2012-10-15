@@ -90,15 +90,15 @@
 	[infoButton setTitle:NSLocalizedString(@"Info", nil) forState:UIControlStateNormal];
 	[[infoButton titleLabel] setFont:[UIFont systemFontOfSize:13.0]];
     
-	UIButton *refreshButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-	[refreshButton addTarget:self action:@selector(refreshFeeling) forControlEvents:UIControlEventTouchUpInside];
-	refreshButton.frame = CGRectMake((screenSize.width) - 110, 5, 100, 30);
-	[refreshButton setTitle:NSLocalizedString(@"Refresh", nil) forState:UIControlStateNormal];
-	[[refreshButton titleLabel] setFont:[UIFont systemFontOfSize:13.0]];
+//	UIButton *refreshButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//	[refreshButton addTarget:self action:@selector(refreshFeeling) forControlEvents:UIControlEventTouchUpInside];
+//	refreshButton.frame = CGRectMake((screenSize.width) - 110, 5, 100, 30);
+//	[refreshButton setTitle:NSLocalizedString(@"Refresh", nil) forState:UIControlStateNormal];
+//	[[refreshButton titleLabel] setFont:[UIFont systemFontOfSize:13.0]];
     
 	[headerView addSubview:loadEarlierButton];
-    [headerView addSubview:refreshButton];
-	//[headerView addSubview:infoButton];
+    // [headerView addSubview:refreshButton];
+	[headerView addSubview:infoButton];
 	
 	feelingTbl.tableHeaderView = headerView;
     
@@ -141,6 +141,14 @@
 //- (void)viewWillDisappear:(BOOL)animated {
 //    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
 //}
+
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [self scrollToNewestFeeling];
+}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -200,6 +208,8 @@
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:(self.dataModel.feelings.count-1) inSection:0];
     
     [self.feelingTbl scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    
+    [MyCommon resetApplicationIconBadgeNumber];
 }
 
 #pragma mark Customs
@@ -239,10 +249,12 @@
     if ( cell == nil )
     {
         cell = [[FeelingTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-		tableView.separatorStyle = UITableViewCellSeparatorStyleNone;        
+		tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     
     [cell setFeeling:[self.dataModel.feelings objectAtIndex:indexPath.row]];
+    
+    NSLog(@"cellForRowAtIndexPath (FeelingViewController)...");
     
     //    UIImageView *balloonView = (UIImageView *)[[cell.contentView
     //            viewWithTag:CellFeelingTag]    viewWithTag:CellImageTag];
@@ -256,6 +268,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"heightForRowAtIndexPath (FeelingViewController)...");
     return [FeelingTableViewCell heightForCellWithFeeling:[self.dataModel.feelings objectAtIndex:indexPath.row]];
 }
 
@@ -273,6 +286,7 @@
 	//  should be calling your tableviews data source model to reload
 	//  put here just for demo
 	_reloading = YES;
+    [self.feelingTbl reloadData];
 	
 }
 
@@ -282,6 +296,7 @@
 	_reloading = NO;
 	[_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.feelingTbl];
 	
+    [self scrollToNewestFeeling];
 }
 
 

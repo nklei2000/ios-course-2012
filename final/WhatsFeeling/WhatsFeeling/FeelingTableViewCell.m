@@ -73,40 +73,11 @@
 {
     CGSize size;
     
-    NSString *displayText = @"";
-    if ( [feeling.type isEqualToString:@"TOUCH"])
-    {
-        if ( !feeling.isSentByUser ) {
-            displayText = [NSString stringWithFormat:@"%@ sent %@ to you", feeling.senderName, feeling.touchAction];
-        } else {
-            displayText = [NSString stringWithFormat:@"I sent %@ to you", feeling.touchAction];
-        }
-    }
-    else
-    {
-        if ( !feeling.isSentByUser )
-        {
-            if ( feeling.reason.length == 0 ) {
-                displayText = [NSString stringWithFormat:@"%@ is %@", feeling.senderName, feeling.text];
-            } else {
-                displayText = [NSString stringWithFormat:@"%@ is %@, caused by %@", feeling.senderName, feeling.text, feeling.reason];                
-            }
-        }
-        else
-        {
-            if ( feeling.reason.length == 0 ) {
-                displayText = [NSString stringWithFormat:@"I am %@", feeling.text];
-            } else {
-                displayText = [NSString stringWithFormat:@"I am %@, caused by %@", feeling.text, feeling.reason];
-            }
-        }
-    }
-    
-	size = [displayText sizeWithFont:[UIFont systemFontOfSize:14.0] constrainedToSize:CGSizeMake(240.0f, 480.0f) lineBreakMode:UILineBreakModeWordWrap];
+	size = [feeling.displayText sizeWithFont:[UIFont systemFontOfSize:14.0] constrainedToSize:CGSizeMake(240.0f, 480.0f) lineBreakMode:UILineBreakModeWordWrap];
 	
 	UIImage *balloon;
 	
-    feeling.balloonSize = size;
+    // feeling.balloonSize = size;
     
     NSLog(@"size width: %.2f", size.width);
 	if(feeling.isSentByUser)
@@ -128,7 +99,7 @@
 	
 	balloonView.image = balloon;
     
-    label.text = displayText;
+    label.text = feeling.displayText;
     
 	// Format the message date
 	NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
@@ -142,14 +113,22 @@
 	dateLabel.text = [NSString stringWithFormat:@"%@", dateString];
 	[dateLabel sizeToFit];
 	dateLabel.frame = CGRectMake(8, size.height + 12.0f, self.contentView.bounds.size.width - 16, 16);
-
+    
+    feeling.balloonSize = CGSizeMake(size.width, size.height + 16 + 25);
+    
 }
 
 + (CGFloat)heightForCellWithFeeling:(Feeling *)feeling
 {
-	CGSize size = [feeling.text sizeWithFont:[UIFont systemFontOfSize:14.0] constrainedToSize:CGSizeMake(240.0, 480.0) lineBreakMode:UILineBreakModeWordWrap];
+	CGSize size = [feeling.displayText sizeWithFont:[UIFont systemFontOfSize:14.0] constrainedToSize:CGSizeMake(240.0, 480.0) lineBreakMode:UILineBreakModeWordWrap];
     
-	return size.height + 15 + 18;
+    // date label height: 16
+    // extra height: 25
+    // feeling.balloonSize = CGSizeMake(size.width, size.height + 16 + 30);
+    
+    // return feeling.balloonSize.height;
+
+    return size.height + 16 + 25;
 }
 
 @end
