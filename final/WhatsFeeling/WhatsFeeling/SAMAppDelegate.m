@@ -23,22 +23,46 @@
 @implementation SAMAppDelegate
 
 
-- (void)addMessageFromRemoteNotification:(NSDictionary*)userInfo updateUI:(BOOL)updateUI
+- (void)addFeelingFromRemoteNotification:(NSDictionary*)userInfo updateUI:(BOOL)updateUI
 {
 	Feeling* feeling = [[Feeling alloc] init];
 	feeling.date = [NSDate date];
     
 	NSString* alertValue = [[userInfo valueForKey:@"aps"] valueForKey:@"alert"];
     
-	NSMutableArray* parts = [NSMutableArray arrayWithArray:[alertValue componentsSeparatedByString:@": "]];
-	feeling.senderName = [parts objectAtIndex:0];
-	[parts removeObjectAtIndex:0];
-	feeling.text = [parts componentsJoinedByString:@": "];
+    NSLog(@"alert value: %@", alertValue);
     
-	// int index = [self.dataModel addMessage:message];
+	NSMutableArray* parts = [NSMutableArray arrayWithArray:[alertValue componentsSeparatedByString:@": "]];
+    
+    NSLog(@"parts count: %d", [parts count]);
+    
+	feeling.senderName = [parts objectAtIndex:0];
+	// [parts removeObjectAtIndex:0];
+    
+    if ( [[parts objectAtIndex:1] hasPrefix:@"##"] &&
+         [[parts objectAtIndex:1] hasSuffix:@"##"] )
+    {
+        feeling.type = @"TOUCH";
+        feeling.touchAction = [[parts objectAtIndex:1] stringByReplacingOccurrencesOfString:@"##" withString:@""];
+    }
+    else
+    {
+        feeling.type = @"TEXT";
+        // feeling.text = [parts componentsJoinedByString:@": "];
+        feeling.text = [parts objectAtIndex:1];
+        feeling.reason = @"";
+        if ( [parts count] > 1 ) {
+            feeling.reason = [parts objectAtIndex:2];
+        }
+    }
+    
+    NSLog(@"feeling type: %@, text: %@, touch action: %@", feeling.type, feeling.text, feeling.touchAction);
+    
+	int index = [self.dataModel addFeeling:feeling];
+    NSLog(@"remote notification added into row %d", index);
     
 	if (updateUI) {
-		// [self.feelingViewController didSaveMessage:message atIndex:index];
+		// [self.feelingViewController didSaveFeeling:feeling atIndex:index];
     }
     
 }
@@ -64,16 +88,16 @@
     myInfoViewController.dataModel = self.dataModel;
     
 //    // Create universally unique identifier (object)
-//    CFUUIDRef uuidObject = CFUUIDCreate(kCFAllocatorDefault);
-//    
-//    // Get the string representation of CFUUID object.
-//    NSString *udid = (__bridge_transfer NSString *)CFUUIDCreateString(kCFAllocatorDefault, uuidObject);
-//    self.dataModel.udid = [udid stringByReplacingOccurrencesOfString:@"-" withString:@""];
-//    CFRelease(uuidObject);
+    CFUUIDRef uuidObject = CFUUIDCreate(kCFAllocatorDefault);
     
-    [BPXLUUIDHandler setAccessGroup:@"mo.gov.spu.WhatsFeeling"];
-    NSString *udid = [BPXLUUIDHandler UUID];
-    self.dataModel.udid = [udid stringByReplacingOccurrencesOfString:@"-" withString:@""];    
+//    // Get the string representation of CFUUID object.
+    NSString *udid = (__bridge_transfer NSString *)CFUUIDCreateString(kCFAllocatorDefault, uuidObject);
+    self.dataModel.udid = [udid stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    CFRelease(uuidObject);
+    
+//    [BPXLUUIDHandler setAccessGroup:@"mo.gov.spu.WhatsFeeling"];
+//    NSString *udid = [BPXLUUIDHandler UUID];
+    self.dataModel.udid = [udid stringByReplacingOccurrencesOfString:@"-" withString:@""];
     NSLog(@"%@", self.dataModel.udid);
     
     
@@ -92,7 +116,8 @@
       UIRemoteNotificationTypeBadge |
       UIRemoteNotificationTypeSound)];
     
-    if (![self.dataModel joined]) {
+    if (![self.dataModel joined])
+    {
         LoginViewController *loginViewController = [[LoginViewController alloc]
                             initWithNibName:@"LoginViewController" bundle:nil];
         loginViewController.dataModel = self.dataModel;
@@ -105,7 +130,7 @@
 		if (dictionary != nil)
 		{
 			NSLog(@"Launched from push notification: %@", dictionary);
-			[self addMessageFromRemoteNotification:dictionary updateUI:NO];
+			[self addFeelingFromRemoteNotification:dictionary updateUI:NO];
 		}
 	}
     
@@ -142,7 +167,7 @@
 - (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)userInfo
 {
 	NSLog(@"Received notification: %@", userInfo);
-	[self addMessageFromRemoteNotification:userInfo updateUI:YES];
+	[self addFeelingFromRemoteNotification:userInfo updateUI:YES];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

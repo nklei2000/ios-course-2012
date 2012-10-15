@@ -90,8 +90,15 @@
 	[infoButton setTitle:NSLocalizedString(@"Info", nil) forState:UIControlStateNormal];
 	[[infoButton titleLabel] setFont:[UIFont systemFontOfSize:13.0]];
     
+	UIButton *refreshButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+	[refreshButton addTarget:self action:@selector(refreshFeeling) forControlEvents:UIControlEventTouchUpInside];
+	refreshButton.frame = CGRectMake((screenSize.width) - 110, 5, 100, 30);
+	[refreshButton setTitle:NSLocalizedString(@"Refresh", nil) forState:UIControlStateNormal];
+	[[refreshButton titleLabel] setFont:[UIFont systemFontOfSize:13.0]];
+    
 	[headerView addSubview:loadEarlierButton];
-	[headerView addSubview:infoButton];
+    [headerView addSubview:refreshButton];
+	//[headerView addSubview:infoButton];
 	
 	feelingTbl.tableHeaderView = headerView;
     
@@ -134,6 +141,13 @@
     [MyCommon ShowInfoAlert:@"Implement later"];
 }
 
+- (void) refreshFeeling {
+    NSLog(@"Refreshing feeling");
+    [self.dataModel loadFeelings];
+    
+    [feelingTbl reloadData];
+    
+}
 
 - (IBAction)showFeelingToFriend:(id)sender
 {
@@ -142,6 +156,7 @@
     [[ShowFeelingViewController alloc] initWithNibName:@"ShowFeelingViewController"
                                                 bundle:nil];
     showFeelingViewController.dataModel = self.dataModel;
+    showFeelingViewController.delegate = self;
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:showFeelingViewController];
     
@@ -156,7 +171,7 @@
     [[TouchFeelingViewController alloc] initWithNibName:@"TouchFeelingViewController"
                                                 bundle:nil];
     touchFeelingViewController.dataModel = self.dataModel;
-        
+    touchFeelingViewController.delegate = self;
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:touchFeelingViewController];
     
@@ -167,11 +182,15 @@
 #pragma mark Customs
 - (void)didShowFeeling:(Feeling*)feeling atIndex:(int)index;
 {
+    NSLog(@"delegate: didShowFeeling: %d", index);
+    [self.dataModel loadFeelings];
     [feelingTbl reloadData];
 }
 
 - (void)didTouchFeeling:(Feeling*)feeling atIndex:(int)index;
 {
+    NSLog(@"delegate didTouchFeeling: %d", index);
+    [self.dataModel loadFeelings];
     [feelingTbl reloadData];
 }
 

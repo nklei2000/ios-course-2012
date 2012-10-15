@@ -26,6 +26,9 @@
 @synthesize udidLabel;
 @synthesize deviceTokenLabel;
 @synthesize nameLabel;
+@synthesize nicknameLabel;
+@synthesize usernameLabel;
+@synthesize emailLabel;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -45,7 +48,13 @@
     // Do any additional setup after loading the view from its nib.
     
     // self.nameLabel.text = self.dataModel.nickname;
-    self.nameLabel.text = self.dataModel.username;
+    self.usernameLabel.text = self.dataModel.username;
+    
+    self.nameLabel.text = [NSString stringWithFormat:@"%@ %@", self.dataModel.firstName, self.dataModel.lastName];
+    
+    self.emailLabel.text = self.dataModel.email;
+    self.nicknameLabel.text = self.dataModel.nickname;
+    
     self.deviceTokenLabel.text = self.dataModel.deviceToken;
     self.udidLabel.text = self.dataModel.udid;
     
@@ -57,6 +66,9 @@
     [self setDeviceTokenLabel:nil];
     [self setUdidLabel:nil];
     [self setMyInfoNavigationBar:nil];
+    [self setUsernameLabel:nil];
+    [self setNicknameLabel:nil];
+    [self setEmailLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -72,8 +84,25 @@
 }
 
 - (IBAction)deleteAccount:(id)sender {
-    [self postUnregisterRequest];
+
+    UIAlertView *updateAlert = [[UIAlertView alloc] initWithTitle: @"Deletion" message: @"Do you really want to delete account?" delegate: self cancelButtonTitle: @"YES"  otherButtonTitles:@"NO",nil];
+    
+    [updateAlert show];
+    
+    // [self postUnregisterRequest];
 }
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex==0)
+    {
+        //give deletion code here
+        NSLog(@"Delete account here");
+        [self postUnregisterRequest];
+    }
+    
+}
+
 
 - (void)userDidSignOut
 {
@@ -103,6 +132,14 @@
     // Popup login screen
     LoginViewController *loginViewController = [[LoginViewController alloc]
                                                 initWithNibName:@"LoginViewController" bundle:nil];
+    
+    self.dataModel.username = @"";
+    self.dataModel.nickname = @"";
+    self.dataModel.firstName = @"";
+    self.dataModel.lastName = @"";
+    self.dataModel.email = @"";
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
     loginViewController.dataModel = self.dataModel;
     
     [self.parentViewController presentModalViewController:loginViewController animated:NO];
@@ -158,8 +195,9 @@
 	hud.labelText = NSLocalizedString(@"signout", nil);
     
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            @"unregistered", @"cmd",
+                            @"unregister", @"cmd",
                             [self.dataModel udid], @"udid",
+                            [self.dataModel username], @"username",
                             nil];
     NSLog(@"%@", params);
     
