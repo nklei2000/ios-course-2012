@@ -45,8 +45,6 @@
         
     [MyCommon replaceTextWithLocalizedTextInSubviewsForView:self.view];
     
-    
-    
 }
 
 - (void)viewDidUnload

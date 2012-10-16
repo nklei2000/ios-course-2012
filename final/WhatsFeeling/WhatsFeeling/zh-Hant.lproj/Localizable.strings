@@ -9,8 +9,10 @@
 "APPLICATION_ID" = "WhatsFeeling";
 "MY_INFO" = "個人資訊";
 "FEELING" = "心情";
+"CONTACTS" = "聯絡人";
 "SIGN_IN" = "登入";
 "SIGN_OUT" = "登出";
+"SIGN_UP" = "Sign Up for WhatsFeeling";
 "SHOW_FEELING_TO_FRIENDS" = "向朋友表達您的心情";
 "ERROR_FILL_USERNAME" = "請輸入 WhatsFeeling 使用者名稱";
 "ERROR_FILL_SECRET_CODE" = "請輸入密碼";

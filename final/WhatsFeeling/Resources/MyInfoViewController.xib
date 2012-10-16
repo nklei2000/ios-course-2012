@@ -85,12 +85,18 @@
 						<reference key="NSNextKeyView" ref="862282077"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<array key="IBUIItems">
+						<array class="NSMutableArray" key="IBUIItems">
 							<object class="IBUINavigationItem" id="207743060">
 								<reference key="IBUINavigationBar" ref="638563254"/>
 								<string key="IBUITitle">Personal Profile</string>
+								<object class="IBUIBarButtonItem" key="IBUILeftBarButtonItem" id="719361634">
+									<string key="IBUITitle">English</string>
+									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+									<int key="IBUIStyle">1</int>
+									<reference key="IBUINavigationItem" ref="207743060"/>
+								</object>
 								<object class="IBUIBarButtonItem" key="IBUIRightBarButtonItem" id="620292915">
-									<string key="IBUITitle">Sign Out</string>
+									<string key="IBUITitle">SIGN_OUT</string>
 									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 									<int key="IBUIStyle">1</int>
 									<reference key="IBUINavigationItem" ref="207743060"/>
@@ -117,7 +123,7 @@
 					<object class="IBUILabel" id="251436774">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{122, 83}, {189, 24}}</string>
+						<string key="NSFrame">{{122, 88}, {189, 24}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="89672271"/>
@@ -463,6 +469,14 @@
 					<int key="connectionID">37</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">languageButton</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="719361634"/>
+					</object>
+					<int key="connectionID">44</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">deleteAccount:</string>
 						<reference key="source" ref="868589845"/>
@@ -478,6 +492,14 @@
 						<reference key="destination" ref="372490531"/>
 					</object>
 					<int key="connectionID">14</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">changeLanguage:</string>
+						<reference key="source" ref="719361634"/>
+						<reference key="destination" ref="372490531"/>
+					</object>
+					<int key="connectionID">43</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -532,19 +554,6 @@
 							<reference ref="207743060"/>
 						</array>
 						<reference key="parent" ref="191373211"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">9</int>
-						<reference key="object" ref="207743060"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="620292915"/>
-						</array>
-						<reference key="parent" ref="638563254"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">10</int>
-						<reference key="object" ref="620292915"/>
-						<reference key="parent" ref="207743060"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">15</int>
@@ -606,6 +615,25 @@
 						<reference key="object" ref="807418696"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">9</int>
+						<reference key="object" ref="207743060"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="620292915"/>
+							<reference ref="719361634"/>
+						</array>
+						<reference key="parent" ref="638563254"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">10</int>
+						<reference key="object" ref="620292915"/>
+						<reference key="parent" ref="207743060"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">42</int>
+						<reference key="object" ref="719361634"/>
+						<reference key="parent" ref="207743060"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -627,6 +655,7 @@
 				<string key="28.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="29.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="30.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="42.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="5.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="8.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="9.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -635,7 +664,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">37</int>
+			<int key="maxID">44</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -643,10 +672,15 @@
 					<string key="className">MyInfoViewController</string>
 					<string key="superclassName">UIViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="changeLanguage:">id</string>
 						<string key="deleteAccount:">id</string>
 						<string key="signOut:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="changeLanguage:">
+							<string key="name">changeLanguage:</string>
+							<string key="candidateClassName">id</string>
+						</object>
 						<object class="IBActionInfo" key="deleteAccount:">
 							<string key="name">deleteAccount:</string>
 							<string key="candidateClassName">id</string>
@@ -659,6 +693,7 @@
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="deviceTokenLabel">UILabel</string>
 						<string key="emailLabel">UILabel</string>
+						<string key="languageButton">UIBarButtonItem</string>
 						<string key="myInfoNavigationBar">UINavigationBar</string>
 						<string key="nameLabel">UILabel</string>
 						<string key="nicknameLabel">UILabel</string>
@@ -673,6 +708,10 @@
 						<object class="IBToOneOutletInfo" key="emailLabel">
 							<string key="name">emailLabel</string>
 							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="languageButton">
+							<string key="name">languageButton</string>
+							<string key="candidateClassName">UIBarButtonItem</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="myInfoNavigationBar">
 							<string key="name">myInfoNavigationBar</string>

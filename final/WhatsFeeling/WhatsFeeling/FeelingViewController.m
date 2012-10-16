@@ -34,7 +34,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.title = NSLocalizedString(@"Feeling", @"Feeling");
+        self.title = NSLocalizedString(@"FEELING", nil);
         self.tabBarItem.image = [UIImage imageNamed:@"heart"];
     }
     return self;

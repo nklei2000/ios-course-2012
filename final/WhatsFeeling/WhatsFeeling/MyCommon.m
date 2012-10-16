@@ -34,7 +34,7 @@
 	[alertView show];
 }
 
-+ (void)ChangeAppLanguage:(NSString*)langCode
++ (void)changeAppLanguage:(NSString*)langCode
 {
     [[NSUserDefaults standardUserDefaults] setObject:[NSArray arrayWithObjects:langCode, nil] forKey:@"AppleLanguages"];
     [[NSUserDefaults standardUserDefaults] synchronize];

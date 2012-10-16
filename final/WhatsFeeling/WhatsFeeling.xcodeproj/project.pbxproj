@@ -61,6 +61,11 @@
 		F7B928DE1623D1C100944127 /* Feeling.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B928DD1623D1C100944127 /* Feeling.m */; };
 		F7B928FD16242E4500944127 /* ShowFeelingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B928FB16242E4500944127 /* ShowFeelingViewController.m */; };
 		F7B9290016242ED000944127 /* ShowFeelingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7B928FF16242ED000944127 /* ShowFeelingViewController.xib */; };
+		F7B9423F162CF1F9000071B3 /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B9423D162CF1F9000071B3 /* ContactsViewController.m */; };
+		F7B94243162CF416000071B3 /* contacts.png in Resources */ = {isa = PBXBuildFile; fileRef = F7B94242162CF416000071B3 /* contacts.png */; };
+		F7B94245162CF4A0000071B3 /* ContactsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7B94244162CF4A0000071B3 /* ContactsViewController.xib */; };
+		F7B94247162CF7E2000071B3 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7B94246162CF7E2000071B3 /* AddressBookUI.framework */; };
+		F7B94249162CF7E6000071B3 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7B94248162CF7E6000071B3 /* AddressBook.framework */; };
 		F7B9F9391625D0DF0016CB08 /* FeelingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7B9F9381625D0DF0016CB08 /* FeelingViewController.xib */; };
 		F7BDF7181622717600436A21 /* BubbleLefthand.png in Resources */ = {isa = PBXBuildFile; fileRef = F7BDF7161622717600436A21 /* BubbleLefthand.png */; };
 		F7BDF7191622717600436A21 /* BubbleRighthand.png in Resources */ = {isa = PBXBuildFile; fileRef = F7BDF7171622717600436A21 /* BubbleRighthand.png */; };
@@ -172,6 +177,12 @@
 		F7B928FA16242E4500944127 /* ShowFeelingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowFeelingViewController.h; sourceTree = "<group>"; };
 		F7B928FB16242E4500944127 /* ShowFeelingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowFeelingViewController.m; sourceTree = "<group>"; };
 		F7B928FF16242ED000944127 /* ShowFeelingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowFeelingViewController.xib; sourceTree = "<group>"; };
+		F7B9423C162CF1F9000071B3 /* ContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsViewController.h; sourceTree = "<group>"; };
+		F7B9423D162CF1F9000071B3 /* ContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsViewController.m; sourceTree = "<group>"; };
+		F7B94242162CF416000071B3 /* contacts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contacts.png; sourceTree = "<group>"; };
+		F7B94244162CF4A0000071B3 /* ContactsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactsViewController.xib; sourceTree = "<group>"; };
+		F7B94246162CF7E2000071B3 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks/AddressBookUI.framework; sourceTree = DEVELOPER_DIR; };
+		F7B94248162CF7E6000071B3 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks/AddressBook.framework; sourceTree = DEVELOPER_DIR; };
 		F7B9F9311625C93B0016CB08 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		F7B9F9381625D0DF0016CB08 /* FeelingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeelingViewController.xib; sourceTree = "<group>"; };
 		F7BDF7161622717600436A21 /* BubbleLefthand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BubbleLefthand.png; sourceTree = "<group>"; };
@@ -218,6 +229,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7B94249162CF7E6000071B3 /* AddressBook.framework in Frameworks */,
+				F7B94247162CF7E2000071B3 /* AddressBookUI.framework in Frameworks */,
 				F7B2FA83162BCC0E00900CD0 /* QuartzCore.framework in Frameworks */,
 				F7B2FA69162BA8E300900CD0 /* AVFoundation.framework in Frameworks */,
 				F7B2FA67162BA8DF00900CD0 /* AudioToolbox.framework in Frameworks */,
@@ -237,6 +250,8 @@
 		F707C423161EC02C00F76C4B = {
 			isa = PBXGroup;
 			children = (
+				F7B94248162CF7E6000071B3 /* AddressBook.framework */,
+				F7B94246162CF7E2000071B3 /* AddressBookUI.framework */,
 				F7B2FA82162BCC0E00900CD0 /* QuartzCore.framework */,
 				F7B2FA68162BA8E300900CD0 /* AVFoundation.framework */,
 				F7B2FA66162BA8DF00900CD0 /* AudioToolbox.framework */,
@@ -312,6 +327,8 @@
 				F77CDAA316280564006A531C /* SignUpViewController.m */,
 				F7B2FA62162BA79D00900CD0 /* SoundEffectHelper.h */,
 				F7B2FA63162BA79D00900CD0 /* SoundEffectHelper.m */,
+				F7B9423C162CF1F9000071B3 /* ContactsViewController.h */,
+				F7B9423D162CF1F9000071B3 /* ContactsViewController.m */,
 			);
 			path = WhatsFeeling;
 			sourceTree = "<group>";
@@ -331,6 +348,7 @@
 		F707C450161EC1A900F76C4B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				F7B94242162CF416000071B3 /* contacts.png */,
 				F7B2FA7A162BC64700900CD0 /* whiteArrow.png */,
 				F7B2FA7B162BC64700900CD0 /* whiteArrow@2x.png */,
 				F7B2FA6E162BC61300900CD0 /* blackArrow.png */,
@@ -362,6 +380,7 @@
 		F707C451161EC1A900F76C4B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F7B94244162CF4A0000071B3 /* ContactsViewController.xib */,
 				F77CDA791627BBE9006A531C /* FeelingStatusViewController.xib */,
 				F78C641B162BE54C0072743C /* ContactGroupViewController.xib */,
 				F78C641C162BE54C0072743C /* SignUpViewController.xib */,
@@ -531,6 +550,8 @@
 				F78C6426162BEE090072743C /* arrow-right.png in Resources */,
 				F78C6427162BEE090072743C /* group.png in Resources */,
 				F78C642A162C16800072743C /* Localizable.strings in Resources */,
+				F7B94243162CF416000071B3 /* contacts.png in Resources */,
+				F7B94245162CF4A0000071B3 /* ContactsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -570,6 +591,7 @@
 				F77CDAA516280565006A531C /* SignUpViewController.m in Sources */,
 				F7B2FA64162BA79D00900CD0 /* SoundEffectHelper.m in Sources */,
 				F7B2FA6D162BC5E100900CD0 /* EGORefreshTableHeaderView.m in Sources */,
+				F7B9423F162CF1F9000071B3 /* ContactsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

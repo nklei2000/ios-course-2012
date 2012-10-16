@@ -12,6 +12,7 @@
 
 #import "FeelingViewController.h"
 #import "ContactGroupViewController.h"
+#import "ContactsViewController.h"
 
 #import "MyInfoViewController.h"
 #import "LoginViewController.h"
@@ -147,15 +148,18 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.feelingViewController = [[FeelingViewController alloc] initWithNibName:@"FeelingViewController" bundle:nil];
-    self.feelingViewController.dataModel = self.dataModel;
     
     ContactGroupViewController *contactGroupViewController = [[ContactGroupViewController alloc] initWithNibName:@"ContactGroupViewController" bundle:nil];
     contactGroupViewController.feelingViewController = self.feelingViewController;
     
     MyInfoViewController *myInfoViewController = [[MyInfoViewController alloc] initWithNibName:@"MyInfoViewController" bundle:nil];
     
+    ContactsViewController *contactsViewController = [[ContactsViewController alloc] initWithNibName:@"ContactsViewController" bundle:nil];
+    
+    self.feelingViewController.dataModel = self.dataModel;
     contactGroupViewController.dataModel = self.dataModel;
     myInfoViewController.dataModel = self.dataModel;
+    contactsViewController.dataModel = self.dataModel;
     
     // Create universally unique identifier (object)
 //    CFUUIDRef uuidObject = CFUUIDCreate(kCFAllocatorDefault);
@@ -173,7 +177,7 @@
     
     self.tabBarController = [[UITabBarController alloc] init];
     
-    self.tabBarController.viewControllers = [NSArray arrayWithObjects:navController, myInfoViewController, nil];
+    self.tabBarController.viewControllers = [NSArray arrayWithObjects:navController, contactsViewController, myInfoViewController, nil];
     
     self.window.rootViewController = self.tabBarController;
     
@@ -234,13 +238,14 @@
 
 - (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)userInfo
 {
-	NSLog(@"Received notification: %@", userInfo);
-	// [self addFeelingFromRemoteNotification:userInfo updateUI:YES];
-    [self addJsonFeelingFromRemoteNotification:userInfo updateUI:YES];
     
-    [UIApplication sharedApplication].applicationIconBadgeNumber = [[[userInfo objectForKey:@"aps"] objectForKey:@"badge"] intValue];
+#if TARGET_IPHONE_SIMULATOR
+    NSLog( @"Iphone simulator cannot receive remote notification!" );
+#endif
     
 #if !TARGET_IPHONE_SIMULATOR
+	
+    NSLog(@"Received notification: %@", userInfo);
     
     NSLog(@"remote notification: %@",[userInfo description]);
     NSDictionary *apsInfo = [userInfo objectForKey:@"aps"];
@@ -250,8 +255,13 @@
     
     NSString *badge = [apsInfo objectForKey:@"badge"];
     NSLog(@"Received Push Badge: %@", badge);
-    application.applicationIconBadgeNumber = [[apsInfo objectForKey:@"badge"] integerValue];
+    application.applicationIconBadgeNumber = [[apsInfo objectForKey:@"badge"] intValue];
     
+	// [self addFeelingFromRemoteNotification:userInfo updateUI:YES];
+    [self addJsonFeelingFromRemoteNotification:userInfo updateUI:YES];
+    
+//    [UIApplication sharedApplication].applicationIconBadgeNumber = [[[userInfo objectForKey:@"aps"] objectForKey:@"badge"] intValue];
+
 #endif
     
 }

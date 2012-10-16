@@ -21,10 +21,13 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *languageButton;
 
 @property (assign,nonatomic) DataModel *dataModel;
 
 - (IBAction)signOut:(id)sender;
+
+- (IBAction)changeLanguage:(id)sender;
 
 - (IBAction)deleteAccount:(id)sender;
 

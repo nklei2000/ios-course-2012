@@ -16,6 +16,7 @@
 + (void)ShowInfoAlert:(NSString*)text;
 
 + (NSString*)checkAppLanguage;
++ (void)changeAppLanguage:(NSString*)langCode;
 
 +(void)replaceTextWithLocalizedTextInSubviewsForView:(UIView*)view;
 

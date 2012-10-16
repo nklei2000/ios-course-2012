@@ -9,8 +9,10 @@
 "APPLICATION_ID" = "WhatsFeeling";
 "MY_INFO" = "My Info";
 "FEELING" = "Feeling";
+"CONTACTS" = "Contacts";
 "SIGN_IN" = "Sign In";
 "SIGN_OUT" = "Sign Out";
+"SIGN_UP" = "Sign Up for WhatsFeeling";
 "SHOW_FEELING_TO_FRIENDS" = "Show Your Feeling to Your Friends";
 "ERROR_FILL_USERNAME" = "Please fill the WhatsFeeling Name";
 "ERROR_FILL_SECRET_CODE" = "Please fill the Secret Code";

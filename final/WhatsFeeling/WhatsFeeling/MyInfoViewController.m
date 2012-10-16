@@ -29,6 +29,7 @@
 @synthesize nicknameLabel;
 @synthesize usernameLabel;
 @synthesize emailLabel;
+@synthesize languageButton;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -36,7 +37,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.title = NSLocalizedString(@"My Info", @"My Info");
+        self.title = NSLocalizedString(@"MY_INFO", nil);
         self.tabBarItem.image = [UIImage imageNamed:@"gear"];
     }
     return self;
@@ -57,6 +58,10 @@
     
     self.deviceTokenLabel.text = self.dataModel.deviceToken;
     self.udidLabel.text = self.dataModel.udid;
+ 
+    [MyCommon replaceTextWithLocalizedTextInSubviewsForView:self.view];
+    
+    [self showAppLanguage];
     
 }
 
@@ -69,6 +74,7 @@
     [self setUsernameLabel:nil];
     [self setNicknameLabel:nil];
     [self setEmailLabel:nil];
+    [self setLanguageButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -81,6 +87,42 @@
 
 - (IBAction)signOut:(id)sender {
     [self postSignOutRequest];
+}
+
+- (IBAction)changeLanguage:(id)sender
+{
+    NSString *appLang = [MyCommon checkAppLanguage];
+    NSLog(@"appLang: %@", appLang);
+    
+    NSRange range = [appLang rangeOfString:@"en"];
+    if ( range.length > 0 )
+    {
+        [MyCommon changeAppLanguage:@"zh_TW"];
+    }
+    else
+    {
+        [MyCommon changeAppLanguage:@"en"];
+    }
+    
+    NSLog(@"Change appLang to %@", [MyCommon checkAppLanguage]);
+    
+    [self showAppLanguage];
+}
+
+- (void)showAppLanguage
+{
+    NSString *appLang = [MyCommon checkAppLanguage];
+    NSLog(@"appLang: %@", appLang);
+    
+    NSRange range = [appLang rangeOfString:@"en"];
+    if ( range.length > 0 )
+    {
+        self.languageButton.title = @"English";
+    }
+    else
+    {
+        self.languageButton.title = @"中文";
+    }
 }
 
 - (IBAction)deleteAccount:(id)sender {
