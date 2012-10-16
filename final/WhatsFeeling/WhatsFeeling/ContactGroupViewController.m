@@ -325,6 +325,8 @@ static NSString *ContactGroupCellIdentifier = @"ContactGroupCell";
     [[NSUserDefaults standardUserDefaults] setValue:selectedContactGroup.groupId forKey:@"SelectedContactGroupKey"];
     [[NSUserDefaults standardUserDefaults] setValue:selectedContactGroup.name forKey:@"SelectedContactGroupValue"];
     
+    self.dataModel.selectedContactGroup = selectedContactGroup.groupId;
+    
     // and force the OS to save the changes to disk.
     [[NSUserDefaults standardUserDefaults] synchronize];
     

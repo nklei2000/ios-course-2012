@@ -48,22 +48,24 @@
 	/*
 	 The conversation
 	 */
-    if ( [self.dataModel.feelings count] <= 0 )
-    {
-        Feeling *feeling1 = [[Feeling alloc] init];
-        feeling1.text = @"Working Late.";
-        feeling1.senderName = @"SamLei";
-        
-        Feeling *feeling2 = [[Feeling alloc] init];
-        feeling2.text = @"Oh, too bad, don't work too much after work hour?";
-        Feeling *feeling3 = [[Feeling alloc] init];
-        feeling3.text = @"Yes, but this is a real trouble job.";
-        feeling1.senderName = @"SamLei";
-        
-        [self.dataModel addFeeling:feeling1];
-        [self.dataModel addFeeling:feeling2];
-        [self.dataModel addFeeling:feeling3];
-    }
+//    if ( [self.dataModel.feelings count] <= 0 )
+//    {
+//        Feeling *feeling1 = [[Feeling alloc] init];
+//        feeling1.text = @"Working Late.";
+//        feeling1.senderName = @"SamLei";
+//        
+//        Feeling *feeling2 = [[Feeling alloc] init];
+//        feeling2.text = @"Oh, too bad, don't work too much after work hour?";
+//        Feeling *feeling3 = [[Feeling alloc] init];
+//        feeling3.text = @"Yes, but this is a real trouble job.";
+//        feeling1.senderName = @"SamLei";
+//        
+//        [self.dataModel addFeeling:feeling1];
+//        [self.dataModel addFeeling:feeling2];
+//        [self.dataModel addFeeling:feeling3];
+//    }
+    
+    [self.dataModel loadFeelings];
     
 	/*
 	 Set the background color
@@ -84,27 +86,26 @@
     [[loadEarlierButton titleLabel] setFont:[UIFont systemFontOfSize:13.0]];
     // loadEarlierButton.backgroundColor = [UIColor redColor];
     
-	UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-	[infoButton addTarget:self action:@selector(infoFeeling) forControlEvents:UIControlEventTouchUpInside];
-	infoButton.frame = CGRectMake((screenSize.width) - 110, 5, 100, 30);
-	[infoButton setTitle:NSLocalizedString(@"Info", nil) forState:UIControlStateNormal];
-	[[infoButton titleLabel] setFont:[UIFont systemFontOfSize:13.0]];
+//	UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//	[infoButton addTarget:self action:@selector(infoFeeling) forControlEvents:UIControlEventTouchUpInside];
+//	infoButton.frame = CGRectMake((screenSize.width) - 110, 5, 100, 30);
+//	[infoButton setTitle:NSLocalizedString(@"Clear History", nil) forState:UIControlStateNormal];
+//	[[infoButton titleLabel] setFont:[UIFont systemFontOfSize:13.0]];
     
-//	UIButton *refreshButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-//	[refreshButton addTarget:self action:@selector(refreshFeeling) forControlEvents:UIControlEventTouchUpInside];
-//	refreshButton.frame = CGRectMake((screenSize.width) - 110, 5, 100, 30);
-//	[refreshButton setTitle:NSLocalizedString(@"Refresh", nil) forState:UIControlStateNormal];
-//	[[refreshButton titleLabel] setFont:[UIFont systemFontOfSize:13.0]];
+	UIButton *clearButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+	[clearButton addTarget:self action:@selector(clearHistory) forControlEvents:UIControlEventTouchUpInside];
+	clearButton.frame = CGRectMake((screenSize.width) - 110, 5, 100, 30);
+	[clearButton setTitle:NSLocalizedString(@"Clear History", nil) forState:UIControlStateNormal];
+	[[clearButton titleLabel] setFont:[UIFont systemFontOfSize:13.0]];
     
 	[headerView addSubview:loadEarlierButton];
-    // [headerView addSubview:refreshButton];
-	[headerView addSubview:infoButton];
+    [headerView addSubview:clearButton];
+	// [headerView addSubview:infoButton];
 	
 	feelingTbl.tableHeaderView = headerView;
     
     // Localized the lables and buttons
     [MyCommon replaceTextWithLocalizedTextInSubviewsForView:self.view];
-    
     
     if ( _refreshHeaderView == nil )
     {
@@ -162,15 +163,18 @@
 
 - (void) infoFeeling {
     NSLog(@"Info feeling");
-    [MyCommon ShowInfoAlert:@"Implement later"];
+    // [MyCommon ShowInfoAlert:@"Implement later"];
 }
 
-- (void) refreshFeeling {
-    NSLog(@"Refreshing feeling");
+- (void)clearHistory
+{
+    NSLog(@"Clearing feelings of group %@", self.dataModel.selectedContactGroup);
+    
+    [self.dataModel clearGroupHistory];
+    
     [self.dataModel loadFeelings];
     
-    [feelingTbl reloadData];
-    
+    [feelingTbl reloadData];    
 }
 
 - (IBAction)showFeelingToFriend:(id)sender
@@ -188,8 +192,8 @@
     
 }
 
-- (IBAction)giveTouchToFriend:(id)sender {
-
+- (IBAction)giveTouchToFriend:(id)sender
+{
     // Popup show feeling screen
     TouchFeelingViewController *touchFeelingViewController =
     [[TouchFeelingViewController alloc] initWithNibName:@"TouchFeelingViewController"
@@ -205,9 +209,14 @@
 
 - (void)scrollToNewestFeeling
 {
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:(self.dataModel.feelings.count-1) inSection:0];
-    
-    [self.feelingTbl scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    if ( [self.dataModel.feelings count] > 0)
+    {
+        self.feelingTbl.decelerationRate = UIScrollViewDecelerationRateFast;
+        
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:(self.dataModel.feelings.count-1) inSection:0];
+        
+        [self.feelingTbl scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    }
     
     [MyCommon resetApplicationIconBadgeNumber];
 }

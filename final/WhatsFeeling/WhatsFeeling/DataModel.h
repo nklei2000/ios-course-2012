@@ -44,8 +44,8 @@
 - (NSString*)gender;
 - (void)setGender:(NSString*)gender;
 
-
-
+- (NSString*)selectedContactGroup;
+- (void)setSelectedContactGroup:selectedContactGroup;
 
 // Determines whether the user has successfully.
 - (BOOL)joined;
@@ -56,5 +56,10 @@
 
 - (NSString*)deviceToken;
 - (void)setDeviceToken:(NSString*)token;
+
+- (void)syncUserDefaults;
+
+- (void)clearGroupHistory;
+- (void)clearAllHistory;
 
 @end

@@ -94,6 +94,9 @@
     {
         NSLog(@"alert value: %@", alertValue);
 
+        NSString *groupId = [alertValue objectForKey:@"group"];
+        self.dataModel.selectedContactGroup = groupId;
+        
         NSString *feelingType = [alertValue objectForKey:@"type"];
         if ( [feelingType isEqualToString:@"TEXT"] )
         {
@@ -142,8 +145,7 @@
     
     // Create data model
     self.dataModel = [[DataModel alloc]init];
-    [self.dataModel loadFeelings];
-    
+    // [self.dataModel loadFeelings];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.

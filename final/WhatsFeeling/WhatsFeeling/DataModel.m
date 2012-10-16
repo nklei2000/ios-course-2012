@@ -12,6 +12,8 @@ static NSString* const LastNameKey = @"LastName";
 static NSString* const EmailKey = @"Email";
 static NSString* const GenderKey = @"Gender";
 
+static NSString* const SelectedContactGroupKey = @"SelectedContactGroup";
+
 static NSString* const JoinedKey = @"JoinedFeeling";
 static NSString* const DeviceTokenKey = @"DeviceToken";
 static NSString* const UDIDKey = @"UDID";
@@ -32,6 +34,12 @@ static NSString* const UDIDKey = @"UDID";
 				[NSNumber numberWithInt:0], JoinedKey,
              @"0", DeviceTokenKey,
              @"", UDIDKey,
+             @"", UsernameKey,
+             @"", FirstNameKey,
+             @"", LastNameKey,
+             @"", EmailKey,
+             @"", GenderKey,
+             @"", SelectedContactGroupKey,
 				nil]];
 	}
 }
@@ -41,7 +49,12 @@ static NSString* const UDIDKey = @"UDID";
 {
 	NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	NSString* documentsDirectory = [paths objectAtIndex:0];
-	return [documentsDirectory stringByAppendingPathComponent:@"Feelings.plist"];
+	
+    NSString* fileName = [NSString stringWithFormat:@"%@-Feelings.plist", self.selectedContactGroup];
+    NSLog( @"File name: %@", fileName );
+    
+    return [documentsDirectory stringByAppendingPathComponent:fileName];
+    
 }
 
 - (void)loadFeelings
@@ -57,10 +70,16 @@ static NSString* const UDIDKey = @"UDID";
 		// its Messages "unfreeze" and are restored to their old state.
 
 		NSData* data = [[NSData alloc] initWithContentsOfFile:path];
-		NSKeyedUnarchiver* unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
-		self.feelings = [unarchiver decodeObjectForKey:@"Feelings"];
-		[unarchiver finishDecoding];
-
+        if ( data != nil && [data length] > 0 )
+        {
+            NSKeyedUnarchiver* unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
+            self.feelings = [unarchiver decodeObjectForKey:@"Feelings"];
+            [unarchiver finishDecoding];
+        }
+        else
+        {
+            self.feelings = [NSMutableArray arrayWithCapacity:20];
+        }
 	}
 	else
 	{
@@ -75,20 +94,82 @@ static NSString* const UDIDKey = @"UDID";
 	[archiver encodeObject:self.feelings forKey:@"Feelings"];
 	[archiver finishEncoding];
 	[data writeToFile:[self feelingsPath] atomically:YES];
+    
+    NSLog( @"Save data to: %@", [self feelingsPath] );
+    
 }
 
-- (void)clearFeelings
+- (void)clearGroupHistory
 {
-//	NSMutableData* data = [[NSMutableData alloc] init];
-//	[data writeToFile:[self feelingsPath] atomically:YES];
+    //	NSMutableData* data = [[NSMutableData alloc] init];
+    //	[data writeToFile:[self feelingsPath] atomically:YES];
+    NSError *error = nil;
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    BOOL fileDeleted = [fileManager removeItemAtPath:[self feelingsPath] error:&error];
+    if (fileDeleted != YES || error != nil)
+    {
+        // Deal with the error...
+        NSLog(@"Error: %@", [error description]);
+        return;
+    }
+    
+    NSMutableData* data = [[NSMutableData alloc] init];
+    NSKeyedArchiver* archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+    [archiver encodeObject:self.feelings forKey:@"Feelings"];
+    [archiver finishEncoding];
+    
 }
 
+- (void)clearAllHistory
+{
+    NSLog(@"Clearing all historical feelings");
+    
+    // Path to the Documents directory
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    
+    if ([paths count] > 0)
+    {
+        NSError *error = nil;
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        
+        // Print out the path to verify we are in the right place
+        NSString* documentsDirectory = [paths objectAtIndex:0];
+        NSLog(@"Documents Directory: %@", documentsDirectory);
+        
+        // For each file in the directory, create full path and delete the file
+        for (NSString *file in [fileManager contentsOfDirectoryAtPath:documentsDirectory error:&error])
+        {
+            NSString *filePath = [documentsDirectory stringByAppendingPathComponent:file];
+            NSLog(@"File : %@", filePath);
+
+            NSRange range = [filePath rangeOfString:@"Feelings.plist"];
+            if ( range.length > 0 ) {
+                NSLog(@"Feelings stored file found: %@", filePath);
+            }
+                
+            // BOOL fileDeleted = [fileManager removeItemAtPath:filePath error:&error];
+//            BOOL fileDeleted = YES;
+//            
+//            if (fileDeleted != YES || error != nil)
+//            {
+//                // Deal with the error...
+//            }
+        }
+        
+    }
+    
+}
 
 - (int)addFeeling:(Feeling*)feeling
 {
 	[self.feelings addObject:feeling];
 	[self saveFeelings];
 	return self.feelings.count - 1;
+}
+
+- (void)syncUserDefaults {
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (NSString*)nickname
@@ -163,7 +244,15 @@ static NSString* const UDIDKey = @"UDID";
 	[[NSUserDefaults standardUserDefaults] setObject:gender forKey:GenderKey];
 }
 
+- (NSString *)selectedContactGroup
+{
+	return [[NSUserDefaults standardUserDefaults] stringForKey:SelectedContactGroupKey];
+}
 
+- (void)setSelectedContactGroup:(NSString *)selectedContactGroup
+{
+	[[NSUserDefaults standardUserDefaults] setObject:selectedContactGroup forKey:SelectedContactGroupKey];
+}
 
 - (BOOL)joined
 {
