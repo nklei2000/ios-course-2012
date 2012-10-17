@@ -414,7 +414,7 @@
 			path = blackpixel;
 			sourceTree = "<group>";
 		};
-		F7AF01AB162E9CEF00FF7E8D /* spaulus */ = {
+		F7AF01AB162E9CEF00FF7E8D /* badges */ = {
 			isa = PBXGroup;
 			children = (
 				F7AF01B6162EB7E300FF7E8D /* MKNumberBadgeView.h */,
@@ -422,6 +422,7 @@
 				F7AF01AD162E9CEF00FF7E8D /* CustomBadge.m */,
 				F7AF01AC162E9CEF00FF7E8D /* CustomBadge.h */,
 			);
+			name = badges;
 			path = spaulus;
 			sourceTree = "<group>";
 		};
@@ -437,7 +438,7 @@
 		F7C6E3FA1621E26C003DE8B2 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				F7AF01AB162E9CEF00FF7E8D /* spaulus */,
+				F7AF01AB162E9CEF00FF7E8D /* badges */,
 				F7B2FA6A162BC5E100900CD0 /* EGOTableViewPullRefresh */,
 				F78016591627AD6C00C27351 /* blackpixel */,
 				F7C6E3FB1621E26C003DE8B2 /* AFNetworking */,
