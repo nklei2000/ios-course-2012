@@ -65,7 +65,7 @@
 //        [self.dataModel addFeeling:feeling3];
 //    }
     
-    [self.dataModel loadFeelings];
+    // [self.dataModel loadFeelings];
     
 	/*
 	 Set the background color
@@ -118,7 +118,7 @@
     
     [_refreshHeaderView refreshLastUpdatedDate];
     
-    
+
 }
 
 - (void)viewDidUnload
@@ -144,10 +144,11 @@
 //}
 
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
+    [super viewWillAppear:animated];
     
+    [feelingTbl reloadData];
     [self scrollToNewestFeeling];
 }
 

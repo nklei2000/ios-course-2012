@@ -44,17 +44,28 @@ static NSString* const UDIDKey = @"UDID";
 	}
 }
 
-// Returns the path to the Feelings.plist file in the app's Documents directory
+// Returns the path to the <GROUP>-Feelings.plist file in the app's Documents directory
 - (NSString*)feelingsPath
 {
 	NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	NSString* documentsDirectory = [paths objectAtIndex:0];
 	
     NSString* fileName = [NSString stringWithFormat:@"%@-Feelings.plist", self.selectedContactGroup];
-    NSLog( @"File name: %@", fileName );
+    NSLog( @"feelingsPath->File name: %@", fileName );
     
     return [documentsDirectory stringByAppendingPathComponent:fileName];
+}
+
+
+- (NSString*)feelingsPathOf:(NSString *)group
+{
+	NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	NSString* documentsDirectory = [paths objectAtIndex:0];
+	
+    NSString* fileName = [NSString stringWithFormat:@"%@-Feelings.plist", group];
+    NSLog( @"feelingsPathOf->File name: %@", fileName );
     
+    return [documentsDirectory stringByAppendingPathComponent:fileName];
 }
 
 - (void)loadFeelings
@@ -62,40 +73,132 @@ static NSString* const UDIDKey = @"UDID";
 	NSString* path = [self feelingsPath];
 	if ([[NSFileManager defaultManager] fileExistsAtPath:path])
 	{
-		// We store the messages in a plist file inside the app's Documents
-		// directory. The Message object conforms to the NSCoding protocol,
+		// We store the feelings in a plist file inside the app's Documents
+		// directory. The Feeling object conforms to the NSCoding protocol,
 		// which means that it can "freeze" itself into a data structure that
 		// can be saved into a plist file. So can the NSMutableArray that holds
 		// these Message objects. When we load the plist back in, the array and
-		// its Messages "unfreeze" and are restored to their old state.
+		// its Feelings "unfreeze" and are restored to their old state.
 
+        NSString *decodeObjectKey = [NSString stringWithFormat:@"%@-Feelings", self.selectedContactGroup];
+        NSLog(@"loadFeelings->decodeObjectKey: %@", decodeObjectKey);
+        
 		NSData* data = [[NSData alloc] initWithContentsOfFile:path];
         if ( data != nil && [data length] > 0 )
         {
             NSKeyedUnarchiver* unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
-            self.feelings = [unarchiver decodeObjectForKey:@"Feelings"];
+            // self.feelings = [unarchiver decodeObjectForKey:@"Feelings"];
+            self.feelings = [unarchiver decodeObjectForKey:decodeObjectKey];
             [unarchiver finishDecoding];
         }
         else
         {
             self.feelings = [NSMutableArray arrayWithCapacity:20];
+            // self.feelings = [[NSMutableArray alloc] initWithCapacity:20];
         }
 	}
 	else
 	{
 		self.feelings = [NSMutableArray arrayWithCapacity:20];
+        // self.feelings = [[NSMutableArray alloc] initWithCapacity:20];
 	}
 }
 
 - (void)saveFeelings
 {
+    NSString *encodeObjectKey = [NSString stringWithFormat:@"%@-Feelings", self.selectedContactGroup];
+    
+    NSLog(@"saveFeelings->decodeObjectKey: %@", encodeObjectKey);
+    
 	NSMutableData* data = [[NSMutableData alloc] init];
 	NSKeyedArchiver* archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
-	[archiver encodeObject:self.feelings forKey:@"Feelings"];
+    // [archiver encodeObject:self.feelings forKey:@"Feelings"];
+    [archiver encodeObject:self.feelings forKey:encodeObjectKey];
+    
 	[archiver finishEncoding];
 	[data writeToFile:[self feelingsPath] atomically:YES];
     
     NSLog( @"Save data to: %@", [self feelingsPath] );
+    
+}
+
+- (Feeling *)loadNewestFeelingOf:(NSString *)group
+{
+    NSLog( @"loadNewestFeelingOf: %@", group );
+    
+    NSMutableArray *savedFeelings = [[NSMutableArray alloc] initWithCapacity:20];
+    
+	NSString* path = [self feelingsPathOf:group];
+	if ([[NSFileManager defaultManager] fileExistsAtPath:path])
+	{        
+        NSString *decodeObjectKey = [NSString stringWithFormat:@"%@-Feelings", group];
+        
+		NSData* data = [[NSData alloc] initWithContentsOfFile:path];
+        if ( data != nil && [data length] > 0 )
+        {
+            NSKeyedUnarchiver* unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
+            savedFeelings = [unarchiver decodeObjectForKey:decodeObjectKey];
+            [unarchiver finishDecoding];
+        }
+	}
+
+    if ( savedFeelings != nil && [savedFeelings count])
+    {
+        NSLog( @"savedFeelings count: %d", [savedFeelings count]);
+        return [savedFeelings objectAtIndex:[savedFeelings count]-1];
+    }
+    
+    NSLog( @"savedFeelings nothing loaded" );
+
+    return nil;
+    
+}
+
+
+// Returns the path to the <GROUP>-ContactGroups.plist file in the app's Documents directory
+- (NSString*)contactGroupsPath
+{
+	NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	NSString* documentsDirectory = [paths objectAtIndex:0];
+    
+    return [documentsDirectory stringByAppendingPathComponent:@"ContactGroups.plist"];
+    
+}
+
+- (void)loadContactGroups
+{
+	NSString* path = [self contactGroupsPath];
+	if ([[NSFileManager defaultManager] fileExistsAtPath:path])
+	{                
+		NSData* data = [[NSData alloc] initWithContentsOfFile:path];
+        if ( data != nil && [data length] > 0 )
+        {
+            NSKeyedUnarchiver* unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
+            self.contactGroups = [unarchiver decodeObjectForKey:@"ContactGroups"];
+            [unarchiver finishDecoding];
+        }
+        else
+        {
+            self.contactGroups = [NSMutableArray arrayWithCapacity:20];
+        }
+	}
+	else
+	{
+		self.contactGroups = [NSMutableArray arrayWithCapacity:20];
+	}
+}
+
+- (void)saveContactGroups
+{    
+	NSMutableData* data = [[NSMutableData alloc] init];
+	NSKeyedArchiver* archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+	
+    [archiver encodeObject:self.contactGroups forKey:@"ContactGroups"];
+    
+	[archiver finishEncoding];
+	[data writeToFile:[self contactGroupsPath] atomically:YES];
+    
+    NSLog( @"Save data to: %@", [self contactGroupsPath] );
     
 }
 
@@ -114,16 +217,19 @@ static NSString* const UDIDKey = @"UDID";
         return;
     }
     
+    NSString *encodeObjectKey = [NSString stringWithFormat:@"%@-Feelings", self.selectedContactGroup];   
+    
     NSMutableData* data = [[NSMutableData alloc] init];
     NSKeyedArchiver* archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
-    [archiver encodeObject:self.feelings forKey:@"Feelings"];
+    // [archiver encodeObject:self.feelings forKey:@"Feelings"];
+    [archiver encodeObject:self.feelings forKey:encodeObjectKey];
     [archiver finishEncoding];
     
 }
 
 - (void)clearAllHistory
 {
-    NSLog(@"Clearing all historical feelings");
+    NSLog(@"Clearing all feeling history");
     
     // Path to the Documents directory
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -143,30 +249,71 @@ static NSString* const UDIDKey = @"UDID";
             NSString *filePath = [documentsDirectory stringByAppendingPathComponent:file];
             NSLog(@"File : %@", filePath);
 
-            NSRange range = [filePath rangeOfString:@"Feelings.plist"];
-            if ( range.length > 0 ) {
-                NSLog(@"Feelings stored file found: %@", filePath);
+            NSString *fileName = [filePath lastPathComponent];
+            
+            NSRange range = [fileName rangeOfString:@"Feelings.plist"];
+            if ( range.length <= 0 )
+            {
+                NSLog(@"File %@ is not the Feelings stored file, skipped!", fileName);
+                continue;
             }
-                
+            
+            NSLog(@"Feelings stored file found: %@", fileName);
+            
             // BOOL fileDeleted = [fileManager removeItemAtPath:filePath error:&error];
-//            BOOL fileDeleted = YES;
-//            
-//            if (fileDeleted != YES || error != nil)
-//            {
-//                // Deal with the error...
-//            }
+            BOOL fileDeleted = NO;
+            
+            if (fileDeleted != YES || error != nil)
+            {
+                // Deal with the error...
+                NSLog(@"Error: %@", [error description]);
+                continue;
+            }
+            
+            NSMutableArray* parts = [NSMutableArray arrayWithArray:[fileName componentsSeparatedByString:@"-"]];
+            
+            if ( parts != nil && [parts count] )
+            {
+                NSString *groupId = [parts objectAtIndex:0];
+                NSLog(@"Group (file name): %@", groupId);
+                
+                if ( groupId != nil && groupId.length > 0)
+                {
+                    NSString *encodeObjectKey = [NSString stringWithFormat:@"%@-Feelings", groupId];
+                    
+                    NSLog(@"encodeObjectKey: %@", encodeObjectKey);
+                    
+                    NSMutableData* data = [[NSMutableData alloc] init];
+                    NSKeyedArchiver* archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+                    [archiver encodeObject:self.feelings forKey:encodeObjectKey];
+                    [archiver finishEncoding];
+                }
+            }
         }
-        
     }
-    
 }
 
 - (int)addFeeling:(Feeling*)feeling
 {
+    
+//    NSLog(@"feeling: %@", feeling.type);
 	[self.feelings addObject:feeling];
+//    NSLog(@"count: %d", [self.feelings count]);
+    
 	[self saveFeelings];
 	return self.feelings.count - 1;
 }
+
+
+- (int)addContactGroup:(ContactGroup*)contactGroup
+{
+	[self.contactGroups addObject:contactGroup];
+	[self saveContactGroups];
+	return self.contactGroups.count - 1;
+}
+
+
+
 
 - (void)syncUserDefaults {
     [[NSUserDefaults standardUserDefaults] synchronize];

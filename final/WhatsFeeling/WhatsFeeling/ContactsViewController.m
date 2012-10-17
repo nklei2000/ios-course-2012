@@ -11,11 +11,17 @@
 
 #import "ContactsViewController.h"
 
+#import "FeelingPerson.h"
+#import "MyCommon.h"
+
 @interface ContactsViewController ()
 
 @end
 
 @implementation ContactsViewController
+@synthesize contactsTbl;
+
+static NSString *letters = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ#";
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,13 +38,46 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+	/*
+	 Create header with two buttons
+	 */
+	CGSize screenSize = [[UIScreen mainScreen] applicationFrame].size;
+	UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenSize.width, 55)];
+	
+	UILabel *phoneLabel = [[UILabel alloc] init];
+	phoneLabel.frame = CGRectMake(0, 0, contactsTbl.frame.size.width, 25);
+    phoneLabel.text = [NSString stringWithFormat:@"My Number is %@", [MyCommon getMyPhoneNumber]];
+    phoneLabel.backgroundColor = [UIColor clearColor];
+    phoneLabel.textColor = [UIColor lightGrayColor];
+    phoneLabel.textAlignment = UITextAlignmentCenter;
+    
+    UISearchBar *searchBar = [[UISearchBar alloc] init];
+    searchBar.frame = CGRectMake(0, phoneLabel.frame.size.height, contactsTbl.frame.size.width, 40);
+    searchBar.delegate = (id)self;
+    
+	[headerView addSubview:phoneLabel];
+	[headerView addSubview:searchBar];
+    
+	contactsTbl.tableHeaderView = headerView;
+    
+    // self.dataArray = [[NSMutableArray alloc] init];
+    // self.filteredDataArray = [[NSMutableArray alloc] init];
+    self.isFiltered = FALSE;
+    
+    [self duplicateAddressBookContactItems];
+    
 }
 
 - (void)viewDidUnload
 {
+    [self setContactsTbl:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    
+    self.dataArray = nil;
+    self.filteredDataArray = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -115,38 +154,52 @@
 {
     NSLog(@"List AB Persons");
     
+    [self duplicateAddressBookContactItems];
+}
+
+- (void) duplicateAddressBookContactItems
+{
     ABAddressBookRef addressBook = ABAddressBookCreate();
     
-    NSArray *peopleArray = (NSMutableArray *)CFBridgingRelease(ABAddressBookCopyArrayOfAllPeople(addressBook));
-    // NSMutableArray *allNames = [NSMutableArray array];
+//    NSArray *peopleArray = (NSMutableArray *)CFBridgingRelease(ABAddressBookCopyArrayOfAllPeople(addressBook));
     
-//    CFMutableArrayRef peopleMutable = CFArrayCreateMutableCopy(kCFAllocatorDefault, CFArrayGetCount(people), people);
-//    
-//    CFArraySortValues(peopleMutable, CFRangeMake(0, CFArrayGetCount(people)), (CFComparatorFunction)ABPersonComparePeopleByName, (void*)ABPersonGetSortOrdering());
-//    
-//    NSMutableArray *peoples = (NSMutableArray *)CFBridgingRelease(peopleMutable);
+//  NSMutableArray *allNames = [NSMutableArray array];
     
+    self.dataArray = [NSMutableArray array];
+    
+    CFArrayRef people = ABAddressBookCopyArrayOfAllPeople(addressBook);
+    
+    CFMutableArrayRef peopleMutable = CFArrayCreateMutableCopy(kCFAllocatorDefault, CFArrayGetCount(people), people);
+    
+    CFArraySortValues(peopleMutable, CFRangeMake(0, CFArrayGetCount(people)), (CFComparatorFunction)ABPersonComparePeopleByName, (void*)ABPersonGetSortOrdering());
+    
+    NSArray *peopleArray = (NSMutableArray *)CFBridgingRelease(peopleMutable);
+        
     for (id person in peopleArray)
     {
-        NSString *firstName = (NSString *)CFBridgingRelease(ABRecordCopyValue(CFBridgingRetain(person), kABPersonFirstNameProperty));
+        FeelingPerson *feelingPerson = [[FeelingPerson alloc] init];
         
-        NSString *lastName = (NSString *)CFBridgingRelease(ABRecordCopyValue(CFBridgingRetain(person), kABPersonLastNameProperty));
+        feelingPerson.firstName = (NSString *)CFBridgingRelease(ABRecordCopyValue(CFBridgingRetain(person), kABPersonFirstNameProperty));
+        
+        feelingPerson.lastName = (NSString *)CFBridgingRelease(ABRecordCopyValue(CFBridgingRetain(person), kABPersonLastNameProperty));
                 
         ABMutableMultiValueRef multiValueEmail = ABRecordCopyValue(CFBridgingRetain(person), kABPersonEmailProperty);
         
         if (ABMultiValueGetCount(multiValueEmail) > 0)
         {
-            NSString *email = (NSString *)CFBridgingRelease(ABMultiValueCopyValueAtIndex(multiValueEmail, 0));
+            feelingPerson.email = (NSString *)CFBridgingRelease(ABMultiValueCopyValueAtIndex(multiValueEmail, 0));
             
-            NSLog(@"email: %@", email);
+            NSLog(@"email: %@", feelingPerson.email);
         }
         
-        NSLog(@"Full name: %@ %@" , firstName, lastName);
+        NSLog(@"Full name: %@ %@" , feelingPerson.firstName, feelingPerson.lastName);
         
         ABMutableMultiValueRef multiValuePhoneNumber = ABRecordCopyValue(CFBridgingRetain(person), kABPersonPhoneProperty);
         
         if ( ABMultiValueGetCount(multiValuePhoneNumber) > 0 )
         {
+            feelingPerson.phoneNumber = (NSString *)CFBridgingRelease(ABMultiValueCopyValueAtIndex(multiValuePhoneNumber, 0));
+            
             for ( int i=0; i < ABMultiValueGetCount(multiValuePhoneNumber); i++)
             {
                 NSString *phone = (NSString *)CFBridgingRelease(ABMultiValueCopyValueAtIndex(multiValuePhoneNumber, i));
@@ -156,13 +209,8 @@
                 NSLog(@"%@: %@", label, phone);
             }
         }
-        
-//        if (![firstName length]) {
-//            firstName = @"";
-//        }
-//        if (![lastName length]) lastName = @"";
-//        
-//        [allNames addObject:[NSString stringWithFormat:@"%@ %@", firstName, lastName]];
+                
+        [self.dataArray addObject:feelingPerson];
         
     }
     
@@ -260,5 +308,114 @@
 {
     [self dismissModalViewControllerAnimated:YES];
 }
+
+
+#pragma mark -
+#pragma mark Table view methods
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if ( self.isFiltered )
+        return [self.filteredDataArray count];
+    else
+        return [self.dataArray count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"FeelingPersonCell";
+    
+    UITableViewCell *cell =
+    [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if ( cell == nil )
+    {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    }
+    
+    FeelingPerson *feelingPerson;
+    
+    if ( self.isFiltered )
+    {
+        feelingPerson = (FeelingPerson*)[self.filteredDataArray objectAtIndex:indexPath.row];
+    }
+    else
+    {
+        feelingPerson = (FeelingPerson*)[self.dataArray objectAtIndex:indexPath.row];
+    }
+    
+    cell.textLabel.text = feelingPerson.fullName;
+    
+    return cell;
+}
+
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+//{
+//    if (section == 0)
+//    {
+//        return @"Happy";
+//    }
+//    else if (section == 1)
+//    {
+//        return @"Upset";
+//    }
+//    else if (section == 2)
+//    {
+//        return @"Boring";
+//    }
+//    return @"";
+//}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+#pragma mark - UITableViewDelegate
+
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    return [FeelingTableViewCell heightForCellWithFeeling:[self.dataModel.feelings objectAtIndex:indexPath.row]];
+//}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"Selected: %@", [self.dataArray objectAtIndex:indexPath.row]);
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    FeelingPerson *selectedFeelingPerson = [self.dataArray objectAtIndex:indexPath.row];
+    NSLog(@"Selected Feeling person: %@", [selectedFeelingPerson fullName]);
+    
+}
+
+#pragma mark - UISearchBar
+
+- (void)searchBar:(UISearchBar*)searchBar textDidChange:(NSString *)searchText
+{
+    if ( searchText.length == 0 )
+    {
+        self.isFiltered = FALSE;
+    }
+    else
+    {
+        self.isFiltered = TRUE;
+        
+        self.filteredDataArray = [[NSMutableArray alloc] init];
+        
+        for (FeelingPerson *person in self.dataArray)
+        {
+            NSRange nameRange = [person.fullName rangeOfString:searchText options:NSCaseInsensitiveSearch];
+            NSRange phoneRange = [person.phoneNumber rangeOfString:searchText options:NSCaseInsensitiveSearch];
+            
+            if (nameRange.location != NSNotFound || phoneRange.location != NSNotFound)
+            {
+                [self.filteredDataArray addObject:person];
+            }
+        }
+    }
+    
+    [self.contactsTbl reloadData];
+    
+}
+
 
 @end

@@ -17,8 +17,10 @@
 @property (copy, nonatomic) NSString *groupId;
 @property (copy, nonatomic) NSString *name;
 @property (copy, nonatomic) NSString *creationUser;
+@property (copy, nonatomic) NSString *creationDate;
 
-@property (copy, nonatomic) NSString *newestSender;
-@property (copy, nonatomic) NSString *newestContent;
+//@property (copy, nonatomic) NSString *newestSender;
+//@property (copy, nonatomic) NSString *newestContent;
+//@property (copy, nonatomic) NSDate   *newestDate;
 
 @end

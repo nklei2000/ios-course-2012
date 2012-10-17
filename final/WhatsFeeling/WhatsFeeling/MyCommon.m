@@ -93,4 +93,32 @@
     NSLog(@"reset ApplicationIconBadgeNumber.."); 
 }
 
++ (NSString *)getMyPhoneNumber
+{
+    NSString *phoneNumber = @"+694 2870 9394";
+    
+#if !TARGET_IPHONE_SIMULATOR
+     phoneNumber = [[NSUserDefaults standardUserDefaults] objectForKey:@"SBFormattedPhoneNumber"];
+#endif
+
+    NSLog(@"Your phone number is %@", phoneNumber);
+    return phoneNumber;
+    
+}
+
++ (void)showDeviceInfo
+{
+    NSLog(@"Device:\n\n");
+    
+    NSLog(@"name: %@",[[UIDevice currentDevice] name]);
+    NSLog(@"model: %@",[[UIDevice currentDevice] model]);
+    NSLog(@"localizedModel: %@",[[UIDevice currentDevice] localizedModel]);
+    NSLog(@"systemName: %@",[[UIDevice currentDevice] systemName]);
+    NSLog(@"systemVersion: %@",[[UIDevice currentDevice] systemVersion]);
+    
+    //UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+    //NSLog(@"orientation: %d", orientation);
+    
+}
+
 @end

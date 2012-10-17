@@ -98,8 +98,10 @@
 
 - (void)feelingDidSend:(Feeling*)feeling
 {
-    NSLog(@"User did show.");
+    NSLog( @"User did show." );
  
+    NSLog( @"feelings count: %d", [self.dataModel.feelings count] );
+    
 	// Add the Message to the data model's list of messages
 	int index = [self.dataModel addFeeling:feeling];
     

@@ -13,6 +13,9 @@
 #import "AFJSONRequestOperation.h"
 #import "MBProgressHUD.h"
 
+#import "CustomBadge.h"
+#import "MKNumberBadgeView.h"
+
 #import "DataModel.h"
 #import "Feeling.h"
 #import "ContactGroup.h"
@@ -24,6 +27,7 @@
 #define CellFeelingContentLabelTag  2004
 #define CellFeelingDateLabelTag     2005
 #define CellGroupIndicatorImageTag  2006
+#define CellBadgeTag  2007
 
 @interface ContactGroupViewController ()
 
@@ -270,7 +274,8 @@ static NSString *ContactGroupCellIdentifier = @"ContactGroupCell";
     feelingContentLabel.text = @"";
     feelingDateLabel.text = @"";
     
-    Feeling *newestFeeling =  [self.dataModel.feelings lastObject];
+    // Feeling *newestFeeling =  [self.dataModel.feelings lastObject];
+    Feeling *newestFeeling =  [self.dataModel loadNewestFeelingOf:group.groupId];
     if ( newestFeeling != nil )
     {
         if ( newestFeeling.isSentByUser ) {
@@ -302,6 +307,26 @@ static NSString *ContactGroupCellIdentifier = @"ContactGroupCell";
         }
     }
     
+//	CustomBadge *badge = [CustomBadge customBadgeWithString:@"2"
+//												   withStringColor:[UIColor grayColor]
+//													withInsetColor:[UIColor clearColor]
+//													withBadgeFrame:YES
+//											   withBadgeFrameColor:[UIColor grayColor]
+//														 withScale:0.8
+//													   withShining:YES];
+    MKNumberBadgeView *badge = [[MKNumberBadgeView alloc] initWithFrame:CGRectMake
+                                (cell.frame.size.width-70.0f, 20.0f, 40, 40)];
+    badge.value = 20;
+    badge.layer.cornerRadius = 3;
+    badge.layer.masksToBounds = YES;
+    badge.fillColor = [UIColor lightGrayColor];
+    badge.tag = CellBadgeTag;
+    badge.shadowColor = [UIColor clearColor];
+    
+//    [badge setFrame:CGRectMake(cell.frame.size.width-30.0f-badge.frame.size.width, cell.frame.size.height/2.0f-5.0f, badge.frame.size.width, badge.frame.size.height)];
+    
+    [cell addSubview:badge];
+    
     return cell;
     
 }
@@ -329,6 +354,8 @@ static NSString *ContactGroupCellIdentifier = @"ContactGroupCell";
     
     // and force the OS to save the changes to disk.
     [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [self.dataModel loadFeelings];
     
     self.feelingViewController.title = selectedContactGroup.name;
     [self.navigationController pushViewController:self.feelingViewController animated:YES];

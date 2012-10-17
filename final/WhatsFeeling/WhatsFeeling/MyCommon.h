@@ -23,5 +23,7 @@
 + (void)setApplicationIconBadgeNumber:(int)badgeNumber;
 + (void)resetApplicationIconBadgeNumber;
 
++ (NSString *) getMyPhoneNumber;
+
 @end
 

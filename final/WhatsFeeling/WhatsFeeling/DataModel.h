@@ -1,5 +1,6 @@
 
 @class Feeling;
+@class ContactGroup;
 
 // The main data model object
 @interface DataModel : NSObject
@@ -8,10 +9,11 @@
 
 // The complete history of feelings this user has sent and received, in
 // chronological order (oldest first).
-@property (nonatomic, retain) NSMutableArray* feelings;
+@property (nonatomic, strong) NSMutableArray* feelings;
 
 // Loads the list of feelings from a file.
 - (void)loadFeelings;
+- (Feeling *)loadNewestFeelingOf:(NSString*)group;
 
 // Saves the list of feelings to a file.
 - (void)saveFeelings;
@@ -20,6 +22,15 @@
 // a push notification. Returns the index of the new feeling in the list
 // of feelings.
 - (int)addFeeling:(Feeling *)feeling;
+
+
+// Feeling Contact Groups
+@property (nonatomic, strong) NSMutableArray* contactGroups;
+
+- (void)loadContactGroups;
+- (void)saveContactGroups;
+- (int)addContactGroup:(ContactGroup *)contactGroup;
+
 
 // Get and set the user's nickname.
 - (NSString*)nickname;
