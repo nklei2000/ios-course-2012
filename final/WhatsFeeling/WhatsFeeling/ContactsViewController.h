@@ -24,7 +24,7 @@
 @property (strong, nonatomic) NSMutableArray *filteredDataArray;
 
 @property (strong, nonatomic) NSMutableArray *indiceArray;
-@property (strong, nonatomic) NSMutableArray *filteredIndexArray;
+@property (strong, nonatomic) NSMutableArray *filteredIndiceArray;
 
 @property (strong, nonatomic) IBOutlet UITableView *contactsTbl;
 

@@ -25,5 +25,9 @@
 
 + (NSString *) getMyPhoneNumber;
 
++ (BOOL) isNumeric:(NSString*)value;
+
++(void)sortTheNSArray:(NSMutableArray*)theArray forKey:(NSString*)key;
+
 @end
 

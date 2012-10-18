@@ -89,6 +89,8 @@
 		F7C6E4191621E26C003DE8B2 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C6E40C1621E26C003DE8B2 /* AFXMLRequestOperation.m */; };
 		F7C6E41A1621E26C003DE8B2 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C6E40E1621E26C003DE8B2 /* UIImageView+AFNetworking.m */; };
 		F7C6E41B1621E26C003DE8B2 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C6E4111621E26C003DE8B2 /* MBProgressHUD.m */; };
+		F7C8AA8C162F9BFD006C492F /* CustomBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C8AA89162F9BFD006C492F /* CustomBadge.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F7C8AA8D162F9BFD006C492F /* MKNumberBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C8AA8B162F9BFD006C492F /* MKNumberBadgeView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -225,6 +227,10 @@
 		F7C6E40E1621E26C003DE8B2 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		F7C6E4101621E26C003DE8B2 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		F7C6E4111621E26C003DE8B2 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		F7C8AA88162F9BFD006C492F /* CustomBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomBadge.h; sourceTree = "<group>"; };
+		F7C8AA89162F9BFD006C492F /* CustomBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomBadge.m; sourceTree = "<group>"; };
+		F7C8AA8A162F9BFD006C492F /* MKNumberBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKNumberBadgeView.h; sourceTree = "<group>"; };
+		F7C8AA8B162F9BFD006C492F /* MKNumberBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKNumberBadgeView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -420,6 +426,7 @@
 		F7C6E3FA1621E26C003DE8B2 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				F7C8AA87162F9BFD006C492F /* badges */,
 				F7B2FA6A162BC5E100900CD0 /* EGOTableViewPullRefresh */,
 				F78016591627AD6C00C27351 /* blackpixel */,
 				F7C6E3FB1621E26C003DE8B2 /* AFNetworking */,
@@ -461,6 +468,17 @@
 				F7C6E4111621E26C003DE8B2 /* MBProgressHUD.m */,
 			);
 			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		F7C8AA87162F9BFD006C492F /* badges */ = {
+			isa = PBXGroup;
+			children = (
+				F7C8AA88162F9BFD006C492F /* CustomBadge.h */,
+				F7C8AA89162F9BFD006C492F /* CustomBadge.m */,
+				F7C8AA8A162F9BFD006C492F /* MKNumberBadgeView.h */,
+				F7C8AA8B162F9BFD006C492F /* MKNumberBadgeView.m */,
+			);
+			path = badges;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -598,6 +616,8 @@
 				F7B2FA6D162BC5E100900CD0 /* EGORefreshTableHeaderView.m in Sources */,
 				F7B9423F162CF1F9000071B3 /* ContactsViewController.m in Sources */,
 				F7AF019B162E415D00FF7E8D /* FeelingPerson.m in Sources */,
+				F7C8AA8C162F9BFD006C492F /* CustomBadge.m in Sources */,
+				F7C8AA8D162F9BFD006C492F /* MKNumberBadgeView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

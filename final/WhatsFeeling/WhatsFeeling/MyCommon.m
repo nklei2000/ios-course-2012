@@ -121,4 +121,32 @@
     
 }
 
++ (BOOL) isNumeric:(NSString*) value {
+    
+    NSCharacterSet *alphaNums = [NSCharacterSet decimalDigitCharacterSet];
+    NSCharacterSet *inStringSet = [NSCharacterSet characterSetWithCharactersInString:value];
+    
+    BOOL valid = [alphaNums isSupersetOfSet:inStringSet];
+    
+    alphaNums = nil;
+    inStringSet = nil;
+    
+    return valid;
+}  
+
++(void)sortTheNSArray:(NSMutableArray*)theArray forKey:(NSString*)key
+{
+    NSLog(@"sorting data array with key: %@", key);
+    
+    NSSortDescriptor *lastDescriptor =
+    [[NSSortDescriptor alloc]
+     initWithKey:key
+     ascending:YES
+     selector:@selector(localizedCaseInsensitiveCompare:)];
+    
+    NSArray * descriptors = [NSArray arrayWithObjects:lastDescriptor, nil];
+    [theArray sortUsingDescriptors:descriptors];
+    
+}
+
 @end
