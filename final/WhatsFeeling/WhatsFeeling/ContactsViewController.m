@@ -62,6 +62,10 @@ static NSString *sectionTitleKey = @"SectionTitle";
 	[headerView addSubview:phoneLabel];
 	[headerView addSubview:searchBar];
     
+//    UISearchDisplayController *searchController = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
+//    searchController.searchResultsDataSource = self;
+//    searchController.searchResultsDelegate = self;
+    
 //    headerView.layer.cornerRadius = 5.0;
 //    headerView.layer.borderWidth = 3.0;
 //    headerView.layer.borderColor = [UIColor colorWithWhite:0.78 alpha:1.0].CGColor;
