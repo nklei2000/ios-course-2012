@@ -311,4 +311,68 @@
 }
 */ 
 
+
+/*
+// Add event
+EKEventStore *eventStore = [[EKEventStore alloc] init];
+EKEvent *newEvent = [EKEvent eventWithEventStore:eventStore];
+newEvent.title = @"Test";
+newEvent.availability = EKEventAvailabilityFree;
+newEvent.startDate = startDate;
+newEvent.endDate = endDate;
+[newEvent addAlarm:[EKAlarm alarmWithRelativeOffset:-15*60]];
+
+newEvent.calendar = [eventStore defaultCalendarForNewEvents];
+
+NSError *err;
+BOOL success = [eventStore saveEvent:newEvent span:EKSpanThisEvent commit:YES error:&err];
+
+if (success) {
+    if ([newEvent respondsToSelector:@selector(calendarItemIdentifier)]) {
+        [[NSUserDefaults standardUserDefaults] setObject:newEvent.calendarItemIdentifier forKey:self.showId];
+        NSLog(@"Event ID: %@",newEvent.calendarItemIdentifier);
+    }
+    else {
+        [[NSUserDefaults standardUserDefaults] setObject:newEvent.UUID forKey:self.showId];
+        NSLog(@"Event ID: %@",newEvent.UUID);
+    }
+}
+
+// remove event
+EKEventStore *eventStore = [[EKEventStore alloc] init];
+
+NSError *err;
+BOOL success = YES;
+
+NSLog(@"Event ID: %@",[[NSUserDefaults standardUserDefaults] objectForKey:self.showId]);
+
+EKEvent *existingEvent = [eventStore eventWithIdentifier:[[NSUserDefaults standardUserDefaults] objectForKey:self.showId]];
+NSLog(@"Existing event: %@",existingEvent);
+if (existingEvent != nil) {
+    success = [eventStore removeEvent:existingEvent span:EKSpanThisEvent error:&err];
+}
+if (success) {
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:self.showId];
+}
+
+// remove event 2
+NSPredicate *predicateForEvents = [eventStore predicateForEventsWithStartDate:nil endDate:nil calendars:[NSArray arrayWithObject:[eventStore defaultCalendarForNewEvents]]];
+//set predicate to search for an event of the calendar(you can set the startdate, enddate and check in the calendars other than the default Calendar)
+
+NSArray *events_Array = [eventStore eventsMatchingPredicate: predicateForEvents];
+//get array of events from the eventStore
+
+for (EKEvent *eventToCheck in events_Array)
+{
+    if ([eventToCheck.title isEqualToString: @"yourEventTitle")
+    {
+        NSError *err;
+        BOOL success = [eventStore removeEvent:eventToCheck span:EKSpanThisEvent error:&err];
+        NSLog(@"event deleted success if value = 1 : %d", success);
+        
+        break;
+    }
+}
+*/
+         
 @end
