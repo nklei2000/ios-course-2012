@@ -48,13 +48,14 @@
 
 - (IBAction)showCamera:(id)sender
 {
-    NSLog(@"show camera");
-
+     NSLog(@"Show Camera");
+    
+    
 }
 
 - (IBAction)pickPhoto:(id)sender
 {
-    NSLog(@"show camera");
+    NSLog(@"Show Camera");
     
     
 
