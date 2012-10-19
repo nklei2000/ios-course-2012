@@ -1,0 +1,392 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F7C1A1201630E22B005D6488 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C1A11F1630E22B005D6488 /* UIKit.framework */; };
+		F7C1A1221630E22B005D6488 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C1A1211630E22B005D6488 /* Foundation.framework */; };
+		F7C1A1241630E22B005D6488 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C1A1231630E22B005D6488 /* CoreGraphics.framework */; };
+		F7C1A12A1630E22B005D6488 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F7C1A1281630E22B005D6488 /* InfoPlist.strings */; };
+		F7C1A12C1630E22B005D6488 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C1A12B1630E22B005D6488 /* main.m */; };
+		F7C1A1301630E22B005D6488 /* SAMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C1A12F1630E22B005D6488 /* SAMAppDelegate.m */; };
+		F7C1A1331630E22B005D6488 /* SAMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C1A1321630E22B005D6488 /* SAMViewController.m */; };
+		F7C1A1361630E22B005D6488 /* SAMViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7C1A1341630E22B005D6488 /* SAMViewController.xib */; };
+		F7C1A13E1630E836005D6488 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C1A13C1630E836005D6488 /* EventKit.framework */; };
+		F7C1A13F1630E836005D6488 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C1A13D1630E836005D6488 /* EventKitUI.framework */; };
+		F7C1A14716312E73005D6488 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C1A14516312E73005D6488 /* CameraViewController.m */; };
+		F7C1A14816312E73005D6488 /* CameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7C1A14616312E73005D6488 /* CameraViewController.xib */; };
+		F7EFDBDA1631481D00699A92 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7EFDBD91631481D00699A92 /* CoreImage.framework */; };
+		F7EFDBF4163149A800699A92 /* KalDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EFDBE0163149A800699A92 /* KalDataSource.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F7EFDBF5163149A800699A92 /* KalDate.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EFDBE2163149A800699A92 /* KalDate.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F7EFDBF6163149A800699A92 /* KalGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EFDBE4163149A800699A92 /* KalGridView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F7EFDBF7163149A800699A92 /* KalLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EFDBE6163149A800699A92 /* KalLogic.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F7EFDBF8163149A800699A92 /* KalMonthView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EFDBE8163149A800699A92 /* KalMonthView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F7EFDBF9163149A800699A92 /* KalTileView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EFDBEB163149A800699A92 /* KalTileView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F7EFDBFA163149A800699A92 /* KalView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EFDBED163149A800699A92 /* KalView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F7EFDBFB163149A800699A92 /* KalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EFDBEF163149A800699A92 /* KalViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F7EFDBFC163149A800699A92 /* NSDateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EFDBF1163149A800699A92 /* NSDateAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F7EFDBFD163149A800699A92 /* UIViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EFDBF3163149A800699A92 /* UIViewAdditions.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F7C1A11B1630E22B005D6488 /* MyEventTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyEventTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7C1A11F1630E22B005D6488 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F7C1A1211630E22B005D6488 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F7C1A1231630E22B005D6488 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		F7C1A1271630E22B005D6488 /* MyEventTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MyEventTest-Info.plist"; sourceTree = "<group>"; };
+		F7C1A1291630E22B005D6488 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F7C1A12B1630E22B005D6488 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F7C1A12D1630E22B005D6488 /* MyEventTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyEventTest-Prefix.pch"; sourceTree = "<group>"; };
+		F7C1A12E1630E22B005D6488 /* SAMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SAMAppDelegate.h; sourceTree = "<group>"; };
+		F7C1A12F1630E22B005D6488 /* SAMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SAMAppDelegate.m; sourceTree = "<group>"; };
+		F7C1A1311630E22B005D6488 /* SAMViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SAMViewController.h; sourceTree = "<group>"; };
+		F7C1A1321630E22B005D6488 /* SAMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SAMViewController.m; sourceTree = "<group>"; };
+		F7C1A1351630E22B005D6488 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SAMViewController.xib; sourceTree = "<group>"; };
+		F7C1A13C1630E836005D6488 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		F7C1A13D1630E836005D6488 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
+		F7C1A14416312E73005D6488 /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
+		F7C1A14516312E73005D6488 /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
+		F7C1A14616312E73005D6488 /* CameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraViewController.xib; sourceTree = "<group>"; };
+		F7EFDBD91631481D00699A92 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		F7EFDBDE163149A800699A92 /* Kal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Kal.h; sourceTree = "<group>"; };
+		F7EFDBDF163149A800699A92 /* KalDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KalDataSource.h; sourceTree = "<group>"; };
+		F7EFDBE0163149A800699A92 /* KalDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KalDataSource.m; sourceTree = "<group>"; };
+		F7EFDBE1163149A800699A92 /* KalDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KalDate.h; sourceTree = "<group>"; };
+		F7EFDBE2163149A800699A92 /* KalDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KalDate.m; sourceTree = "<group>"; };
+		F7EFDBE3163149A800699A92 /* KalGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KalGridView.h; sourceTree = "<group>"; };
+		F7EFDBE4163149A800699A92 /* KalGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KalGridView.m; sourceTree = "<group>"; };
+		F7EFDBE5163149A800699A92 /* KalLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KalLogic.h; sourceTree = "<group>"; };
+		F7EFDBE6163149A800699A92 /* KalLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KalLogic.m; sourceTree = "<group>"; };
+		F7EFDBE7163149A800699A92 /* KalMonthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KalMonthView.h; sourceTree = "<group>"; };
+		F7EFDBE8163149A800699A92 /* KalMonthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KalMonthView.m; sourceTree = "<group>"; };
+		F7EFDBE9163149A800699A92 /* KalPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KalPrivate.h; sourceTree = "<group>"; };
+		F7EFDBEA163149A800699A92 /* KalTileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KalTileView.h; sourceTree = "<group>"; };
+		F7EFDBEB163149A800699A92 /* KalTileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KalTileView.m; sourceTree = "<group>"; };
+		F7EFDBEC163149A800699A92 /* KalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KalView.h; sourceTree = "<group>"; };
+		F7EFDBED163149A800699A92 /* KalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KalView.m; sourceTree = "<group>"; };
+		F7EFDBEE163149A800699A92 /* KalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KalViewController.h; sourceTree = "<group>"; };
+		F7EFDBEF163149A800699A92 /* KalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KalViewController.m; sourceTree = "<group>"; };
+		F7EFDBF0163149A800699A92 /* NSDateAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDateAdditions.h; sourceTree = "<group>"; };
+		F7EFDBF1163149A800699A92 /* NSDateAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDateAdditions.m; sourceTree = "<group>"; };
+		F7EFDBF2163149A800699A92 /* UIViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewAdditions.h; sourceTree = "<group>"; };
+		F7EFDBF3163149A800699A92 /* UIViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewAdditions.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F7C1A1181630E22B005D6488 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7C1A1241630E22B005D6488 /* CoreGraphics.framework in Frameworks */,
+				F7EFDBDA1631481D00699A92 /* CoreImage.framework in Frameworks */,
+				F7C1A13E1630E836005D6488 /* EventKit.framework in Frameworks */,
+				F7C1A13F1630E836005D6488 /* EventKitUI.framework in Frameworks */,
+				F7C1A1201630E22B005D6488 /* UIKit.framework in Frameworks */,
+				F7C1A1221630E22B005D6488 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F7C1A1101630E22B005D6488 = {
+			isa = PBXGroup;
+			children = (
+				F7EFDBDC163149A800699A92 /* vendors */,
+				F7EFDBD91631481D00699A92 /* CoreImage.framework */,
+				F7C1A13C1630E836005D6488 /* EventKit.framework */,
+				F7C1A13D1630E836005D6488 /* EventKitUI.framework */,
+				F7C1A1251630E22B005D6488 /* MyEventTest */,
+				F7C1A11E1630E22B005D6488 /* Frameworks */,
+				F7C1A11C1630E22B005D6488 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F7C1A11C1630E22B005D6488 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F7C1A11B1630E22B005D6488 /* MyEventTest.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F7C1A11E1630E22B005D6488 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F7C1A11F1630E22B005D6488 /* UIKit.framework */,
+				F7C1A1211630E22B005D6488 /* Foundation.framework */,
+				F7C1A1231630E22B005D6488 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F7C1A1251630E22B005D6488 /* MyEventTest */ = {
+			isa = PBXGroup;
+			children = (
+				F7C1A12E1630E22B005D6488 /* SAMAppDelegate.h */,
+				F7C1A12F1630E22B005D6488 /* SAMAppDelegate.m */,
+				F7C1A1311630E22B005D6488 /* SAMViewController.h */,
+				F7C1A1321630E22B005D6488 /* SAMViewController.m */,
+				F7C1A1341630E22B005D6488 /* SAMViewController.xib */,
+				F7C1A1261630E22B005D6488 /* Supporting Files */,
+				F7C1A14416312E73005D6488 /* CameraViewController.h */,
+				F7C1A14516312E73005D6488 /* CameraViewController.m */,
+				F7C1A14616312E73005D6488 /* CameraViewController.xib */,
+			);
+			path = MyEventTest;
+			sourceTree = "<group>";
+		};
+		F7C1A1261630E22B005D6488 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F7C1A1271630E22B005D6488 /* MyEventTest-Info.plist */,
+				F7C1A1281630E22B005D6488 /* InfoPlist.strings */,
+				F7C1A12B1630E22B005D6488 /* main.m */,
+				F7C1A12D1630E22B005D6488 /* MyEventTest-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F7EFDBDC163149A800699A92 /* vendors */ = {
+			isa = PBXGroup;
+			children = (
+				F7EFDBDD163149A800699A92 /* Kal */,
+			);
+			path = vendors;
+			sourceTree = "<group>";
+		};
+		F7EFDBDD163149A800699A92 /* Kal */ = {
+			isa = PBXGroup;
+			children = (
+				F7EFDBDE163149A800699A92 /* Kal.h */,
+				F7EFDBDF163149A800699A92 /* KalDataSource.h */,
+				F7EFDBE0163149A800699A92 /* KalDataSource.m */,
+				F7EFDBE1163149A800699A92 /* KalDate.h */,
+				F7EFDBE2163149A800699A92 /* KalDate.m */,
+				F7EFDBE3163149A800699A92 /* KalGridView.h */,
+				F7EFDBE4163149A800699A92 /* KalGridView.m */,
+				F7EFDBE5163149A800699A92 /* KalLogic.h */,
+				F7EFDBE6163149A800699A92 /* KalLogic.m */,
+				F7EFDBE7163149A800699A92 /* KalMonthView.h */,
+				F7EFDBE8163149A800699A92 /* KalMonthView.m */,
+				F7EFDBE9163149A800699A92 /* KalPrivate.h */,
+				F7EFDBEA163149A800699A92 /* KalTileView.h */,
+				F7EFDBEB163149A800699A92 /* KalTileView.m */,
+				F7EFDBEC163149A800699A92 /* KalView.h */,
+				F7EFDBED163149A800699A92 /* KalView.m */,
+				F7EFDBEE163149A800699A92 /* KalViewController.h */,
+				F7EFDBEF163149A800699A92 /* KalViewController.m */,
+				F7EFDBF0163149A800699A92 /* NSDateAdditions.h */,
+				F7EFDBF1163149A800699A92 /* NSDateAdditions.m */,
+				F7EFDBF2163149A800699A92 /* UIViewAdditions.h */,
+				F7EFDBF3163149A800699A92 /* UIViewAdditions.m */,
+			);
+			path = Kal;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F7C1A11A1630E22B005D6488 /* MyEventTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F7C1A1391630E22B005D6488 /* Build configuration list for PBXNativeTarget "MyEventTest" */;
+			buildPhases = (
+				F7C1A1171630E22B005D6488 /* Sources */,
+				F7C1A1181630E22B005D6488 /* Frameworks */,
+				F7C1A1191630E22B005D6488 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MyEventTest;
+			productName = MyEventTest;
+			productReference = F7C1A11B1630E22B005D6488 /* MyEventTest.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F7C1A1121630E22B005D6488 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = SAM;
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = "Nam Kin Lei";
+			};
+			buildConfigurationList = F7C1A1151630E22B005D6488 /* Build configuration list for PBXProject "MyEventTest" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = F7C1A1101630E22B005D6488;
+			productRefGroup = F7C1A11C1630E22B005D6488 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F7C1A11A1630E22B005D6488 /* MyEventTest */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F7C1A1191630E22B005D6488 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7C1A12A1630E22B005D6488 /* InfoPlist.strings in Resources */,
+				F7C1A1361630E22B005D6488 /* SAMViewController.xib in Resources */,
+				F7C1A14816312E73005D6488 /* CameraViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F7C1A1171630E22B005D6488 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7C1A12C1630E22B005D6488 /* main.m in Sources */,
+				F7C1A1301630E22B005D6488 /* SAMAppDelegate.m in Sources */,
+				F7C1A1331630E22B005D6488 /* SAMViewController.m in Sources */,
+				F7C1A14716312E73005D6488 /* CameraViewController.m in Sources */,
+				F7EFDBF4163149A800699A92 /* KalDataSource.m in Sources */,
+				F7EFDBF5163149A800699A92 /* KalDate.m in Sources */,
+				F7EFDBF6163149A800699A92 /* KalGridView.m in Sources */,
+				F7EFDBF7163149A800699A92 /* KalLogic.m in Sources */,
+				F7EFDBF8163149A800699A92 /* KalMonthView.m in Sources */,
+				F7EFDBF9163149A800699A92 /* KalTileView.m in Sources */,
+				F7EFDBFA163149A800699A92 /* KalView.m in Sources */,
+				F7EFDBFB163149A800699A92 /* KalViewController.m in Sources */,
+				F7EFDBFC163149A800699A92 /* NSDateAdditions.m in Sources */,
+				F7EFDBFD163149A800699A92 /* UIViewAdditions.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F7C1A1281630E22B005D6488 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F7C1A1291630E22B005D6488 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F7C1A1341630E22B005D6488 /* SAMViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F7C1A1351630E22B005D6488 /* en */,
+			);
+			name = SAMViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F7C1A1371630E22B005D6488 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		F7C1A1381630E22B005D6488 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F7C1A13A1630E22B005D6488 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MyEventTest/MyEventTest-Prefix.pch";
+				INFOPLIST_FILE = "MyEventTest/MyEventTest-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		F7C1A13B1630E22B005D6488 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MyEventTest/MyEventTest-Prefix.pch";
+				INFOPLIST_FILE = "MyEventTest/MyEventTest-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F7C1A1151630E22B005D6488 /* Build configuration list for PBXProject "MyEventTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F7C1A1371630E22B005D6488 /* Debug */,
+				F7C1A1381630E22B005D6488 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F7C1A1391630E22B005D6488 /* Build configuration list for PBXNativeTarget "MyEventTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F7C1A13A1630E22B005D6488 /* Debug */,
+				F7C1A13B1630E22B005D6488 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F7C1A1121630E22B005D6488 /* Project object */;
+}
