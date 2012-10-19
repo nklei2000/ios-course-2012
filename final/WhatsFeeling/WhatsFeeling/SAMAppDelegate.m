@@ -25,121 +25,6 @@
 @implementation SAMAppDelegate
 
 
-- (void)addFeelingFromRemoteNotification:(NSDictionary*)userInfo updateUI:(BOOL)updateUI
-{
-	Feeling* feeling = [[Feeling alloc] init];
-	feeling.date = [NSDate date];
-    
-	NSString* alertValue = [[userInfo valueForKey:@"aps"] valueForKey:@"alert"];
-    
-    NSLog(@"alert value: %@", alertValue);
-    
-	NSMutableArray* parts = [NSMutableArray arrayWithArray:[alertValue componentsSeparatedByString:@": "]];
-    
-    NSLog(@"parts count: %d", [parts count]);
-    
-	feeling.senderName = [parts objectAtIndex:0];
-	// [parts removeObjectAtIndex:0];
-    
-    if ( [[parts objectAtIndex:1] hasPrefix:@"##"] &&
-         [[parts objectAtIndex:1] hasSuffix:@"##"] )
-    {
-        feeling.type = @"TOUCH";
-        feeling.touchAction = [[parts objectAtIndex:1] stringByReplacingOccurrencesOfString:@"##" withString:@""];
-        
-        if ( [feeling.touchAction isEqualToString:@"SHAKE"] )
-        {
-            [SoundEffectHelper vibrate];
-        }
-    }
-    else
-    {
-        feeling.type = @"TEXT";
-        // feeling.text = [parts componentsJoinedByString:@": "];
-        feeling.text = [parts objectAtIndex:1];
-        feeling.reason = @"";
-        if ( [parts count] > 1 ) {
-            feeling.reason = [parts objectAtIndex:2];
-        }
-    }
-    
-    NSLog(@"feeling type: %@, text: %@, touch action: %@", feeling.type, feeling.text, feeling.touchAction);
-    
-	int index = [self.dataModel addFeeling:feeling];
-    NSLog(@"remote notification added into row %d", index);
-    
-	if (updateUI)
-    {
-        if ( [feeling.type isEqualToString:@"TEXT"] )
-        {
-            [self.feelingViewController didShowFeeling:feeling atIndex:index];
-        }
-        else if ( [feeling.type isEqualToString:@"TOUCH"] )
-        {
-            [self.feelingViewController didTouchFeeling:feeling atIndex:index];
-        }
-    }
-    
-}
-
-
-- (void)addJsonFeelingFromRemoteNotification:(NSDictionary*)userInfo updateUI:(BOOL)updateUI
-{
-	Feeling* feeling = [[Feeling alloc] init];
-	feeling.date = [NSDate date];
-    
-	NSDictionary *alertValue = [[userInfo valueForKey:@"aps"] valueForKey:@"alert"];
-    
-    if ( alertValue != nil )
-    {
-        NSLog(@"alert value: %@", alertValue);
-
-        NSString *groupId = [alertValue objectForKey:@"group"];
-        self.dataModel.selectedContactGroup = groupId;
-        
-        NSString *feelingType = [alertValue objectForKey:@"type"];
-        if ( [feelingType isEqualToString:@"TEXT"] )
-        {
-            feeling.type = @"TEXT";
-            feeling.text = [alertValue objectForKey:@"text"];
-            feeling.reason = [alertValue objectForKey:@"reason"];
-        }
-        else if ( [feelingType isEqualToString:@"TOUCH"] )
-        {
-            feeling.type = @"TOUCH";
-            feeling.touchAction = [alertValue objectForKey:@"action"];
-            
-            if ( [feeling.touchAction isEqualToString:@"SHAKE"] )
-            {
-                [SoundEffectHelper vibrate];
-            }
-        }
-            
-    }
-    
-    if ( feeling.type != nil )
-    {
-        NSLog(@"feeling type: %@, text: %@, touch action: %@", feeling.type, feeling.text, feeling.touchAction);
-        
-        int index = [self.dataModel addFeeling:feeling];
-        NSLog(@"remote notification added into row %d", index);
-        
-        if (updateUI)
-        {
-            if ( [feeling.type isEqualToString:@"TEXT"] )
-            {
-                [self.feelingViewController didShowFeeling:feeling atIndex:index];
-            }
-            else if ( [feeling.type isEqualToString:@"TOUCH"] )
-            {
-                [self.feelingViewController didTouchFeeling:feeling atIndex:index];
-            }
-        }
-    }
-    
-}
-
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
@@ -293,6 +178,122 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+
+// Custom functions
+- (void)addFeelingFromRemoteNotification:(NSDictionary*)userInfo updateUI:(BOOL)updateUI
+{
+	Feeling* feeling = [[Feeling alloc] init];
+	feeling.date = [NSDate date];
+    
+	NSString* alertValue = [[userInfo valueForKey:@"aps"] valueForKey:@"alert"];
+    
+    NSLog(@"alert value: %@", alertValue);
+    
+	NSMutableArray* parts = [NSMutableArray arrayWithArray:[alertValue componentsSeparatedByString:@": "]];
+    
+    NSLog(@"parts count: %d", [parts count]);
+    
+	feeling.senderName = [parts objectAtIndex:0];
+	// [parts removeObjectAtIndex:0];
+    
+    if ( [[parts objectAtIndex:1] hasPrefix:@"##"] &&
+        [[parts objectAtIndex:1] hasSuffix:@"##"] )
+    {
+        feeling.type = @"TOUCH";
+        feeling.touchAction = [[parts objectAtIndex:1] stringByReplacingOccurrencesOfString:@"##" withString:@""];
+        
+        if ( [feeling.touchAction isEqualToString:@"SHAKE"] )
+        {
+            [SoundEffectHelper vibrate];
+        }
+    }
+    else
+    {
+        feeling.type = @"TEXT";
+        // feeling.text = [parts componentsJoinedByString:@": "];
+        feeling.text = [parts objectAtIndex:1];
+        feeling.reason = @"";
+        if ( [parts count] > 1 ) {
+            feeling.reason = [parts objectAtIndex:2];
+        }
+    }
+    
+    NSLog(@"feeling type: %@, text: %@, touch action: %@", feeling.type, feeling.text, feeling.touchAction);
+    
+	int index = [self.dataModel addFeeling:feeling];
+    NSLog(@"remote notification added into row %d", index);
+    
+	if (updateUI)
+    {
+        if ( [feeling.type isEqualToString:@"TEXT"] )
+        {
+            [self.feelingViewController didShowFeeling:feeling atIndex:index];
+        }
+        else if ( [feeling.type isEqualToString:@"TOUCH"] )
+        {
+            [self.feelingViewController didTouchFeeling:feeling atIndex:index];
+        }
+    }
+    
+}
+
+
+- (void)addJsonFeelingFromRemoteNotification:(NSDictionary*)userInfo updateUI:(BOOL)updateUI
+{
+	Feeling* feeling = [[Feeling alloc] init];
+	feeling.date = [NSDate date];
+    
+	NSDictionary *alertValue = [[userInfo valueForKey:@"aps"] valueForKey:@"alert"];
+    
+    if ( alertValue != nil )
+    {
+        NSLog(@"alert value: %@", alertValue);
+        
+        NSString *groupId = [alertValue objectForKey:@"group"];
+        self.dataModel.selectedContactGroup = groupId;
+        
+        NSString *feelingType = [alertValue objectForKey:@"type"];
+        if ( [feelingType isEqualToString:@"TEXT"] )
+        {
+            feeling.type = @"TEXT";
+            feeling.text = [alertValue objectForKey:@"text"];
+            feeling.reason = [alertValue objectForKey:@"reason"];
+        }
+        else if ( [feelingType isEqualToString:@"TOUCH"] )
+        {
+            feeling.type = @"TOUCH";
+            feeling.touchAction = [alertValue objectForKey:@"action"];
+            
+            if ( [feeling.touchAction isEqualToString:@"SHAKE"] )
+            {
+                [SoundEffectHelper vibrate];
+            }
+        }
+        
+    }
+    
+    if ( feeling.type != nil )
+    {
+        NSLog(@"feeling type: %@, text: %@, touch action: %@", feeling.type, feeling.text, feeling.touchAction);
+        
+        int index = [self.dataModel addFeeling:feeling];
+        NSLog(@"remote notification added into row %d", index);
+        
+        if (updateUI)
+        {
+            if ( [feeling.type isEqualToString:@"TEXT"] )
+            {
+                [self.feelingViewController didShowFeeling:feeling atIndex:index];
+            }
+            else if ( [feeling.type isEqualToString:@"TOUCH"] )
+            {
+                [self.feelingViewController didTouchFeeling:feeling atIndex:index];
+            }
+        }
+    }
+    
 }
 
 @end
