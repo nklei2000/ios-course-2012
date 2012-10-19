@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CameraViewController : UIViewController
+@interface CameraViewController : UIViewController <UIImagePickerControllerDelegate, UIPopoverControllerDelegate>
+
 - (IBAction)showCamera:(id)sender;
 - (IBAction)pickPhoto:(id)sender;
 - (IBAction)dismiss:(id)sender;
+
 @property (strong, nonatomic) IBOutlet UIImageView *photoImageView;
 
 @end

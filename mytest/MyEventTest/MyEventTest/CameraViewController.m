@@ -64,6 +64,32 @@
 {
     
     [self dismissModalViewControllerAnimated:YES];
+    
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    NSLog( @"didFinishPickingMediaWithInfo..." );
+    
+    if (IS_IPHONE)
+    {
+        [picker dismissModalViewControllerAnimated:YES];
+    }
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    NSLog( @"imagePickerControllerDidCancel..." );
+    
+    [picker dismissModalViewControllerAnimated:YES];
+}
+
+-(void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+{
+    NSLog( @"popoverControllerDidDismissPopover..." );
+    
+    [popoverController dismissPopoverAnimated:YES];
+
 }
 
 @end
