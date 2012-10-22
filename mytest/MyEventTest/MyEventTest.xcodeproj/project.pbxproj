@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F71BA76B1635B62500E5C21D /* CameraImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F71BA7601635B62500E5C21D /* CameraImageHelper.m */; };
+		F71BA76C1635B62500E5C21D /* exifGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = F71BA7621635B62500E5C21D /* exifGeometry.m */; };
+		F71BA76D1635B62500E5C21D /* Geometry.m in Sources */ = {isa = PBXBuildFile; fileRef = F71BA7641635B62500E5C21D /* Geometry.m */; };
+		F71BA76E1635B62500E5C21D /* Orientation.m in Sources */ = {isa = PBXBuildFile; fileRef = F71BA7661635B62500E5C21D /* Orientation.m */; };
+		F71BA76F1635B62500E5C21D /* UIImage-Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F71BA7681635B62500E5C21D /* UIImage-Utilities.m */; };
+		F71BA7701635B62500E5C21D /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F71BA76A1635B62500E5C21D /* Utilities.m */; };
 		F7C1A1201630E22B005D6488 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C1A11F1630E22B005D6488 /* UIKit.framework */; };
 		F7C1A1221630E22B005D6488 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C1A1211630E22B005D6488 /* Foundation.framework */; };
 		F7C1A1241630E22B005D6488 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C1A1231630E22B005D6488 /* CoreGraphics.framework */; };
@@ -39,6 +45,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F71BA75F1635B62500E5C21D /* CameraImageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraImageHelper.h; sourceTree = "<group>"; };
+		F71BA7601635B62500E5C21D /* CameraImageHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraImageHelper.m; sourceTree = "<group>"; };
+		F71BA7611635B62500E5C21D /* exifGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exifGeometry.h; sourceTree = "<group>"; };
+		F71BA7621635B62500E5C21D /* exifGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exifGeometry.m; sourceTree = "<group>"; };
+		F71BA7631635B62500E5C21D /* Geometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Geometry.h; sourceTree = "<group>"; };
+		F71BA7641635B62500E5C21D /* Geometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Geometry.m; sourceTree = "<group>"; };
+		F71BA7651635B62500E5C21D /* Orientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Orientation.h; sourceTree = "<group>"; };
+		F71BA7661635B62500E5C21D /* Orientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Orientation.m; sourceTree = "<group>"; };
+		F71BA7671635B62500E5C21D /* UIImage-Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage-Utilities.h"; sourceTree = "<group>"; };
+		F71BA7681635B62500E5C21D /* UIImage-Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage-Utilities.m"; sourceTree = "<group>"; };
+		F71BA7691635B62500E5C21D /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
+		F71BA76A1635B62500E5C21D /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
 		F7C1A11B1630E22B005D6488 /* MyEventTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyEventTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7C1A11F1630E22B005D6488 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F7C1A1211630E22B005D6488 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -111,6 +129,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F71BA75E1635B62500E5C21D /* cookbook */ = {
+			isa = PBXGroup;
+			children = (
+				F71BA75F1635B62500E5C21D /* CameraImageHelper.h */,
+				F71BA7601635B62500E5C21D /* CameraImageHelper.m */,
+				F71BA7611635B62500E5C21D /* exifGeometry.h */,
+				F71BA7621635B62500E5C21D /* exifGeometry.m */,
+				F71BA7631635B62500E5C21D /* Geometry.h */,
+				F71BA7641635B62500E5C21D /* Geometry.m */,
+				F71BA7651635B62500E5C21D /* Orientation.h */,
+				F71BA7661635B62500E5C21D /* Orientation.m */,
+				F71BA7671635B62500E5C21D /* UIImage-Utilities.h */,
+				F71BA7681635B62500E5C21D /* UIImage-Utilities.m */,
+				F71BA7691635B62500E5C21D /* Utilities.h */,
+				F71BA76A1635B62500E5C21D /* Utilities.m */,
+			);
+			path = cookbook;
+			sourceTree = "<group>";
+		};
 		F7C1A1101630E22B005D6488 = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +215,7 @@
 		F7EFDBDC163149A800699A92 /* vendors */ = {
 			isa = PBXGroup;
 			children = (
+				F71BA75E1635B62500E5C21D /* cookbook */,
 				F7EFDBDD163149A800699A92 /* Kal */,
 			);
 			path = vendors;
@@ -291,6 +329,12 @@
 				F7EFDBFB163149A800699A92 /* KalViewController.m in Sources */,
 				F7EFDBFC163149A800699A92 /* NSDateAdditions.m in Sources */,
 				F7EFDBFD163149A800699A92 /* UIViewAdditions.m in Sources */,
+				F71BA76B1635B62500E5C21D /* CameraImageHelper.m in Sources */,
+				F71BA76C1635B62500E5C21D /* exifGeometry.m in Sources */,
+				F71BA76D1635B62500E5C21D /* Geometry.m in Sources */,
+				F71BA76E1635B62500E5C21D /* Orientation.m in Sources */,
+				F71BA76F1635B62500E5C21D /* UIImage-Utilities.m in Sources */,
+				F71BA7701635B62500E5C21D /* Utilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

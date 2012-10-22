@@ -31,6 +31,12 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    imagePickerController = [[UIImagePickerController alloc] init];
+    imagePickerController.delegate = self;
+    imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+    imagePickerController.allowsEditing = YES;
+    
 }
 
 - (void)viewDidUnload
@@ -57,7 +63,7 @@
 {
     NSLog(@"Show Camera");
     
-    
+    [self presentModalViewController:imagePickerController animated:YES];
 
 }
 
@@ -68,12 +74,24 @@
     
 }
 
+- (IBAction)detectFace:(id)sender {
+    
+    
+    
+    
+}
+
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     NSLog( @"didFinishPickingMediaWithInfo..." );
     
     if (IS_IPHONE)
     {
+        UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
+        
+        if ( image != nil)
+            photoImageView.image = image;
+        
         [picker dismissModalViewControllerAnimated:YES];
     }
 }
@@ -85,6 +103,7 @@
     [picker dismissModalViewControllerAnimated:YES];
 }
 
+/*
 -(void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
 {
     NSLog( @"popoverControllerDidDismissPopover..." );
@@ -92,5 +111,6 @@
     [popoverController dismissPopoverAnimated:YES];
 
 }
+*/
 
 @end
