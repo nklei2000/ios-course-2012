@@ -13,6 +13,7 @@
 		F71BA76E1635B62500E5C21D /* Orientation.m in Sources */ = {isa = PBXBuildFile; fileRef = F71BA7661635B62500E5C21D /* Orientation.m */; };
 		F71BA76F1635B62500E5C21D /* UIImage-Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F71BA7681635B62500E5C21D /* UIImage-Utilities.m */; };
 		F71BA7701635B62500E5C21D /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F71BA76A1635B62500E5C21D /* Utilities.m */; };
+		F71BA7731635B7EC00E5C21D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F71BA7721635B7EC00E5C21D /* QuartzCore.framework */; };
 		F7C1A1201630E22B005D6488 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C1A11F1630E22B005D6488 /* UIKit.framework */; };
 		F7C1A1221630E22B005D6488 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C1A1211630E22B005D6488 /* Foundation.framework */; };
 		F7C1A1241630E22B005D6488 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C1A1231630E22B005D6488 /* CoreGraphics.framework */; };
@@ -57,6 +58,7 @@
 		F71BA7681635B62500E5C21D /* UIImage-Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage-Utilities.m"; sourceTree = "<group>"; };
 		F71BA7691635B62500E5C21D /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
 		F71BA76A1635B62500E5C21D /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
+		F71BA7721635B7EC00E5C21D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		F7C1A11B1630E22B005D6488 /* MyEventTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyEventTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7C1A11F1630E22B005D6488 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F7C1A1211630E22B005D6488 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -111,6 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F71BA7731635B7EC00E5C21D /* QuartzCore.framework in Frameworks */,
 				F7EFDC1A163154A700699A92 /* AudioToolbox.framework in Frameworks */,
 				F7EFDC1B163154A700699A92 /* AVFoundation.framework in Frameworks */,
 				F7EFDC171631548400699A92 /* CoreLocation.framework in Frameworks */,
@@ -151,6 +154,7 @@
 		F7C1A1101630E22B005D6488 = {
 			isa = PBXGroup;
 			children = (
+				F71BA7721635B7EC00E5C21D /* QuartzCore.framework */,
 				F7EFDC18163154A700699A92 /* AudioToolbox.framework */,
 				F7EFDC19163154A700699A92 /* AVFoundation.framework */,
 				F7EFDC161631548400699A92 /* CoreLocation.framework */,
