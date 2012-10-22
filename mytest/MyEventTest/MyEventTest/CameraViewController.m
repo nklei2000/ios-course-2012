@@ -8,6 +8,10 @@
 
 #import "CameraViewController.h"
 
+#import "CameraImageHelper.h"
+#import "exifGeometry.h"
+#import "UIImage-Utilities.h"
+#import "Orientation.h"
 
 #define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
 
@@ -32,10 +36,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    imagePickerController = [[UIImagePickerController alloc] init];
-    imagePickerController.delegate = self;
-    imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
-    imagePickerController.allowsEditing = YES;
+
     
 }
 
@@ -56,12 +57,36 @@
 {
      NSLog(@"Show Camera");
     
+#if !TARGET_IPHONE_SIMULATOR
+    if ( imagePickerController == nil ) {
+        imagePickerController = [[UIImagePickerController alloc] init];
+    }
+    imagePickerController.delegate = self;
+    imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+    imagePickerController.allowsEditing = YES;
+    
+    [self presentModalViewController:imagePickerController animated:YES];
+#endif
+    
+#if TARGET_IPHONE_SIMULATOR
+
+    NSLog(@"iPhone simulator doesn't have camera");
+    
+#endif
     
 }
 
 - (IBAction)pickPhoto:(id)sender
 {
     NSLog(@"Show Camera");
+
+    if ( imagePickerController == nil ) {
+        imagePickerController = [[UIImagePickerController alloc] init];
+    }
+    
+    imagePickerController.delegate = self;
+    imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    imagePickerController.allowsEditing = YES;
     
     [self presentModalViewController:imagePickerController animated:YES];
 
@@ -74,12 +99,44 @@
     
 }
 
-- (IBAction)detectFace:(id)sender {
+- (void)detect:(NSTimer *)timer
+{
+    
+    ciImage = helper.ciImage;
+    UIImage *baseImage = [UIImage imageWithCIImage:ciImage];
+    
+    NSDictionary *detectorOptions = [NSDictionary dictionaryWithObject:CIDetectorAccuracyHigh forKey:CIDetectorAccuracy];
+    
+    CIDetector *detector = [CIDetector detectorOfType:CIDetectorTypeFace context:nil options:detectorOptions];
+                           
+    ExifOrientation detectOrientation = detectorEXIF(helper.isUsingFrontCamera, NO);
+    
+    NSDictionary *imageOptions = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:detectOrientation] forKey:CIDetectorImageOrientation];
+    
+    NSArray *features = [detector featuresInImage:ciImage options:imageOptions];
+    if ( !features.count ) return;
+    
+    CIFaceFeature *feature = [features lastObject];
     
     
+    
+    
+    UIImage *newImage = baseImage;
+    
+    photoImageView.image = newImage;
     
     
 }
+
+- (IBAction)detectFace:(id)sender {
+    
+    
+    helper = [CameraImageHelper helperWithCamera:kCameraFront];
+    [helper startRunningSession];
+    
+    [NSTimer scheduledTimerWithTimeInterval:0.1f target:self selector:@selector(detect:) userInfo:nil repeats:YES];
+}
+
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {

@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class CameraImageHelper;
+
 @interface CameraViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 {
     UIImagePickerController *imagePickerController;
+    CameraImageHelper *helper;
+    CIImage *ciImage;
 }
 
 - (IBAction)showCamera:(id)sender;

@@ -15,9 +15,15 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    
     // Override point for customization after application launch.
     self.viewController = [[SAMViewController alloc] initWithNibName:@"SAMViewController" bundle:nil];
-    self.window.rootViewController = self.viewController;
+    // self.window.rootViewController = self.viewController;
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.viewController];
+    self.window.rootViewController = navController;
+    
     [self.window makeKeyAndVisible];
     
     UILocalNotification *localNotif = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
