@@ -23,6 +23,8 @@
 @synthesize photoImageView;
 @synthesize featuresTbl;
 
+static NSString *CustomCellIdentifier = @"CustomCell";
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -37,7 +39,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    [self.featuresTbl registerNib:[UINib nibWithNibName:@"FaceTableViewCell" bundle:nil] forCellReuseIdentifier:CustomCellIdentifier];
+    
     featureFaces = [[NSMutableArray alloc] init];
+    
+    
     
 }
 
@@ -106,6 +112,8 @@
     ciImage = helper.ciImage;
     UIImage *baseImage = [UIImage imageWithCIImage:ciImage];
     CGRect imageRect = (CGRect){.size = baseImage.size};
+    
+    self.photoImageView.image = baseImage;
     
     NSDictionary *detectorOptions = [NSDictionary dictionaryWithObject:CIDetectorAccuracyHigh forKey:CIDetectorAccuracy];
     
@@ -198,16 +206,17 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"CustomCell";
+    // static NSString *CellIdentifier = @"CustomCell";
     
     UITableViewCell *cell =
-    [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    [tableView dequeueReusableCellWithIdentifier:CustomCellIdentifier];
     tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     
     UIImage *theImage = (UIImage *)[featureFaces objectAtIndex:indexPath.row];
     
     UIImageView *featureImageView = (UIImageView*)[cell viewWithTag:1001];
-    featureImageView.image = theImage;
+    if (featureImageView != nil)
+        featureImageView.image = theImage;
     
     return cell;
 }

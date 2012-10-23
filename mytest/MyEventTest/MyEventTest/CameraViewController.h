@@ -24,6 +24,6 @@
 
 - (IBAction)detectFace:(id)sender;
 @property (strong, nonatomic) IBOutlet UIImageView *photoImageView;
-@property (weak, nonatomic) IBOutlet UITableView *featuresTbl;
+@property (strong, nonatomic) IBOutlet UITableView *featuresTbl;
 
 @end

@@ -15,6 +15,12 @@
 		F71BA7701635B62500E5C21D /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F71BA76A1635B62500E5C21D /* Utilities.m */; };
 		F73A1090163683DB00C3BDD4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F73A108F163683DB00C3BDD4 /* QuartzCore.framework */; };
 		F73A10921636857400C3BDD4 /* FaceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F73A10911636857400C3BDD4 /* FaceTableViewCell.xib */; };
+		F7B075BB1637074000558116 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7B075B61637074000558116 /* CoreLocation.framework */; };
+		F7B075BC1637074000558116 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7B075B71637074000558116 /* CoreMedia.framework */; };
+		F7B075BD1637074000558116 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7B075B81637074000558116 /* CoreMotion.framework */; };
+		F7B075BE1637074000558116 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7B075B91637074000558116 /* CoreText.framework */; };
+		F7B075BF1637074000558116 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7B075BA1637074000558116 /* CoreVideo.framework */; };
+		F7B075C11637078000558116 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7B075C01637078000558116 /* AVFoundation.framework */; };
 		F7C1A1201630E22B005D6488 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C1A11F1630E22B005D6488 /* UIKit.framework */; };
 		F7C1A1221630E22B005D6488 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C1A1211630E22B005D6488 /* Foundation.framework */; };
 		F7C1A1241630E22B005D6488 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C1A1231630E22B005D6488 /* CoreGraphics.framework */; };
@@ -38,12 +44,7 @@
 		F7EFDBFB163149A800699A92 /* KalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EFDBEF163149A800699A92 /* KalViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F7EFDBFC163149A800699A92 /* NSDateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EFDBF1163149A800699A92 /* NSDateAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F7EFDBFD163149A800699A92 /* UIViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EFDBF3163149A800699A92 /* UIViewAdditions.m */; };
-		F7EFDC131631547900699A92 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7EFDC101631547800699A92 /* CoreFoundation.framework */; };
-		F7EFDC141631547900699A92 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7EFDC111631547800699A92 /* CoreMedia.framework */; };
-		F7EFDC151631547900699A92 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7EFDC121631547900699A92 /* CoreVideo.framework */; };
-		F7EFDC171631548400699A92 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7EFDC161631548400699A92 /* CoreLocation.framework */; };
-		F7EFDC1A163154A700699A92 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7EFDC18163154A700699A92 /* AudioToolbox.framework */; };
-		F7EFDC1B163154A700699A92 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7EFDC19163154A700699A92 /* AVFoundation.framework */; };
+		F7FD3A5E16370039005B509E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F7FD3A5D16370039005B509E /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,12 @@
 		F71BA76A1635B62500E5C21D /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
 		F73A108F163683DB00C3BDD4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F73A10911636857400C3BDD4 /* FaceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FaceTableViewCell.xib; sourceTree = "<group>"; };
+		F7B075B61637074000558116 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		F7B075B71637074000558116 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		F7B075B81637074000558116 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		F7B075B91637074000558116 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		F7B075BA1637074000558116 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		F7B075C01637078000558116 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		F7C1A11B1630E22B005D6488 /* MyEventTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyEventTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7C1A11F1630E22B005D6488 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F7C1A1211630E22B005D6488 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -102,12 +109,7 @@
 		F7EFDBF1163149A800699A92 /* NSDateAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDateAdditions.m; sourceTree = "<group>"; };
 		F7EFDBF2163149A800699A92 /* UIViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewAdditions.h; sourceTree = "<group>"; };
 		F7EFDBF3163149A800699A92 /* UIViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewAdditions.m; sourceTree = "<group>"; };
-		F7EFDC101631547800699A92 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks/CoreFoundation.framework; sourceTree = DEVELOPER_DIR; };
-		F7EFDC111631547800699A92 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
-		F7EFDC121631547900699A92 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks/CoreVideo.framework; sourceTree = DEVELOPER_DIR; };
-		F7EFDC161631548400699A92 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
-		F7EFDC18163154A700699A92 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks/AudioToolbox.framework; sourceTree = DEVELOPER_DIR; };
-		F7EFDC19163154A700699A92 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
+		F7FD3A5D16370039005B509E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,15 +117,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F73A1090163683DB00C3BDD4 /* QuartzCore.framework in Frameworks */,
-				F7EFDC1A163154A700699A92 /* AudioToolbox.framework in Frameworks */,
-				F7EFDC1B163154A700699A92 /* AVFoundation.framework in Frameworks */,
-				F7EFDC171631548400699A92 /* CoreLocation.framework in Frameworks */,
-				F7EFDC131631547900699A92 /* CoreFoundation.framework in Frameworks */,
-				F7EFDC141631547900699A92 /* CoreMedia.framework in Frameworks */,
-				F7EFDC151631547900699A92 /* CoreVideo.framework in Frameworks */,
+				F7B075C11637078000558116 /* AVFoundation.framework in Frameworks */,
+				F7B075BB1637074000558116 /* CoreLocation.framework in Frameworks */,
+				F7B075BC1637074000558116 /* CoreMedia.framework in Frameworks */,
+				F7B075BD1637074000558116 /* CoreMotion.framework in Frameworks */,
+				F7B075BE1637074000558116 /* CoreText.framework in Frameworks */,
+				F7B075BF1637074000558116 /* CoreVideo.framework in Frameworks */,
 				F7C1A1241630E22B005D6488 /* CoreGraphics.framework in Frameworks */,
 				F7EFDBDA1631481D00699A92 /* CoreImage.framework in Frameworks */,
+				F73A1090163683DB00C3BDD4 /* QuartzCore.framework in Frameworks */,
 				F7C1A13E1630E836005D6488 /* EventKit.framework in Frameworks */,
 				F7C1A13F1630E836005D6488 /* EventKitUI.framework in Frameworks */,
 				F7C1A1201630E22B005D6488 /* UIKit.framework in Frameworks */,
@@ -156,13 +158,14 @@
 		F7C1A1101630E22B005D6488 = {
 			isa = PBXGroup;
 			children = (
+				F7B075C01637078000558116 /* AVFoundation.framework */,
+				F7B075B61637074000558116 /* CoreLocation.framework */,
+				F7B075B71637074000558116 /* CoreMedia.framework */,
+				F7B075B81637074000558116 /* CoreMotion.framework */,
+				F7B075B91637074000558116 /* CoreText.framework */,
+				F7B075BA1637074000558116 /* CoreVideo.framework */,
+				F7FD3A5D16370039005B509E /* Default-568h@2x.png */,
 				F73A108F163683DB00C3BDD4 /* QuartzCore.framework */,
-				F7EFDC18163154A700699A92 /* AudioToolbox.framework */,
-				F7EFDC19163154A700699A92 /* AVFoundation.framework */,
-				F7EFDC161631548400699A92 /* CoreLocation.framework */,
-				F7EFDC101631547800699A92 /* CoreFoundation.framework */,
-				F7EFDC111631547800699A92 /* CoreMedia.framework */,
-				F7EFDC121631547900699A92 /* CoreVideo.framework */,
 				F7EFDBD91631481D00699A92 /* CoreImage.framework */,
 				F7C1A13C1630E836005D6488 /* EventKit.framework */,
 				F7C1A13D1630E836005D6488 /* EventKitUI.framework */,
@@ -324,6 +327,7 @@
 				F7C1A1361630E22B005D6488 /* SAMViewController.xib in Resources */,
 				F7C1A14816312E73005D6488 /* CameraViewController.xib in Resources */,
 				F73A10921636857400C3BDD4 /* FaceTableViewCell.xib in Resources */,
+				F7FD3A5E16370039005B509E /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
