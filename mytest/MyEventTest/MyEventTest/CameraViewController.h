@@ -10,11 +10,12 @@
 
 @class CameraImageHelper;
 
-@interface CameraViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface CameraViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate,UITableViewDelegate, UITableViewDataSource>
 {
     UIImagePickerController *imagePickerController;
     CameraImageHelper *helper;
     CIImage *ciImage;
+    NSMutableArray *featureFaces;
 }
 
 - (IBAction)showCamera:(id)sender;
@@ -23,5 +24,6 @@
 
 - (IBAction)detectFace:(id)sender;
 @property (strong, nonatomic) IBOutlet UIImageView *photoImageView;
+@property (weak, nonatomic) IBOutlet UITableView *featuresTbl;
 
 @end

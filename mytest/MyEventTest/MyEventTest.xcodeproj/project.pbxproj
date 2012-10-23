@@ -13,7 +13,8 @@
 		F71BA76E1635B62500E5C21D /* Orientation.m in Sources */ = {isa = PBXBuildFile; fileRef = F71BA7661635B62500E5C21D /* Orientation.m */; };
 		F71BA76F1635B62500E5C21D /* UIImage-Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F71BA7681635B62500E5C21D /* UIImage-Utilities.m */; };
 		F71BA7701635B62500E5C21D /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F71BA76A1635B62500E5C21D /* Utilities.m */; };
-		F71BA7731635B7EC00E5C21D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F71BA7721635B7EC00E5C21D /* QuartzCore.framework */; };
+		F73A1090163683DB00C3BDD4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F73A108F163683DB00C3BDD4 /* QuartzCore.framework */; };
+		F73A10921636857400C3BDD4 /* FaceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F73A10911636857400C3BDD4 /* FaceTableViewCell.xib */; };
 		F7C1A1201630E22B005D6488 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C1A11F1630E22B005D6488 /* UIKit.framework */; };
 		F7C1A1221630E22B005D6488 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C1A1211630E22B005D6488 /* Foundation.framework */; };
 		F7C1A1241630E22B005D6488 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C1A1231630E22B005D6488 /* CoreGraphics.framework */; };
@@ -58,7 +59,8 @@
 		F71BA7681635B62500E5C21D /* UIImage-Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage-Utilities.m"; sourceTree = "<group>"; };
 		F71BA7691635B62500E5C21D /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
 		F71BA76A1635B62500E5C21D /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
-		F71BA7721635B7EC00E5C21D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		F73A108F163683DB00C3BDD4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		F73A10911636857400C3BDD4 /* FaceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FaceTableViewCell.xib; sourceTree = "<group>"; };
 		F7C1A11B1630E22B005D6488 /* MyEventTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyEventTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7C1A11F1630E22B005D6488 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F7C1A1211630E22B005D6488 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -113,7 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F71BA7731635B7EC00E5C21D /* QuartzCore.framework in Frameworks */,
+				F73A1090163683DB00C3BDD4 /* QuartzCore.framework in Frameworks */,
 				F7EFDC1A163154A700699A92 /* AudioToolbox.framework in Frameworks */,
 				F7EFDC1B163154A700699A92 /* AVFoundation.framework in Frameworks */,
 				F7EFDC171631548400699A92 /* CoreLocation.framework in Frameworks */,
@@ -154,17 +156,17 @@
 		F7C1A1101630E22B005D6488 = {
 			isa = PBXGroup;
 			children = (
-				F71BA7721635B7EC00E5C21D /* QuartzCore.framework */,
+				F73A108F163683DB00C3BDD4 /* QuartzCore.framework */,
 				F7EFDC18163154A700699A92 /* AudioToolbox.framework */,
 				F7EFDC19163154A700699A92 /* AVFoundation.framework */,
 				F7EFDC161631548400699A92 /* CoreLocation.framework */,
 				F7EFDC101631547800699A92 /* CoreFoundation.framework */,
 				F7EFDC111631547800699A92 /* CoreMedia.framework */,
 				F7EFDC121631547900699A92 /* CoreVideo.framework */,
-				F7EFDBDC163149A800699A92 /* vendors */,
 				F7EFDBD91631481D00699A92 /* CoreImage.framework */,
 				F7C1A13C1630E836005D6488 /* EventKit.framework */,
 				F7C1A13D1630E836005D6488 /* EventKitUI.framework */,
+				F7EFDBDC163149A800699A92 /* vendors */,
 				F7C1A1251630E22B005D6488 /* MyEventTest */,
 				F7C1A11E1630E22B005D6488 /* Frameworks */,
 				F7C1A11C1630E22B005D6488 /* Products */,
@@ -201,6 +203,7 @@
 				F7C1A14416312E73005D6488 /* CameraViewController.h */,
 				F7C1A14516312E73005D6488 /* CameraViewController.m */,
 				F7C1A14616312E73005D6488 /* CameraViewController.xib */,
+				F73A10911636857400C3BDD4 /* FaceTableViewCell.xib */,
 			);
 			path = MyEventTest;
 			sourceTree = "<group>";
@@ -256,6 +259,16 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		F73A108E163680ED00C3BDD4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		F7C1A11A1630E22B005D6488 /* MyEventTest */ = {
 			isa = PBXNativeTarget;
@@ -264,6 +277,7 @@
 				F7C1A1171630E22B005D6488 /* Sources */,
 				F7C1A1181630E22B005D6488 /* Frameworks */,
 				F7C1A1191630E22B005D6488 /* Resources */,
+				F73A108E163680ED00C3BDD4 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -309,6 +323,7 @@
 				F7C1A12A1630E22B005D6488 /* InfoPlist.strings in Resources */,
 				F7C1A1361630E22B005D6488 /* SAMViewController.xib in Resources */,
 				F7C1A14816312E73005D6488 /* CameraViewController.xib in Resources */,
+				F73A10921636857400C3BDD4 /* FaceTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,7 +436,7 @@
 				INFOPLIST_FILE = "MyEventTest/MyEventTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos5.1;
+				SDKROOT = iphoneos6.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -434,7 +449,7 @@
 				INFOPLIST_FILE = "MyEventTest/MyEventTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos5.1;
+				SDKROOT = iphoneos6.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

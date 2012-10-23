@@ -21,6 +21,7 @@
 
 @implementation CameraViewController
 @synthesize photoImageView;
+@synthesize featuresTbl;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,13 +37,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-
+    featureFaces = [[NSMutableArray alloc] init];
     
 }
 
 - (void)viewDidUnload
 {
     [self setPhotoImageView:nil];
+    [self setFeaturesTbl:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -101,9 +103,9 @@
 
 - (void)detect:(NSTimer *)timer
 {
-    
     ciImage = helper.ciImage;
     UIImage *baseImage = [UIImage imageWithCIImage:ciImage];
+    CGRect imageRect = (CGRect){.size = baseImage.size};
     
     NSDictionary *detectorOptions = [NSDictionary dictionaryWithObject:CIDetectorAccuracyHigh forKey:CIDetectorAccuracy];
     
@@ -114,16 +116,31 @@
     NSDictionary *imageOptions = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:detectOrientation] forKey:CIDetectorImageOrientation];
     
     NSArray *features = [detector featuresInImage:ciImage options:imageOptions];
+    
     if ( !features.count ) return;
     
-    CIFaceFeature *feature = [features lastObject];
+    // CIFaceFeature *feature = [features lastObject];
+    [featureFaces removeAllObjects];
+    [self.featuresTbl reloadData];
     
+    for (CIFaceFeature *feature in features)
+    {
+        CGRect rect = rectInEXIF(detectOrientation, feature.bounds, imageRect);
+        
+        CGPoint center = CGRectGetCenter(rect);
+        CGFloat width = rect.size.width * 1.1f;
+        CGFloat height = rect.size.height * 1.1f;
+        
+        CGRect newRect = CGRectAroundCenter(center, width, height);
+        
+        UIImage *newImage = [baseImage subImageWithBounds:newRect];
+        [featureFaces addObject:newImage];
+    }
     
+    [self.featuresTbl reloadData];
     
-    
-    UIImage *newImage = baseImage;
-    
-    photoImageView.image = newImage;
+    // UIImage *newImage = baseImage;
+    // photoImageView.image = newImage;
     
     
 }
@@ -169,5 +186,43 @@
 
 }
 */
+
+
+#pragma mark -
+#pragma mark Table view methods
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [featureFaces count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"CustomCell";
+    
+    UITableViewCell *cell =
+    [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    
+    UIImage *theImage = (UIImage *)[featureFaces objectAtIndex:indexPath.row];
+    
+    UIImageView *featureImageView = (UIImageView*)[cell viewWithTag:1001];
+    featureImageView.image = theImage;
+    
+    return cell;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 100.0f;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
 
 @end
