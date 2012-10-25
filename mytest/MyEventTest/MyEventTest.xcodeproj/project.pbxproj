@@ -21,6 +21,7 @@
 		F71BA76E1635B62500E5C21D /* Orientation.m in Sources */ = {isa = PBXBuildFile; fileRef = F71BA7661635B62500E5C21D /* Orientation.m */; };
 		F71BA76F1635B62500E5C21D /* UIImage-Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F71BA7681635B62500E5C21D /* UIImage-Utilities.m */; };
 		F71BA7701635B62500E5C21D /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F71BA76A1635B62500E5C21D /* Utilities.m */; };
+		F795F3FE1639994500628AEC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F795F3FD1639994500628AEC /* Default-568h@2x.png */; };
 		F7C1A1201630E22B005D6488 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C1A11F1630E22B005D6488 /* UIKit.framework */; };
 		F7C1A1221630E22B005D6488 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C1A1211630E22B005D6488 /* Foundation.framework */; };
 		F7C1A1241630E22B005D6488 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C1A1231630E22B005D6488 /* CoreGraphics.framework */; };
@@ -67,6 +68,7 @@
 		F71BA7681635B62500E5C21D /* UIImage-Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage-Utilities.m"; sourceTree = "<group>"; };
 		F71BA7691635B62500E5C21D /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
 		F71BA76A1635B62500E5C21D /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
+		F795F3FD1639994500628AEC /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		F7C1A11B1630E22B005D6488 /* MyEventTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyEventTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7C1A11F1630E22B005D6488 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F7C1A1211630E22B005D6488 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -157,6 +159,7 @@
 		F7C1A1101630E22B005D6488 = {
 			isa = PBXGroup;
 			children = (
+				F795F3FD1639994500628AEC /* Default-568h@2x.png */,
 				F70DECF81639576500C6AF61 /* QuartzCore.framework */,
 				F70DECF61639575F00C6AF61 /* AudioToolbox.framework */,
 				F70DECEC1639574600C6AF61 /* CoreAudio.framework */,
@@ -206,7 +209,6 @@
 				F7C1A14416312E73005D6488 /* CameraViewController.h */,
 				F7C1A14516312E73005D6488 /* CameraViewController.m */,
 				F7C1A14616312E73005D6488 /* CameraViewController.xib */,
-				F73A10911636857400C3BDD4 /* FaceTableViewCell.xib */,
 			);
 			path = MyEventTest;
 			sourceTree = "<group>";
@@ -326,8 +328,7 @@
 				F7C1A12A1630E22B005D6488 /* InfoPlist.strings in Resources */,
 				F7C1A1361630E22B005D6488 /* SAMViewController.xib in Resources */,
 				F7C1A14816312E73005D6488 /* CameraViewController.xib in Resources */,
-				F73A10921636857400C3BDD4 /* FaceTableViewCell.xib in Resources */,
-				F7FD3A5E16370039005B509E /* Default-568h@2x.png in Resources */,
+				F795F3FE1639994500628AEC /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
