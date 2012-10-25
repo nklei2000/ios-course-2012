@@ -161,9 +161,13 @@
 - (IBAction)showCamera:(id)sender {
 
     CameraViewController *cameraViewController = [[CameraViewController alloc] init];
+
+//    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:cameraViewController];
+//    
+//    [self presentModalViewController:navController animated:YES];
+
     
-    [self presentModalViewController:cameraViewController animated:YES];
-    
+    [self.navigationController pushViewController:cameraViewController animated:YES];
 }
 
 - (IBAction)localNotificationTest:(id)sender {

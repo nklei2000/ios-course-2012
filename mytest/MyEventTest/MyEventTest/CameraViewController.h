@@ -10,7 +10,7 @@
 
 @class CameraImageHelper;
 
-@interface CameraViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate,UITableViewDelegate, UITableViewDataSource>
+@interface CameraViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate,UIScrollViewDelegate>
 {
     UIImagePickerController *imagePickerController;
     CameraImageHelper *helper;
@@ -24,6 +24,7 @@
 
 - (IBAction)detectFace:(id)sender;
 @property (strong, nonatomic) IBOutlet UIImageView *photoImageView;
-@property (strong, nonatomic) IBOutlet UITableView *featuresTbl;
+
+@property (strong, nonatomic) IBOutlet UIScrollView *featuresScrollView;
 
 @end
