@@ -7,13 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F70DECEA1639572300C6AF61 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F70DECE91639572300C6AF61 /* AVFoundation.framework */; };
+		F70DECF11639574600C6AF61 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F70DECEC1639574600C6AF61 /* CoreAudio.framework */; };
+		F70DECF21639574600C6AF61 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F70DECED1639574600C6AF61 /* CoreFoundation.framework */; };
+		F70DECF31639574600C6AF61 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F70DECEE1639574600C6AF61 /* CoreLocation.framework */; };
+		F70DECF41639574600C6AF61 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F70DECEF1639574600C6AF61 /* CoreMedia.framework */; };
+		F70DECF51639574600C6AF61 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F70DECF01639574600C6AF61 /* CoreVideo.framework */; };
+		F70DECF71639575F00C6AF61 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F70DECF61639575F00C6AF61 /* AudioToolbox.framework */; };
+		F70DECF91639576500C6AF61 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F70DECF81639576500C6AF61 /* QuartzCore.framework */; };
 		F71BA76B1635B62500E5C21D /* CameraImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F71BA7601635B62500E5C21D /* CameraImageHelper.m */; };
 		F71BA76C1635B62500E5C21D /* exifGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = F71BA7621635B62500E5C21D /* exifGeometry.m */; };
 		F71BA76D1635B62500E5C21D /* Geometry.m in Sources */ = {isa = PBXBuildFile; fileRef = F71BA7641635B62500E5C21D /* Geometry.m */; };
 		F71BA76E1635B62500E5C21D /* Orientation.m in Sources */ = {isa = PBXBuildFile; fileRef = F71BA7661635B62500E5C21D /* Orientation.m */; };
 		F71BA76F1635B62500E5C21D /* UIImage-Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F71BA7681635B62500E5C21D /* UIImage-Utilities.m */; };
 		F71BA7701635B62500E5C21D /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F71BA76A1635B62500E5C21D /* Utilities.m */; };
-		F71BA7731635B7EC00E5C21D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F71BA7721635B7EC00E5C21D /* QuartzCore.framework */; };
 		F7C1A1201630E22B005D6488 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C1A11F1630E22B005D6488 /* UIKit.framework */; };
 		F7C1A1221630E22B005D6488 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C1A1211630E22B005D6488 /* Foundation.framework */; };
 		F7C1A1241630E22B005D6488 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C1A1231630E22B005D6488 /* CoreGraphics.framework */; };
@@ -37,15 +44,17 @@
 		F7EFDBFB163149A800699A92 /* KalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EFDBEF163149A800699A92 /* KalViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F7EFDBFC163149A800699A92 /* NSDateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EFDBF1163149A800699A92 /* NSDateAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F7EFDBFD163149A800699A92 /* UIViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EFDBF3163149A800699A92 /* UIViewAdditions.m */; };
-		F7EFDC131631547900699A92 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7EFDC101631547800699A92 /* CoreFoundation.framework */; };
-		F7EFDC141631547900699A92 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7EFDC111631547800699A92 /* CoreMedia.framework */; };
-		F7EFDC151631547900699A92 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7EFDC121631547900699A92 /* CoreVideo.framework */; };
-		F7EFDC171631548400699A92 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7EFDC161631548400699A92 /* CoreLocation.framework */; };
-		F7EFDC1A163154A700699A92 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7EFDC18163154A700699A92 /* AudioToolbox.framework */; };
-		F7EFDC1B163154A700699A92 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7EFDC19163154A700699A92 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F70DECE91639572300C6AF61 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		F70DECEC1639574600C6AF61 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		F70DECED1639574600C6AF61 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		F70DECEE1639574600C6AF61 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		F70DECEF1639574600C6AF61 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		F70DECF01639574600C6AF61 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		F70DECF61639575F00C6AF61 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		F70DECF81639576500C6AF61 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F71BA75F1635B62500E5C21D /* CameraImageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraImageHelper.h; sourceTree = "<group>"; };
 		F71BA7601635B62500E5C21D /* CameraImageHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraImageHelper.m; sourceTree = "<group>"; };
 		F71BA7611635B62500E5C21D /* exifGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exifGeometry.h; sourceTree = "<group>"; };
@@ -58,7 +67,6 @@
 		F71BA7681635B62500E5C21D /* UIImage-Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage-Utilities.m"; sourceTree = "<group>"; };
 		F71BA7691635B62500E5C21D /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
 		F71BA76A1635B62500E5C21D /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
-		F71BA7721635B7EC00E5C21D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		F7C1A11B1630E22B005D6488 /* MyEventTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyEventTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7C1A11F1630E22B005D6488 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F7C1A1211630E22B005D6488 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -100,12 +108,6 @@
 		F7EFDBF1163149A800699A92 /* NSDateAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDateAdditions.m; sourceTree = "<group>"; };
 		F7EFDBF2163149A800699A92 /* UIViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewAdditions.h; sourceTree = "<group>"; };
 		F7EFDBF3163149A800699A92 /* UIViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewAdditions.m; sourceTree = "<group>"; };
-		F7EFDC101631547800699A92 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks/CoreFoundation.framework; sourceTree = DEVELOPER_DIR; };
-		F7EFDC111631547800699A92 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
-		F7EFDC121631547900699A92 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks/CoreVideo.framework; sourceTree = DEVELOPER_DIR; };
-		F7EFDC161631548400699A92 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
-		F7EFDC18163154A700699A92 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks/AudioToolbox.framework; sourceTree = DEVELOPER_DIR; };
-		F7EFDC19163154A700699A92 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,15 +115,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F71BA7731635B7EC00E5C21D /* QuartzCore.framework in Frameworks */,
-				F7EFDC1A163154A700699A92 /* AudioToolbox.framework in Frameworks */,
-				F7EFDC1B163154A700699A92 /* AVFoundation.framework in Frameworks */,
-				F7EFDC171631548400699A92 /* CoreLocation.framework in Frameworks */,
-				F7EFDC131631547900699A92 /* CoreFoundation.framework in Frameworks */,
-				F7EFDC141631547900699A92 /* CoreMedia.framework in Frameworks */,
-				F7EFDC151631547900699A92 /* CoreVideo.framework in Frameworks */,
+				F70DECF91639576500C6AF61 /* QuartzCore.framework in Frameworks */,
+				F70DECF71639575F00C6AF61 /* AudioToolbox.framework in Frameworks */,
+				F70DECF11639574600C6AF61 /* CoreAudio.framework in Frameworks */,
+				F70DECF21639574600C6AF61 /* CoreFoundation.framework in Frameworks */,
+				F70DECF31639574600C6AF61 /* CoreLocation.framework in Frameworks */,
+				F70DECF41639574600C6AF61 /* CoreMedia.framework in Frameworks */,
+				F70DECF51639574600C6AF61 /* CoreVideo.framework in Frameworks */,
 				F7C1A1241630E22B005D6488 /* CoreGraphics.framework in Frameworks */,
 				F7EFDBDA1631481D00699A92 /* CoreImage.framework in Frameworks */,
+				F70DECEA1639572300C6AF61 /* AVFoundation.framework in Frameworks */,
 				F7C1A13E1630E836005D6488 /* EventKit.framework in Frameworks */,
 				F7C1A13F1630E836005D6488 /* EventKitUI.framework in Frameworks */,
 				F7C1A1201630E22B005D6488 /* UIKit.framework in Frameworks */,
@@ -154,13 +157,14 @@
 		F7C1A1101630E22B005D6488 = {
 			isa = PBXGroup;
 			children = (
-				F71BA7721635B7EC00E5C21D /* QuartzCore.framework */,
-				F7EFDC18163154A700699A92 /* AudioToolbox.framework */,
-				F7EFDC19163154A700699A92 /* AVFoundation.framework */,
-				F7EFDC161631548400699A92 /* CoreLocation.framework */,
-				F7EFDC101631547800699A92 /* CoreFoundation.framework */,
-				F7EFDC111631547800699A92 /* CoreMedia.framework */,
-				F7EFDC121631547900699A92 /* CoreVideo.framework */,
+				F70DECF81639576500C6AF61 /* QuartzCore.framework */,
+				F70DECF61639575F00C6AF61 /* AudioToolbox.framework */,
+				F70DECEC1639574600C6AF61 /* CoreAudio.framework */,
+				F70DECED1639574600C6AF61 /* CoreFoundation.framework */,
+				F70DECEE1639574600C6AF61 /* CoreLocation.framework */,
+				F70DECEF1639574600C6AF61 /* CoreMedia.framework */,
+				F70DECF01639574600C6AF61 /* CoreVideo.framework */,
+				F70DECE91639572300C6AF61 /* AVFoundation.framework */,
 				F7EFDBDC163149A800699A92 /* vendors */,
 				F7EFDBD91631481D00699A92 /* CoreImage.framework */,
 				F7C1A13C1630E836005D6488 /* EventKit.framework */,
@@ -421,7 +425,7 @@
 				INFOPLIST_FILE = "MyEventTest/MyEventTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos5.1;
+				SDKROOT = iphoneos6.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -434,7 +438,7 @@
 				INFOPLIST_FILE = "MyEventTest/MyEventTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos5.1;
+				SDKROOT = iphoneos6.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
