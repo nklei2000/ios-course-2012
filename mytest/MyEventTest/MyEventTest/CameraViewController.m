@@ -21,6 +21,9 @@
 
 @implementation CameraViewController
 @synthesize photoImageView;
+@synthesize featuresTbl;
+
+static NSString *CustomCellIdentifier = @"CustomCell";
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,13 +39,18 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-
+    [self.featuresTbl registerNib:[UINib nibWithNibName:@"FaceTableViewCell" bundle:nil] forCellReuseIdentifier:CustomCellIdentifier];
+    
+    featureFaces = [[NSMutableArray alloc] init];
+    
+    
     
 }
 
 - (void)viewDidUnload
 {
     [self setPhotoImageView:nil];
+    [self setFeaturesTbl:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -101,9 +109,11 @@
 
 - (void)detect:(NSTimer *)timer
 {
-    
     ciImage = helper.ciImage;
     UIImage *baseImage = [UIImage imageWithCIImage:ciImage];
+    CGRect imageRect = (CGRect){.size = baseImage.size};
+    
+    self.photoImageView.image = baseImage;
     
     NSDictionary *detectorOptions = [NSDictionary dictionaryWithObject:CIDetectorAccuracyHigh forKey:CIDetectorAccuracy];
     
@@ -114,16 +124,31 @@
     NSDictionary *imageOptions = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:detectOrientation] forKey:CIDetectorImageOrientation];
     
     NSArray *features = [detector featuresInImage:ciImage options:imageOptions];
+    
     if ( !features.count ) return;
     
-    CIFaceFeature *feature = [features lastObject];
+    // CIFaceFeature *feature = [features lastObject];
+    [featureFaces removeAllObjects];
+    [self.featuresTbl reloadData];
     
+    for (CIFaceFeature *feature in features)
+    {
+        CGRect rect = rectInEXIF(detectOrientation, feature.bounds, imageRect);
+        
+        CGPoint center = CGRectGetCenter(rect);
+        CGFloat width = rect.size.width * 1.1f;
+        CGFloat height = rect.size.height * 1.1f;
+        
+        CGRect newRect = CGRectAroundCenter(center, width, height);
+        
+        UIImage *newImage = [baseImage subImageWithBounds:newRect];
+        [featureFaces addObject:newImage];
+    }
     
+    [self.featuresTbl reloadData];
     
-    
-    UIImage *newImage = baseImage;
-    
-    photoImageView.image = newImage;
+    // UIImage *newImage = baseImage;
+    // photoImageView.image = newImage;
     
     
 }
