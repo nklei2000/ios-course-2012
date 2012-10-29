@@ -16,6 +16,8 @@
     CameraImageHelper *helper;
     CIImage *ciImage;
     NSMutableArray *featureFaces;
+    
+    UIImageView *photoImageView;
 }
 
 - (IBAction)showCamera:(id)sender;
@@ -23,8 +25,9 @@
 - (IBAction)dismiss:(id)sender;
 
 - (IBAction)detectFace:(id)sender;
-@property (strong, nonatomic) IBOutlet UIImageView *photoImageView;
+//@property (strong, nonatomic) IBOutlet UIImageView *photoImageView;
 
 @property (strong, nonatomic) IBOutlet UIScrollView *featuresScrollView;
+@property (strong, nonatomic) IBOutlet UIScrollView *imageScrollView;
 
 @end

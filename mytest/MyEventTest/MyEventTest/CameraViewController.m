@@ -16,12 +16,14 @@
 
 #define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
 
+#define IMG_WIDTH 640.0f
+#define IMG_HEIGHT 480.0f
+
 @interface CameraViewController ()
 
 @end
 
 @implementation CameraViewController
-@synthesize photoImageView;
 
 static NSString *CustomCellIdentifier = @"CustomCell";
 
@@ -42,6 +44,17 @@ static NSString *CustomCellIdentifier = @"CustomCell";
     featureFaces = [[NSMutableArray alloc] init];
     
     self.featuresScrollView.backgroundColor = [UIColor grayColor];
+    self.imageScrollView.backgroundColor = [UIColor grayColor];
+    
+    photoImageView = [[UIImageView alloc] init];
+    photoImageView.contentMode = UIViewContentModeTopLeft;
+    
+    CGRect viewRect = CGRectMake(0, 0, IMG_WIDTH, IMG_HEIGHT);
+    
+    photoImageView.frame = viewRect;
+	self.imageScrollView.contentSize = CGSizeMake(viewRect.size.width, viewRect.size.height);
+    self.imageScrollView.contentMode = UIViewContentModeTopLeft;
+    [self.imageScrollView addSubview:photoImageView];
     
     if ( [CameraImageHelper numberOfCameras] > 1 )
     {
@@ -67,8 +80,8 @@ static NSString *CustomCellIdentifier = @"CustomCell";
 
 - (void)viewDidUnload
 {
-    [self setPhotoImageView:nil];
     [self setFeaturesScrollView:nil];
+    [self setImageScrollView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -182,7 +195,7 @@ static NSString *CustomCellIdentifier = @"CustomCell";
     }
     
     // self.photoImageView.image = baseImage;
-    self.photoImageView.image = UIGraphicsGetImageFromCurrentImageContext();
+    photoImageView.image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
     [self showFaces:featureFaces];
@@ -245,7 +258,14 @@ static NSString *CustomCellIdentifier = @"CustomCell";
         {
             photoImageView.image = image;
             
-            [self markFaces:photoImageView];
+            NSLog(@"image size (%.0f, %.0f)", image.size.width, image.size.height);
+            
+            CGRect viewRect = CGRectMake(0, 0, IMG_WIDTH, IMG_HEIGHT);
+            photoImageView.frame = viewRect;
+            
+            self.imageScrollView.contentSize = CGSizeMake(IMG_WIDTH, IMG_HEIGHT);
+            
+            [self markFaces:photoImageView forFaceImage:image];
             
         }
         
@@ -344,11 +364,11 @@ static NSString *CustomCellIdentifier = @"CustomCell";
 
 
 
-- (void)markFaces:(UIImageView *)facePicture
+- (void)markFaces:(UIImageView *)facePicture forFaceImage:(UIImage *)faceImage;
 {
     // draw a CI image with the previously loaded face detection picture
     CIImage* image = [CIImage imageWithCGImage:facePicture.image.CGImage];
-    
+
     // create a face detector - since speed is not an issue we'll use a high accuracy
     // detector
     CIDetector* detector = [CIDetector detectorOfType:CIDetectorTypeFace
@@ -361,85 +381,77 @@ static NSString *CustomCellIdentifier = @"CustomCell";
     
     [featureFaces removeAllObjects];
     
+    
+    // UIImage *faceImage = facePicture.image;
+    UIGraphicsBeginImageContextWithOptions(faceImage.size, YES, 0);
+    CGRect rect = CGRectMake(facePicture.bounds.origin.x, facePicture.bounds.origin.y, facePicture.bounds.size.width, facePicture.bounds.size.height);
+    [faceImage drawInRect:rect];
+    
+    NSLog(@"Face image size (%.0f, %.0f)", faceImage.size.width, faceImage.size.height);
+    NSLog(@"Face image view size(%.0f, %.0f), origin (%.0f, %.0f)", facePicture.bounds.size.width, facePicture.bounds.size.height,
+          facePicture.bounds.origin.x, facePicture.bounds.origin.y);
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextTranslateCTM(context, 0, rect.size.height);
+    CGContextScaleCTM(context, 1.0f, -1.0f);
+
+    CGFloat scale = [UIScreen mainScreen].scale;
+    if ( scale > 1.0 )
+    {
+        CGContextScaleCTM(context, 0.5, 0.5);
+    }
+
+    NSLog(@"scale: %.2f", scale);
+    
+    
     // we'll iterate through every detected face.  CIFaceFeature provides us
     // with the width for the entire face, and the coordinates of each eye
     // and the mouth if detected.  Also provided are BOOL's for the eye's and
     // mouth so we can check if they already exist.
-    for(CIFaceFeature* faceFeature in features)
+    int i = 1;
+    for(CIFaceFeature* feature in features)
     {
-        // get the width of the face
-        CGFloat faceWidth = faceFeature.bounds.size.width;
+        NSLog(@"face feature %d size (%.f, %.f) origin (%.f, %.f)",
+              i,
+              feature.bounds.size.width,
+              feature.bounds.size.height,
+              feature.bounds.origin.x,
+              feature.bounds.origin.y);
+        ++i;
         
-        CGRect frame = faceFeature.bounds;
-        // frame.origin.x = frame.origin.x - 50;
-        
-        // create a UIView using the bounds of the face
-        UIView* faceView = [[UIView alloc] initWithFrame:frame];
-        
-        // add a border around the newly created UIView
-        faceView.layer.borderWidth = 1;
-        faceView.layer.borderColor = [[UIColor redColor] CGColor];
-        
-        
-//        CGRect newBounds = CGRectMake(faceFeature.bounds.origin.x,
-//                                      self.photoImageView.bounds.size.height - faceFeature.bounds.origin.y - faceFeature.bounds.size.height,
-//                                      faceFeature.bounds.size.width,
-//                                      faceFeature.bounds.size.height);
-//        
-//        NSLog(@"My view frame: %@", NSStringFromCGRect(newBounds));
-        
-        [self.photoImageView addSubview:faceView];
-//        
-//        UIImage *newImage = [facePicture.image subImageWithBounds:newBounds];
-//        [featureFaces addObject:newImage];
+        CGContextSetRGBFillColor(context, 0.0f, 0.0f, 0.0f, 0.5f);
+        CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
+        CGContextSetLineWidth(context, 2.0f * scale);
+        CGContextAddRect(context, feature.bounds);
+        CGContextDrawPath(context, kCGPathFillStroke);
         
         
-        if(faceFeature.hasLeftEyePosition)
+        CGContextSetRGBFillColor(context, 1.0f, 0.0f, 0.0f, 0.4f);
+        if(feature.hasLeftEyePosition)
         {
-            // create a UIView with a size based on the width of the face
-            UIView* leftEyeView = [[UIView alloc] initWithFrame:CGRectMake(faceFeature.leftEyePosition.x-faceWidth*0.15, faceFeature.leftEyePosition.y-faceWidth*0.15, faceWidth*0.3, faceWidth*0.3)];
-            // change the background color of the eye view
-            [leftEyeView setBackgroundColor:[[UIColor blueColor] colorWithAlphaComponent:0.3]];
-            // set the position of the leftEyeView based on the face
-            [leftEyeView setCenter:faceFeature.leftEyePosition];
-            // round the corners
-            leftEyeView.layer.cornerRadius = faceWidth*0.15;
-            // add the view to the window
-            [self.photoImageView addSubview:leftEyeView];
+            // [self drawFeatureInContext:context atPoint:faceFeature.leftEyePosition];
         }
         
-        if(faceFeature.hasRightEyePosition)
+        if(feature.hasRightEyePosition)
         {
-            // create a UIView with a size based on the width of the face
-            UIView* leftEye = [[UIView alloc] initWithFrame:CGRectMake(faceFeature.rightEyePosition.x-faceWidth*0.15, faceFeature.rightEyePosition.y-faceWidth*0.15, faceWidth*0.3, faceWidth*0.3)];
-            // change the background color of the eye view
-            [leftEye setBackgroundColor:[[UIColor blueColor] colorWithAlphaComponent:0.3]];
-            // set the position of the rightEyeView based on the face
-            [leftEye setCenter:faceFeature.rightEyePosition];
-            // round the corners
-            leftEye.layer.cornerRadius = faceWidth*0.15;
-            // add the new view to the window
-            [self.photoImageView addSubview:leftEye];
+            // [self drawFeatureInContext:context atPoint:faceFeature.rightEyePosition];
         }
         
-        if(faceFeature.hasMouthPosition)
+        if(feature.hasMouthPosition)
         {
-            // create a UIView with a size based on the width of the face
-            UIView* mouth = [[UIView alloc] initWithFrame:CGRectMake(faceFeature.mouthPosition.x-faceWidth*0.2, faceFeature.mouthPosition.y-faceWidth*0.2, faceWidth*0.4, faceWidth*0.4)];
-            // change the background color for the mouth to green
-            [mouth setBackgroundColor:[[UIColor greenColor] colorWithAlphaComponent:0.3]];
-            // set the position of the mouthView based on the face
-            [mouth setCenter:faceFeature.mouthPosition];
-            // round the corners
-            mouth.layer.cornerRadius = faceWidth*0.2;
-            // add the new view to the window
-            [self.photoImageView addSubview:mouth];
+            // [self drawFeatureInContext:context atPoint:faceFeature.mouthPosition];
         }
         
         // [featureFaces addObject:newImage];
     }
     
-    [self showFaces:featureFaces];
+    facePicture.image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+        
+    [self.imageScrollView setScrollEnabled:YES];
+    
+    //[self showFaces:featureFaces];
     
 }
 
@@ -461,5 +473,10 @@ static NSString *CustomCellIdentifier = @"CustomCell";
     [self performSelectorInBackground:@selector(markFaces:) withObject:image];
 }
 
+- (void)drawFeatureInContext:(CGContextRef)context atPoint:(CGPoint)featurePoint {
+    CGFloat radius = 20.0f * [UIScreen mainScreen].scale;
+    CGContextAddArc(context, featurePoint.x, featurePoint.y, radius, 0, M_PI * 2, 1);
+    CGContextDrawPath(context, kCGPathFillStroke);
+}
 
 @end
