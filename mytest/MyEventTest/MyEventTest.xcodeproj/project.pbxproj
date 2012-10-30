@@ -22,6 +22,15 @@
 		F71BA76F1635B62500E5C21D /* UIImage-Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F71BA7681635B62500E5C21D /* UIImage-Utilities.m */; };
 		F71BA7701635B62500E5C21D /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F71BA76A1635B62500E5C21D /* Utilities.m */; };
 		F795F3FE1639994500628AEC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F795F3FD1639994500628AEC /* Default-568h@2x.png */; };
+		F799E028163FFEB7004F716E /* PersonInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = F799E026163FFEB7004F716E /* PersonInfo.h */; };
+		F799E029163FFEB7004F716E /* PersonInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F799E027163FFEB7004F716E /* PersonInfo.m */; };
+		F799E02C163FFEC3004F716E /* Address.h in Headers */ = {isa = PBXBuildFile; fileRef = F799E02A163FFEC3004F716E /* Address.h */; };
+		F799E02D163FFEC3004F716E /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = F799E02B163FFEC3004F716E /* Address.m */; };
+		F7A7BFA0163FDE970020BBB7 /* CoreDataViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = F7A7BF9D163FDE970020BBB7 /* CoreDataViewController.h */; };
+		F7A7BFA1163FDE970020BBB7 /* CoreDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A7BF9E163FDE970020BBB7 /* CoreDataViewController.m */; };
+		F7A7BFA2163FDE970020BBB7 /* CoreDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7A7BF9F163FDE970020BBB7 /* CoreDataViewController.xib */; };
+		F7ABE4DB163FD52F007DF73D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7ABE4DA163FD52F007DF73D /* CoreData.framework */; };
+		F7ABE4DF163FD5D3007DF73D /* MyTestModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F7ABE4DD163FD5D3007DF73D /* MyTestModel.xcdatamodeld */; };
 		F7C1A1201630E22B005D6488 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C1A11F1630E22B005D6488 /* UIKit.framework */; };
 		F7C1A1221630E22B005D6488 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C1A1211630E22B005D6488 /* Foundation.framework */; };
 		F7C1A1241630E22B005D6488 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C1A1231630E22B005D6488 /* CoreGraphics.framework */; };
@@ -69,6 +78,15 @@
 		F71BA7691635B62500E5C21D /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
 		F71BA76A1635B62500E5C21D /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
 		F795F3FD1639994500628AEC /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		F799E026163FFEB7004F716E /* PersonInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonInfo.h; path = MyEventTest/PersonInfo.h; sourceTree = "<group>"; };
+		F799E027163FFEB7004F716E /* PersonInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonInfo.m; path = MyEventTest/PersonInfo.m; sourceTree = "<group>"; };
+		F799E02A163FFEC3004F716E /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Address.h; path = MyEventTest/Address.h; sourceTree = "<group>"; };
+		F799E02B163FFEC3004F716E /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Address.m; path = MyEventTest/Address.m; sourceTree = "<group>"; };
+		F7A7BF9D163FDE970020BBB7 /* CoreDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataViewController.h; sourceTree = "<group>"; };
+		F7A7BF9E163FDE970020BBB7 /* CoreDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataViewController.m; sourceTree = "<group>"; };
+		F7A7BF9F163FDE970020BBB7 /* CoreDataViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CoreDataViewController.xib; sourceTree = "<group>"; };
+		F7ABE4DA163FD52F007DF73D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		F7ABE4DE163FD5D3007DF73D /* MyTestModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyTestModel.xcdatamodel; sourceTree = "<group>"; };
 		F7C1A11B1630E22B005D6488 /* MyEventTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyEventTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7C1A11F1630E22B005D6488 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F7C1A1211630E22B005D6488 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -117,6 +135,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7ABE4DB163FD52F007DF73D /* CoreData.framework in Frameworks */,
 				F70DECF91639576500C6AF61 /* QuartzCore.framework in Frameworks */,
 				F70DECF71639575F00C6AF61 /* AudioToolbox.framework in Frameworks */,
 				F70DECF11639574600C6AF61 /* CoreAudio.framework in Frameworks */,
@@ -159,6 +178,12 @@
 		F7C1A1101630E22B005D6488 = {
 			isa = PBXGroup;
 			children = (
+				F799E02A163FFEC3004F716E /* Address.h */,
+				F799E02B163FFEC3004F716E /* Address.m */,
+				F799E026163FFEB7004F716E /* PersonInfo.h */,
+				F799E027163FFEB7004F716E /* PersonInfo.m */,
+				F7ABE4DD163FD5D3007DF73D /* MyTestModel.xcdatamodeld */,
+				F7ABE4DA163FD52F007DF73D /* CoreData.framework */,
 				F795F3FD1639994500628AEC /* Default-568h@2x.png */,
 				F70DECF81639576500C6AF61 /* QuartzCore.framework */,
 				F70DECF61639575F00C6AF61 /* AudioToolbox.framework */,
@@ -209,6 +234,9 @@
 				F7C1A14416312E73005D6488 /* CameraViewController.h */,
 				F7C1A14516312E73005D6488 /* CameraViewController.m */,
 				F7C1A14616312E73005D6488 /* CameraViewController.xib */,
+				F7A7BF9D163FDE970020BBB7 /* CoreDataViewController.h */,
+				F7A7BF9E163FDE970020BBB7 /* CoreDataViewController.m */,
+				F7A7BF9F163FDE970020BBB7 /* CoreDataViewController.xib */,
 			);
 			path = MyEventTest;
 			sourceTree = "<group>";
@@ -269,6 +297,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7A7BFA0163FDE970020BBB7 /* CoreDataViewController.h in Headers */,
+				F799E028163FFEB7004F716E /* PersonInfo.h in Headers */,
+				F799E02C163FFEC3004F716E /* Address.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +360,7 @@
 				F7C1A1361630E22B005D6488 /* SAMViewController.xib in Resources */,
 				F7C1A14816312E73005D6488 /* CameraViewController.xib in Resources */,
 				F795F3FE1639994500628AEC /* Default-568h@2x.png in Resources */,
+				F7A7BFA2163FDE970020BBB7 /* CoreDataViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +391,10 @@
 				F71BA76E1635B62500E5C21D /* Orientation.m in Sources */,
 				F71BA76F1635B62500E5C21D /* UIImage-Utilities.m in Sources */,
 				F71BA7701635B62500E5C21D /* Utilities.m in Sources */,
+				F7ABE4DF163FD5D3007DF73D /* MyTestModel.xcdatamodeld in Sources */,
+				F7A7BFA1163FDE970020BBB7 /* CoreDataViewController.m in Sources */,
+				F799E029163FFEB7004F716E /* PersonInfo.m in Sources */,
+				F799E02D163FFEC3004F716E /* Address.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -481,6 +517,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F7ABE4DD163FD5D3007DF73D /* MyTestModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F7ABE4DE163FD5D3007DF73D /* MyTestModel.xcdatamodel */,
+			);
+			currentVersion = F7ABE4DE163FD5D3007DF73D /* MyTestModel.xcdatamodel */;
+			path = MyTestModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F7C1A1121630E22B005D6488 /* Project object */;
 }
