@@ -178,10 +178,20 @@ static NSString *sectionTitleKey = @"SectionTitle";
     NSLog( @"Entering duplicateAddressBookContactItems..." );
     
     ABAddressBookRef addressBook = ABAddressBookCreate();
+    ABRecordRef source = ABAddressBookCopyDefaultSource(addressBook);
     
-    NSArray *peopleArray = (NSMutableArray *)CFBridgingRelease(ABAddressBookCopyArrayOfAllPeople(addressBook));
+    NSArray *peopleArray = (NSMutableArray *)CFBridgingRelease(ABAddressBookCopyArrayOfAllPeopleInSource(addressBook, source));
     
     NSLog( @"People array: %d", [peopleArray count] );
+    
+//    CFArrayRef sources = ABAddressBookCopyDefaultSource(addressBook);
+//    CFIndex sourceCount = CFArrayGetCount(sources);
+//    ABRecordRef resultSource = NULL;
+//    for (CFIndex i = 0 ; i < sourceCount; i++)
+//    {
+//        ABRecordRef currentSource = CFArrayGetValueAtIndex(sources, i);
+//        CFTypeRef sourceType = ABRecordCopyValue(currentSource, kABSourceTypeProperty);
+//    }
     
 //  NSMutableArray *allNames = [NSMutableArray array];
     
