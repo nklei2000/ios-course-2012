@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		F707C433161EC02C00F76C4B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F707C432161EC02C00F76C4B /* UIKit.framework */; };
-		F707C435161EC02C00F76C4B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F707C434161EC02C00F76C4B /* Foundation.framework */; };
 		F707C437161EC02C00F76C4B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F707C436161EC02C00F76C4B /* CoreGraphics.framework */; };
 		F707C43D161EC02C00F76C4B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F707C43B161EC02C00F76C4B /* InfoPlist.strings */; };
 		F707C43F161EC02C00F76C4B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F707C43E161EC02C00F76C4B /* main.m */; };
@@ -44,8 +43,6 @@
 		F79869C9162530E00032C0EB /* MyCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = F79869C8162530E00032C0EB /* MyCommon.m */; };
 		F7A7BFAA163FE6A50020BBB7 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A7BFA8163FE6A50020BBB7 /* AddressBook.framework */; };
 		F7A7BFAB163FE6A50020BBB7 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A7BFA9163FE6A50020BBB7 /* AddressBookUI.framework */; };
-		F7A7BFAE163FE6AD0020BBB7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A7BFAD163FE6AD0020BBB7 /* QuartzCore.framework */; };
-		F7A7BFB0163FE6B60020BBB7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A7BFAF163FE6B60020BBB7 /* AVFoundation.framework */; };
 		F7A7BFB2163FE6C30020BBB7 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A7BFB1163FE6C30020BBB7 /* AudioToolbox.framework */; };
 		F7A7BFB4163FE6D00020BBB7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A7BFB3163FE6D00020BBB7 /* Security.framework */; };
 		F7A7BFB6163FE6DC0020BBB7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A7BFB5163FE6DC0020BBB7 /* CoreLocation.framework */; };
@@ -91,6 +88,10 @@
 		F7C6E41B1621E26C003DE8B2 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C6E4111621E26C003DE8B2 /* MBProgressHUD.m */; };
 		F7C8AA8C162F9BFD006C492F /* CustomBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C8AA89162F9BFD006C492F /* CustomBadge.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F7C8AA8D162F9BFD006C492F /* MKNumberBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C8AA8B162F9BFD006C492F /* MKNumberBadgeView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F7CC408316404299009C4DC5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A7BFAF163FE6B60020BBB7 /* AVFoundation.framework */; };
+		F7CC408416404299009C4DC5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F707C434161EC02C00F76C4B /* Foundation.framework */; };
+		F7CC408516404324009C4DC5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A7BFAD163FE6AD0020BBB7 /* QuartzCore.framework */; };
+		F7CC4086164045A3009C4DC5 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C6E3BC1621E26C003DE8B2 /* MobileCoreServices.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -237,16 +238,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7CC4086164045A3009C4DC5 /* MobileCoreServices.framework in Frameworks */,
+				F7CC408516404324009C4DC5 /* QuartzCore.framework in Frameworks */,
+				F7CC408316404299009C4DC5 /* AVFoundation.framework in Frameworks */,
+				F7CC408416404299009C4DC5 /* Foundation.framework in Frameworks */,
 				F7A7BFB7163FE6E50020BBB7 /* SystemConfiguration.framework in Frameworks */,
 				F7A7BFB6163FE6DC0020BBB7 /* CoreLocation.framework in Frameworks */,
 				F7A7BFB4163FE6D00020BBB7 /* Security.framework in Frameworks */,
 				F7A7BFB2163FE6C30020BBB7 /* AudioToolbox.framework in Frameworks */,
-				F7A7BFB0163FE6B60020BBB7 /* AVFoundation.framework in Frameworks */,
-				F7A7BFAE163FE6AD0020BBB7 /* QuartzCore.framework in Frameworks */,
 				F7A7BFAA163FE6A50020BBB7 /* AddressBook.framework in Frameworks */,
 				F7A7BFAB163FE6A50020BBB7 /* AddressBookUI.framework in Frameworks */,
 				F707C433161EC02C00F76C4B /* UIKit.framework in Frameworks */,
-				F707C435161EC02C00F76C4B /* Foundation.framework in Frameworks */,
 				F707C437161EC02C00F76C4B /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -701,7 +703,7 @@
 				INFOPLIST_FILE = "WhatsFeeling/WhatsFeeling-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos6.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -714,7 +716,7 @@
 				INFOPLIST_FILE = "WhatsFeeling/WhatsFeeling-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos6.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
