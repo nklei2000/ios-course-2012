@@ -35,6 +35,8 @@
     [self initCoreData];
     
     self.fetchedResultsController = [[NSFetchedResultsController alloc] init];
+    self.fetchedResultsController.delegate = self;
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -107,6 +109,7 @@
 {
     NSLog(@"Adding person info");
     
+    int i = 1;
     for (NSString *name in [@"Sam*Joe*Justin*Tim" componentsSeparatedByString:@"*"])
     {
         NSLog(@"name: %@", name);
@@ -116,10 +119,11 @@
         personInfo.name = name;
         personInfo.lastName = @"TEST";
         
-        personInfo.gender = @"M";
+        personInfo.gender = (i%2==1? @"M": @"F");
 
         personInfo.birthDate = [NSDate date];
         
+        ++i;
     }
     
     NSError *error;
@@ -156,7 +160,7 @@
     
     NSError __autoreleasing *error;
     
-    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"gender" cacheName:nil];
     self.fetchedResultsController.delegate = self;
     
     if ( ![self.fetchedResultsController performFetch:&error])
@@ -165,6 +169,7 @@
         return FALSE;
     }
     
+    NSLog(@"section count: %d", [[self.fetchedResultsController sections] count]);
     return TRUE;
     
 }
@@ -183,7 +188,11 @@
     if ( ![self.managedObjectContext save:&error])
     {
         NSLog(@"Error: %@", [error localizedFailureReason]);
+        return;
     }
+    
+    BOOL fetched = [self fetchPeople];
+    NSLog( @"fetched: %@", (fetched?@"YES":@"NO") );
     
 }
 
@@ -194,22 +203,25 @@
 {
     return [[self.fetchedResultsController sections] count];
 }
-    
-- (NSString *)tableView:(UITableView *)aTableView titleForHeaderInSection:(NSInteger)section
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     NSArray *titles = [self.fetchedResultsController sectionIndexTitles];
     
-    if ( titles.count <= section) return @"Error";
+    if ( titles.count <= section ) return @"Error";
     
     return [titles objectAtIndex:section];
-    
-    
 }
 
-- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)aTableView
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
 {
     return [self.fetchedResultsController sectionIndexTitles];
 }
+
+//- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
+//{
+//    return [[self.fetchedResultsController sectionIndexTitles] indexOfObject:title];
+//}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -231,7 +243,7 @@
     
     NSManagedObject *managedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = [managedObject valueForKey:@"name"];
-    
+
     return cell;
 }
 

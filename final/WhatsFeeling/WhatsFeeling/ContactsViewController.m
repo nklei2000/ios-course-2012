@@ -175,9 +175,13 @@ static NSString *sectionTitleKey = @"SectionTitle";
 
 - (void) duplicateAddressBookContactItems
 {
+    NSLog( @"Entering duplicateAddressBookContactItems..." );
+    
     ABAddressBookRef addressBook = ABAddressBookCreate();
     
     NSArray *peopleArray = (NSMutableArray *)CFBridgingRelease(ABAddressBookCopyArrayOfAllPeople(addressBook));
+    
+    NSLog( @"People array: %d", [peopleArray count] );
     
 //  NSMutableArray *allNames = [NSMutableArray array];
     
