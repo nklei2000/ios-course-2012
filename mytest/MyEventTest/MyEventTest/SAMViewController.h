@@ -29,5 +29,6 @@
 - (IBAction)listEvents:(id)sender;
 
 - (IBAction)showCamera:(id)sender;
+- (IBAction)showCoreData:(id)sender;
 
 @end

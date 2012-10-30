@@ -8,6 +8,7 @@
 
 #import "SAMViewController.h"
 #import "CameraViewController.h"
+#import "CoreDataViewController.h"
 
 #import <EventKit/EventKit.h>
 
@@ -168,6 +169,14 @@
 
     
     [self.navigationController pushViewController:cameraViewController animated:YES];
+}
+
+- (IBAction)showCoreData:(id)sender {
+    
+    CoreDataViewController *coreDataViewController = [[CoreDataViewController alloc] init];
+    
+    [self.navigationController pushViewController:coreDataViewController animated:YES];
+    
 }
 
 - (IBAction)localNotificationTest:(id)sender {

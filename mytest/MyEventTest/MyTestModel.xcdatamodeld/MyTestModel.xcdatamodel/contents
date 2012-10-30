@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="11E53" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Address" representedClassName="Address" syncable="YES">
+        <attribute name="building" attributeType="String" maxValueString="100" syncable="YES"/>
+        <attribute name="street" attributeType="String" maxValueString="100" syncable="YES"/>
+    </entity>
+    <entity name="PersonInfo" representedClassName="PersonInfo" syncable="YES">
+        <attribute name="age" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="birthDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="gender" attributeType="String" maxValueString="1" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" maxValueString="50" syncable="YES"/>
+        <attribute name="name" attributeType="String" maxValueString="50" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Address" positionX="-3312" positionY="-2187" width="128" height="75"/>
+        <element name="PersonInfo" positionX="-3303" positionY="-2367" width="128" height="120"/>
+    </elements>
+</model>
