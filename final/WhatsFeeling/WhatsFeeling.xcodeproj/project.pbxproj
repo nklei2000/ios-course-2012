@@ -508,7 +508,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = SAM;
-				LastUpgradeCheck = 0440;
+				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = "Nam Kin Lei";
 			};
 			buildConfigurationList = F707C428161EC02C00F76C4B /* Build configuration list for PBXProject "WhatsFeeling" */;
@@ -703,7 +703,7 @@
 				INFOPLIST_FILE = "WhatsFeeling/WhatsFeeling-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos6.0;
+				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -716,7 +716,7 @@
 				INFOPLIST_FILE = "WhatsFeeling/WhatsFeeling-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos6.0;
+				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
