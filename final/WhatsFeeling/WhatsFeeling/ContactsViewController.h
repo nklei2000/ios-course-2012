@@ -13,9 +13,10 @@
 @class DataModel;
 @class FeelingPerson;
 
-@interface ContactsViewController : UIViewController <ABPeoplePickerNavigationControllerDelegate,ABNewPersonViewControllerDelegate,ABPersonViewControllerDelegate,ABUnknownPersonViewControllerDelegate,UITableViewDelegate, UITableViewDelegate>
+@interface ContactsViewController : UIViewController <ABPeoplePickerNavigationControllerDelegate,ABNewPersonViewControllerDelegate,ABPersonViewControllerDelegate,ABUnknownPersonViewControllerDelegate,UITableViewDelegate, UITableViewDelegate, UISearchDisplayDelegate, UISearchBarDelegate>
 {
-
+    UISearchDisplayController *searchDisplayController;
+    UISearchDisplayController *searchBar;
 }
 
 @property (assign, nonatomic) DataModel *dataModel;
@@ -27,6 +28,9 @@
 @property (strong, nonatomic) NSMutableArray *filteredIndiceArray;
 
 @property (strong, nonatomic) IBOutlet UITableView *contactsTbl;
+
+@property (strong, nonatomic) IBOutlet UISearchDisplayController *searchDisplayController;
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @property (assign, nonatomic) bool isFiltered;
 @property (assign, nonatomic) bool isDataLoaded;

@@ -18,6 +18,7 @@
 		F707C606161EE66600F76C4B /* chat.png in Resources */ = {isa = PBXBuildFile; fileRef = F707C604161EE63700F76C4B /* chat.png */; };
 		F707C607161EE66600F76C4B /* gear.png in Resources */ = {isa = PBXBuildFile; fileRef = F707C605161EE64500F76C4B /* gear.png */; };
 		F707C60B161EE70F00F76C4B /* FeelingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F707C609161EE70F00F76C4B /* FeelingViewController.m */; };
+		F723F7781642D9150043F19C /* msjh.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F723F7771642D9150043F19C /* msjh.ttf */; };
 		F7668F7916200F000052764B /* 01-refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = F7668F7316200F000052764B /* 01-refresh.png */; };
 		F7668F7A16200F000052764B /* 25-weather.png in Resources */ = {isa = PBXBuildFile; fileRef = F7668F7416200F000052764B /* 25-weather.png */; };
 		F7668F7B16200F000052764B /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = F7668F7516200F000052764B /* heart.png */; };
@@ -124,6 +125,7 @@
 		F707C605161EE64500F76C4B /* gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gear.png; sourceTree = "<group>"; };
 		F707C608161EE70E00F76C4B /* FeelingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeelingViewController.h; sourceTree = "<group>"; };
 		F707C609161EE70F00F76C4B /* FeelingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeelingViewController.m; sourceTree = "<group>"; };
+		F723F7771642D9150043F19C /* msjh.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = msjh.ttf; sourceTree = "<group>"; };
 		F7668F7316200F000052764B /* 01-refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "01-refresh.png"; sourceTree = "<group>"; };
 		F7668F7416200F000052764B /* 25-weather.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "25-weather.png"; sourceTree = "<group>"; };
 		F7668F7516200F000052764B /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 		F707C423161EC02C00F76C4B = {
 			isa = PBXGroup;
 			children = (
+				F723F7761642D9150043F19C /* Fonts */,
 				F7A7BFB8163FE7210020BBB7 /* Default-568h@2x.png */,
 				F7A7BFB5163FE6DC0020BBB7 /* CoreLocation.framework */,
 				F7A7BFB3163FE6D00020BBB7 /* Security.framework */,
@@ -402,6 +405,14 @@
 				F78C6422162BE7E00072743C /* ContactGroupTableViewCell.xib */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		F723F7761642D9150043F19C /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				F723F7771642D9150043F19C /* msjh.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		F78016591627AD6C00C27351 /* blackpixel */ = {
@@ -575,6 +586,7 @@
 				F7B94243162CF416000071B3 /* contacts.png in Resources */,
 				F7B94245162CF4A0000071B3 /* ContactsViewController.xib in Resources */,
 				F7A7BFB9163FE7210020BBB7 /* Default-568h@2x.png in Resources */,
+				F723F7781642D9150043F19C /* msjh.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

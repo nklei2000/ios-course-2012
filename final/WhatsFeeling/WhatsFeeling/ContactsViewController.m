@@ -22,8 +22,10 @@
 @end
 
 @implementation ContactsViewController
-@synthesize contactsTbl;
 
+@synthesize contactsTbl;
+@synthesize searchDisplayController;
+@synthesize searchBar = _searchBar;
 
 static NSString *sectionDataKey = @"SectionData";
 static NSString *sectionTitleKey = @"SectionTitle";
@@ -47,8 +49,8 @@ static NSString *sectionTitleKey = @"SectionTitle";
 	/*
 	 Create header with two buttons
 	 */
-	CGSize screenSize = [[UIScreen mainScreen] applicationFrame].size;
-	UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenSize.width, 43)];
+//	CGSize screenSize = [[UIScreen mainScreen] applicationFrame].size;
+//	UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenSize.width, 43)];
 	
 //	UILabel *phoneLabel = [[UILabel alloc] init];
 //	phoneLabel.frame = CGRectMake(0, 0, contactsTbl.frame.size.width, 25);
@@ -56,15 +58,15 @@ static NSString *sectionTitleKey = @"SectionTitle";
 //    phoneLabel.backgroundColor = [UIColor clearColor];
 //    phoneLabel.textColor = [UIColor lightGrayColor];
 //    phoneLabel.textAlignment = UITextAlignmentCenter;
-    
-    UISearchBar *searchBar = [[UISearchBar alloc] init];
+//    
+//    UISearchBar *searchBar = [[UISearchBar alloc] init];
 //    searchBar.frame = CGRectMake(0, phoneLabel.frame.size.height, contactsTbl.frame.size.width, 40);
-    searchBar.frame = CGRectMake(0, 0, contactsTbl.frame.size.width, 40);
-    searchBar.delegate = (id)self;
+//    searchBar.frame = CGRectMake(0, 0, contactsTbl.frame.size.width, 40);
+//    searchBar.delegate = (id)self;
     
 //	[headerView addSubview:phoneLabel];
     
-	[headerView addSubview:searchBar];
+//	[headerView addSubview:searchBar];
     
 //    UISearchDisplayController *searchController = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
 //    searchController.searchResultsDataSource = self;
@@ -75,12 +77,13 @@ static NSString *sectionTitleKey = @"SectionTitle";
 //    headerView.layer.borderColor = [UIColor colorWithWhite:0.78 alpha:1.0].CGColor;
 //    headerView.layer.shadowColor = [UIColor grayColor].CGColor;
 //    headerView.layer.shadowRadius = 6.0f;
-    headerView.layer.shadowColor = [UIColor blackColor].CGColor;
-    headerView.layer.shadowOffset = CGSizeMake(0, 3);
-    headerView.layer.shadowOpacity = 0.5f;
-   
     
-	contactsTbl.tableHeaderView = headerView;
+//    headerView.layer.shadowColor = [UIColor blackColor].CGColor;
+//    headerView.layer.shadowOffset = CGSizeMake(0, 3);
+//    headerView.layer.shadowOpacity = 0.5f;
+   
+//    
+//	contactsTbl.tableHeaderView = headerView;
     
     // self.dataArray = [[NSMutableArray alloc] init];
     // self.filteredDataArray = [[NSMutableArray alloc] init];
@@ -96,6 +99,7 @@ static NSString *sectionTitleKey = @"SectionTitle";
 - (void)viewDidUnload
 {
     [self setContactsTbl:nil];
+    [self setSearchDisplayController:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -458,6 +462,7 @@ static NSString *sectionTitleKey = @"SectionTitle";
     if ( cell == nil )
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
     FeelingPerson *feelingPerson;
@@ -546,11 +551,21 @@ static NSString *sectionTitleKey = @"SectionTitle";
     
     NSLog(@"Selected Feeling person: %@", [selectedFeelingPerson fullName]);
     
+    // [self editSelectedPerson:selectedFeelingPerson];
+    
 }
 
-#pragma mark - UISearchBar
+//#pragma mark - UISearchBar
+//
+//- (void)searchBar:(UISearchBar*)searchBar textDidChange:(NSString *)searchText
+//{
+//
+//    [self filterContentForSearchText:searchText];
+//    
+//}
 
-- (void)searchBar:(UISearchBar*)searchBar textDidChange:(NSString *)searchText
+
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
 {
     if ( searchText.length == 0 )
     {
@@ -563,11 +578,11 @@ static NSString *sectionTitleKey = @"SectionTitle";
         self.filteredDataArray = [NSMutableArray array];
         
         for ( int i=0; i < [self.dataArray count]; i++)
-        {            
+        {
             NSMutableArray *sectionDataArray = [[self.dataArray objectAtIndex:i] objectForKey:sectionDataKey];
             
             if ( sectionDataArray != nil && [sectionDataArray count])
-            {                
+            {
                 for (FeelingPerson *person in sectionDataArray)
                 {
                     NSRange nameRange = [person.fullName rangeOfString:searchText options:NSCaseInsensitiveSearch];
@@ -590,9 +605,7 @@ static NSString *sectionTitleKey = @"SectionTitle";
     NSLog(@"preparing reload table data");
     
     [self.contactsTbl reloadData];
-    
 }
-
 
 #pragma mark - Test Actions
 
@@ -670,6 +683,52 @@ static NSString *sectionTitleKey = @"SectionTitle";
 }
 
 
+- (BOOL)editSelectedPerson:(FeelingPerson *)feelingPerson
+{
+    ABAddressBookRef addressBook = ABAddressBookCreate();
+    
+    NSArray *people;
+    
+    if ( feelingPerson.firstName != nil )
+    {
+        people = (NSArray *)CFBridgingRelease(ABAddressBookCopyPeopleWithName(addressBook, CFBridgingRetain(feelingPerson.firstName)));
+    }
+    else if ((feelingPerson.fullName == nil || feelingPerson.fullName.length <= 0) && feelingPerson.company != nil )
+    {
+        people = (NSArray *)CFBridgingRelease(ABAddressBookCopyPeopleWithName(addressBook, CFBridgingRetain(feelingPerson.company)));
+    }
+    else
+    {
+        NSLog(@"Nothing for edit");
+        return FALSE;
+    }
+    
+    NSLog(@"people: %@", people);
+    
+    if ( (people != nil) && [people count])
+    {
+        NSLog(@"people");
+        
+        ABRecordRef person = (ABRecordRef)CFBridgingRetain([people objectAtIndex:0]);
+        ABPersonViewController *picker = [[ABPersonViewController alloc] init];
+        picker.personViewDelegate = self;
+        picker.displayedPerson = person;
+
+        // Allow users to edit the person’s information
+        picker.allowsEditing = YES;
+        
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:picker];
+        
+        [self presentModalViewController:navController animated:YES];
+        
+        return TRUE;
+    }
+    
+    return FALSE;
+    
+}
+
+
 
 #pragma mark ABPeoplePickerNavigationControllerDelegate methods
 // Displays the information of a selected person
@@ -717,6 +776,31 @@ static NSString *sectionTitleKey = @"SectionTitle";
 {
     [self dismissModalViewControllerAnimated:YES];
 }
+
+
+
+#pragma mark - UISearchDisplayController delegate methods
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller
+shouldReloadTableForSearchString:(NSString *)searchString
+{
+    [self filterContentForSearchText:searchString
+                               scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
+                                      objectAtIndex:[self.searchDisplayController.searchBar
+                                                     selectedScopeButtonIndex]]];
+    
+    return YES;
+}
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller
+shouldReloadTableForSearchScope:(NSInteger)searchOption
+{
+    [self filterContentForSearchText:[self.searchDisplayController.searchBar text]
+                               scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
+                                      objectAtIndex:searchOption]];
+
+    return YES;
+}
+
 
 /*
  // viewdidload
