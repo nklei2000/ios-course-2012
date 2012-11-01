@@ -16,6 +16,7 @@
 @property (copy, nonatomic) NSString *lastName;
 @property (copy, nonatomic) NSString *phoneNumber;
 @property (copy, nonatomic) NSString *email;
+@property (copy, nonatomic) NSString *company;
 
 - (NSString *)fullName;
 

@@ -10,6 +10,8 @@
 #import <AddressBookUI/AddressBookUI.h>
 #import <QuartzCore/QuartzCore.h>
 
+#import "MBProgressHUD.h"
+
 #import "ContactsViewController.h"
 
 #import "FeelingPerson.h"
@@ -46,20 +48,22 @@ static NSString *sectionTitleKey = @"SectionTitle";
 	 Create header with two buttons
 	 */
 	CGSize screenSize = [[UIScreen mainScreen] applicationFrame].size;
-	UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenSize.width, 68)];
+	UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenSize.width, 43)];
 	
-	UILabel *phoneLabel = [[UILabel alloc] init];
-	phoneLabel.frame = CGRectMake(0, 0, contactsTbl.frame.size.width, 25);
-    phoneLabel.text = [NSString stringWithFormat:@"My Number is %@", [MyCommon getMyPhoneNumber]];
-    phoneLabel.backgroundColor = [UIColor clearColor];
-    phoneLabel.textColor = [UIColor lightGrayColor];
-    phoneLabel.textAlignment = UITextAlignmentCenter;
+//	UILabel *phoneLabel = [[UILabel alloc] init];
+//	phoneLabel.frame = CGRectMake(0, 0, contactsTbl.frame.size.width, 25);
+//    phoneLabel.text = [NSString stringWithFormat:@"My Number is %@", [MyCommon getMyPhoneNumber]];
+//    phoneLabel.backgroundColor = [UIColor clearColor];
+//    phoneLabel.textColor = [UIColor lightGrayColor];
+//    phoneLabel.textAlignment = UITextAlignmentCenter;
     
     UISearchBar *searchBar = [[UISearchBar alloc] init];
-    searchBar.frame = CGRectMake(0, phoneLabel.frame.size.height, contactsTbl.frame.size.width, 40);
+//    searchBar.frame = CGRectMake(0, phoneLabel.frame.size.height, contactsTbl.frame.size.width, 40);
+    searchBar.frame = CGRectMake(0, 0, contactsTbl.frame.size.width, 40);
     searchBar.delegate = (id)self;
     
-	[headerView addSubview:phoneLabel];
+//	[headerView addSubview:phoneLabel];
+    
 	[headerView addSubview:searchBar];
     
 //    UISearchDisplayController *searchController = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
@@ -84,7 +88,9 @@ static NSString *sectionTitleKey = @"SectionTitle";
     
     self.dataArray = [NSMutableArray array];    
     [self initIndiceArrays];
-    [self duplicateAddressBookContactItems];
+
+    self.isDataLoaded = NO;
+    
 }
 
 - (void)viewDidUnload
@@ -96,6 +102,23 @@ static NSString *sectionTitleKey = @"SectionTitle";
     
     self.dataArray = nil;
     self.filteredDataArray = nil;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    if ( !self.isDataLoaded )
+    {
+        MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.labelText = NSLocalizedString(@"Loading", nil);
+        
+        [self duplicateAddressBookContactItems];
+        [self.contactsTbl reloadData];
+        
+        self.isDataLoaded = YES;
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    }
+    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -172,15 +195,82 @@ static NSString *sectionTitleKey = @"SectionTitle";
     
 }
 
+//- (void) showAddressBookGroups
+//{
+//    ABAddressBookRef addressBook = ABAddressBookCreate();
+//    
+//    CFArrayRef groupArray = ABAddressBookCopyArrayOfAllGroups(addressBook);
+//
+//    // NSLog( @"Group array: %d", groupArray );
+//    CFIndex groupCount = CFArrayGetCount(groupArray);
+//    NSLog( @"Group count: %ld", groupCount );
+//    
+//    for (CFIndex i = 0 ; i < groupCount; i++)
+//    {
+//        ABRecordRef currentGroup = CFArrayGetValueAtIndex(groupArray, i);
+//        CFStringRef groupName = ABRecordCopyValue(currentGroup, kABGroupNameProperty);
+//        
+//        NSLog(@"group name: %@", groupName);
+//    }
+//    
+//}
+
+//
+//- (void) showAddressBookSources
+//{
+//    ABAddressBookRef addressBook = ABAddressBookCreate();
+//    
+//    CFArrayRef sources = ABAddressBookCopyArrayOfAllSources(addressBook);
+//    CFIndex sourceCount = CFArrayGetCount(sources);
+//    NSLog( @"source count: %ld", sourceCount );
+//    
+//    // ABRecordRef resultSource = NULL;
+//    for (CFIndex i = 0 ; i < sourceCount; i++)
+//    {
+//        ABRecordRef currentSource = CFArrayGetValueAtIndex(sources, i);
+//        CFStringRef sourceType = ABRecordCopyValue(currentSource, kABSourceTypeProperty);
+//        
+//        CFStringRef sourceName = ABRecordCopyValue(currentSource, kABSourceNameProperty);
+//        
+//        NSLog(@"source name: %@, source type: %@", sourceName, sourceType);
+//        
+//    }
+//    
+//}
+
+
+
 
 - (void) duplicateAddressBookContactItems
 {
     NSLog( @"Entering duplicateAddressBookContactItems..." );
     
     ABAddressBookRef addressBook = ABAddressBookCreate();
-    ABRecordRef source = ABAddressBookCopyDefaultSource(addressBook);
+        
+    __block BOOL accessGranted = NO;
+    if (ABAddressBookRequestAccessWithCompletion != NULL)
+    { // we're on iOS 6
+        dispatch_semaphore_t sema = dispatch_semaphore_create(0);
+        ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) {
+            accessGranted = granted;
+            dispatch_semaphore_signal(sema);
+        });
+        dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
+        dispatch_release(sema);
+    }
+    else
+    { // we're on iOS 5 or older
+        accessGranted = YES;
+    }
     
-    NSArray *peopleArray = (NSMutableArray *)CFBridgingRelease(ABAddressBookCopyArrayOfAllPeopleInSource(addressBook, source));
+    if ( !accessGranted )
+    {
+        NSLog(@"User not allow access address book");
+        return;
+    }
+    
+    
+    NSArray *peopleArray = (NSMutableArray *)CFBridgingRelease(ABAddressBookCopyArrayOfAllPeople(addressBook));
     
     NSLog( @"People array: %d", [peopleArray count] );
     
@@ -202,7 +292,7 @@ static NSString *sectionTitleKey = @"SectionTitle";
 //    CFArraySortValues(peopleMutable, CFRangeMake(0, CFArrayGetCount(people)), (CFComparatorFunction)ABPersonComparePeopleByName, (void*)ABPersonGetSortOrdering());
 //    
 //    NSArray *peopleArray = (NSMutableArray *)CFBridgingRelease(peopleMutable);
-        
+    
     for (id person in peopleArray)
     {
         FeelingPerson *feelingPerson = [[FeelingPerson alloc] init];
@@ -210,7 +300,9 @@ static NSString *sectionTitleKey = @"SectionTitle";
         feelingPerson.firstName = (NSString *)CFBridgingRelease(ABRecordCopyValue(CFBridgingRetain(person), kABPersonFirstNameProperty));
         
         feelingPerson.lastName = (NSString *)CFBridgingRelease(ABRecordCopyValue(CFBridgingRetain(person), kABPersonLastNameProperty));
-                
+        
+        feelingPerson.company = CFBridgingRelease((ABRecordCopyValue(CFBridgingRetain(person), kABPersonOrganizationProperty)));
+        
         ABMutableMultiValueRef multiValueEmail = ABRecordCopyValue(CFBridgingRetain(person), kABPersonEmailProperty);
         
         if (ABMultiValueGetCount(multiValueEmail) > 0)
@@ -221,6 +313,7 @@ static NSString *sectionTitleKey = @"SectionTitle";
         }
         
         NSLog(@"Full name: %@ %@" , feelingPerson.firstName, feelingPerson.lastName);
+        NSLog(@"Company: %@" , feelingPerson.company);
         
         ABMutableMultiValueRef multiValuePhoneNumber = ABRecordCopyValue(CFBridgingRetain(person), kABPersonPhoneProperty);
         
@@ -237,15 +330,20 @@ static NSString *sectionTitleKey = @"SectionTitle";
                 NSLog(@"%@: %@", label, phone);
             }
         }
-                
-        // [self.dataArray addObject:feelingPerson];
-        [self indexContactsItem:feelingPerson
-                           data:self.dataArray
-                         indice:self.indiceArray];
         
+        if ( feelingPerson.fullName != nil &&
+             feelingPerson.fullName.length > 0 )
+        {
+            // [self.dataArray addObject:feelingPerson];
+            [self indexContactsItem:feelingPerson
+                               data:self.dataArray
+                             indice:self.indiceArray];
+        }
     }
     
     [self sortTableViewDataArray];
+    
+
     
 }
 
@@ -619,5 +717,54 @@ static NSString *sectionTitleKey = @"SectionTitle";
 {
     [self dismissModalViewControllerAnimated:YES];
 }
+
+/*
+ // viewdidload
+ eventStore = [[EKEventStore alloc] init];
+ 
+ 
+ if ([eventStore respondsToSelector:@selector(requestAccessToEntityType:completion:)])
+ {
+ [eventStore requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error)
+ {
+ [self performSelectorOnMainThread:@selector(addEventToCalendar) withObject:nil waitUntilDone:YES];
+ }];
+ }
+ else
+ {
+ [self addEventToCalendar];
+ }
+ 
+ // or
+ void (^addEventBlock)();
+ 
+ addEventBlock = ^
+ {
+ NSLog(@"Hi!");
+ };
+ 
+ EKEventStore *eventStore = [[UpdateManager sharedUpdateManager] eventStore];
+ 
+ if ([eventStore respondsToSelector:@selector(requestAccessToEntityType:completion:)])
+ {
+ [eventStore requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error)
+ {
+ if (granted)
+ {
+ addEventBlock();
+ }
+ else
+ {
+ NSLog(@"Not granted");
+ }
+ }];
+ }
+ else
+ {
+ addEventBlock();
+ }
+ 
+ */
+
 
 @end

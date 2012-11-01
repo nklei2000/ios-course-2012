@@ -95,13 +95,14 @@
 
 + (NSString *)getMyPhoneNumber
 {
-    NSString *phoneNumber = @"+694 2870 9394";
+    NSString *phoneNumber = @"+853 1234 5678";
     
-#if !TARGET_IPHONE_SIMULATOR
-     phoneNumber = [[NSUserDefaults standardUserDefaults] objectForKey:@"SBFormattedPhoneNumber"];
+#if TARGET_IPHONE_SIMULATOR
+     phoneNumber = @"+853 1234 5678";
 #endif
 
     NSLog(@"Your phone number is %@", phoneNumber);
+    
     return phoneNumber;
     
 }
@@ -121,7 +122,8 @@
     
 }
 
-+ (BOOL) isNumeric:(NSString*) value {
++ (BOOL) isNumeric:(NSString*) value
+{
     
     NSCharacterSet *alphaNums = [NSCharacterSet decimalDigitCharacterSet];
     NSCharacterSet *inStringSet = [NSCharacterSet characterSetWithCharactersInString:value];

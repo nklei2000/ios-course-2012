@@ -29,6 +29,7 @@
 @property (strong, nonatomic) IBOutlet UITableView *contactsTbl;
 
 @property (assign, nonatomic) bool isFiltered;
+@property (assign, nonatomic) bool isDataLoaded;
 
 - (IBAction)unknownPerson:(id)sender;
 
